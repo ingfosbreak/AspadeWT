@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="all">
+        <button id ='but' class="edit">Edit</button>
     <div class="parent" id="parent">
         <div class="thin">1</div>
         <div class="thin">2</div>
@@ -34,6 +35,6 @@
 
 
 
-    @vite(['resources/js/drag.js'])
+    @vite(['resources/js/drag.js','resources/js/click.js'])
 </body>
 </html>

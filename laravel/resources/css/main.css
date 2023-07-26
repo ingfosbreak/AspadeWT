@@ -30,7 +30,29 @@
     flex-direction:column;
     gap: 10px;
     width: 150px;
+    pointer-events: none;
 
+}
+
+.edit {
+    width: 100px;
+    height: 50px;
+    background-color: red;
+}
+
+.apply {
+    width: 100px;
+    height: 50px;
+    background-color: green;
+}
+
+
+
+.canclick {
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+    width: 150px;
 }
 
 .thin {
@@ -58,7 +80,15 @@
     flex-direction:column;
     gap: 10px;
     width: 150px;
+    pointer-events: none;
 
+}
+
+.canclick2 {
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+    width: 150px;
 }
 
 .thin2 {

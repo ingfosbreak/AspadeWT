@@ -8,6 +8,7 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/js/app.js',
                 'resources/js/drag.js',
+                'resources/js/click.js',
                 'resources/css/main.css',
             ],
             refresh: true,
