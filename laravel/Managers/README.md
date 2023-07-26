@@ -1,0 +1,1 @@
+# Add Manager to manage class

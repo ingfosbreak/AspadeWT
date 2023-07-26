@@ -1,0 +1,1 @@
+# Add Service to get Singleton of Manager
