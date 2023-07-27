@@ -47,12 +47,14 @@
   </section>
 </div>
 
+<div class="flex flex-wrap" >
 @include('components.profileClick')
+</div>
 
 <script>
   document.getElementById("but").addEventListener("click", (event) => {
     
-  profile = document.getElementById("profile");
+  profile = document.getElementById("profileNav");
    
   if (profile.className == "none"){
     profile.className = "cover";

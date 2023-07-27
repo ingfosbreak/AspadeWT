@@ -1,6 +1,8 @@
-<div class="none" id="profile">
+<div class="none" id="profileNav">
   <div class="contents">
     <h1>Contents</h1>
+    <h1>profile setting</h1>
+    <h1>logout</h1>
   </div>
 </div>
 
@@ -17,12 +19,8 @@
 .cover{
     background:rgba(0,0,0,0);
     position:fixed;
-    width:300px;
-    height:300px;
     display:flex;
     flex-direction:column;
-    
-    
 }
 .contents{
     width:300px;
@@ -31,11 +29,12 @@
     border:2px solid #ccc;
     border-radius:30px;
     display:flex;
-    justify-content:center;
-    text-align:center;
+    flex-direction:column;
+    align-items:center;
+    justify-content: space-evenly;
+   
     
 }
-
 .close{
     border:2px solid #ccc;
     border-radius:15px;
