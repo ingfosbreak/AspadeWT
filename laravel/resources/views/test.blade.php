@@ -27,11 +27,14 @@
     </div>
     
     <script type="module">
+
         $( document ).ready(function() {
-            dragula([document.getElementById("parent"),document.getElementById("parent2")]);
+            
+            dragula([$('#parent').get(0), $('#parent2').get(0)], { revertOnSpill: true });
 
 
             $('#but2').bind('click', function(event) {
+                
                 
                 var classname = $('#parent').attr('class');
 
