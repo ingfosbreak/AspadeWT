@@ -14,6 +14,12 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    resolve: {
+        alias: {
+            '$': 'jQuery',
+            'dragula': 'dragula'
+        },
+    },
     define: {
         global: "window"
     },

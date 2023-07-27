@@ -51,19 +51,27 @@
 @include('components.profileClick')
 </div>
 
-<script>
-  document.getElementById("but").addEventListener("click", (event) => {
-    
-  profile = document.getElementById("profileNav");
-   
-  if (profile.className == "none"){
-    profile.className = "cover";
-    profile.style.left = event.clientX - 250 + 'px';
-    profile.style.top = event.clientY + 20 + 'px';
-  }
-  else {
-    profile.className = "none";
-  }
-});
+<script type="module">
+  
+
+  $( document ).ready(function() {
+    $('#but').bind('click', function(event) {
+      var classname = $('#profileNav').attr('class');
+      if (classname == "none"){
+        $('#profileNav').removeClass('none').addClass('cover');
+        $("#profileNav").css({
+          left: event.clientX - 250 + 'px',
+          top: event.clientY + 20 + 'px',
+        });
+      }
+      else {
+        $('#profileNav').removeClass('cover').addClass('none');
+      } 
+
+     
+    });
+  });
+  
+  
 </script>
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @vite(['resources/css/main.css'])
+    @vite(['resources/css/main.css','resources/js/app.js'])
     <div class="all">
         <button id ='but2' class="edit">Edit</button>
         <div class="parent" id="parent">
@@ -25,6 +25,37 @@
         
         </div>
     </div>
-    @vite(['resources/js/drag.js','resources/js/click.js'])
+    
+    <script type="module">
+        $( document ).ready(function() {
+            dragula([document.getElementById("parent"),document.getElementById("parent2")]);
+
+
+            $('#but2').bind('click', function(event) {
+                
+                var classname = $('#parent').attr('class');
+
+                if (classname == "parent"){
+                    $('#parent').removeClass('parent').addClass('canclick');
+                    $('#parent2').removeClass('parent2').addClass('canclick2');
+                    $('#but2').removeClass('edit').addClass('apply');
+                    $("#but2").html("Apply");
+                }
+
+                else if (classname == "canclick") {
+                    $('#parent').removeClass('canclick').addClass('parent');
+                    $('#parent2').removeClass('canclick2').addClass('parent2');
+                    $('#but2').removeClass('apply').addClass('edit');
+                    $("#but2").html("Edit");
+                    
+                }
+
+            });
+        });
+    
+    </script>
     
 @endsection
+
+
+    

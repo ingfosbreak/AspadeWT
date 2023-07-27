@@ -16,3 +16,5 @@
     </main>
 </body>
 </html>
+
+@yield('footer-scripts')

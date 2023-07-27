@@ -24,3 +24,29 @@ document.getElementById("but2").addEventListener("click", () => {
    
 
 });
+
+//     $( document ).ready(function() {
+
+
+    //     $('#but2').bind('click', function(event) {
+            
+    //         var classname = $('#parent').attr('class');
+    //         console.log($('#parent').attr('class'));
+
+    //         if (classname == "parent"){
+    //             $('#parent').removeClass('parent').addClass('canclick');
+    //             $('#parent2').removeClass('parent2').addClass('canclick2');
+    //             $('#but2').removeClass('edit').addClass('apply');
+    //             $("#but2").html("Apply");
+    //         }
+
+    //         else if (classname == "canclick") {
+    //             $('#parent').removeClass('canclick').addClass('parent');
+    //             $('#parent2').removeClass('canclick2').addClass('parent2');
+    //             $('#but2').removeClass('apply').addClass('edit');
+    //             $("#but2").html("Edit");
+                
+    //         }
+
+    //     });
+    // });
