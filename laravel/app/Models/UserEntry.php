@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\User;
+use App\Models\UserFull;
 
 
 class UserEntry extends Model
 {
     use HasFactory, SoftDeletes;
 
-    public function user(): HasOne
+    public function userFull(): HasOne
     {
-        return $this->hasOne(User::class);
+        return $this->hasOne(UserFull::class);
     }
 }
