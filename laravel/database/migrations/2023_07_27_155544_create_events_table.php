@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer("member");
-            $table->integer("ิิbudget");
+            $table->integer("budget");
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });

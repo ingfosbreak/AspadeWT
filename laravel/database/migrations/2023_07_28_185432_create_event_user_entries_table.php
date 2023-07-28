@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\Process;
-use App\Models\EventMember;
+use App\Models\UserEntry;
+use App\Models\Event;
 
 return new class extends Migration
 {
@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('process_members', function (Blueprint $table) {
+        Schema::create('event_user_entry', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(EventMember::class);
-            $table->foreignIdFor(Process::class);
+            $table->foreignIdFor(UserEntry::class);
+            $table->foreignIdFor(Event::class);
+            $table->string('event_role');
+
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('process_members');
+        Schema::dropIfExists('event_user_entry');
     }
 };

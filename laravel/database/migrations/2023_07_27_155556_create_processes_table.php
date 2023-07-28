@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Event;
 
 return new class extends Migration
 {
@@ -13,6 +14,8 @@ return new class extends Migration
     {
         Schema::create('processes', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(Event::class); 
+            $table->string('name');
             $table->string('status');
             $table->integer("member");
             $table->integer("approval");
