@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\UserEntry;
+use App\Models\Event;
 
 return new class extends Migration
 {
@@ -11,11 +13,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_entries', function (Blueprint $table) {
+        Schema::create('event_members', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
-            $table->string('email');
-            $table->string('role');
+            $table->foreignIdFor(UserEntry::class);
+            $table->foreignIdFor(Event::class);
+            $table->string('event_role');
 
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_entries');
+        Schema::dropIfExists('event_members');
     }
 };

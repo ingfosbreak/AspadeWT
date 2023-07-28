@@ -5,7 +5,7 @@
     <div class="all">
         <button id ='but2' class="edit">Edit</button>
         <div class="parent" id="parent">
-            <div class="thin">1</div>
+            <div class="thin" id = 'test111'>1</div>
             <div class="thin">2</div>
 
             <div class="thin">3</div>
@@ -30,7 +30,25 @@
 
         $( document ).ready(function() {
             
-            dragula([$('#parent').get(0), $('#parent2').get(0)], { revertOnSpill: true });
+            const drake = dragula([$('#parent').get(0), $('#parent2').get(0)], { revertOnSpill: true });
+            
+            console.log(drake);
+            console.log($('#test111').html());
+
+            $.ajax({
+               type:'POST',
+               url:'/getmsg',
+               data:{ _token: '{{csrf_token()}}'},
+               success:function(data) {
+                  console.log(data.msg);
+               }
+            });
+
+            drake.on('drop', function(el, target, source, sibling) {
+                if (target.children.length > 2) {
+                    drake.cancel()
+                }
+            });
 
 
             $('#but2').bind('click', function(event) {
@@ -54,6 +72,7 @@
                 }
 
             });
+
         });
     
     </script>
