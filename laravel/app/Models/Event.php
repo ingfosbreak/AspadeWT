@@ -12,8 +12,8 @@ class Event extends Model
 {
     use HasFactory, SoftDeletes;
 
-    public function eventMembers(): HasMany {
-        return $this->hasMany(EventMembers::class);
+    public function eventMembers(): belongsToMany {
+        return $this->belongsToMany(EventMembers::class);
     }
 
     public function processes(): HasMany {

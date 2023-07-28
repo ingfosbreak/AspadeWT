@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Process;
+use App\Models\EventMember;
 
 return new class extends Migration
 {
@@ -14,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('process_members', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(EventMember::class);
             $table->foreignIdFor(Process::class);
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);

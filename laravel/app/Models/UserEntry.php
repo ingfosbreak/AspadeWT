@@ -19,7 +19,7 @@ class UserEntry extends Model
         return $this->hasOne(UserFull::class);
     }
 
-    public function eventMembers(): HasMany {
-        return $this->hasMany(EventMembers::class);
+    public function eventMembers(): BelongsToMany {
+        return $this->belongsToMany(EventMembers::class);
     }
 }
