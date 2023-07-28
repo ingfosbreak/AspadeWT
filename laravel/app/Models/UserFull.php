@@ -14,6 +14,6 @@ class UserFull extends Model
 
     public function userEntry(): BelongsTo
     {
-        return $this->belongsTo(userEntry::class);
+        return $this->belongsTo(UserEntry::class);
     }
 }
