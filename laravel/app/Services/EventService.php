@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Managers\UserManager;
+use App\Managers\EventManager;
 
 
-class UserService {
+class EventService {
 
 
     private static $instance = null;
@@ -15,11 +15,11 @@ class UserService {
    
 
     /* Singleton Service */
-    public static function getUserManager() {
+    public static function getEventManager() {
       
-        if (self::$instance == null)
+      if (self::$instance == null)
       {
-        self::$instance = new UserManager();
+        self::$instance = new EventManager();
       }
    
       return self::$instance;

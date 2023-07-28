@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Managers\UserManager;
+use App\Managers\ProcessManagers;
 
 
-class UserService {
+class ProcessService {
 
 
     private static $instance = null;
@@ -15,14 +15,15 @@ class UserService {
    
 
     /* Singleton Service */
-    public static function getUserManager() {
+    public static function getProcessManager() {
       
-        if (self::$instance == null)
+      if (self::$instance == null)
       {
-        self::$instance = new UserManager();
+        self::$instance = new ProcessManager();
       }
    
       return self::$instance;
+      
     }
 
 

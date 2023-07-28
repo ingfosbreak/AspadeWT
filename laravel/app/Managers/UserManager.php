@@ -10,13 +10,13 @@ use Illuminate\Http\Request;
 
 class UserManager {
 
-    public function __construct(){}
+    public function __construct() {}
 
-    public function getAllUsers(){
+    public function getAllUsers() {
         return UserEntry::with('UserFull')->get();
     }
 
-    public function getThatUser(string $id){
+    public function getThatUser(string $id) {
         return UserEntry::with('UserFull')->find((float)$id);
     }
 
@@ -52,7 +52,6 @@ class UserManager {
 
 
     public function updateUser(Request $request, string $id) {
-        
 
         if ($id == null) {
             return false;

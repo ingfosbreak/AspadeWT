@@ -10,6 +10,5 @@ class EventUserEntry extends Model
 {
     use HasFactory, SoftDeletes;
 
-
     protected $table = 'event_user_entry';
 }
