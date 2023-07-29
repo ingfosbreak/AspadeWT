@@ -14,12 +14,16 @@ class Event extends Model
 {
     use HasFactory, SoftDeletes;
 
-    public function userEntries(): belongsToMany {
+    public function userEntries(): BelongsToMany {
         return $this->belongsToMany(UserEntry::class);
     }
 
     public function processes(): HasMany {
         return $this->hasMany(Process::class);
+    }
+
+    public function certificates(): HasMany {
+        return $this->hasMany(Certificate::class);
     }
 
     
