@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(EventUserEntrySeeder::class);
         $this->call(ProcessSeeder::class);
         $this->call(ProcessUserEntrySeeder::class);
+        $this->call(InformSeeder::class);
+        $this->call(CertificateSeeder::class);
     }
 }
