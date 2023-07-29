@@ -45,8 +45,23 @@
     height: 50px;
     background-color: green;
 }
-
-
+/* form toto */
+.leftC, .leftC1 {
+    width: 722px;
+    min-height: 395px;
+    clear: left;
+    float: left;
+}
+.filmborder {
+    width: 730px;
+    float: left;
+    height: auto;
+    margin-left: -25px;
+    padding: 0;
+    border: 2px solid #191919;
+    margin-bottom: 10px;
+}
+/* end form toto */
 
 .canclick {
     display:flex;

@@ -31,6 +31,16 @@ Route::post('/getmsg',function(){
     return response()->json(array('msg'=> "fuck you"), 200);
 });
 
+Route::get('/login',function(){
+    return view('login');
+})->name('login');
+
+Route::get('/user/main',function(){
+    return view('user.user-main');
+});
+
+
+
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
