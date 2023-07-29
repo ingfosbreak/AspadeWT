@@ -10,9 +10,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\UserFull;
 use App\Models\Event;
+use App\Models\EventUserEntry;
 use App\Models\Process;
+use App\Models\ProcessUserEntry;
 use App\Models\Inform;
 use App\Models\Certificate;
+
 
 
 class UserEntry extends Model
@@ -41,6 +44,10 @@ class UserEntry extends Model
 
     public function processes(): BelongsToMany {
         return $this->belongsToMany(Process::class);
+    }
+
+    public function processes_statuses(): HasMany {
+        return $this->hasMany(ProcessUserEntry::class);
     }
 
 }

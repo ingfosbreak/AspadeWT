@@ -14,7 +14,7 @@ class Process extends Model
 {
     use HasFactory, SoftDeletes;
 
-    public function userEntries(): belongsToMany {
+    public function userEntries(): BelongsToMany {
         return $this->belongsToMany(UserEntry::class);
     }
 

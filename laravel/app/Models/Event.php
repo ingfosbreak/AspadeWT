@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\UserEntry;
 use App\Models\EventUserEntry;
 use App\Models\Process;
+use App\Models\ProcessUserEntry;
 
 class Event extends Model
 {
@@ -25,6 +26,10 @@ class Event extends Model
 
     public function processes(): HasMany {
         return $this->hasMany(Process::class);
+    }
+
+    public function processes_statuses(): HasMany {
+        return $this->hasMany(ProcessUserEntry::class);
     }
 
     public function certificates(): HasMany {

@@ -16,9 +16,9 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Event::class); 
             $table->string('name');
-            $table->string('status');
-            $table->integer("member");
-            $table->integer("approval");
+            $table->enum('status',['todo','doing','done'])->default("todo");
+            $table->integer("num_member")->default(0);
+            $table->integer("num_approval")->default(0);
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
