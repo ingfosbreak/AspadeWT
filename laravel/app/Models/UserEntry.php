@@ -35,6 +35,10 @@ class UserEntry extends Model
         return $this->belongsToMany(Event::class);
     }
 
+    public function events_roles(): HasMany {
+        return $this->hasMany(EventUserEntry::class);
+    }
+
     public function processes(): BelongsToMany {
         return $this->belongsToMany(Process::class);
     }

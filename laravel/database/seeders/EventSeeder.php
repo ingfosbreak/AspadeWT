@@ -15,14 +15,21 @@ class EventSeeder extends Seeder
     {
         $event = new Event();
         $event->name = "Running";
-        $event->member = 20;
+        $event->num_member = 20;
         $event->budget = 5000;
+        $event->date = "2/2/2222";
+        $event->location = "KU";
+        $event->description = "มาวิ่งกันเถอะ";
         $event->save();
+
 
         $event = new Event();
         $event->name = "Walking";
-        $event->member = 20;
-        $event->budget = 10000;
+        $event->num_member = 20;
+        $event->budget = 5000;
+        $event->date = "2/2/2222";
+        $event->location = "KU";
+        $event->description = "มาเดินกันเถอะ";
         $event->save();
     }
 }

@@ -16,12 +16,12 @@ class EventUserEntrySeeder extends Seeder
         $event = new EventUserEntry();
         $event->user_entry_id = 1;
         $event->event_id = 1;
-        $event->event_role = "staff";
+        $event->event_role = "header";
         $event->save();
 
         $event = new EventUserEntry();
-        $event->user_entry_id = 1;
-        $event->event_id = 2;
+        $event->user_entry_id = 2;
+        $event->event_id = 1;
         $event->event_role = "staff";
         $event->save();
     }

@@ -15,19 +15,16 @@ class UserEntrySeeder extends Seeder
     {
         $userEntry = new UserEntry();
         $userEntry->username = "ink";
-        $userEntry->email = "inkmail";
-        $userEntry->role = "Admin";
+        $userEntry->role = "admin";
         $userEntry->save();
 
         $userEntry = new UserEntry();
         $userEntry->username = "toto";
-        $userEntry->email = "totomail";
-        $userEntry->role = "User";
+        $userEntry->role = "user";
         $userEntry->save();
 
         $userEntry = new UserEntry();
         $userEntry->username = "ja";
-        $userEntry->email = "jamail";
         $userEntry->role = "user";
         $userEntry->save();
         

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\UserEntry;
+use App\Models\EventUserEntry;
 use App\Models\Process;
 
 class Event extends Model
@@ -16,6 +17,10 @@ class Event extends Model
 
     public function userEntries(): BelongsToMany {
         return $this->belongsToMany(UserEntry::class);
+    }
+
+    public function userEntries_roles(): HasMany {
+        return $this->hasMany(EventUserEntry::class);
     }
 
     public function processes(): HasMany {

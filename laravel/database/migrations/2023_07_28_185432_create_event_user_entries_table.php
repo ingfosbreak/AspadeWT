@@ -17,8 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(UserEntry::class);
             $table->foreignIdFor(Event::class);
-            $table->string('event_role');
-
+            $table->enum('event_role',['header','staff','participant']);
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
