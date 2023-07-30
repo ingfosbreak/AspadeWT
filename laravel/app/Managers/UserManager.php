@@ -85,12 +85,7 @@ class UserManager {
             return "Your password wrong";
         }
 
-        // check role
-        if (UserEntry::where('username',$username)->firstOrFail()->role == "admin") {
-            return "you are admin";
-        }
-
-        return "you are user";
+        return $user_entry;
 
 
     }

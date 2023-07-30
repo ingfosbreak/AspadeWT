@@ -26,12 +26,12 @@ Route::controller(LoginController::class)->group(function () {
 
     Route::post('/login','login')->name('login');
 
+    
+
 
 });
 
-Route::get('login/{user}', function () {
-    return view('admin.admin-main',$user);
-})->name('login.admin');
+Route::get('login/{admin}', )->name('login.admin');
 
 
 

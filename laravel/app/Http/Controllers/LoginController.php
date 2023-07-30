@@ -23,8 +23,8 @@ class LoginController extends Controller
             return redirect()->back()->with('error', 'your password wrong');
         }
 
-        if ( $result == "you are admin" ) {
-            return redirect()->route('login.admin',['admin'=> $result]);
+        if ( $result->role == "admin" ) {
+            return view('admin.admin-main',['admin' => $result]);
             
         }
 
