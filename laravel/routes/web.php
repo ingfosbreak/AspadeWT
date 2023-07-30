@@ -26,12 +26,11 @@ Route::controller(LoginController::class)->group(function () {
 
     Route::post('/login','login')->name('login');
 
-    
+    Route::get('login/{user}','getAccountPage')->name('login.user');
 
 
 });
 
-Route::get('login/{admin}', )->name('login.admin');
 
 
 

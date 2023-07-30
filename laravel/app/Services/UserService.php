@@ -17,7 +17,7 @@ class UserService {
     /* Singleton Service */
     public static function getUserManager() {
       
-        if (self::$instance == null)
+      if (self::$instance == null)
       {
         self::$instance = new UserManager();
       }
