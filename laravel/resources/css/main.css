@@ -119,3 +119,18 @@
     justify-content: center;
     gap: 20px
 }
+.boxEvent{
+    display: flex;
+    width: 1304px;
+    height: 262px;
+    padding: 21px 0px;
+    align-items: flex-start;
+    gap: 24px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 2px dashed #000;
+    background: var(--wf-base-white, #FFF);
+}
+.buttonJoinEvent{
+
+}

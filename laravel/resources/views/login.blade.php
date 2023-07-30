@@ -16,7 +16,8 @@
                 Login
             </h2>
 
-            <form class="mt-10" method="POST">
+            <form action="{{route('user.user-main')}}" class="mt-10" method="POST">
+                @csrf
                 <!-- Email Input -->
                 <label for="email" class="block text-xs font-semibold text-gray-600 uppercase">E-mail</label>
                 <input id="email" type="email" name="email" placeholder="e-mail address" autocomplete="email"
@@ -36,7 +37,8 @@
                     required />
 
                 <!-- Auth Buttton -->
-                <button type="submit"
+
+                <button  type="submit"
                     class="w-full py-3 mt-10 bg-gray-800 rounded-sm
                     font-medium text-white uppercase
                     focus:outline-none hover:bg-gray-700 hover:shadow-none">
@@ -60,4 +62,37 @@
             </form>
         </div>
     </div>
+    
+    <div class="text-center min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
+<button
+    class="middle none center mr-4 rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+    data-ripple-light="true"
+    >
+    Button
+</button>
+<button
+    class="middle none center mr-4 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+    data-ripple-light="true"
+    >
+    Button
+    </button>
+    <button
+    class="middle none center mr-4 rounded-lg bg-green-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+    data-ripple-light="true"
+    >
+    Button
+    </button>
+    <button
+    class="middle none center rounded-lg bg-orange-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+    data-ripple-light="true"
+    >
+    Button
+    </button>
+
+    <div class="w-full md:w-7/12 pt-5 px-4 mb-8 mx-auto text-center">
+        <div class="text-sm text-gray-700 py-1">
+            Made with <a class="text-gray-700 font-semibold" href="https://www.material-tailwind.com/docs/html/avatar?ref=tailwindcomponents" target="_blank">Material Tailwind</a> by <a href="https://www.creative-tim.com?ref=tailwindcomponents" class="text-gray-700 font-semibold" target="_blank"> Creative Tim</a>.
+        </div>
+    </div>
+</div>
 </div>

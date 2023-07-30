@@ -2,7 +2,9 @@
   <div class="contents">
     <h1>Contents</h1>
     <h1>profile setting</h1>
-    <h1>logout</h1>
+    <a href="{{ route('login') }}">
+      <h1>logout</h1> 
+    </a>
   </div>
 </div>
 

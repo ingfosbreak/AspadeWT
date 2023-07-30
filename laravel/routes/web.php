@@ -31,13 +31,25 @@ Route::post('/getmsg',function(){
     return response()->json(array('msg'=> "fuck you"), 200);
 });
 
+Route::post('/login',function(){
+    return view('login');
+})->name('login');
 Route::get('/login',function(){
     return view('login');
 })->name('login');
 
 Route::get('/user/main',function(){
     return view('user.user-main');
-});
+})->name('user.user-main');
+
+Route::post('/user/main',[LoginController::class,'checkUser'])->name('user.user-main');
+
+Route::get('/profile',function(){
+    return view('profile');
+})->name('profile');
+
+
+
 
 
 
