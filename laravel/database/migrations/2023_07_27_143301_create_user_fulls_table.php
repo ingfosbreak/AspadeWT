@@ -16,11 +16,11 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(UserEntry::class);
             $table->string('password');
-            $table->string('email');
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('faculty');
-            $table->integer('year');
+            $table->string('email')->nullable();
+            $table->string('firstname')->nullable();
+            $table->string('lastname')->nullable();
+            $table->string('faculty')->nullable();
+            $table->integer('year')->nullable();
             $table->string('image_path')->nullable();
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
