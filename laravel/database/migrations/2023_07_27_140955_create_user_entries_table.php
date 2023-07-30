@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('username');
             $table->enum('role',['admin','user']);
+            $table->enum('status',['active','ban'])->default("active");
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });

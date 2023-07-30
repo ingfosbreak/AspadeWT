@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('name');
             $table->enum('status',['todo','doing','done'])->default("todo");
             $table->integer("num_member")->default(0);
-            $table->integer("num_approval")->default(0);
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });

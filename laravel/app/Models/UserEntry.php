@@ -13,8 +13,10 @@ use App\Models\Event;
 use App\Models\EventUserEntry;
 use App\Models\Process;
 use App\Models\ProcessUserEntry;
-use App\Models\Inform;
+use App\Models\Request;
+use App\Models\Complaint;
 use App\Models\Certificate;
+
 
 
 
@@ -26,8 +28,12 @@ class UserEntry extends Model
         return $this->hasOne(UserFull::class);
     }
 
-    public function informs(): HasMany {
-        return $this->hasMany(Inform::class);
+    public function requests(): HasMany {
+        return $this->hasMany(Request::class);
+    }
+
+    public function complaints(): HasMany {
+        return $this->hasMany(Complaint::class);
     }
 
     public function certificates(): HasMany {

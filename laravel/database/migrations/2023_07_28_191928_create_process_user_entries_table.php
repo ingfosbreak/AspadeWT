@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(UserEntry::class);
             $table->foreignIdFor(Process::class);
-            $table->enum('status',['approve','deny'])->default("deny");
+            $table->enum('status',['approved','denied'])->default("denied");
             $table->timestamps();
 
             $table->softDeletes($column = 'deleted_at', $precision = 0);
