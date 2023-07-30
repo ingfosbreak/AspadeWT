@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +20,22 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::controller(LoginController::class)->group(function () {
+
+    Route::get('/login', 'getLoginPage')->name('login');
+
+    Route::post('/login','login')->name('login');
+
+
+});
+
+Route::get('login/{user}', function () {
+    return view('admin.admin-main',$user);
+})->name('login.admin');
+
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -30,14 +48,6 @@ Route::get('/test', function(){
 Route::post('/getmsg',function(){
     return response()->json(array('msg'=> "fuck you"), 200);
 });
-
-Route::post('/login',function(){
-    return view('login');
-})->name('login');
-
-Route::get('/login',function(){
-    return view('login');
-})->name('login');
 
 Route::get('/user/main',function(){
     return view('user.user-main');

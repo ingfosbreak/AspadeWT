@@ -67,4 +67,33 @@ class UserManager {
     }
 
 
+    public function login(Request $request) {
+
+        $username = $request['username'];
+        $password = $request['password'];
+
+        // check if have username
+        if ( UserEntry::where('username',$username)->firstOrFail() == null ) {
+            return "no username in system";
+        }
+
+        
+        $user_entry = UserEntry::where('username',$username)->firstOrFail();
+
+        // check password
+        if ($password != $user_entry->userFull->password) {
+            return "Your password wrong";
+        }
+
+        // check role
+        if (UserEntry::where('username',$username)->firstOrFail()->role == "admin") {
+            return "you are admin";
+        }
+
+        return "you are user";
+
+
+    }
+
+
 }
