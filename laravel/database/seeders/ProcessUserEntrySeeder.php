@@ -21,12 +21,9 @@ class ProcessUserEntrySeeder extends Seeder
         $event = new ProcessUserEntry();
         $event->user_entry_id = 2;
         $event->process_id = 1;
-        $event->status = 'approve';
+        $event->status = 'approved';
         $event->save();
 
-        $a = $event->process;
-        $a->num_approval = $a->num_approval + 1;
-        $a->save();
 
     }
 }
