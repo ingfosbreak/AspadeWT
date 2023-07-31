@@ -37,7 +37,7 @@ class LoginController extends Controller
             }
 
             if (Auth::guard('user-entry')->attempt($validated) && Auth::guard('user-entry')->getUser()->role == "user") {
-                view('user.main');
+                return view('user.main');
             } 
 
             return redirect()->back()->with('error', 'no username in system');
@@ -45,7 +45,7 @@ class LoginController extends Controller
             
         }
 
-        return "ID not validated";
+        return redirect()->back()->with('error', 'your request is not validated');
 
 
 

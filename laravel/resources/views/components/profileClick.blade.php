@@ -15,7 +15,7 @@
     </div>
 
     <div class="mt-8 ">
-        <h2 class="text-white font-bold text-2xl tracking-wide">Jonathan <br/> Smith</h2>
+        <h2 class="text-white font-bold text-2xl tracking-wide">{{Auth::guard('user-entry')->getUser()->username}}</h2>
     </div>
     <p class="text-emerald-400 font-semibold mt-2.5" >
         Active
@@ -28,6 +28,9 @@
         <span class="text-gray-400 font-semibold">Storage:</span>
         <span>40%</span>
     </div>
+    <a href="{{ route('login') }}" class="mt-3 text-white text-sm">
+        LOGOUT
+    </a>
 
 </section>
 

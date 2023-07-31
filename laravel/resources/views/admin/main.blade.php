@@ -15,7 +15,7 @@
         </div>
         <div class="text-right">
             <p class="text-2xl">{{Auth::guard('user-entry')->getUser()->username}}</p>
-            <p>Visitors</p>
+            <p>{{Auth::guard('user-entry')->getUser()->id}}</p>
         </div>
     </div>
     <div
