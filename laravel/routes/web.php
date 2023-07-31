@@ -16,23 +16,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
 
-Route::controller(LoginController::class)->group(function () {
-
-    Route::get('/login', 'getLoginPage')->name('login');
+Route::group(['middleware' => ['web','auth:user-entry']], function () {
     
-    Route::post('/login','login')->name('login');
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('welcome');
+    
+    Route::controller(LoginController::class)->group(function () {
+    
+        Route::get('/login', 'getLoginPage')->name('login');
+        
+        Route::post('/login','login')->name('login');
+        
+    });
+    
+    
+    Route::get('/test', function(){
+        return view('test');
+    })->name('test');
     
 });
-
-
-Route::get('/test', function(){
-    return view('test');
-})->name('test')->middleware('auth');
-
 
 
 
