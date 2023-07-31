@@ -33,6 +33,9 @@
                     border-b-2 border-gray-100
                     focus:text-gray-500 focus:outline-none focus:border-gray-200" required />
 
+                @if (session('error'))
+                <div>{{ session('error') }}</div>
+                @endif
                 <!-- Auth Buttton -->
 
                 <button type="submit" class="w-full py-3 mt-10 bg-gray-800 rounded-sm

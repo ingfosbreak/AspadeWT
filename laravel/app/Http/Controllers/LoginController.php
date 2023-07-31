@@ -36,7 +36,11 @@ class LoginController extends Controller
                 return view('admin.main');
             }
 
-            return view('user.main');
+            if (Auth::guard('user-entry')->attempt($validated) && Auth::guard('user-entry')->getUser()->role == "user") {
+                view('user.main');
+            } 
+
+            return redirect()->back()->with('error', 'no username in system');
 
             
         }
