@@ -27,8 +27,7 @@ class UserEntry extends Authenticatable
     use HasFactory, HasApiTokens, Notifiable, SoftDeletes;
 
     protected $fillable = [
-        'username',
-        'password'
+        'username'
     ];
 
     protected $hidden = [
@@ -36,14 +35,10 @@ class UserEntry extends Authenticatable
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'password' => 'hashed'
-    ];
+    public function getAuthPassword()
+    {
+        return $this->userFull->password;
+    }
 
 
     public function userFull(): HasOne {

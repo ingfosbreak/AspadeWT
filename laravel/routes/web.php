@@ -23,13 +23,15 @@ Route::get('/', function () {
 Route::controller(LoginController::class)->group(function () {
 
     Route::get('/login', 'getLoginPage')->name('login');
-
+    
     Route::post('/login','login')->name('login');
-
-    Route::get('login/{user}','getAccountPage')->name('login.user');
-
-
+    
 });
+
+
+Route::get('/test', function(){
+    return view('test');
+})->name('test')->middleware('auth');
 
 
 
@@ -40,9 +42,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::get('/test', function(){
-    return view('test');
-})->name('test');
 
 Route::post('/getmsg',function(){
     return response()->json(array('msg'=> "fuck you"), 200);

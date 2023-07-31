@@ -12,6 +12,10 @@ class UserFull extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $casts = [
+        'password' => 'hashed'
+    ];
+
     public function userEntry(): BelongsTo
     {
         return $this->belongsTo(UserEntry::class);

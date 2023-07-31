@@ -15,57 +15,27 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function getAccountPage(UserEntry $user) {
-
-        if ($user->role == "admin") {
-            return view('admin.admin-main',['admin' => $user]);
-        }
-
-        return view('user.user-main',['user' => $user]);
-    }
-
- 
-
     public function login(UserRequest $request) {
         
-        $validated = $request->validated();
+        $validated = UserService::getUserManager()->getUserValidate($request);
 
         if ($validated) {
-
-            if (Auth::guard('user-entry')->attempt($validated) && Auth::guard('user-entry')->getUser()->role == "admin") {
+            
+            if (UserService::getUserManager()->login($validated) == "admin") {
                 return view('admin.main');
             }
 
-            if (Auth::guard('user-entry')->attempt($validated) && Auth::guard('user-entry')->getUser()->role == "user") {
+            if (UserService::getUserManager()->login($validated) == "user") {
                 return view('user.main');
-            } 
+            }
 
-            return redirect()->back()->with('error', 'no username in system');
+            return redirect()->back()->with('error', 'Please check your username or password again');
 
             
         }
 
-        return redirect()->back()->with('error', 'your request is not validated');
+        return redirect()->back()->with('error', 'Your request is not validated');
 
 
-
-
-
-
-
-
-
-        $result = UserService::getUserManager()->login($request);
-
-        if ( $result == "no username in system" ) {
-            return redirect()->back()->with('error', 'no username in system');
-        }
-
-        if ( $result == "Your password wrong" ) {
-            return redirect()->back()->with('error', 'your password wrong');
-        }
-
-        return redirect()->route('login.user',['user'=> $result]);
-    
     }
 }

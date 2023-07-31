@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('user_entries', function (Blueprint $table) {
             $table->id();
             $table->string('username');
-            $table->string('password');
             $table->enum('role',['admin','user']);
             $table->enum('status',['active','ban'])->default("active");
+            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
