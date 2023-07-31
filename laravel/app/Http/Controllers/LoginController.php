@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Services\UserService;
 use App\Models\UserEntry;
+use App\Http\Requests\UserRequest;
+use App\Http\Requests\Auth\LoginRequest;
 
 class LoginController extends Controller
 {
@@ -23,7 +26,26 @@ class LoginController extends Controller
 
  
 
-    public function login(Request $request) {
+    public function login(UserRequest $request) {
+        
+        $validated = $request->validated();
+
+
+
+
+        if ($validated) {
+            if (Auth::attempt($validated)) {
+                return Auth::user()->name;
+            }
+        }
+
+
+
+
+
+
+
+
 
         $result = UserService::getUserManager()->login($request);
 
