@@ -49,8 +49,8 @@ Route::post('/getmsg',function(){
 });
 
 Route::get('/user/main',function(){
-    return view('user.user-main');
-})->name('user.user-main');
+    return view('user.main');
+})->name('user.main');
 
 Route::post('/user/main',[LoginController::class,'checkUser'])->name('user.user-main');
 
@@ -62,6 +62,12 @@ Route::get('/register',function(){
     return view('create-account');
 })->name('register');
 
+Route::get('/event/main',function(){
+    return view('event.main');
+})->name('event.main');
+Route::get('/admin/main',function(){
+    return view('admin.main');
+})->name('admin.main');
 
 
 
