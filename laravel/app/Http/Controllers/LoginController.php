@@ -30,14 +30,18 @@ class LoginController extends Controller
         
         $validated = $request->validated();
 
-
-
-
         if ($validated) {
-            if (Auth::attempt($validated)) {
-                return Auth::user()->name;
+
+            if (Auth::guard('user-entry')->attempt($validated) && Auth::guard('user-entry')->getUser()->role == "admin") {
+                return view('admin.main');
             }
+
+            return view('user.main');
+
+            
         }
+
+        return "ID not validated";
 
 
 

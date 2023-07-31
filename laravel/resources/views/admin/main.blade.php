@@ -14,7 +14,7 @@
             </svg>
         </div>
         <div class="text-right">
-            <p class="text-2xl">1,257</p>
+            <p class="text-2xl">{{Auth::guard('user-entry')->getUser()->username}}</p>
             <p>Visitors</p>
         </div>
     </div>

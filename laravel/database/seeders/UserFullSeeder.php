@@ -15,7 +15,6 @@ class UserFullSeeder extends Seeder
     {
         $userEntry = new UserFull();
         $userEntry->user_entry_id = 1;
-        $userEntry->password = "inkpass";
         $userEntry->email = "totomail";
         $userEntry->firstname = "Panachai";
         $userEntry->lastname = "Kotchagason";
@@ -26,7 +25,6 @@ class UserFullSeeder extends Seeder
 
         $userEntry = new UserFull();
         $userEntry->user_entry_id = 2;
-        $userEntry->password = "totopass";
         $userEntry->email = "totomail";
         $userEntry->firstname = "Panachai";
         $userEntry->lastname = "Kotchagason";
@@ -37,7 +35,6 @@ class UserFullSeeder extends Seeder
 
         $userEntry = new UserFull();
         $userEntry->user_entry_id = 3;
-        $userEntry->password = "japass";
         $userEntry->email = "totomail";
         $userEntry->firstname = "Panachai";
         $userEntry->lastname = "Kotchagason";

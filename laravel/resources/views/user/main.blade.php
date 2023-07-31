@@ -5,7 +5,7 @@
 <div class="container mx-auto bg-gray-400 h-96 rounded-md flex items-center">
     <div class="sm:ml-20 text-gray-50 text-center sm:text-left">
         <h1 class="text-5xl font-bold mb-4">
-            Amongus
+            {{ Auth::guard('user-entry')->getUser()->username == Auth::guard('user-entry')->check() }}
         </h1>
         <p class="text-lg inline-block sm:block">The largest SUS community to rent saunas in Finland.</p>
         <button class="mt-8 px-4 py-2 bg-gray-600 rounded">Join</button>

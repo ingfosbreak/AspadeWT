@@ -16,13 +16,35 @@ use App\Models\ProcessUserEntry;
 use App\Models\Request;
 use App\Models\Complaint;
 use App\Models\Certificate;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 
 
-
-class UserEntry extends Model
+class UserEntry extends Authenticatable
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, HasApiTokens, Notifiable, SoftDeletes;
+
+    protected $fillable = [
+        'username',
+        'password'
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'password' => 'hashed'
+    ];
+
 
     public function userFull(): HasOne {
         return $this->hasOne(UserFull::class);
