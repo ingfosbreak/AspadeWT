@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+{{$events->links()}}
 <!-- from https://tailwindcomponents.com/component/grid-blog-page -->
     <div class="container mx-auto bg-gray-400 h-96 rounded-md flex items-center">
         <div class="sm:ml-20 text-gray-50 text-center sm:text-left">
@@ -18,7 +19,7 @@
 
             <div class="grid grid-cols-1 gap-10 mt-8 md:mt-16 md:grid-cols-2">
 
-        
+                @foreach ($events as $event)
                 <div class="lg:flex" style="position: relative;">
                     <img class="object-cover w-full h-56 rounded-lg lg:w-64"
                         src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
@@ -26,24 +27,24 @@
 
                     <div class="flex flex-col py-6 lg:mx-6">
                         <a href="#" class="text-xl font-semibold text-gray-800 hover:underline dark:text-white">
-                            White Button
+                        {{ $event->name }}
                         </a>
-                        <span class="text-sm text-gray-500 dark:text-gray-300">On: 20 October 2019</span>
+                        <span class="text-sm text-gray-500 dark:text-gray-300">{{ $event->date }}</span>
 
                         <button
                             class="rounded-lg bg-white border border-black py-3 px-6 font-sans text-xs font-bold uppercase text-black shadow-md"
                             data-ripple-light="true" style="position: absolute; bottom: 0; right: 5; top: 10;">
-                            White Button
+                            Info
                         </button>
 
                         <button
                             class="rounded-lg bg-orange-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                             data-ripple-light="true" style="position: absolute; bottom: 0; right: 0; top: 10;">
-                            Orange Button
+                            Join
                         </button>
                     </div>
                 </div>
-                
+                @endforeach
 
 
 

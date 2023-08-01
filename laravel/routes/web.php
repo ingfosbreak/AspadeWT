@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TestController;
@@ -68,7 +69,7 @@ Route::get('/event/main',function(){
 
 Route::get('/admin/main', [TestController::class, 'index'])->name('admin.main')->middleware('auth:user-entry');
 
-Route::get('/user/main',[TestController::class, 'index'])->name('user.main')->middleware('auth:user-entry');;
+Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main')->middleware('auth:user-entry');;
 
 
 

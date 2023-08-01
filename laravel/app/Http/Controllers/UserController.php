@@ -8,12 +8,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Event;
 
-class EventController extends Controller
+class UserController extends Controller
 {
-    public function index(){
-        return view('user.main');
-        $events = Event::with('event')->paginate(20);
+    public function userPopEvent(){
+        $events = Event::paginate(20);
+        return view('user.main', [
+            'events' => $events
+        ]);
     }
     
 }
