@@ -28,7 +28,7 @@ class LoginController extends Controller
 
             if (UserService::getUserManager()->login($validated) == "user") {
                 $request->session()->regenerate();
-                return view('user.main');
+                return redirect()->route('user.main');
             }
 
             return redirect()->back()->with('error', 'Please check your username or password again');

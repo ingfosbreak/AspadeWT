@@ -16,22 +16,21 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', function () {
+    return view('welcome');
+})->name('welcome');
+
+Route::controller(LoginController::class)->group(function () {
+    
+    Route::get('/login', 'getLoginPage')->name('login');
+    
+    Route::post('/login','login')->name('login');
+    
+});
 
 
 Route::group(['middleware' => ['web','auth:user-entry']], function () {
-    
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('welcome');
-    
-    Route::controller(LoginController::class)->group(function () {
-    
-        Route::get('/login', 'getLoginPage')->name('login');
-        
-        Route::post('/login','login')->name('login');
-        
-    });
-    
+
     
     Route::get('/test', function(){
         return view('test');
@@ -52,10 +51,6 @@ Route::post('/getmsg',function(){
     return response()->json(array('msg'=> "fuck you"), 200);
 });
 
-Route::get('/user/main',function(){
-    return view('user.main');
-})->name('user.main');
-
 Route::post('/user/main',[LoginController::class,'checkUser'])->name('user.user-main');
 
 Route::get('/profile',function(){
@@ -72,6 +67,8 @@ Route::get('/event/main',function(){
 
 
 Route::get('/admin/main', [TestController::class, 'index'])->name('admin.main')->middleware('auth:user-entry');
+
+Route::get('/user/main',[TestController::class, 'index'])->name('user.main')->middleware('auth:user-entry');;
 
 
 
