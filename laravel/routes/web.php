@@ -3,6 +3,7 @@
 use App\Http\Controllers;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -68,9 +69,9 @@ Route::get('/register',function(){
 Route::get('/event/main',function(){
     return view('event.main');
 })->name('event.main');
-Route::get('/admin/main',function(){
-    return view('admin.main');
-})->name('admin.main');
+
+
+Route::get('/admin/main', [TestController::class, 'index'])->name('admin.main')->middleware('auth:user-entry');
 
 
 

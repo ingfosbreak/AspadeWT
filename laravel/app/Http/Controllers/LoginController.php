@@ -22,10 +22,12 @@ class LoginController extends Controller
         if ($validated) {
             
             if (UserService::getUserManager()->login($validated) == "admin") {
-                return view('admin.main');
+                $request->session()->regenerate();
+                return redirect()->route('admin.main');
             }
 
             if (UserService::getUserManager()->login($validated) == "user") {
+                $request->session()->regenerate();
                 return view('user.main');
             }
 
