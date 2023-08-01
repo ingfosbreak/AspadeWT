@@ -5,27 +5,10 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/css/app.css',
+                'resources/sass/app.scss',
                 'resources/js/app.js',
-                'resources/js/drag.js',
-                'resources/js/click.js',
-                'resources/css/main.css',
             ],
             refresh: true,
         }),
     ],
-    resolve: {
-        alias: {
-            '$': 'jQuery',
-            'dragula': 'dragula'
-        },
-    },
-    define: {
-        global: "window"
-    },
-    server: {
-        hmr : {
-            host: 'localhost'
-        }
-    }
 });

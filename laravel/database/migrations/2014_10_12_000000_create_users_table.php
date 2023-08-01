@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique(); // 'email' varchar(255) not null unique
             $table->timestamp('email_verified_at')->nullable(); // 'email_verified_at' timestamp/ datetime
             $table->string('password'); // 'password' varchar(60)
+            $table->tinyInteger('type')->default(0);
             $table->rememberToken(); // 'remember_token'
             $table->timestamps(); // 1. 'created_at' timestamep default current timestamp
                                 // 2. 'updated_at' timestamp default current timestamp
