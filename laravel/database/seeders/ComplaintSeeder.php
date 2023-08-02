@@ -14,7 +14,7 @@ class ComplaintSeeder extends Seeder
     public function run(): void
     {
         $inform = new Complaint();
-        $inform->user_entry_id = 1;
+        $inform->user_id = 1;
         $inform->event_id = 1;
         $inform->name = "delete pls";
         $inform->description = "assaa";

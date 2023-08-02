@@ -6,18 +6,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\UserEntry;
+use App\Models\User;
 
 class UserFull extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $casts = [
-        'password' => 'hashed'
+    protected $fillable = [
+        'email',
     ];
 
-    public function userEntry(): BelongsTo
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'email' => 'hashed',
+    ];
+
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(UserEntry::class);
+        return $this->belongsTo(User::class);
     }
 }

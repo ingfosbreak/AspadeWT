@@ -14,7 +14,7 @@ class RequestSeeder extends Seeder
     public function run(): void
     {
         $inform = new Request();
-        $inform->user_entry_id = 1;
+        $inform->user_id = 1;
         $inform->name = "make pls";
         $inform->num_member = 20;
         $inform->budget = 20000;

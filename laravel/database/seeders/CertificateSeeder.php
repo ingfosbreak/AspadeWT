@@ -14,7 +14,7 @@ class CertificateSeeder extends Seeder
     public function run(): void
     {
         $event = new Certificate();
-        $event->user_entry_id = 1;
+        $event->user_id = 1;
         $event->event_id = 1;
         $event->name = "your mom";
         $event->description = "yes you good";

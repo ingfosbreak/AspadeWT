@@ -7,10 +7,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\UserFull;
+use App\Models\Event;
+use App\Models\EventUser;
+use App\Models\Process;
+use App\Models\ProcessUser;
+use App\Models\Request;
+use App\Models\Complaint;
+use App\Models\Certificate;
+
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +33,6 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
         'password',
         'role'
     ];
@@ -40,13 +53,45 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    
 
     protected function role()
     {
         return $this->role;
+    }
+
+    public function userFull(): HasOne {
+        return $this->hasOne(UserFull::class);
+    }
+
+    public function requests(): HasMany {
+        return $this->hasMany(Request::class);
+    }
+
+    public function complaints(): HasMany {
+        return $this->hasMany(Complaint::class);
+    }
+
+    public function certificates(): HasMany {
+        return $this->hasMany(Certificate::class);
+    }
+
+    public function events(): BelongsToMany {
+        return $this->belongsToMany(Event::class);
+    }
+
+    public function events_roles(): HasMany {
+        return $this->hasMany(EventUser::class);
+    }
+
+    public function processes(): BelongsToMany {
+        return $this->belongsToMany(Process::class);
+    }
+
+    public function processes_statuses(): HasMany {
+        return $this->hasMany(ProcessUser::class);
     }
 
 }
