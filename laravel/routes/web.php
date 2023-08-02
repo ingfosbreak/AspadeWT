@@ -28,7 +28,7 @@ Route::get('/logout', function () {
 })->name('logout');
 
 Route::get('/register',function(){
-    return view('register');
+    return view('auth.register');
 })->name('register');
 
 Route::controller(LoginController::class)->group(function () {

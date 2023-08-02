@@ -12,7 +12,7 @@ use App\Http\Requests\Auth\LoginRequest;
 class LoginController extends Controller
 {
     public function getLoginPage() {
-        return view('login');
+        return view('auth.login');
     }
 
     public function login(Request $request) {
