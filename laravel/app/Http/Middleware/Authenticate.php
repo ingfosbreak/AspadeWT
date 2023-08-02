@@ -15,12 +15,12 @@ class Authenticate
     {   
 
         if(!auth()->check()) {
-            return redirect()->route('login');
+            return redirect()->route('login')->with('error', 'Please login before proceed to website');
 
         }
 
         if (auth()->user()->status == 'ban') {
-            return redirect()->route('login');
+            return redirect()->route('login')->with('error', 'You are banned');
         }
 
         return $next($request);
