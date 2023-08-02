@@ -24,6 +24,6 @@ class RegisterController extends Controller
 
 
     public function registerSecondStage(Request $request) {
-
+        return $request;
     }
 }
