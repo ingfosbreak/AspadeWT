@@ -22,6 +22,11 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect()->route('welcome');
+})->name('logout');
+
 Route::controller(LoginController::class)->group(function () {
     
     Route::get('/login', 'getLoginPage')->name('login');

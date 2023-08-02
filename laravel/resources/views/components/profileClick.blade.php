@@ -28,7 +28,7 @@
         <span class="text-gray-400 font-semibold">Storage:</span>
         <span>40%</span>
     </div>
-    <a href="{{ route('login') }}" class="mt-3 text-white text-sm">
+    <a href="{{ route('logout') }}" class="mt-3 text-white text-sm">
         LOGOUT
     </a>
 
