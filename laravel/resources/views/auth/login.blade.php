@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- component -->
-<div class="w-screen h-screen bg-[url('https://th.bing.com/th/id/R.76c0a814cf966cc2c5093ed8064ac505?rik=lmJ8n7ulYUKDKw&pid=ImgRaw&r=0')] bg-no-repeat bg-cover bg-bottom flex flex-wrap items-center justify-center filter saturate-1 overflow-hidden">
+<div class="w-screen h-screen bg-[url('https://images-ext-1.discordapp.net/external/sc3E0Q6dR1CgIYGe_Ej1Z-6UfBcok4YCKDW12p9MJZo/%3Fcid%3D73b8f7b1eofgcxj5oud7o2o4igar6lztsiksqpsx3zfaf1ac%26ep%3Dv1_gifs_gifId%26rid%3Dgiphy.mp4%26ct%3Dg/https/media2.giphy.com/media/3gXYfOUVcaJ8tSVCIJ/giphy.mp4')] bg-no-repeat bg-cover bg-center flex flex-wrap items-center justify-center filter saturate-1 overflow-hidden">
 	<div class="w-screen mx-auto px-80" id='terminal'>
 		<div class="w-full shadow-2xl subpixel-antialiased rounded h-64 bg-black border-black mx-auto h-fit ">
 			<div class="flex items-center h-6 rounded-t bg-gray-100 border-b border-gray-500 text-center text-black" id="headerTerminal">
