@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,23 +18,79 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
+})->name('welcome');
+
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect()->route('welcome');
+})->name('logout');
+
+Route::controller(LoginController::class)->group(function () {
+    
+    Route::get('/login', 'getLoginPage')->name('login');
+    
+    Route::post('/login','login')->name('login');
+    
 });
+
+
+
+
+    
+Route::get('/test', function(){
+    return view('test');
+})->name('test');
+    
+
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::get('/test', function(){
-    return view('test');
-})->name('test');
 
 Route::post('/getmsg',function(){
     return response()->json(array('msg'=> "fuck you"), 200);
 });
+
+Route::post('/user/main',[LoginController::class,'checkUser'])->name('user.user-main');
+
+Route::get('/profile',function(){
+    return view('profile');
+})->name('profile');
+
+Route::get('/register',function(){
+    return view('create-account');
+})->name('register');
+
+Route::get('/event/main',function(){
+    return view('event.main');
+})->name('event.main');
+
+Route::get('/event/{event}',[EventController::class, 'goToInfoEvent'])->name('event.information');
+
+
+
+Route::middleware(['auth', 'multirole:user'])->group( function () {
+
+    Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main');
+
+
+});
+
+Route::middleware(['auth', 'multirole:admin'])->group( function () {
+
+    Route::get('/admin/main', [AdminController::class, 'index'])->name('admin.main');
+
+
+});
+
+
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

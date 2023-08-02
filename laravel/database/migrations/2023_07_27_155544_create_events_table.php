@@ -14,8 +14,12 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer("member");
+            $table->integer("num_member");
             $table->integer("budget");
+            $table->string('date');
+            $table->string('location');
+            $table->string('description');
+            $table->enum('status',['in-progress','finished'])->default("in-progress");
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });

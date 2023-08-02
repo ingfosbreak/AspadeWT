@@ -6,18 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Process;
 use App\Models\User;
-use App\Models\event;
 
-class Certificate extends Model
+class ProcessUser extends Model
 {
     use HasFactory, SoftDeletes;
 
-    public function user(): BelongsTo {
-        return $this->belongsTo(User::class);
+    protected $table = 'process_users';
+
+    public function process(): BelongsTo {
+        return $this->belongsTo(Process::class);
     }
 
-    public function event(): BelongsTo {
-        return $this->belongsTo(Event::class);
+    public function user(): BelongsTo {
+        return $this->belongsTo(User::class);
     }
 }

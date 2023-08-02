@@ -4,24 +4,24 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\EventUserEntry;
+use App\Models\EventUser;
 
-class EventUserEntrySeeder extends Seeder
+class EventUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $event = new EventUserEntry();
-        $event->user_entry_id = 1;
+        $event = new EventUser();
+        $event->user_id = 1;
         $event->event_id = 1;
-        $event->event_role = "staff";
+        $event->event_role = "header";
         $event->save();
 
-        $event = new EventUserEntry();
-        $event->user_entry_id = 1;
-        $event->event_id = 2;
+        $event = new EventUser();
+        $event->user_id = 2;
+        $event->event_id = 1;
         $event->event_role = "staff";
         $event->save();
     }

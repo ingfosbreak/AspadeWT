@@ -14,24 +14,23 @@ class UserFullSeeder extends Seeder
     public function run(): void
     {
         $userEntry = new UserFull();
-        $userEntry->user_entry_id = 1;
-        $userEntry->password = "inkpass";
-        $userEntry->name = "Panachai";
+        $userEntry->user_id = 1;
+        $userEntry->email = "ingfosbreak@outlook.com";
+        $userEntry->firstname = "Panachai";
+        $userEntry->lastname = "Kotchagason";
+        $userEntry->faculty = "Science";
+        $userEntry->year = 3;
         $userEntry->image_path = "inkimg";
         $userEntry->save();
 
         $userEntry = new UserFull();
-        $userEntry->user_entry_id = 2;
-        $userEntry->password = "totopass";
-        $userEntry->name = "toto";
+        $userEntry->user_id = 2;
+        $userEntry->email = "toto@outlook.com";
+        $userEntry->firstname = "Panachai";
+        $userEntry->lastname = "Kotchagason";
+        $userEntry->faculty = "Science";
+        $userEntry->year = 3;
         $userEntry->image_path = "totoimg";
-        $userEntry->save();
-
-        $userEntry = new UserFull();
-        $userEntry->user_entry_id = 3;
-        $userEntry->password = "japass";
-        $userEntry->name = "ja";
-        $userEntry->image_path = "jaimg";
         $userEntry->save();
     }
 }

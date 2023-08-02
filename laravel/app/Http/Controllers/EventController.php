@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\ProfileUpdateRequest;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
+use App\Models\Event;
+
+class EventController extends Controller
+{
+    public function goToInfoEvent(Event $event){
+        return view('event.information', [
+            'event' => $event
+        ]);
+    }
+}

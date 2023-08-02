@@ -4,32 +4,36 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\UserEntry;
+use App\Models\User;
 
-class UserEntrySeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $userEntry = new UserEntry();
+
+        $userEntry = new User();
         $userEntry->username = "ink";
-        $userEntry->email = "inkmail";
-        $userEntry->role = "Admin";
+        $userEntry->password = "inkpass";
+        $userEntry->role = "admin";
         $userEntry->save();
 
-        $userEntry = new UserEntry();
+        $userEntry = new User();
         $userEntry->username = "toto";
-        $userEntry->email = "totomail";
-        $userEntry->role = "User";
-        $userEntry->save();
-
-        $userEntry = new UserEntry();
-        $userEntry->username = "ja";
-        $userEntry->email = "jamail";
+        $userEntry->password = "totopass";
         $userEntry->role = "user";
         $userEntry->save();
+
+        $userEntry = new User();
+        $userEntry->username = "ja";
+        $userEntry->password = "japass";
+        $userEntry->role = "user";
+        $userEntry->status = "ban";
+        $userEntry->save();
+
+        
         
     }
 }

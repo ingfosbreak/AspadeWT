@@ -2,10 +2,14 @@
 
 namespace App\Managers;
 
+use App\Models\User;
 use App\Models\UserEntry;
 use App\Models\UserFull;
-
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 
 
 class UserManager {
@@ -64,6 +68,39 @@ class UserManager {
         return $user->save();
 
 
+    }
+
+
+    public function login(array $credentials) {
+        
+        if (Auth::attempt($credentials, true) && Auth::getUser()->role == "admin") {
+            return "admin";
+        }
+
+        if (Auth::attempt($credentials, true) && Auth::getUser()->role == "user") {
+            return "user";
+        }
+
+        return "failed";
+
+    }
+
+    public function getUserValidate(Request $request) {
+
+        $validated =  $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+        
+        if ($validated) {
+            return $validated;
+        }
+
+        return false;
+    }
+
+    public function username() {
+        return 'username';
     }
 
 

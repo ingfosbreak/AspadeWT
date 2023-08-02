@@ -45,8 +45,23 @@
     height: 50px;
     background-color: green;
 }
-
-
+/* form toto */
+.leftC, .leftC1 {
+    width: 722px;
+    min-height: 395px;
+    clear: left;
+    float: left;
+}
+.filmborder {
+    width: 730px;
+    float: left;
+    height: auto;
+    margin-left: -25px;
+    padding: 0;
+    border: 2px solid #191919;
+    margin-bottom: 10px;
+}
+/* end form toto */
 
 .canclick {
     display:flex;
@@ -104,3 +119,20 @@
     justify-content: center;
     gap: 20px
 }
+.boxEvent{
+    display: flex;
+    width: 1304px;
+    height: 262px;
+    padding: 21px 0px;
+    align-items: flex-start;
+    gap: 24px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 2px dashed #000;
+    background: var(--wf-base-white, #FFF);
+}
+
+.groupbutton{
+  display: flex; align-items: flex-end;
+}
+

@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Managers\UserManager;
+use App\Managers\CertificateManager;
 
 
-class UserService {
+class CertificateService {
 
 
     private static $instance = null;
@@ -15,11 +15,11 @@ class UserService {
    
 
     /* Singleton Service */
-    public static function getUserManager() {
+    public static function getCertificateManager() {
       
       if (self::$instance == null)
       {
-        self::$instance = new UserManager();
+        self::$instance = new CertificateManager();
       }
    
       return self::$instance;

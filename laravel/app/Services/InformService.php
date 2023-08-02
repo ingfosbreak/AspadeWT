@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Managers\UserManager;
+use App\Managers\InformManager;
 
 
-class UserService {
+class InformService {
 
 
     private static $instance = null;
@@ -15,11 +15,11 @@ class UserService {
    
 
     /* Singleton Service */
-    public static function getUserManager() {
+    public static function getInformManager() {
       
       if (self::$instance == null)
       {
-        self::$instance = new UserManager();
+        self::$instance = new InformManager();
       }
    
       return self::$instance;

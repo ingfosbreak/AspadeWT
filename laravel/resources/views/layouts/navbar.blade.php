@@ -1,77 +1,65 @@
 <!-- follow me on twitter @asad_codes -->
 
-<div class="flex flex-wrap" >
-  <section class="relative mx-auto">
-      <!-- navbar -->
-    <nav class="flex justify-between bg-gray-900 text-white w-screen">
-      <div class="px-5 xl:px-12 py-6 flex w-full items-center">
-        <a class="text-3xl font-bold font-heading" href="#">
-          <!-- <img class="h-9" src="logo.png" alt="logo"> -->
-          Logo Here.
-        </a>
-        <!-- Nav Links -->
-        <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-          <li><a class="hover:text-gray-200" href="{{ route('test') }}">Home</a></li>
-          <li><a class="hover:text-gray-200" href="#">Catagory</a></li>
-          <li><a class="hover:text-gray-200" href="#">Collections</a></li>
-          <li><a class="hover:text-gray-200" href="#">Contact Us</a></li>
-        </ul>
-          <!-- Sign In / Register      -->
-        <div class="flex items-center hover:text-gray-200" id ="but">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-        </div>
-        
-          
-        </div>
-      </div>
-      <!-- Responsive navbar -->
-      <a class="xl:hidden flex mr-6 items-center" href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-        </svg>
-        <span class="flex absolute -mt-5 ml-4">
-          <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500">
-          </span>
-        </span>
-      </a>
-      <a class="navbar-burger self-center mr-12 xl:hidden" href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-      </a>
-    </nav>
-    
-  </section>
+<div class="flex flex-wrap">
+    <section class="relative mx-auto">
+        <!-- navbar -->
+        <nav class="flex justify-between bg-gray-900 text-white w-screen">
+            <div class="px-5 xl:px-12 py-6 flex w-full items-center">
+                <a class="text-3xl font-bold font-heading" href="#">
+                    <img class="h-16"
+                        src="https://media.discordapp.net/attachments/1133336224237629504/1135067839271796806/image.png?width=1368&height=701"
+                        alt="logo">
+                </a>
+                <!-- Nav Links -->
+                <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
+                    
+                </ul>
+                <div class="flex  rounded bg-white" x-data="{ search: '' }">
+                    <input type="search"
+                        class="w-full border-none bg-transparent px-4 py-1 text-gray-900 focus:outline-none"
+                        placeholder="search" x-model="search">
+                    <button class="m-2 rounded px-4 py-2 font-semibold text-gray-100 bg-gray-500 cursor-not-allowed"
+                        :class="(search) ? 'bg-purple-500' : 'bg-gray-500 cursor-not-allowed'" :disabled="!search"
+                        disabled="disabled">search</button>
+                </div>
+                <!-- Sign In / Register      -->
+                <div class="flex items-center hover:text-gray-200" id="but">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+
+
+            </div>
 </div>
 
-<div class="flex flex-wrap" >
-@include('components.profileClick')
+
+</nav>
+
+</section>
+</div>
+
+<div class="flex flex-wrap">
+    @include('components.profileClick')
 </div>
 
 <script type="module">
-  
-
-  $( document ).ready(function() {
+$(document).ready(function() {
     $('#but').bind('click', function(event) {
-      var classname = $('#profileNav').attr('class');
-      if (classname == "none"){
-        $('#profileNav').removeClass('none').addClass('cover');
-        $("#profileNav").css({
-          left: event.clientX - 250 + 'px',
-          top: event.clientY + 20 + 'px',
-        });
-      }
-      else {
-        $('#profileNav').removeClass('cover').addClass('none');
-      } 
+        var classname = $('#profileNav').attr('class');
+        if (classname == "none") {
+            $('#profileNav').removeClass('none').addClass('cover');
+            $("#profileNav").css({
+                left: event.clientX - 250 + 'px',
+                top: event.clientY + 20 + 'px',
+            });
+        } else {
+            $('#profileNav').removeClass('cover').addClass('none');
+        }
 
-     
+
     });
-  });
-  
-  
+});
 </script>
-

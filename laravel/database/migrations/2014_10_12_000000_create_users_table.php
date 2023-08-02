@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id(); // id primarykey auto increment
-            $table->string('name'); // 'name' varchar(255) not null
-            $table->string('email')->unique(); // 'email' varchar(255) not null unique
-            $table->timestamp('email_verified_at')->nullable(); // 'email_verified_at' timestamp/ datetime
+            $table->string('username'); // 'name' varchar(255) not null
+            $table->enum('role',['admin','user']);
+            $table->enum('status',['active','ban'])->default("active");
             $table->string('password'); // 'password' varchar(60)
             $table->rememberToken(); // 'remember_token'
-            $table->timestamps(); // 1. 'created_at' timestamep default current timestamp
-                                // 2. 'updated_at' timestamp default current timestamp
+            $table->timestamps(); 
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
+                                
         });
     }
 
