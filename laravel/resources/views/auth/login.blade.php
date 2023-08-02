@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- component -->
-<div class="w-screen h-screen bg-[url('https://media.discordapp.net/attachments/1076489187638915133/1136266054486724630/desktop.jpg?width=1708&height=1068')] bg-no-repeat bg-cover bg-bottom flex flex-wrap items-center justify-center filter saturate-1 overflow-hidden">
+<div class="w-screen h-screen bg-[url('https://th.bing.com/th/id/R.76c0a814cf966cc2c5093ed8064ac505?rik=lmJ8n7ulYUKDKw&pid=ImgRaw&r=0')] bg-no-repeat bg-cover bg-bottom flex flex-wrap items-center justify-center filter saturate-1 overflow-hidden">
 	<div class="w-screen mx-auto px-80" id='terminal'>
 		<div class="w-full shadow-2xl subpixel-antialiased rounded h-64 bg-black border-black mx-auto h-fit ">
 			<div class="flex items-center h-6 rounded-t bg-gray-100 border-b border-gray-500 text-center text-black" id="headerTerminal">
