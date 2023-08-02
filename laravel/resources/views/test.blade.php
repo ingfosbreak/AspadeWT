@@ -45,7 +45,7 @@
             });
 
             drake.on('drop', function(el, target, source, sibling) {
-                if (target.children.length > 2) {
+                if (target.children.length > 6) {
                     drake.cancel()
                 }
             });
