@@ -19,6 +19,10 @@ class Authenticate
 
         }
 
+        if (auth()->user()->status == 'ban') {
+            return redirect()->route('login');
+        }
+
         return $next($request);
     }
 }

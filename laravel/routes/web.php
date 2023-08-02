@@ -36,14 +36,14 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 
-Route::group(['middleware' => ['web','auth:user-entry']], function () {
+
 
     
-    Route::get('/test', function(){
-        return view('test');
-    })->name('test');
+Route::get('/test', function(){
+    return view('test');
+})->name('test');
     
-});
+
 
 
 
