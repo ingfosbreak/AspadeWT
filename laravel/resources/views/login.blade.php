@@ -1,8 +1,11 @@
-@vite(['resources/css/app.css', 'resources/js/app.js'])
+@extends('layouts.guest')
+
+@section('content')
+
 <!-- from : https://tailwindcomponents.com/component/login-form-8 -->
 
 <!-- Container -->
-<div class="flex flex-col h-screen bg-gray-100">
+<div class="flex flex-col h-screen bg-gray-100 w-screen">
     <!-- Auth Card Container -->
     <div class="grid place-items-center mx-2 my-20 sm:my-auto">
 
@@ -61,6 +64,7 @@
             </form>
         </div>
     </div>
+</div>
 
-</div>
-</div>
+
+@endsection
