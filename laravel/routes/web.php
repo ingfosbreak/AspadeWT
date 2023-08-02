@@ -27,6 +27,10 @@ Route::get('/logout', function () {
     return redirect()->route('welcome');
 })->name('logout');
 
+Route::get('/register',function(){
+    return view('create-account');
+})->name('register');
+
 Route::controller(LoginController::class)->group(function () {
     
     Route::get('/login', 'getLoginPage')->name('login');
@@ -64,9 +68,6 @@ Route::get('/profile',function(){
     return view('profile');
 })->name('profile');
 
-Route::get('/register',function(){
-    return view('create-account');
-})->name('register');
 
 Route::get('/event/main',function(){
     return view('event.main');

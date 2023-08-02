@@ -57,7 +57,7 @@
                         or
                     </p>
 
-                    <a href="#" class="flex-2 underline">
+                    <a href="{{route('register')}}" class="flex-2 underline">
                         Create an Account
                     </a>
                 </div>
