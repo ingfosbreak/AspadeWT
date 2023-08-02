@@ -14,8 +14,8 @@
             </svg>
         </div>
         <div class="text-right">
-            <p class="text-2xl">{{Auth::guard('user-entry')->getUser()->username}}</p>
-            <p>{{Auth::guard('user-entry')->getUser()->id}}</p>
+            <p class="text-2xl">{{Auth::getUser()->username}}</p>
+            <p>{{Auth::getUser()->id}}</p>
         </div>
     </div>
     <div

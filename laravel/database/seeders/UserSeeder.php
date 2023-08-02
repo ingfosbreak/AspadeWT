@@ -15,9 +15,17 @@ class UserSeeder extends Seeder
     {
 
         $userEntry = new User();
-        $userEntry->name = "ink";
+        $userEntry->username = "ink";
         $userEntry->email = "ingfosbreak@outlook.com";
-        $userEntry->password = "191245";
+        $userEntry->password = "inkpass";
+        $userEntry->role = "admin";
+        $userEntry->save();
+
+        $userEntry = new User();
+        $userEntry->username = "toto";
+        $userEntry->email = "toto@outlook.com";
+        $userEntry->password = "totopass";
+        $userEntry->role = "user";
         $userEntry->save();
 
         

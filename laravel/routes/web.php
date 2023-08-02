@@ -5,7 +5,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\TestController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -69,12 +69,21 @@ Route::get('/event/main',function(){
 
 Route::get('/event/{event}',[EventController::class, 'goToInfoEvent'])->name('event.information');
 
-Route::get('/admin/main', [TestController::class, 'index'])->name('admin.main')->middleware('auth:user-entry');
-
-Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main')->middleware('auth:user-entry');
 
 
+Route::middleware(['auth', 'multirole:user'])->group( function () {
 
+    Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main');
+
+
+});
+
+Route::middleware(['auth', 'multirole:admin'])->group( function () {
+
+    Route::get('/admin/main', [AdminController::class, 'index'])->name('admin.main');
+
+
+});
 
 
 
