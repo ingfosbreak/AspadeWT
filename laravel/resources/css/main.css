@@ -131,3 +131,8 @@
     border: 2px dashed #000;
     background: var(--wf-base-white, #FFF);
 }
+
+.groupbutton{
+  display: flex; align-items: flex-end;
+}
+

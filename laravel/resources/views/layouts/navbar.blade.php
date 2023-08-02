@@ -12,11 +12,7 @@
                 </a>
                 <!-- Nav Links -->
                 <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-                    <li><a class="hover:text-gray-200" href="{{ route('test') }}">Home</a></li>
-                    <li><a class="hover:text-gray-200" href="#">Catagory</a></li>
-                    <li><a class="hover:text-gray-200" href="#">Collections</a></li>
-                    <li><a class="hover:text-gray-200" href="#">Contact Us</a></li>
-
+                    
                 </ul>
                 <div class="flex  rounded bg-white" x-data="{ search: '' }">
                     <input type="search"

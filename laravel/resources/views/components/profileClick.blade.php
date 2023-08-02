@@ -15,7 +15,7 @@
     </div>
 
     <div class="mt-8 ">
-        <h2 class="text-white font-bold text-2xl tracking-wide">{{Auth::guard('user-entry')->getUser()->username}}</h2>
+        <h2 class="text-white font-bold text-2xl tracking-wide">
     </div>
     <p class="text-emerald-400 font-semibold mt-2.5" >
         Active

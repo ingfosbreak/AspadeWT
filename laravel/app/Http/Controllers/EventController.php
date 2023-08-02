@@ -10,12 +10,11 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\Event;
 
-class UserController extends Controller
+class EventController extends Controller
 {
-    public function userPopEvent(){
-        $events = Event::paginate(6);
-        return view('user.main', [
-            'events' => $events
+    public function goToInfoEvent(Event $event){
+        return view('event.information', [
+            'event' => $event
         ]);
     }
 }

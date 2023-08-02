@@ -17,4 +17,4 @@
 </body>
 </html>
 
-@yield('footer-scripts')
+@yield('layouts.footer')
