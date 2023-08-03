@@ -119,11 +119,11 @@ Route::get('/profile',function(){
 })->name('profile');
 
 
-Route::get('/event/main',function(){
-    return view('event.main');
-})->name('event.main');
+Route::get('/event/main/{event}',[UserController::class, 'getMainEventPage'])->name('event.main.main');
 
 Route::get('/event/{event}',[EventController::class, 'getInfoEventPage'])->name('event.information');
+Route::get('/event/infomation/{event}',[EventController::class, 'getInfoEventPage'])->name('event.information');
+Route::get('/event/main/infomation/{event}',[EventController::class, 'getInfoEventPageFormMainEvent'])->name('event.main.information');
 Route::get('/event/{event}/form',[EventController::class, 'getJoinEventFormPage'])->name('event.form');
 
 

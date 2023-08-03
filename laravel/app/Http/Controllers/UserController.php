@@ -18,4 +18,9 @@ class UserController extends Controller
             'events' => $events
         ]);
     }
+    public function getMainEventPage(Event $event){
+        return view('event.main.main', [
+            'event' => $event
+        ]);
+    }
 }
