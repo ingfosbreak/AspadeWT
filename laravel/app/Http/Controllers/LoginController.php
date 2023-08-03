@@ -16,13 +16,12 @@ class LoginController extends Controller
     }
 
     public function login(Request $request) {
-        
+    
         $validated = UserService::getUserManager()->getUserLoginValidate($request);
-        echo("<script>console.log('PHP: " . gettype($validated) . "');</script>");
         
         if ($validated) {
 
-            $account = UserService::getUserManager()->login($validated);
+            $account = UserService::getUserManager()->login($request);
             
             if ($account == "admin") {
                 $request->session()->regenerate();

@@ -14,7 +14,7 @@
 			<div class="ml-2 border-green-900 bg-green-500 shadow-inner rounded-full w-3 h-3" id="maxbtn">
 			</div>
 			<div class="mx-auto pr-16" id="terminaltitle">
-				<p class="text-center text-sm">Register Information {{$user_id}}</p>
+				<p class="text-center text-sm">Register Information</p>
 			</div>
 
 			</div>
@@ -25,7 +25,7 @@
 			</div>
 
 			<!-- form register -->
-			<form action="{{route('register.info',['user_id'=> $user_id])}}" class="my-10 mx-5 " method="POST">
+			<form action="{{route('register.info',['user_id'=> $user_id])}}" class="my-10 mx-5 " method="POST" enctype="multipart/form-data">
 			@csrf
 			
             <div class="mb-6">

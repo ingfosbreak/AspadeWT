@@ -22,7 +22,7 @@ class RegisterController extends Controller
 
         if ($validated) {
 
-            $user = UserService::getUserManager()->createUser($validated);
+            $user = UserService::getUserManager()->createUser($request);
 
             if ($user == false) {
                 redirect()->back()->with('error', 'failed to regis your user');
@@ -40,9 +40,13 @@ class RegisterController extends Controller
 
         $validated = UserService::getUserManager()->getUserRegisterSecondValidate($request);
 
+        $image = $request->file('image');
+        echo("<script>console.log('PHP: " . gettype($image) . "');</script>");
+
         if ($validated) {
-    
-            $userfull = UserService::getUserManager()->createUserFull($validated, $user_id);
+            // return UserService::getUserManager()->createUserFull($request, $user_id);
+
+            $userfull = UserService::getUserManager()->createUserFull($request, $user_id);
 
             if ($userfull) {
                 return redirect()->route('login')->with('success','You have successful registered');

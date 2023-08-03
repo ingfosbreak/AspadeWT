@@ -10,6 +10,7 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -45,8 +46,17 @@ class UserManager {
 
     }
 
+    /*
+     *      Login 
+     * 
+     */
 
-    public function login(array $credentials) {
+    public function login(Request $request) {
+        
+        $credentials = array(
+            'username' => $request->username,
+            'password' => $request->password,
+        );
         
         if (Auth::attempt($credentials, true) && Auth::getUser()->role == "admin") {
             return "admin";
@@ -75,12 +85,19 @@ class UserManager {
             return false;
         }
 
-        return $request->validate([
-            'username' => 'required',
-            'password' => 'required',
-        ]);
+        return true;
     }
 
+
+
+
+
+
+    /*
+     * 
+     *  Create User first stage 
+     * 
+     */
 
     public function getUserRegisterValidate(Request $request) {
 
@@ -93,22 +110,19 @@ class UserManager {
             return false;
         }
 
-        return $request->validate([
-            'username' => ['required', 'string', 'max:255', 'unique:'.User::class],
-            'password' => 'required',
-        ]);
+        return true;
 
     }
 
-    public function createUser(array $credentials) {
+    public function createUser(Request $request) {
 
 
-        $user = new User();
         
-        $user->username = $credentials['username'];
+        $user = new User();
+        $user->username = $request->username;
         $user->role = "user";
         $user->status = "active";
-        $user->password = Hash::make($credentials['password']);
+        $user->password = Hash::make($request->password);
         
         if ($user->save()) {
             return $user;
@@ -126,6 +140,17 @@ class UserManager {
     }
 
 
+
+
+    /*
+     * 
+     * 
+     *   Create User Second stage 
+     * 
+     */
+
+
+
     public function getUserRegisterSecondValidate(Request $request) {
 
         $validated = Validator::make($request->all(),[
@@ -134,6 +159,7 @@ class UserManager {
             'firstname' => 'nullable',
             'lastname' => 'nullable',
             'image' => 'nullable',
+            'images.*' => 'nullable|mimes:png,gif,jpg,jpeg,bmp|max:2048',
             'year' => 'nullable',
 
         ]);
@@ -142,27 +168,26 @@ class UserManager {
             return false;
         }
 
-        return $request->validate([
-            'email' => ['nullable','unique:'.UserFull::class],
-            'faculty' => 'nullable',
-            'firstname' => 'nullable',
-            'lastname' => 'nullable',
-            'image' => 'nullable',
-            'year' => 'nullable',
-        ]);
+        return true;
 
     }
 
-    public function createUserFull(array $credentials, int $user_id ) {
+    public function createUserFull(Request $request, int $user_id ) {
 
+
+        return $request->file('image')->getClientOriginalName();
         $userfull = new UserFull();
         $userfull->user_id = $user_id;
-        $userfull->email = $credentials['email'];
-        $userfull->faculty = $credentials['faculty'];
-        $userfull->firstname = $credentials['firstname'];
-        $userfull->lastname = $credentials['lastname'];
-        $userfull->image_path = $credentials['image'];
-        $userfull->year = $credentials['year'];
+        $userfull->email = $request->email;
+        $userfull->faculty = $request->faculty;
+        $userfull->firstname = $request->firstname;
+        $userfull->lastname = $request->lastname;
+        $userfull->year = $request->year;
+        $userfull->image_path = $request->image;
+
+        // if ( $request->image != null ) {
+        //     return $request->file('image')->getClientOriginalName();
+        // }
 
         return $userfull->save();
 
