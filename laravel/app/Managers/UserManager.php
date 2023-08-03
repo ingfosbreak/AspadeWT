@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Validator;
 
 
 
@@ -65,50 +66,69 @@ class UserManager {
 
     public function getUserLoginValidate(Request $request) {
 
-        $validated =  $request->validate([
+        $validated =  Validator::make($request->all(),[
             'username' => 'required',
             'password' => 'required',
         ]);
         
-        if ($validated) {
-            return $validated;
+        if ($validated->fails()) {
+            return false;
         }
 
-        return false;
+        return $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
     }
 
 
     public function getUserRegisterValidate(Request $request) {
 
-        $validated = $request->validate([
+        $validated = Validator::make($request->all(),[
             'username' => ['required', 'string', 'max:255', 'unique:'.User::class],
             'password' => 'required',
         ]);
 
-        if ($validated) {
-            return $validated;
+        if ($validated->fails()) {
+            return false;
         }
 
-        return false;
+        return $request->validate([
+            'username' => ['required', 'string', 'max:255', 'unique:'.User::class],
+            'password' => 'required',
+        ]);
 
     }
 
     public function createUser(array $credentials) {
 
-        return User::create([
-            'username' => $credentials['username'],
-            'role' => 'user',
-            'status' => 'active',
-            'password' => Hash::make($credentials['password']),
-        ]);
+
+        $user = new User();
+        
+        $user->username = $credentials['username'];
+        $user->role = "user";
+        $user->status = "active";
+        $user->password = Hash::make($credentials['password']);
+        
+        if ($user->save()) {
+            return $user;
+        }
+        return false;
+
+        // return User::create([
+        //     'username' => $credentials['username'],
+        //     'role' => 'user',
+        //     'status' => 'active',
+        //     'password' => Hash::make($credentials['password']),
+        // ]);
        
 
     }
 
 
-    public function getUserRegister2Validate(Request $request) {
+    public function getUserRegisterSecondValidate(Request $request) {
 
-        $validated = $request->validate([
+        $validated = Validator::make($request->all(),[
             'email' => ['nullable','unique:'.UserFull::class],
             'faculty' => 'nullable',
             'firstname' => 'nullable',
@@ -118,18 +138,43 @@ class UserManager {
 
         ]);
 
-        if ($validated) {
-            return $validated;
+        if ($validated->fails()) {
+            return false;
         }
 
-        return false;
+        return $request->validate([
+            'email' => ['nullable','unique:'.UserFull::class],
+            'faculty' => 'nullable',
+            'firstname' => 'nullable',
+            'lastname' => 'nullable',
+            'image' => 'nullable',
+            'year' => 'nullable',
+        ]);
 
     }
 
-    public function createUserFull(array $credentials) {
+    public function createUserFull(array $credentials, int $user_id ) {
 
-        
+        $userfull = new UserFull();
+        $userfull->user_id = $user_id;
+        $userfull->email = $credentials['email'];
+        $userfull->faculty = $credentials['faculty'];
+        $userfull->firstname = $credentials['firstname'];
+        $userfull->lastname = $credentials['lastname'];
+        $userfull->image_path = $credentials['image'];
+        $userfull->year = $credentials['year'];
 
+        return $userfull->save();
+
+        // return UserFull::create([
+        //     'user_id' => $user_id,
+        //     'email' => Hash::make($credentials['email']),
+        //     'faculty' => $credentials['faculty'],
+        //     'firstname' => $credentials['firstname'],
+        //     'lastname' => $credentials['lastname'],
+        //     'image' => $credentials['image'],
+        //     'year' => $credentials['year'],
+        // ]);
 
     }
 

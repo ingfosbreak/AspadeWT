@@ -24,24 +24,34 @@ class RegisterController extends Controller
 
             $user = UserService::getUserManager()->createUser($validated);
 
+            if ($user == false) {
+                redirect()->back()->with('error', 'failed to regis your user');
+            }
+
             return redirect()->route('register.info',['user_id' => $user->id]);
         
         }
         
-        return redirect()->back()->with('error', 'Your request is not validated');
+        return redirect()->back()->with('error', 'Username already in use');
         
     }
 
-    public function registerSecondStage(Request $request) {
+    public function registerSecondStage(Request $request, int $user_id) {
 
-        $validated = UserService::getUserManager()->getUserRegister2Validate($request);
+        $validated = UserService::getUserManager()->getUserRegisterSecondValidate($request);
 
         if ($validated) {
+    
+            $userfull = UserService::getUserManager()->createUserFull($validated, $user_id);
 
-            
+            if ($userfull) {
+                return redirect()->route('login')->with('success','You have successful registered');
+            }
+
+            return redirect()->back()->with('error', 'failed to regis your infomation');
 
         }
         
-        return redirect()->back()->with('error', 'Your request is not validated');
+        return redirect()->back()->with('error', 'email already in use');
     }
 }

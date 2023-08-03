@@ -18,7 +18,6 @@ class UserFull extends Model
 
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'email' => 'hashed',
     ];
 
     public function user(): BelongsTo
