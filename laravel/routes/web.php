@@ -62,13 +62,9 @@ Route::get('/test', function(){
 
 
 
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-
 
 Route::post('/getmsg',function(){
     return response()->json(array('msg'=> "fuck you"), 200);
@@ -85,8 +81,8 @@ Route::get('/event/main',function(){
     return view('event.main');
 })->name('event.main');
 
-Route::get('/event/{event}',[EventController::class, 'goToInfoEvent'])->name('event.information');
-
+Route::get('/event/{event}',[EventController::class, 'getInfoEventPage'])->name('event.information');
+Route::get('/event/{event}/form',[EventController::class, 'getJoinEventFormPage'])->name('event.form');
 
 
 Route::middleware(['auth', 'multirole:user'])->group( function () {

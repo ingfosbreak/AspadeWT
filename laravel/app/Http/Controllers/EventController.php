@@ -12,8 +12,14 @@ use App\Models\Event;
 
 class EventController extends Controller
 {
-    public function goToInfoEvent(Event $event){
+    public function getInfoEventPage(Event $event){
         return view('event.information', [
+            'event' => $event
+        ]);
+    }
+
+    public function getJoinEventFormPage(Event $event){
+        return view('event.form', [
             'event' => $event
         ]);
     }

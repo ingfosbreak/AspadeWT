@@ -37,21 +37,21 @@
                             data-ripple-light="true" style="position: absolute; bottom: 0; right: 5; top: 10;">
                             Info
                         </button></a>
-                    
+
                     <a href="{{ route('event.main', ['name' => $event])}}">
-                    <button
-                        class="rounded-lg bg-orange-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                        data-ripple-light="true" style="position: absolute; bottom: 0; right: 0; top: 10;">
-                        Join
-                    </button></a>
+                        <button
+                            class="rounded-lg bg-orange-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            data-ripple-light="true" style="position: absolute; bottom: 0; right: 0; top: 10;">
+                            Join
+                        </button></a>
                 </div>
             </div>
             @endforeach
 
         </div>
         <div style="display: flex; justify-content: center; margin-top: 20px;">
-                {{$events->links()}}
-            </div>
+            {{$events->links()}}
+        </div>
 
 
         <!-- footer -->

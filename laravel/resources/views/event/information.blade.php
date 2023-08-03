@@ -13,7 +13,7 @@
                 <a href="#"
                     class="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2">Nutrition</a>
                 <h2 class="text-4xl font-semibold text-gray-100 leading-tight">
-                 {{ $event-> name }}
+                    {{ $event-> name }}
                 </h2>
                 <div class="flex mt-3">
                     <img src="https://carrotsandcake.com/wp-content/uploads/2022/07/Among-Us-Symbol.png"
@@ -27,11 +27,7 @@
 
         </div>
         <div class="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
-            <p class="pb-6">Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is
-                justice. Six draw
-                you him full not mean evil. Prepare garrets it expense windows shewing do an. She projection advantages
-                resolution son indulgence. Part sure on no long life am at ever. In songs above he as drawn to. Gay was
-                outlived peculiar rendered led six.</p>
+            <p class="pb-6">{{ $event->description}}</p>
 
             <p class="pb-6">Difficulty on insensible reasonable in. From as went he they. Preference themselves me as
                 thoroughly
@@ -60,20 +56,22 @@
                 whence.
                 Steepest speaking up attended it as. Made neat an on be gave show snug tore.
             </div>
-            <a href="{{ route('user.main')}}">
-                <div class="align-items:flex-end" style="display: flex; justify-content: space-between;">
+            <div class="align-items:flex-end" style="display: flex; justify-content: space-between;">
+                <a href="{{ route('user.main')}}">
                     <button
                         class="rounded-lg bg-wirte-500 py-5 px-10 font-sans text-xs font-bold uppercase text-black shadow-md shadow-black-500/20 transition-all hover:shadow-lg hover:shadow-black-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                         data-ripple-light="true">
                         Back
                     </button>
-                    <button
-                        class="rounded-lg bg-orange-500 py-5 px-10 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                        data-ripple-light="true">
-                        Join
-                    </button>
-                </div>
-            </a>
+                </a>
+                <a href="{{ route('event.form',['event'=> $event])}}">
+                <button
+                    class="rounded-lg bg-orange-500 py-5 px-10 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    data-ripple-light="true">
+                    Join
+                </button>
+                </a>
+            </div>
 
         </div>
 
