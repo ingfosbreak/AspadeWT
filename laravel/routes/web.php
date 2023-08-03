@@ -28,9 +28,6 @@ Route::get('/logout', function () {
     return redirect()->route('welcome');
 })->name('logout');
 
-Route::get('/register',function(){
-    return view('auth.register');
-})->name('register');
 
 Route::controller(LoginController::class)->group(function () {
     
@@ -51,6 +48,23 @@ Route::controller(RegisterController::class)->group(function () {
     Route::post('/register/{user_id}/info','registerSecondStage')->name('register.info');
 
 });
+
+
+
+Route::middleware(['auth', 'multirole:user'])->group( function () {
+
+    Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main');
+
+
+});
+
+Route::middleware(['auth', 'multirole:admin'])->group( function () {
+
+    Route::get('/admin/main', [AdminController::class, 'index'])->name('admin.main');
+
+
+});
+
 
 
 
@@ -84,20 +98,6 @@ Route::get('/event/main',function(){
 Route::get('/event/{event}',[EventController::class, 'getInfoEventPage'])->name('event.information');
 Route::get('/event/{event}/form',[EventController::class, 'getJoinEventFormPage'])->name('event.form');
 
-
-Route::middleware(['auth', 'multirole:user'])->group( function () {
-
-    Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main');
-
-
-});
-
-Route::middleware(['auth', 'multirole:admin'])->group( function () {
-
-    Route::get('/admin/main', [AdminController::class, 'index'])->name('admin.main');
-
-
-});
 
 
 
