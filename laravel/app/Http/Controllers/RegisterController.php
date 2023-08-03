@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\UserService;
+use App\Models\User;
 
 class RegisterController extends Controller
 {
@@ -16,12 +17,31 @@ class RegisterController extends Controller
     }
 
     public function registerFirstStage(Request $request) {
-       return redirect()->route('register.info',['user_id' => 1]);
 
+        $validated = UserService::getUserManager()->getUserRegisterValidate($request);
 
+        if ($validated) {
+
+            $user = UserService::getUserManager()->createUser($validated);
+
+            return redirect()->route('register.info',['user_id' => $user->id]);
+        
+        }
+        
+        return redirect()->back()->with('error', 'Your request is not validated');
+        
     }
 
     public function registerSecondStage(Request $request) {
-        return $request;
+
+        $validated = UserService::getUserManager()->getUserRegister2Validate($request);
+
+        if ($validated) {
+
+            
+
+        }
+        
+        return redirect()->back()->with('error', 'Your request is not validated');
     }
 }

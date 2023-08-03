@@ -17,15 +17,19 @@ class LoginController extends Controller
 
     public function login(Request $request) {
         
-        $validated = UserService::getUserManager()->getUserValidate($request);
+        $validated = UserService::getUserManager()->getUserLoginValidate($request);
 
         if ($validated) {
+
+            $account = UserService::getUserManager()->login($validated);
             
-            if (UserService::getUserManager()->login($validated) == "admin") {
+            if ($account == "admin") {
+                $request->session()->regenerate();
                 return redirect()->route('admin.main');
             }
 
-            if (UserService::getUserManager()->login($validated) == "user") {
+            if ($account == "user") {
+                $request->session()->regenerate();
                 return redirect()->route('user.main');
             }
 

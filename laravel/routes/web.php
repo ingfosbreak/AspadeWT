@@ -19,51 +19,79 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
 
-Route::get('/logout', function () {
-    Auth::logout();
-    return redirect()->route('welcome');
-})->name('logout');
+Route::middleware(['web'])->group(function () {
+    
+    
+    // Landing page
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('welcome');
 
 
-Route::controller(LoginController::class)->group(function () {
+
+    // Logout page
+    Route::get('/logout', function () {
+        Session::flush();
+        
+        Auth::logout();
+
+        return redirect()->route('welcome');
+    })->name('logout');
+
+
+
+    // Login Page
+    Route::controller(LoginController::class)->group(function () {
     
-    Route::get('/login', 'getLoginPage')->name('login');
+        Route::get('/login', 'getLoginPage')->name('login');
+        
+        Route::post('/login','login')->name('login');
+        
+    });
+
+
+
+    // Register page
+    Route::controller(RegisterController::class)->group(function () {
     
-    Route::post('/login','login')->name('login');
+        Route::get('/register','getRegisterFirstPage')->name('register');
     
+        Route::post('/register','registerFirstStage')->name('register');
+    
+        Route::get('/register/{user_id}/info','getRegisterSecondPage')->name('register.info')->middleware('regisinfo');
+    
+        Route::post('/register/{user_id}/info','registerSecondStage')->name('register.info');
+        
+    });
+
+
+
+    // User page
+    Route::middleware(['auth', 'multirole:user'])->group( function () {
+
+        Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main');
+
+
+    });
+
+
+
+    // Admin page
+    Route::middleware(['auth', 'multirole:admin'])->group( function () {
+
+        Route::get('/admin/main', [AdminController::class, 'index'])->name('admin.main');
+    
+    
+    });
+
 });
 
-Route::controller(RegisterController::class)->group(function () {
-    
-    Route::get('/register','getRegisterFirstPage')->name('register');
-
-    Route::post('/register','registerFirstStage')->name('register');
-
-    Route::get('/register/{user_id}/info','getRegisterSecondPage')->name('register.info')->middleware('regisinfo');
-
-    Route::post('/register/{user_id}/info','registerSecondStage')->name('register.info');
-
-});
 
 
 
-Route::middleware(['auth', 'multirole:user'])->group( function () {
-
-    Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main');
 
 
-});
-
-Route::middleware(['auth', 'multirole:admin'])->group( function () {
-
-    Route::get('/admin/main', [AdminController::class, 'index'])->name('admin.main');
-
-
-});
 
 
 
