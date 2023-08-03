@@ -175,7 +175,7 @@ class UserManager {
     public function createUserFull(Request $request, int $user_id ) {
 
 
-        return $request->file('image')->getClientOriginalName();
+        // return $request->file('image')->getClientOriginalName();
         $userfull = new UserFull();
         $userfull->user_id = $user_id;
         $userfull->email = $request->email;
