@@ -40,11 +40,8 @@ class RegisterController extends Controller
 
         $validated = UserService::getUserManager()->getUserRegisterSecondValidate($request);
 
-        $image = $request->file('image');
-        echo("<script>console.log('PHP: " . gettype($image) . "');</script>");
-
         if ($validated) {
-            // return UserService::getUserManager()->createUserFull($request, $user_id);
+            return UserService::getUserManager()->createUserFull($request, $user_id);
 
             $userfull = UserService::getUserManager()->createUserFull($request, $user_id);
 

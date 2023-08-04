@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('lastname')->nullable();
             $table->string('faculty')->nullable();
             $table->integer('year')->nullable();
-            $table->string('image_path')->nullable();
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });

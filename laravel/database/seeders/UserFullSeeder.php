@@ -20,7 +20,6 @@ class UserFullSeeder extends Seeder
         $userEntry->lastname = "Kotchagason";
         $userEntry->faculty = "Science";
         $userEntry->year = 3;
-        $userEntry->image_path = "inkimg";
         $userEntry->save();
 
         $userEntry = new UserFull();
@@ -30,7 +29,6 @@ class UserFullSeeder extends Seeder
         $userEntry->lastname = "Kotchagason";
         $userEntry->faculty = "Science";
         $userEntry->year = 3;
-        $userEntry->image_path = "totoimg";
         $userEntry->save();
     }
 }

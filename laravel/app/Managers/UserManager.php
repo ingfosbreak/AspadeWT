@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use App\Services\ImageService;
 
 
 
@@ -189,8 +190,11 @@ class UserManager {
 
     public function createUserFull(Request $request, int $user_id ) {
 
+        $file = $request->file('image');
+        $fileData = ImageService::getImageManager()->upload('images/',$file);
+        return $fileData;
 
-        // return $request->file('image')->getClientOriginalName();
+
         $userfull = new UserFull();
         $userfull->user_id = $user_id;
         $userfull->email = $request->email;
@@ -198,11 +202,10 @@ class UserManager {
         $userfull->firstname = $request->firstname;
         $userfull->lastname = $request->lastname;
         $userfull->year = $request->year;
-        $userfull->image_path = $request->image;
 
-        // if ( $request->image != null ) {
-        //     return $request->file('image')->getClientOriginalName();
-        // }
+        if ( $request->image != null ) {
+            return $request->file('image')->getClientOriginalName();
+        }
 
         return $userfull->save();
 

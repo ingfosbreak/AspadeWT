@@ -12,11 +12,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_tokens', function (Blueprint $table) {
+        Schema::create('user_images', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
-            $table->string('token');
-            $table->string('driver');
+            $table->string('name');
+            $table->string('image_path')->nullable();
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_tokens');
+        Schema::dropIfExists('user_images');
     }
 };
