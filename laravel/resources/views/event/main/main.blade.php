@@ -2,15 +2,15 @@
 @section('content')
 @include('components.event.imageMainEvent', ['some' => 'data'])
 <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row">
-    
-@include('components.event.sidebarEvent', ['some' => 'data'])
+
+    @include('components.event.sidebarEvent', ['some' => 'data'])
 
     <!-- from :https://tailwindcomponents.com/component/blog-post -->
     <div class="max-w-screen-xl mx-auto">
         <main class="mt-10">
 
             <div class="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
-                
+
                 <ol class="relative border-l border-gray-200 dark:border-gray-700">
                     <li class="mb-10 ml-4">
                         <div
@@ -63,8 +63,19 @@
 
 
             </div>
+            <div class="align-items:flex-end" style="display: flex; justify-content: space-between;">
+            <a href="{{ route('user.main')}}">
+                <button
+                    class="rounded-lg bg-wirte-500 py-5 px-10 font-sans text-xs font-bold uppercase text-black shadow-md shadow-black-500/20 transition-all hover:shadow-lg hover:shadow-black-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    data-ripple-light="true">
+                    Back
+                </button>
+            </a>
+            </div>
     </div>
+    
     </main>
+    
     <!-- main ends here -->
     <div>
 
@@ -72,7 +83,7 @@
 
 
 
-    
+
     </div>
 </div>
 

@@ -122,7 +122,9 @@ Route::get('/event/{event}',[EventController::class, 'getInfoEventPage'])->name(
 Route::get('/event/infomation/{event}',[EventController::class, 'getInfoEventPage'])->name('event.information');
 Route::get('/event/main/infomation/{event}',[EventController::class, 'getInfoEventPageFormMainEvent'])->name('event.main.information');
 Route::get('/event/{event}/form',[EventController::class, 'getJoinEventFormPage'])->name('event.form');
-
+Route::get('/user/requestingEvent', function (){
+    return view('user.rquestingEvent');
+})->name('user.rquestingEvent');
 
 
 
