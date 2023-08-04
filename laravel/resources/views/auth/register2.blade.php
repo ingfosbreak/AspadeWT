@@ -25,7 +25,7 @@
 			</div>
 
 			<!-- form register -->
-			<form action="{{route('register.info',['user_id'=> $user_id])}}" class="my-10 mx-5 " method="POST" enctype="multipart/form-data">
+			<form action="{{route('register.info')}}" class="my-10 mx-5 " method="POST" enctype="multipart/form-data">
 			@csrf
 			
             <div class="mb-6">

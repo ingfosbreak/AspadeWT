@@ -12,8 +12,8 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    public function getRegisterSecondPage(int $user_id) {
-        return view('auth.register2',['user_id' => $user_id]);
+    public function getRegisterSecondPage() {
+        return view('auth.register2');
     }
 
     public function registerFirstStage(Request $request) {
@@ -28,7 +28,9 @@ class RegisterController extends Controller
                 redirect()->back()->with('error', 'failed to regis your user');
             }
 
-            return redirect()->route('register.info',['user_id' => $user->id]);
+            $request->session()->put('user_id', $user->id);
+
+            return redirect()->route('register.info');
         
         }
         
@@ -36,16 +38,20 @@ class RegisterController extends Controller
         
     }
 
-    public function registerSecondStage(Request $request, int $user_id) {
+    public function registerSecondStage(Request $request) {
 
         $validated = UserService::getUserManager()->getUserRegisterSecondValidate($request);
 
         if ($validated) {
-            return UserService::getUserManager()->createUserFull($request, $user_id);
 
-            $userfull = UserService::getUserManager()->createUserFull($request, $user_id);
+            $userfull = UserService::getUserManager()->createUserFull($request);
 
             if ($userfull) {
+
+                if ($request->session()->exists('user_id')) {
+                    $request->session()->forget('user_id');
+                }
+
                 return redirect()->route('login')->with('success','You have successful registered');
             }
 

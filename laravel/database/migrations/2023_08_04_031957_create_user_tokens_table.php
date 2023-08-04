@@ -16,7 +16,9 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class);
             $table->string('token');
-            $table->string('driver');
+            $table->string('device');
+            $table->string('platform');
+            $table->string('browser');
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });

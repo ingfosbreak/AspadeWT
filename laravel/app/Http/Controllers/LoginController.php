@@ -8,6 +8,7 @@ use App\Services\UserService;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\Auth\LoginRequest;
 
+
 class LoginController extends Controller
 {
     public function getLoginPage() {
@@ -25,7 +26,7 @@ class LoginController extends Controller
             if ($account == "admin") {
 
                 $token = UserService::getUserManager()->generateToken();
-                
+            
                 if (UserService::getUserManager()->pushTokenToUserToken($token) == false) {
                     return redirect()->back()->with('error', 'Can not generate login token');
                 } 

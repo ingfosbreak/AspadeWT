@@ -16,22 +16,46 @@ class ImageManager {
         if($file) {
             $image_name = $file->getClientOriginalName();
             $image_path = $path . $image_name;
- 
-            return Storage::disk('public')->put($image_path, file_get_contents($file));
+            
+            if (Storage::disk('public')->put($image_path, file_get_contents($file))) {
+                return array(
+                    'name' => $image_name,
+                    'image_path' => $image_path,
+                );
+            }
+
+            return false;
             
         }
+
+        return false;
     }
 
-    public function uploadMultipleImages(string $path, $file) {
+    public function uploadMultipleImages(string $path, $files) {
         
-        if($file) {
-            $image_name = $file->getClientOriginalName();
-            $image_path = $path . $image_name;
- 
-            return Storage::disk('public')->put($image_path, file_get_contents($file));
-            
+        if($files) {
+
+            $success_images = array();
+
+            foreach($files as $file) {
+
+                $image_name = $file->getClientOriginalName();
+                $image_path = $path . $image_name;
+    
+                Storage::disk('public')->put($image_path, file_get_contents($file));
+
+                array_push($success_images, array(
+                    'name' => $image_name,
+                    'image_path' => $image_path,
+                ));
+            }
+
+            return $success_images;
         }
+
+        return false;
     }
+
     
 
 
