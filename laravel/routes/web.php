@@ -109,7 +109,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::post('/getmsg',function(){
-    return response()->json(array('msg'=> "fuck you"), 200);
+    return response()->json(array('msg'=> "I miss you UWU"), 200);
 });
 
 Route::post('/user/main',[LoginController::class,'checkUser'])->name('user.user-main');
