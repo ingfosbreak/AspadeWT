@@ -5,9 +5,12 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,13 +34,7 @@ Route::middleware(['web'])->group(function () {
 
 
     // Logout page
-    Route::get('/logout', function () {
-        Session::flush();
-        
-        Auth::logout();
-
-        return redirect()->route('welcome');
-    })->name('logout');
+    Route::get('/logout',[LogoutController::class, 'logout'])->name('logout');
 
 
 

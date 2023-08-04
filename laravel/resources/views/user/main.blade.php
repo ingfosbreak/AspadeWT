@@ -7,7 +7,7 @@
         <h1 class="text-5xl font-bold mb-4">
 
         </h1>
-        <p class="text-lg inline-block sm:block">The largest SUS community to rent saunas in Finland.</p>
+        <p class="text-lg inline-block sm:block">The largest SUS community to rent saunas in Finland. {{Auth::getuser()->events}}</p>
         <button class="mt-8 px-4 py-2 bg-gray-600 rounded">Join</button>
     </div>
 </div>

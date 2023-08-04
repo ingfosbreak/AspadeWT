@@ -14,6 +14,7 @@ class UserController extends Controller
 {
     public function userPopEvent(){
         $events = Event::paginate(6);
+
         return view('user.main', [
             'events' => $events
         ]);

@@ -13,7 +13,7 @@ class EventUser extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'event_users';
+    protected $table = 'event_user';
 
     public function event(): BelongsTo {
         return $this->belongsTo(Event::class);
