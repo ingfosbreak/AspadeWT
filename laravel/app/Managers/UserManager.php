@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Phattarachai\LaravelMobileDetect\Agent;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use App\Services\ImageService;
@@ -53,9 +54,14 @@ class UserManager {
 
     public function pushTokenToUserToken(string $token) {
         
+        $agent = new Agent();
+
         $user_token = new UserToken();
         $user_token->user_id = Auth::getUser()->id;
         $user_token->token = $token;
+        $user_token->device = $agent->device();
+        $user_token->platform = $agent->platform();
+        $user_token->browser = $agent->browser();
         return $user_token->save();
 
     }
@@ -163,7 +169,7 @@ class UserManager {
 
     }
 
-    
+
 
     public function createUserImage(array $success_image, int $user_id) {
 
