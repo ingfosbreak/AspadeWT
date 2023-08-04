@@ -56,9 +56,9 @@ Route::middleware(['web'])->group(function () {
     
         Route::post('/register','registerFirstStage')->name('register');
     
-        Route::get('/register/{user_id}/info','getRegisterSecondPage')->name('register.info')->middleware('regisinfo');
+        Route::get('/register/info','getRegisterSecondPage')->name('register.info')->middleware('regisinfo');
     
-        Route::post('/register/{user_id}/info','registerSecondStage')->name('register.info');
+        Route::post('/register/info','registerSecondStage')->name('register.info');
         
     });
 

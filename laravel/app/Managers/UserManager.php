@@ -5,6 +5,7 @@ namespace App\Managers;
 use App\Models\User;
 use App\Models\UserFull;
 use App\Models\UserToken;
+use App\Models\UserImage;
 use Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -21,61 +22,16 @@ class UserManager {
 
     public function __construct() {}
 
-    public function getAllUsers() {
-        return User::with('UserFull')->get();
-    }
 
-    public function getThatUser(string $id) {
-        return User::with('UserFull')->find((float)$id);
-    }
-
-    public function checkIfUser(string $username) {
-        return User::where('username',$username)->firstOrFail();
-    }
-
-
-    public function updateUser(Request $request, string $id) {
-
-        if ($id == null) {
-            return false;
-        }
-        
-        $user = self->getThatUser($id);
-        
-        // do something;
-
-        return $user->save();
-
-
+    // for attempt AUTH
+    public function username() {
+        return 'username';
     }
 
     /*
      *      Login 
      * 
      */
-
-    public function login(Request $request) {
-        
-        $credentials = array(
-            'username' => $request->username,
-            'password' => $request->password,
-        );
-        
-        if (Auth::attempt($credentials, true) && Auth::getUser()->role == "admin") {
-            return "admin";
-        }
-
-        if (Auth::attempt($credentials, true) && Auth::getUser()->role == "user") {
-            return "user";
-        }
-
-        return "failed";
-
-    }
-
-    public function username() {
-        return 'username';
-    }
 
     public function getUserLoginValidate(Request $request) {
 
@@ -103,6 +59,27 @@ class UserManager {
         return $user_token->save();
 
     }
+
+    public function login(Request $request) {
+        
+        $credentials = array(
+            'username' => $request->username,
+            'password' => $request->password,
+        );
+        
+        if (Auth::attempt($credentials, true) && Auth::getUser()->role == "admin") {
+            return "admin";
+        }
+
+        if (Auth::attempt($credentials, true) && Auth::getUser()->role == "user") {
+            return "user";
+        }
+
+        return "failed";
+
+    }
+
+
 
 
 
@@ -132,8 +109,6 @@ class UserManager {
 
     public function createUser(Request $request) {
 
-
-        
         $user = new User();
         $user->username = $request->username;
         $user->role = "user";
@@ -188,12 +163,23 @@ class UserManager {
 
     }
 
-    public function createUserFull(Request $request, int $user_id ) {
+    
 
-        $file = $request->file('image');
-        $fileData = ImageService::getImageManager()->upload('images/',$file);
-        return $fileData;
+    public function createUserImage(array $success_image, int $user_id) {
 
+        $userimage = new UserImage();
+        $userimage->user_id = $user_id;
+        $userimage->name = $success_image['name'];
+        $userimage->image_path = $success_image['image_path'];
+
+        return $userimage->save();
+    }
+
+
+
+    public function createUserFull(Request $request) {
+        
+        $user_id = $request->session()->get('user_id');
 
         $userfull = new UserFull();
         $userfull->user_id = $user_id;
@@ -204,7 +190,17 @@ class UserManager {
         $userfull->year = $request->year;
 
         if ( $request->image != null ) {
-            return $request->file('image')->getClientOriginalName();
+            $file = $request->file('image');
+            $success_image = ImageService::getImageManager()->uploadOneImage('profile_images/',$file);
+            
+            if ($success_image == false) {
+                return false;
+            }
+            
+            if (!$this->createUserImage($success_image, $user_id)) {
+                return false;
+            }
+
         }
 
         return $userfull->save();
@@ -220,6 +216,8 @@ class UserManager {
         // ]);
 
     }
+
+    
 
 
     
