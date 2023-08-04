@@ -29,6 +29,10 @@ class Authenticate
 
         // check session 
 
+        if (!$request->session()->exists('token')) {
+            return redirect()->route('login')->with('error', 'Token expired');
+        }
+
         if (UserToken::where('token',$request->session()->get('token'))->firstOrFail() == null) {
             return redirect()->route('login')->with('error', 'Token expired');
         }
@@ -36,4 +40,3 @@ class Authenticate
         return $next($request);
     }
 }
-
