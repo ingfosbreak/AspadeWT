@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\UserFull;
+use App\Models\UserToken;
 use App\Models\Event;
 use App\Models\EventUser;
 use App\Models\Process;
@@ -93,6 +94,10 @@ class User extends Authenticatable
 
     public function processes_statuses(): HasMany {
         return $this->hasMany(ProcessUser::class);
+    }
+
+    public function tokens(): HasMany {
+        return $this->hasMany(UserToken::class);
     }
 
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Services\UserService;
-
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\Auth\LoginRequest;
 
@@ -16,7 +15,7 @@ class LoginController extends Controller
     }
 
     public function login(Request $request) {
-    
+        
         $validated = UserService::getUserManager()->getUserLoginValidate($request);
         
         if ($validated) {
@@ -24,12 +23,28 @@ class LoginController extends Controller
             $account = UserService::getUserManager()->login($request);
             
             if ($account == "admin") {
-                $request->session()->regenerate();
+
+                $token = UserService::getUserManager()->generateToken();
+                
+                if (UserService::getUserManager()->pushTokenToUserToken($token) == false) {
+                    return redirect()->back()->with('error', 'Can not generate login token');
+                } 
+
+                $request->session()->put('token', $token);
+
                 return redirect()->route('admin.main');
             }
 
             if ($account == "user") {
-                $request->session()->regenerate();
+                
+                $token = UserService::getUserManager()->generateToken();
+                
+                if (UserService::getUserManager()->pushTokenToUserToken($token) == false) {
+                    return redirect()->back()->with('error', 'Can not generate login token');
+                } 
+
+                $request->session()->put('token', $token);
+
                 return redirect()->route('user.main');
             }
 

@@ -4,7 +4,9 @@ namespace App\Managers;
 
 use App\Models\User;
 use App\Models\UserFull;
+use App\Models\UserToken;
 use Hash;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
@@ -86,6 +88,19 @@ class UserManager {
         }
 
         return true;
+    }
+
+    public function generateToken() {
+        return Carbon::now();
+    }
+
+    public function pushTokenToUserToken(string $token) {
+        
+        $user_token = new UserToken();
+        $user_token->user_id = Auth::getUser()->id;
+        $user_token->token = $token;
+        return $user_token->save();
+
     }
 
 
