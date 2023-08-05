@@ -12,17 +12,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('requests', function (Blueprint $table) {
+        Schema::create('user_tokens', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
-            $table->string("name");
-            $table->integer("num_member");
-            $table->integer("budget");
-            $table->string('date');
-            $table->string('location');
-            $table->string("description");
-            $table->enum('status-check',['todo','doing','done'])->default("todo");
-            $table->enum('status-request',['approved','denied'])->nullable();
+            $table->string('token');
+            $table->string('device');
+            $table->string('platform');
+            $table->string('browser');
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('requests');
+        Schema::dropIfExists('user_tokens');
     }
 };

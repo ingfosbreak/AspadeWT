@@ -10,4 +10,8 @@ window.$ = jQuery;
 import dragula from "dragula";
 window.dragula = dragula;
 
+import.meta.glob([
+    '../images/**'
+]);
+
 Alpine.start();

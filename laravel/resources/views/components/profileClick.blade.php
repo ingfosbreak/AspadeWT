@@ -1,41 +1,31 @@
-<div class="none" id="profileNav">
-<section style="font-family: Montserrat" class=" bg-[#071e34] flex font-medium items-center justify-center h-fit">
-
-<section class="w-64 mx-auto bg-transparent rounded-2xl px-8 py-6 shadow-lg">
-    <div class="flex items-center justify-between">
-        <span class="text-gray-400 text-sm">2d ago</span>
-        <span class="text-emerald-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-          </svg>
-        </span>
+<div class="cover" id="profileNav">
+    <div
+        class="relative flex flex-col items-center rounded-[20px] w-[300px] mx-auto p-4 bg-white bg-clip-border shadow-3xl shadow-shadow-500 dark:!bg-navy-800 dark:text-white dark:!shadow-none">
+        <div class="relative flex h-32 w-full justify-center rounded-xl bg-cover">
+            <img src='https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/banner.ef572d78f29b0fee0a09.png'
+                class="absolute flex h-32 w-full justify-center rounded-xl bg-cover">
+            <div
+                class="absolute -bottom-12 flex h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white bg-pink-400 dark:!border-navy-700">
+                <img class="h-full w-full rounded-full"
+                    src='https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/avatar11.1060b63041fdffa5f8ef.png'
+                    alt="" />
+            </div>
+        </div>
+        <div class="mt-16 flex flex-col items-center gap-5">
+            <h4 class="text-3xl font-bold text-navy-700 text-black">
+                {{Auth::user()->username}} <br>
+                <span class="text-blue-500">{{Auth::user()->role}}</span>
+            </h4>
+            <p class="text-2xl font-normal text-green-500">status : {{Auth::user()->status}}</p>
+            <a href="{{route('setting')}}">
+                <p class="text-2xl font-normal text-gray-600">Setting</p>
+            </a>
+            <a href="{{route('logout')}}">
+                <p class="text-2xl font-normal text-red-600">Logout</p>
+            </a>
+        </div>
+        
     </div>
-    <div class="mt-6 w-fit mx-auto">
-        <img src="https://api.lorem.space/image/face?w=120&h=120&hash=bart89fe" class="rounded-full w-28 " alt="profile picture" srcset="">
-    </div>
-
-    <div class="mt-8 ">
-        <h2 class="text-white font-bold text-2xl tracking-wide">
-    </div>
-    <p class="text-emerald-400 font-semibold mt-2.5" >
-        Active
-    </p>
-
-    <div class="h-1 w-full bg-black mt-8 rounded-full">
-        <div class="h-1 rounded-full w-2/5 bg-yellow-500 "></div>
-    </div>
-    <div class="mt-3 text-white text-sm">
-        <span class="text-gray-400 font-semibold">Storage:</span>
-        <span>40%</span>
-    </div>
-    <a href="{{ route('logout') }}" class="mt-3 text-white text-sm">
-        LOGOUT
-    </a>
-
-</section>
-
-
-</section>
 </div>
 
 
@@ -45,12 +35,9 @@
 
 <style>
 
-.none {
-    display:none;
-}
 .cover{
     background:rgba(0,0,0,0);
-    position:fixed;
+    position:absolute;
     display:flex;
     flex-direction:column;
 }

@@ -5,8 +5,12 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,22 +22,94 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
 
-Route::get('/logout', function () {
-    Auth::logout();
-    return redirect()->route('welcome');
-})->name('logout');
+Route::middleware(['web'])->group(function () {
+    
+    
+    // Landing page
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('welcome');
 
-Route::controller(LoginController::class)->group(function () {
+
+    // Login Page
+    Route::controller(LoginController::class)->group(function () {
     
-    Route::get('/login', 'getLoginPage')->name('login');
+        Route::get('/login', 'getLoginPage')->name('login');
+        
+        Route::post('/login','login')->name('login');
+        
+    });
+
+
+
+    // Register page
+    Route::controller(RegisterController::class)->group(function () {
     
-    Route::post('/login','login')->name('login');
+        Route::get('/register','getRegisterFirstPage')->name('register');
     
+        Route::post('/register','registerFirstStage')->name('register');
+    
+        Route::get('/register/info','getRegisterSecondPage')->name('register.info')->middleware('regisinfo');
+    
+        Route::post('/register/info','registerSecondStage')->name('register.info');
+        
+    });
+
+
+    // Auth page
+    Route::middleware(['auth'])->group( function () {
+
+        
+        // Logout page
+        Route::get('/logout',[LogoutController::class, 'logout'])->name('logout');
+
+        // Setting page
+        Route::get('/setting', function () {
+            return view('profile.setting');
+        })->name('setting');
+    
+        // User page
+        Route::middleware(['multirole:user'])->group( function () {
+
+            Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main');
+            Route::get('/event/main/{event}',[UserController::class, 'getMainEventPage'])->name('event.main.main');
+            Route::get('/event/infomation/{event}',[EventController::class, 'getInfoEventPage'])->name('event.information');
+            Route::get('/event/main/infomation/{event}',[EventController::class, 'getInfoEventPageFormMainEvent'])->name('event.main.information');
+            Route::get('/event/{event}/form',[EventController::class, 'getJoinEventFormPage'])->name('event.form');
+            Route::get('/user/requestingEvent', function (){
+                return view('user.rquestingEvent');
+            })->name('user.rquestingEvent');
+            
+        });
+
+
+
+
+
+
+        // Admin page
+        Route::middleware(['auth', 'multirole:admin'])->group( function () {
+
+            Route::get('/admin/main', [AdminController::class, 'index'])->name('admin.main');
+    
+    
+        });
+
+    });
+
+  
+
+
+
+
 });
+
+
+
+
+
+
 
 
 
@@ -46,49 +122,19 @@ Route::get('/test', function(){
 
 
 
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-
-
 Route::post('/getmsg',function(){
-    return response()->json(array('msg'=> "fuck you"), 200);
+    return response()->json(array('msg'=> "I miss you UWU"), 200);
 });
 
-Route::post('/user/main',[LoginController::class,'checkUser'])->name('user.user-main');
 
 Route::get('/profile',function(){
     return view('profile');
 })->name('profile');
 
-Route::get('/register',function(){
-    return view('create-account');
-})->name('register');
-
-Route::get('/event/main',function(){
-    return view('event.main');
-})->name('event.main');
-
-Route::get('/event/{event}',[EventController::class, 'goToInfoEvent'])->name('event.information');
-
-
-
-Route::middleware(['auth', 'multirole:user'])->group( function () {
-
-    Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main');
-
-
-});
-
-Route::middleware(['auth', 'multirole:admin'])->group( function () {
-
-    Route::get('/admin/main', [AdminController::class, 'index'])->name('admin.main');
-
-
-});
 
 
 

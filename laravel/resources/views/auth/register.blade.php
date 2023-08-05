@@ -1,52 +1,75 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+@extends('layouts.guest')
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
+@section('content')
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+<!-- component -->
+<div class="w-screen h-screen bg-[url('https://images-ext-1.discordapp.net/external/sc3E0Q6dR1CgIYGe_Ej1Z-6UfBcok4YCKDW12p9MJZo/%3Fcid%3D73b8f7b1eofgcxj5oud7o2o4igar6lztsiksqpsx3zfaf1ac%26ep%3Dv1_gifs_gifId%26rid%3Dgiphy.mp4%26ct%3Dg/https/media2.giphy.com/media/3gXYfOUVcaJ8tSVCIJ/giphy.mp4')] bg-no-repeat bg-cover bg-center flex flex-wrap items-center justify-center filter saturate-1 overflow-hidden">
+	<div class="w-screen mx-auto px-80" id='terminal'>
+		<div class="w-full shadow-2xl subpixel-antialiased rounded h-64 bg-black border-black mx-auto h-fit ">
+			<div class="flex items-center h-6 rounded-t bg-gray-100 border-b border-gray-500 text-center text-black" id="headerTerminal">
+			<div class="flex ml-2 items-center text-center border-red-900 bg-red-500 shadow-inner rounded-full w-3 h-3" id="closebtn">
+			</div>
+			<div class="ml-2 border-yellow-900 bg-yellow-500 shadow-inner rounded-full w-3 h-3" id="minbtn">
+			</div>
+			<div class="ml-2 border-green-900 bg-green-500 shadow-inner rounded-full w-3 h-3" id="maxbtn">
+			</div>
+			<div class="mx-auto pr-16" id="terminaltitle">
+				<p class="text-center text-sm">Register</p>
+			</div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+			</div>
+			<div class="pl-1 pt-1 h-auto  text-green-200 font-mono text-xs bg-black mx-5" id="console">
+			<p class="pb-1">Last login: Wed Sep 25 09:11:04 on ttys002</p>
+			<p class="pb-1">Laravel:Devprojects laravel</p>
+			<p class="pb-1">You can make account and join us here!!!</p>
+			</div>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+			<!-- form register -->
+			<form action="{{route('register')}}" class="my-20 mx-5 " method="POST">
+			@csrf
+			<div class="mb-6">
+				<label for="username" class="block mb-2 text-green-200 font-mono text-xs bg-black">Your username</label>
+				<input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="username" required>
+			</div>
+			<div class="mb-6">
+				<label for="password" class="block mb-2 text-green-200 font-mono text-xs bg-black">Your password</label>
+				<input type="password" name="password"id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="password" required>
+			</div>
+			@if (session('error'))
+                <div class="text-red-700 mb-5">{{ session('error') }}</div>
+            @endif
+			<button type="submit" class="text-white bg-green-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+			</form>
+		</div> 
+	</div>
+</div>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+<script type="module" >
+	function handle_mousedown(e){
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+		window.my_dragging = {};
+		my_dragging.pageX0 = e.pageX;
+		my_dragging.pageY0 = e.pageY;
+		my_dragging.elem = this;
+		my_dragging.offset0 = $(this).offset();
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+		function handle_dragging(e){
+			var left = my_dragging.offset0.left + (e.pageX - my_dragging.pageX0);
+			var top = my_dragging.offset0.top + (e.pageY - my_dragging.pageY0);
+			$(my_dragging.elem).offset({top: top, left: left});
+		}
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
+		function handle_mouseup(e){
+			$('body').off('mousemove', handle_dragging).off('mouseup', handle_mouseup);
+		}
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
+		$('body').on('mouseup', handle_mouseup).on('mousemove', handle_dragging);
+		}
 
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+		$('#terminal').mousedown(handle_mousedown);
+
+</script>
+
+
+
+@endsection
