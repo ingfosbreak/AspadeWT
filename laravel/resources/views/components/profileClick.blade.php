@@ -9,8 +9,8 @@
                 class="absolute flex h-32 w-full justify-center rounded-xl bg-cover">
             <div
                 class="absolute bottom-5 flex h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white bg-pink-400 dark:!border-navy-700">
-                <img class="h-full w-full rounded-full"
-                    src='https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/avatar11.1060b63041fdffa5f8ef.png'
+                <img class="h-full w-full rounded-full object-cover"
+                src="{{ Vite::asset('storage/app/public/'. Auth::getUser()->image->image_path) }}"
                     alt="" />
             </div>
         </div>

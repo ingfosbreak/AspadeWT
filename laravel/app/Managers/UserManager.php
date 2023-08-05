@@ -260,7 +260,7 @@ class UserManager {
      * 
      */
     
-     public function getResetPasswordValidate(Request $request) {
+    public function getResetPasswordValidate(Request $request) {
 
         $validated =  Validator::make($request->all(),[
             'oldpassword' => ['required', new OldPasswordRequest(Auth::getUser())],
@@ -274,6 +274,78 @@ class UserManager {
         return true;
     }
 
+    public function resetPassword(Request $request) {
+
+        $user = Auth::getUser();
+        $user->password = Hash::make($request->newpassword);
+            
+        return $user->save();
+    }
+
+
+
+    /**
+     * 
+     * 
+     *  Edit Profile 
+     * 
+     */
+
+    public function getEditProfileValidate(Request $request) {
+
+        $validated = Validator::make($request->all(),[
+            'email' => ['nullable','unique:'.UserFull::class],
+            'faculty' => 'nullable',
+            'firstname' => 'nullable',
+            'lastname' => 'nullable',
+            'year' => 'nullable',
+
+        ]);
+
+        if ($validated->fails()) {
+            return false;
+        }
+
+        return true;
+
+    }
+
+    public function editProfile(Request $request) {
+
+        $userfull = Auth::getUser()->userFull;
+
+        if ($request->email != null) {
+            $userfull->email = $request->email;
+        }
+
+        if ($request->firstname != null) {
+            $userfull->firstname = $request->firstname;
+        }
+
+        if ($request->lastname != null) {
+            $userfull->lastname = $request->lastname;
+        }
+
+        if ($request->faculty != null) {
+            $userfull->faculty = $request->faculty;
+        }
+        if ($request->year != null) {
+            $userfull->year = $request->year;
+        }
+        return $userfull->save();
+    }
+
+
+    /**
+     * 
+     * Image 
+     *
+     */
+
+    public function getProfileImage() {
+        $path = Auth::getUser()->image;
+        return Vite::asset('storage/app/public/'. Auth::getUser()->image);
+    }
     
 
 }

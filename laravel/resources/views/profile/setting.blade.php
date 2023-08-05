@@ -13,39 +13,32 @@
 <body>
     <div class="h-full bg-gray-200 p-8">
         <div class="bg-white rounded-lg shadow-xl pb-8">
-            
+            <a href="{{route('user.main')}}" class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                    <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                    
+                </svg>
+                <span class="text-gray-700 ml-5">Go back to main</span>
+            </a>
             <div class="w-full h-[250px]">
                 <img src="https://vojislavd.com/ta-template-demo/assets/img/profile-background.jpg" class="w-full h-full rounded-tl-lg rounded-tr-lg">
+                
             </div>
             <div class="flex flex-col items-center -mt-20">
-                <img src="https://vojislavd.com/ta-template-demo/assets/img/profile.jpg" class="w-40 border-4 border-white rounded-full">
+                <img src="{{ Vite::asset('storage/app/public/'. Auth::getUser()->image->image_path) }}" class="w-40 h-40 object-cover border-4 border-white rounded-full">
                 <div class="flex items-center space-x-2 mt-2">
-                    <p class="text-2xl">Amanda Ross</p>
+                    <p class="text-2xl">{{Auth::getUser()->userFull->firstname ." ". Auth::getUser()->userFull->lastname}}</p>
                     <span class="bg-blue-500 rounded-full p-1" title="Verified">
                         <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-100 h-2.5 w-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path>
                         </svg>
                     </span>
                 </div>
-                <p class="text-gray-700">Senior Software Engineer at Tailwind CSS</p>
-                <p class="text-sm text-gray-500">New York, USA</p>
+                
+                
             </div>
-            <div class="flex-1 flex flex-col items-center lg:items-end justify-end px-8 mt-2">
-                <div class="flex items-center space-x-4 mt-2">
-                    <button class="flex items-center bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"></path>
-                        </svg>
-                        <span>Connect</span>
-                    </button>
-                    <button class="flex items-center bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span>Message</span>
-                    </button>
-                </div>
-            </div>
+            
         </div>
 
         <div class="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
@@ -53,33 +46,33 @@
                 <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
                     <h4 class="text-xl text-gray-900 font-bold">Personal Info</h4>
                     <ul class="mt-2 text-gray-700">
+                        <li class="flex border-b py-2">
+                            <span class="font-bold w-24">Username:</span>
+                            <span class="text-gray-700">{{Auth::getUser()->username}}</span>
+                        </li>
                         <li class="flex border-y py-2">
                             <span class="font-bold w-24">Full name:</span>
-                            <span class="text-gray-700">Amanda S. Ross</span>
+                            <span class="text-gray-700">{{Auth::getUser()->userFull->firstname ." ". Auth::getUser()->userFull->lastname}}</span>
                         </li>
                         <li class="flex border-b py-2">
-                            <span class="font-bold w-24">Birthday:</span>
-                            <span class="text-gray-700">24 Jul, 1991</span>
+                            <span class="font-bold w-24">Role:</span>
+                            <span class="text-gray-700">{{Auth::getUser()->role}}</span>
                         </li>
                         <li class="flex border-b py-2">
-                            <span class="font-bold w-24">Joined:</span>
-                            <span class="text-gray-700">10 Jan 2022 (25 days ago)</span>
-                        </li>
-                        <li class="flex border-b py-2">
-                            <span class="font-bold w-24">Mobile:</span>
-                            <span class="text-gray-700">(123) 123-1234</span>
+                            <span class="font-bold w-24">Status:</span>
+                            <span class="text-gray-700">{{Auth::getUser()->status}}</span>
                         </li>
                         <li class="flex border-b py-2">
                             <span class="font-bold w-24">Email:</span>
-                            <span class="text-gray-700">amandaross@example.com</span>
+                            <span class="text-gray-700">{{Auth::getUser()->userFull->email}}</span>
                         </li>
                         <li class="flex border-b py-2">
-                            <span class="font-bold w-24">Location:</span>
-                            <span class="text-gray-700">New York, US</span>
+                            <span class="font-bold w-24">Faculty:</span>
+                            <span class="text-gray-700">{{Auth::getUser()->userFull->faculty}}</span>
                         </li>
                         <li class="flex border-b py-2">
-                            <span class="font-bold w-24">Languages:</span>
-                            <span class="text-gray-700">English, Spanish</span>
+                            <span class="font-bold w-24">Year:</span>
+                            <span class="text-gray-700">{{Auth::getUser()->userFull->year}}</span>
                         </li>
                         <li class="flex items-center border-b py-2 space-x-2">
                             <span class="font-bold w-24">Elsewhere:</span>
@@ -97,6 +90,16 @@
                             </a>
                         </li>
                     </ul>
+                    @if (session('error.info'))
+                    <div class="text-red-700 mb-5">{{ session('error.info') }}</div>
+                    @endif
+
+			        @if (session('success.info'))
+                    <div class="text-green-700 mb-5">{{ session('success.info') }}</div>
+                    @endif
+                    <button data-modal-target="information-modal" data-modal-toggle="information-modal" class="mt-5 mb-5 block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                    Edit information
+                    </button>
                 </div>
             </div>
 
@@ -104,12 +107,12 @@
             <div class="flex flex-col w-full 2xl:w-2/3">
                 <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
                     <h4 class="text-xl text-gray-900 font-bold">Change Password</h4>
-                    @if (session('error'))
-                    <div class="text-red-700 mb-5">{{ session('error') }}</div>
+                    @if (session('error.pass'))
+                    <div class="text-red-700 mb-5">{{ session('error.pass') }}</div>
                     @endif
 
-			        @if (session('success'))
-                    <div class="text-green-700 mb-5">{{ session('success') }}</div>
+			        @if (session('success.pass'))
+                    <div class="text-green-700 mb-5">{{ session('success.pass') }}</div>
                     @endif
                     <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="mt-5 mb-5 block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
                     Change Password
@@ -200,7 +203,7 @@
                 </button>
                 <div class="px-6 py-6 lg:px-8">
                     <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Change Your password</h3>
-                    <form action="{{route('setting')}}" class="space-y-6" method="POST">
+                    <form action="{{route('change.password')}}" class="space-y-6" method="POST">
                     @csrf
                         <div>
                             <label for="oldpassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your current password</label>
@@ -212,6 +215,50 @@
                         </div>
                         
                         <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Change Your Password</button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main modal -->
+    <div id="information-modal"  tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-md max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="information-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+                <div class="px-6 py-6 lg:px-8">
+                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Edit Your Information</h3>
+                    <form action="{{route('edit.profile')}}" class="space-y-6" method="POST">
+                    @csrf
+                        <div>
+                            <label for="firstname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your current firstname</label>
+                            <input type="string" name="firstname" id="firstname" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="{{Auth::getUser()->userFull->firstname}}" >
+                        </div>
+                        <div>
+                            <label for="lastname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your current lastname</label>
+                            <input type="string" name="lastname" id="lastname" placeholder="{{Auth::getUser()->userFull->lastname}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" >
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your current email</label>
+                            <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="{{Auth::getUser()->userFull->email}}" >
+                        </div>
+                        <div>
+                            <label for="faculty" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your current faculty</label>
+                            <input type="string" name="faculty" id="faculty" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="{{Auth::getUser()->userFull->faculty}}">
+                        </div>
+                        <div>
+                            <label for="year" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your current year</label>
+                            <input type="number" name="year" id="year" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="{{Auth::getUser()->userFull->year}}" >
+                        </div>
+                        
+                        <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit edit</button>
                         
                     </form>
                 </div>

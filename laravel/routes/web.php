@@ -67,7 +67,8 @@ Route::middleware(['web'])->group(function () {
 
         // Setting page
         Route::get('/setting', [ProfileController::class,'getSettingPage'])->name('setting');
-        Route::post('/setting', [ProfileController::class,'changePassword'] )->name('setting');
+        Route::post('/setting/password', [ProfileController::class,'changePassword'] )->name('change.password');
+        Route::post('/setting/profile', [ProfileController::class,'editProfile'] )->name('edit.profile');
     
         // User page
         Route::middleware(['multirole:user'])->group( function () {

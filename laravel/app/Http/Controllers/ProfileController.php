@@ -65,17 +65,40 @@ class ProfileController extends Controller
 
         if (UserService::getUserManager()->getResetPasswordValidate($request)) {
             
-            $user = Auth::getUser();
-            $user->password = Hash::make($request->newpassword);
-            $user->save();
+
+            $status = UserService::getUserManager()->resetPassword($request);
             
-            return redirect()->back()->with('success', 'Password updated');
+            if ($status) {
+                return redirect()->back()->with('success.pass', 'Password updated');
+            }
+
+            
+            return redirect()->back()->with('error.pass', 'failed to update');
 
         }
         
-        return redirect()->back()->with('error', 'Your current password is not matched');
+        return redirect()->back()->with('error.pass', 'Your current password is not matched');
 
     }
+
+    public function editProfile(Request $request) {
+
+        if (UserService::getUserManager()->getEditProfileValidate($request)) {
+            
+            $status = UserService::getUserManager()->editProfile($request);
+            
+            if ($status) {
+                return redirect()->back()->with('success.info', 'information updated');
+            }
+            
+            return redirect()->back()->with('error.info', 'failed to update');
+
+        }
+        
+        return redirect()->back()->with('error.info', 'Your current password is not matched');
+
+    }
+
 
     public function getSettingPage() {
         return view('profile.setting');
