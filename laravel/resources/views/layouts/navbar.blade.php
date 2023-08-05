@@ -77,6 +77,19 @@ $(document).ready(function() {
         // setTimeout(function() {
         //     $('#profileNav').hide();
         // }, 5000);
+    },
+    click: function () {
+        if ($('#profileNav').is(':visible')) {
+            $('#profileNav').stop().fadeOut();
+        }
+        if ($('#profileNav').is(':hidden')) {
+            $('#profileNav').stop().fadeIn();
+            $("#profileNav").css({
+            left: event.clientX - 250 + 'px',
+            top: event.clientY + 20 + 'px',
+            });
+            $("#profileNav").css("z-index", "999");
+        }
     }
     });
 });
