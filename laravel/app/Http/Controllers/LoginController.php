@@ -26,6 +26,15 @@ class LoginController extends Controller
             if ($account == "admin") {
 
                 $token = UserService::getUserManager()->generateToken();
+
+                if (UserService::getUserManager()->getTokenValidate() != false) {
+                    
+                    $token = UserService::getUserManager()->getTokenValidate();
+                    $request->session()->put('token', $token);
+                    
+                    return redirect()->route('admin.main');
+
+                }
             
                 if (UserService::getUserManager()->pushTokenToUserToken($token) == false) {
                     return redirect()->back()->with('error', 'Can not generate login token');
@@ -39,6 +48,15 @@ class LoginController extends Controller
             if ($account == "user") {
                 
                 $token = UserService::getUserManager()->generateToken();
+
+                if (UserService::getUserManager()->getTokenValidate() != false) {
+                    
+                    $token = UserService::getUserManager()->getTokenValidate();
+                    $request->session()->put('token', $token);
+                    
+                    return redirect()->route('user.main');
+
+                }
                 
                 if (UserService::getUserManager()->pushTokenToUserToken($token) == false) {
                     return redirect()->back()->with('error', 'Can not generate login token');

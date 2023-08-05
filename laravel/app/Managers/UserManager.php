@@ -16,6 +16,7 @@ use Phattarachai\LaravelMobileDetect\Agent;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use App\Services\ImageService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;  
 
 
 
@@ -50,6 +51,26 @@ class UserManager {
 
     public function generateToken() {
         return Carbon::now();
+    }
+
+    public function getTokenValidate() {
+
+        $agent = new Agent();
+
+        $matchThese = ['user_id' => Auth::getUser()->id, 'device' => $agent->device(), 'browser' => $agent->browser()];
+        
+        try {
+
+            $user_token = UserToken::where($matchThese)->firstOrFail();
+            return UserToken::where($matchThese)->firstOrFail()->token;
+      
+        } catch (ModelNotFoundException $exception) {
+      
+            return false;
+        
+        }
+
+        
     }
 
     public function pushTokenToUserToken(string $token) {
