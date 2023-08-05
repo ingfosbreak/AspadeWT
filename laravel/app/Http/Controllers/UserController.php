@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\Event;
+use App\Models\EventUser;
 
 class UserController extends Controller
 {
@@ -23,5 +24,10 @@ class UserController extends Controller
         return view('event.main.main', [
             'event' => $event
         ]);
+    }
+    public function checkUerEvent(Event $event ,EventUser $eventuser){
+        if (condition) {
+            # code...
+        }
     }
 }

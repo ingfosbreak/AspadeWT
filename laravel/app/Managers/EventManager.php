@@ -20,6 +20,19 @@ class EventManager {
     public function getThatEvent(string $id) {
         return Event::find((float)$id);
     }
+    public function isUserInEvent(int $userid ,Event $event){
+        
+        $event_users = $event->users;
+        try {
+            $event_users->where('id',$userid)->firstOrFail();
+            return true;
+      
+        } catch (ModelNotFoundException $exception) {
+      
+            return false;
+        
+        }
+    }
 
     
 

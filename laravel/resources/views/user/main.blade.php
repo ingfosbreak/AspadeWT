@@ -37,13 +37,14 @@
                             data-ripple-light="true" style="position: absolute; bottom: 0; right: 5; top: 10;">
                             Info
                         </button></a>
-
+                    @if (EventService->getEventManager()->isUserInEvent($event,1))              
                     <a href="{{ route('event.main.main', ['event' => $event])}}">
                         <button
                             class="rounded-lg bg-orange-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                             data-ripple-light="true" style="position: absolute; bottom: 0; right: 0; top: 10;">
                             Join
                         </button></a>
+                    @endif
                 </div>
             </div>
             @endforeach
