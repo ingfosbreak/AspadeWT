@@ -21,4 +21,17 @@ class LogoutController extends Controller
 
 
     }
+
+    public function logoutSession(Request $request) {
+        
+        UserToken::where('user_id', Auth::getUser()->id)->delete();
+        
+        Auth::logout();
+        
+        if ($request->session()->exists('token')) {
+            $request->session()->forget('token');
+        }
+
+        return redirect()->route('welcome');
+    }
 }

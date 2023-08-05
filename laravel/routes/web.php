@@ -63,6 +63,7 @@ Route::middleware(['web'])->group(function () {
         
         // Logout page
         Route::get('/logout',[LogoutController::class, 'logout'])->name('logout');
+        Route::post('/logout/session',[LogoutController::class, 'logoutSession'])->name('logout.session');
 
         // Setting page
         Route::get('/setting', function () {
@@ -89,27 +90,28 @@ Route::middleware(['web'])->group(function () {
 
 
         // Admin page
-
-        Route::get('/admin/main', [AdminController::class, 'index'
-        ])->name('admin.main');
-
-        Route::get('/admin/main-access', function () {
-            return view('admin.access');
-            })->name("admin-access");
-
-         Route::get('/admin/main-report', function () {
-            return view('admin.report');
-            })->name("admin-report");
+        Route::middleware(['multirole:admin'])->group( function () {
             
-         Route::get('/admin/main-ban', function () {
-            return view('admin.ban');
-            })->name("admin-ban");
+            Route::get('/admin/main', [AdminController::class, 'index'
+            ])->name('admin.main');
+
+            Route::get('/admin/main-access', function () {
+                return view('admin.access');
+                })->name("admin-access");
+
+            Route::get('/admin/main-report', function () {
+                return view('admin.report');
+                })->name("admin-report");
+                
+            Route::get('/admin/main-ban', function () {
+                return view('admin.ban');
+                })->name("admin-ban");
+            
         
-        
-     });
+        });
 
   
-
+    });
 
 
 
