@@ -5,7 +5,7 @@ namespace App\Managers;
 
 use App\Models\Event;
 
-
+use Illuminate\Support\ItemNotFoundException;
 use Illuminate\Http\Request;
 
 
@@ -25,11 +25,11 @@ class EventManager {
         $event_users = $event->users;
         try {
             $event_users->where('id',$userid)->firstOrFail();
-            return true;
-      
-        } catch (ModelNotFoundException $exception) {
-      
             return false;
+      
+        } catch (ItemNotFoundException $exception) {
+      
+            return true;
         
         }
     }

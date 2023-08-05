@@ -73,8 +73,14 @@ Route::middleware(['web'])->group(function () {
         Route::middleware(['multirole:user'])->group( function () {
 
             Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main');
-
-
+            Route::get('/event/main/{event}',[UserController::class, 'getMainEventPage'])->name('event.main.main');
+            Route::get('/event/infomation/{event}',[EventController::class, 'getInfoEventPage'])->name('event.information');
+            Route::get('/event/main/infomation/{event}',[EventController::class, 'getInfoEventPageFormMainEvent'])->name('event.main.information');
+            Route::get('/event/{event}/form',[EventController::class, 'getJoinEventFormPage'])->name('event.form');
+            Route::get('/user/requestingEvent', function (){
+                return view('user.rquestingEvent');
+            })->name('user.rquestingEvent');
+            
         });
 
 
@@ -124,22 +130,11 @@ Route::post('/getmsg',function(){
     return response()->json(array('msg'=> "I miss you UWU"), 200);
 });
 
-Route::post('/user/main',[LoginController::class,'checkUser'])->name('user.user-main');
 
 Route::get('/profile',function(){
     return view('profile');
 })->name('profile');
 
-
-Route::get('/event/main/{event}',[UserController::class, 'getMainEventPage'])->name('event.main.main');
-
-Route::get('/event/{event}',[EventController::class, 'getInfoEventPage'])->name('event.information');
-Route::get('/event/infomation/{event}',[EventController::class, 'getInfoEventPage'])->name('event.information');
-Route::get('/event/main/infomation/{event}',[EventController::class, 'getInfoEventPageFormMainEvent'])->name('event.main.information');
-Route::get('/event/{event}/form',[EventController::class, 'getJoinEventFormPage'])->name('event.form');
-Route::get('/user/requestingEvent', function (){
-    return view('user.rquestingEvent');
-})->name('user.rquestingEvent');
 
 
 
