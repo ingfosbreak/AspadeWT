@@ -13,6 +13,7 @@
 <body>
     <div class="h-full bg-gray-200 p-8">
         <div class="bg-white rounded-lg shadow-xl pb-8">
+            @if (Auth::getUser()->role == "user")
             <a href="{{route('user.main')}}" class="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
@@ -21,12 +22,25 @@
                 </svg>
                 <span class="text-gray-700 ml-5">Go back to main</span>
             </a>
+            @endif
+            @if (Auth::getUser()->role == "admin")
+            <a href="{{route('admin.main')}}" class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                    <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                    
+                </svg>
+                <span class="text-gray-700 ml-5">Go back to main</span>
+            </a>
+            @endif
             <div class="w-full h-[250px]">
                 <img src="https://vojislavd.com/ta-template-demo/assets/img/profile-background.jpg" class="w-full h-full rounded-tl-lg rounded-tr-lg">
                 
             </div>
             <div class="flex flex-col items-center -mt-20">
+                @if (Auth::getUser()->image != null)
                 <img src="{{ Vite::asset('storage/app/public/'. Auth::getUser()->image->image_path) }}" class="w-40 h-40 object-cover border-4 border-white rounded-full">
+                @endif
                 <div class="flex items-center space-x-2 mt-2">
                     <p class="text-2xl">{{Auth::getUser()->userFull->firstname ." ". Auth::getUser()->userFull->lastname}}</p>
                     <span class="bg-blue-500 rounded-full p-1" title="Verified">
@@ -101,6 +115,23 @@
                     Edit information
                     </button>
                 </div>
+            </div>
+
+            <div class="flex flex-col w-full 2xl:w-2/3">
+                <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
+                    <h4 class="text-xl text-gray-900 font-bold">Change ProfileImage</h4>
+                    @if (session('error.image'))
+                    <div class="text-red-700 mb-5">{{ session('error.image') }}</div>
+                    @endif
+
+			        @if (session('success.image'))
+                    <div class="text-green-700 mb-5">{{ session('success.image') }}</div>
+                    @endif
+                    <button data-modal-target="profileImage-modal" data-modal-toggle="profileImage-modal" class="mt-5 mb-5 block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                    Change ProfileImage
+                    </button>
+                </div>
+                
             </div>
 
 
@@ -215,6 +246,35 @@
                         </div>
                         
                         <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Change Your Password</button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main modal -->
+    <div id="profileImage-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-md max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="profileImage-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+                <div class="px-6 py-6 lg:px-8">
+                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Change Your Image</h3>
+                    <form action="{{route('edit.image')}}" class="space-y-6" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    
+                        <div>
+                            <label class="block mb-2 text-sm font-medium text-gray-900" for="image">Upload file</label>
+                            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none" id="image" name="image" type="file" required>
+                        </div>
+                        
+                        <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Change Your Image</button>
                         
                     </form>
                 </div>

@@ -342,9 +342,60 @@ class UserManager {
      *
      */
 
-    public function getProfileImage() {
-        $path = Auth::getUser()->image;
-        return Vite::asset('storage/app/public/'. Auth::getUser()->image);
+    public function getEditImageValidate(Request $request) {
+
+        $validated = Validator::make($request->all(),[
+            'image' => 'nullable',
+            'images.*' => 'nullable|mimes:png,gif,jpg,jpeg,bmp|max:2048',
+        ]);
+
+        if ($validated->fails()) {
+            return false;
+        }
+
+        return true;
+
+    }
+
+    public function editImage(Request $request) {
+
+        if (Auth::getUser()->image == null) {
+            
+            if ( $request->image != null ) {
+                
+                $file = $request->file('image');
+                $success_image = ImageService::getImageManager()->uploadOneImage('profile_images/',$file);
+                
+                if ($success_image == false) {
+                    return false;
+                }
+                
+                if (!$this->createUserImage($success_image, Auth::getUser()->id)) {
+                    return false;
+                }
+
+                return true;
+    
+            }
+
+            return false;
+
+        }
+
+        $file = $request->file('image');
+        $success_image = ImageService::getImageManager()->uploadOneImage('profile_images/',$file);
+                
+        if ($success_image == false) {
+            return false;
+        }
+
+        $userimage = Auth::getUser()->image;
+        $userimage->name = $success_image['name'];
+        $userimage->image_path = $success_image['image_path'];
+
+        return $userimage->save();
+        
+
     }
     
 

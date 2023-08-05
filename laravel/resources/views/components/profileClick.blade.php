@@ -9,9 +9,11 @@
                 class="absolute flex h-32 w-full justify-center rounded-xl bg-cover">
             <div
                 class="absolute bottom-5 flex h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white bg-pink-400 dark:!border-navy-700">
+                @if (Auth::getUser()->image != null)
                 <img class="h-full w-full rounded-full object-cover"
                 src="{{ Vite::asset('storage/app/public/'. Auth::getUser()->image->image_path) }}"
                     alt="" />
+                @endif
             </div>
         </div>
         

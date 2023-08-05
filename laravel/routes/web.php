@@ -69,6 +69,7 @@ Route::middleware(['web'])->group(function () {
         Route::get('/setting', [ProfileController::class,'getSettingPage'])->name('setting');
         Route::post('/setting/password', [ProfileController::class,'changePassword'] )->name('change.password');
         Route::post('/setting/profile', [ProfileController::class,'editProfile'] )->name('edit.profile');
+        Route::post('/setting/image', [ProfileController::class,'editImage'] )->name('edit.image');
     
         // User page
         Route::middleware(['multirole:user'])->group( function () {

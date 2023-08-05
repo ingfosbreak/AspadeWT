@@ -99,6 +99,24 @@ class ProfileController extends Controller
 
     }
 
+    public function editImage(Request $request) {
+
+        if (UserService::getUserManager()->getEditImageValidate($request)) {
+            
+            $status = UserService::getUserManager()->editImage($request);
+            
+            if ($status) {
+                return redirect()->back()->with('success.image', 'ProfileImage updated');
+            }
+            
+            return redirect()->back()->with('error.image', 'failed to update');
+
+        }
+        
+        return redirect()->back()->with('error.image', 'Your current password is not matched');
+
+    }
+
 
     public function getSettingPage() {
         return view('profile.setting');
