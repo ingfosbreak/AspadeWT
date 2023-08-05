@@ -1,4 +1,4 @@
-<div class="none" id="profileNav">
+<div class="cover" id="profileNav">
 <section style="font-family: Montserrat" class=" bg-[#071e34] flex font-medium items-center justify-center h-fit">
 
 <section class="w-64 mx-auto bg-transparent rounded-2xl px-8 py-6 shadow-lg">
@@ -45,12 +45,9 @@
 
 <style>
 
-.none {
-    display:none;
-}
 .cover{
     background:rgba(0,0,0,0);
-    position:fixed;
+    position:absolute;
     display:flex;
     flex-direction:column;
 }

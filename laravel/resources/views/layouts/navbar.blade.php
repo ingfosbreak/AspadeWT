@@ -23,7 +23,7 @@
                         disabled="disabled">search</button>
                 </div>
                 <!-- Sign In / Register      -->
-                <div class="flex items-center hover:text-gray-200" id="but">
+                <div class="flex items-center hover:text-gray-200" id="profilebut">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -47,19 +47,55 @@
 
 <script type="module">
 $(document).ready(function() {
-    $('#but').bind('click', function(event) {
-        var classname = $('#profileNav').attr('class');
-        if (classname == "none") {
-            $('#profileNav').removeClass('none').addClass('cover');
-            $("#profileNav").css({
-                left: event.clientX - 250 + 'px',
-                top: event.clientY + 20 + 'px',
-            });
-        } else {
-            $('#profileNav').removeClass('cover').addClass('none');
-        }
+    $('#profileNav').hide();
+    
+    $("#profilebut").on({
+    mouseenter: function (event) {
+        $('#profileNav').show();
+        $("#profileNav").css({
+            left: event.clientX - 250 + 'px',
+            top: event.clientY + 20 + 'px',
+        });
+
+        
+        $("#profileNav").on({
+            mouseenter: function (event) {
+                $('#profileNav').stop().fadeIn();
+            
+            },
+            mouseleave: function () {
+                setTimeout(function() {
+                    $('#profileNav').stop().fadeOut();
+                }, 1000);
+            }
+        });
 
 
+    },
+    mouseleave: function () {
+        // setTimeout(function() {
+        //     $('#profileNav').hide();
+        // }, 5000);
+    }
     });
 });
+    
+    
+    
+    
+//     function(event) {
+//         var classname = $('#profileNav').attr('class');
+//         if (classname == "none") {
+//             $('#profileNav').removeClass('none').addClass('cover');
+//             $("#profileNav").css({
+//                 left: event.clientX - 250 + 'px',
+//                 top: event.clientY + 20 + 'px',
+//             });
+//         } else {
+//             $('#profileNav').removeClass('cover').addClass('none');
+//         }
+
+
+//     });
+// });
 </script>
