@@ -89,14 +89,24 @@ Route::middleware(['web'])->group(function () {
 
 
         // Admin page
-        Route::middleware(['auth', 'multirole:admin'])->group( function () {
 
-            Route::get('/admin/main', [AdminController::class, 'index'])->name('admin.main');
-    
-    
-        });
+        Route::get('/admin/main', [AdminController::class, 'index'
+        ])->name('admin.main');
 
-    });
+        Route::get('/admin/main-access', function () {
+            return view('admin.access');
+            })->name("admin-access");
+
+         Route::get('/admin/main-report', function () {
+            return view('admin.report');
+            })->name("admin-report");
+            
+         Route::get('/admin/main-ban', function () {
+            return view('admin.ban');
+            })->name("admin-ban");
+        
+        
+     });
 
   
 
