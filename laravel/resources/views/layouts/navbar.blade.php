@@ -79,23 +79,5 @@ $(document).ready(function() {
     }
     });
 });
-    
-    
-    
-    
-//     function(event) {
-//         var classname = $('#profileNav').attr('class');
-//         if (classname == "none") {
-//             $('#profileNav').removeClass('none').addClass('cover');
-//             $("#profileNav").css({
-//                 left: event.clientX - 250 + 'px',
-//                 top: event.clientY + 20 + 'px',
-//             });
-//         } else {
-//             $('#profileNav').removeClass('cover').addClass('none');
-//         }
 
-
-//     });
-// });
 </script>

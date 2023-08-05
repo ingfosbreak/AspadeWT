@@ -32,12 +32,6 @@ Route::middleware(['web'])->group(function () {
     })->name('welcome');
 
 
-
-    // Logout page
-    Route::get('/logout',[LogoutController::class, 'logout'])->name('logout');
-
-
-
     // Login Page
     Route::controller(LoginController::class)->group(function () {
     
@@ -63,24 +57,45 @@ Route::middleware(['web'])->group(function () {
     });
 
 
+    // Auth page
+    Route::middleware(['auth'])->group( function () {
 
-    // User page
-    Route::middleware(['auth', 'multirole:user'])->group( function () {
+        
+        // Logout page
+        Route::get('/logout',[LogoutController::class, 'logout'])->name('logout');
 
-        Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main');
+        // Setting page
+        Route::get('/setting', function () {
+            return view('profile.setting');
+        })->name('setting');
+    
+        // User page
+        Route::middleware(['multirole:user'])->group( function () {
 
+            Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main');
+
+
+        });
+
+
+
+
+
+
+        // Admin page
+        Route::middleware(['auth', 'multirole:admin'])->group( function () {
+
+            Route::get('/admin/main', [AdminController::class, 'index'])->name('admin.main');
+    
+    
+        });
 
     });
 
+  
 
 
-    // Admin page
-    Route::middleware(['auth', 'multirole:admin'])->group( function () {
 
-        Route::get('/admin/main', [AdminController::class, 'index'])->name('admin.main');
-    
-    
-    });
 
 });
 
