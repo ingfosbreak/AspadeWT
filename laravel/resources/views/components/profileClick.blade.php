@@ -19,7 +19,7 @@
             <p class="text-2xl font-normal text-green-500">status : {{Auth::user()->status}}</p>
             <a href="{{route('setting')}}">
                 <p class="text-2xl font-normal text-gray-600">Setting</p>
-            
+            </a>
             <form action="{{route('logout')}}" class="" method="POST">
                 @csrf
                 <button type="submit" class="mt-2 mb-5 bg-red-700 rounded-lg w-40"><h4 class="text-xl text-white font-bold">Logout</h4></button>
@@ -40,7 +40,7 @@
 .cover{
     background:rgba(0,0,0,0);
     position:absolute;
-    display:flex;
+    display:none;
     flex-direction:column;
     z-index: -1;
 }
