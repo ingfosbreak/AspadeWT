@@ -40,6 +40,7 @@
     position:absolute;
     display:flex;
     flex-direction:column;
+    z-index: -1;
 }
 .contents{
     width:300px;

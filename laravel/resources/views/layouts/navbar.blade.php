@@ -51,11 +51,12 @@ $(document).ready(function() {
     
     $("#profilebut").on({
     mouseenter: function (event) {
-        $('#profileNav').show();
+        $('#profileNav').stop().fadeIn();
         $("#profileNav").css({
             left: event.clientX - 250 + 'px',
             top: event.clientY + 20 + 'px',
         });
+        $("#profileNav").css("z-index", "999");
 
         
         $("#profileNav").on({

@@ -83,6 +83,12 @@ class UserManager {
         $user_token->device = $agent->device();
         $user_token->platform = $agent->platform();
         $user_token->browser = $agent->browser();
+        $user_token->system = "desktop";
+        if ($agent->isMobile()) {
+            $user_token->system = "mobile";
+        }
+
+
         return $user_token->save();
 
     }
