@@ -2,9 +2,9 @@
 
 namespace App\Managers;
 
-use App\Models\UserEntry;
+
 use App\Models\Event;
-use App\Models\EventUserEntry;
+
 
 use Illuminate\Http\Request;
 
