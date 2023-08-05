@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use App\Services\ImageService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;  
+use App\Http\Requests\OldPasswordRequest;
 
 
 
@@ -250,8 +251,28 @@ class UserManager {
 
     }
 
-    
 
+
+
+    /*
+     * 
+     *  Reset password 
+     * 
+     */
+    
+     public function getResetPasswordValidate(Request $request) {
+
+        $validated =  Validator::make($request->all(),[
+            'oldpassword' => ['required', new OldPasswordRequest(Auth::getUser())],
+            'newpassword' => ['required'],
+        ]);
+        
+        if ($validated->fails()) {
+            return false;
+        }
+
+        return true;
+    }
 
     
 

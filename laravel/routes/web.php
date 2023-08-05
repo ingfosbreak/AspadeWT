@@ -62,13 +62,12 @@ Route::middleware(['web'])->group(function () {
 
         
         // Logout page
-        Route::get('/logout',[LogoutController::class, 'logout'])->name('logout');
+        Route::post('/logout',[LogoutController::class, 'logout'])->name('logout');
         Route::post('/logout/session',[LogoutController::class, 'logoutSession'])->name('logout.session');
 
         // Setting page
-        Route::get('/setting', function () {
-            return view('profile.setting');
-        })->name('setting');
+        Route::get('/setting', [ProfileController::class,'getSettingPage'])->name('setting');
+        Route::post('/setting', [ProfileController::class,'changePassword'] )->name('setting');
     
         // User page
         Route::middleware(['multirole:user'])->group( function () {

@@ -104,7 +104,16 @@
             <div class="flex flex-col w-full 2xl:w-2/3">
                 <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
                     <h4 class="text-xl text-gray-900 font-bold">Change Password</h4>
-                    <p class="mt-2 text-gray-700">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt voluptates obcaecati numquam error et ut fugiat asperiores. Sunt nulla ad incidunt laboriosam, laudantium est unde natus cum numquam, neque facere. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, magni odio magnam commodi sunt ipsum eum! Voluptas eveniet aperiam at maxime, iste id dicta autem odio laudantium eligendi commodi distinctio!</p>
+                    @if (session('error'))
+                    <div class="text-red-700 mb-5">{{ session('error') }}</div>
+                    @endif
+
+			        @if (session('success'))
+                    <div class="text-green-700 mb-5">{{ session('success') }}</div>
+                    @endif
+                    <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="mt-5 mb-5 block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                    Change Password
+                    </button>
                 </div>
                 
             </div>
@@ -166,7 +175,7 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                 </svg>
                 <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to Logout all Session?</h3>
-                <form action="{{route('logout.session')}}" class="my-20 mx-5 " method="POST">
+                <form action="{{route('logout.session')}}" class="" method="POST">
                 @csrf
                 <button data-modal-hide="popup-modal" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                     Yes, I'm sure
@@ -177,6 +186,38 @@
         </div>
     </div>
     </div>
+
+    <!-- Main modal -->
+    <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-md max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="authentication-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+                <div class="px-6 py-6 lg:px-8">
+                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Change Your password</h3>
+                    <form action="{{route('setting')}}" class="space-y-6" method="POST">
+                    @csrf
+                        <div>
+                            <label for="oldpassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your current password</label>
+                            <input type="password" name="oldpassword" id="oldpassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="••••••••" required>
+                        </div>
+                        <div>
+                            <label for="newpassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your new password</label>
+                            <input type="password" name="newpassword" id="newpassword" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                        </div>
+                        
+                        <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Change Your Password</button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
 </body>

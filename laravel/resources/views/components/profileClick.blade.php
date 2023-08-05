@@ -19,10 +19,12 @@
             <p class="text-2xl font-normal text-green-500">status : {{Auth::user()->status}}</p>
             <a href="{{route('setting')}}">
                 <p class="text-2xl font-normal text-gray-600">Setting</p>
-            </a>
-            <a href="{{route('logout')}}">
-                <p class="text-2xl font-normal text-red-600">Logout</p>
-            </a>
+            
+            <form action="{{route('logout')}}" class="" method="POST">
+                @csrf
+                <button type="submit" class="mt-2 mb-5 bg-red-700 rounded-lg w-40"><h4 class="text-xl text-white font-bold">Logout</h4></button>
+                
+            </form>
         </div>
         
     </div>

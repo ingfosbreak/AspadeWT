@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Services\UserService;
+use Hash;
+
 
 class ProfileController extends Controller
 {
@@ -56,5 +59,25 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function changePassword(Request $request) {
+
+        if (UserService::getUserManager()->getResetPasswordValidate($request)) {
+            
+            $user = Auth::getUser();
+            $user->password = Hash::make($request->newpassword);
+            $user->save();
+            
+            return redirect()->back()->with('success', 'Password updated');
+
+        }
+        
+        return redirect()->back()->with('error', 'Your current password is not matched');
+
+    }
+
+    public function getSettingPage() {
+        return view('profile.setting');
     }
 }
