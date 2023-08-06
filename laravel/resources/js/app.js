@@ -14,4 +14,11 @@ import.meta.glob([
     '../images/**'
 ]);
 
+function reply_click(clicked_id)
+{
+    console.log(clicked_id);
+}
+
+window.reply_click = reply_click;
+
 Alpine.start();
