@@ -4,6 +4,7 @@ use App\Http\Controllers;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
@@ -115,6 +116,12 @@ Route::middleware(['web'])->group(function () {
   
     });
 
+    Route::get('/test', function(){
+        return view('test');
+    })->name('test');
+        
+    
+
 
 
 });
@@ -129,12 +136,9 @@ Route::middleware(['web'])->group(function () {
 
 
     
-Route::get('/test', function(){
-    return view('test');
-})->name('test');
-    
 
 
+Route::post('/createProcess', [ProcessController::class,'createProcess'] )->name('create.process');
 
 
 

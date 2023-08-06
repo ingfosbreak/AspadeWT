@@ -14,11 +14,9 @@ import.meta.glob([
     '../images/**'
 ]);
 
-function reply_click(clicked_id)
-{
-    console.log(clicked_id);
-}
+import { reply_click, callAjax} from './func';
 
 window.reply_click = reply_click;
+window.callAjax = callAjax;
 
 Alpine.start();
