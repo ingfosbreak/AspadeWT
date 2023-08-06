@@ -74,9 +74,9 @@
       </div>
       <!-- board card -->
       <div class="grid grid-rows-2 gap-2" id ="second" >
-        <div class="p-2 rounded shadow-sm border-gray-100 border-2" id="s1" onClick="reply_click(this.id)">
+        <div class="p-2 rounded shadow-sm border-gray-100 border-2" >
           <h3 class="text-sm mb-3 text-gray-700">Blog post live</h3>
-          <p class="bg-yellow-100 text-xs w-max p-1 rounded mr-2 text-gray-700">WIP</p>
+          <p class="bg-yellow-100 text-xs w-max p-1 rounded mr-2 text-gray-700" id="s1" onClick="reply_click(this.id)">WIP</p>
           <div class="flex flex-row items-center mt-2">
             <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
             <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
@@ -95,10 +95,6 @@
           <p class="text-xs text-gray-500 mt-2">Jun 21, 2019 &#10141; Jun 21, 2019</p>
           <p class="text-xs text-gray-500 mt-2">1</p>
         </div>
-      </div>
-      <div class="flex flex-row items-center text-gray-300 mt-2 px-1">
-        <p class="rounded mr-2 text-2xl">+</p>
-        <p class="pt-1 rounded text-sm">New</p>
       </div>
     </div>
 
@@ -160,10 +156,6 @@
           <p class="text-xs text-gray-500 mt-2">Jun 18, 2019</p>
           <p class="text-xs text-gray-600 mt-2">3</p>
         </div>
-      </div>
-      <div class="flex flex-row items-center text-gray-300 mt-2 px-1">
-        <p class="rounded mr-2 text-2xl">+</p>
-        <p class="pt-1 rounded text-sm">New</p>
       </div>
     </div>
 

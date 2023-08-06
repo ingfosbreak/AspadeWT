@@ -9,7 +9,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="flex flex-wrap h-screen items-center justify-center">
+    <body class="flex flex-wrap w-screen h-screen items-center justify-center">
         @yield('content')
     </body>
 </html>
