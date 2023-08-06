@@ -107,6 +107,7 @@ Route::middleware(['web'])->group(function () {
             Route::get('/admin/main-ban', function () {
                 return view('admin.ban');
                 })->name("admin-ban");
+
             
         
         });
@@ -135,9 +136,7 @@ Route::get('/test', function(){
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::post('/getmsg',function(){
     return response()->json(array('msg'=> "I miss you UWU"), 200);

@@ -1,38 +1,31 @@
-<!-- follow me on twitter @asad_codes -->
+@extends('layouts.admin')
 
-<div class="flex flex-wrap">
-    <section class="relative mx-auto">
-        <!-- navbar -->
-        <nav class="flex justify-between bg-gray-900 text-white w-screen">
-            <div class="px-5 xl:px-12 py-6 flex w-full items-center">
-                <a class="text-3xl font-bold font-heading" href="#">
-                    <img class="h-16"
-                        src="https://media.discordapp.net/attachments/1133336224237629504/1135067839271796806/image.png?width=1368&height=701"
-                        alt="logo">
-                </a>
-                <!-- Nav Links -->
-                <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-                    
-                </ul>
-                <div class="flex  rounded bg-white" x-data="{ search: '' }">
-                    <input type="search"
-                        class="w-full border-none bg-transparent px-4 py-1 text-gray-900 focus:outline-none"
-                        placeholder="search" x-model="search">
-                    <button class="m-2 rounded px-4 py-2 font-semibold text-gray-100 bg-gray-500 cursor-not-allowed"
-                        :class="(search) ? 'bg-purple-500' : 'bg-gray-500 cursor-not-allowed'" :disabled="!search"
-                        disabled="disabled">search</button>
-                </div>
-                <!-- Sign In / Register      -->
-                <div class="flex items-center hover:text-gray-200" id="but">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+@section('content')
+<div class="mt-8 flex flex-wrap space-x-0 space-y-2 md:space-x-4 md:space-y-0">
+                <!-- Primer contenedor -->
+                <!-- Sección 1 - Gráfica de Usuarios -->
+                <div class="flex-1 bg-white p-4 shadow rounded-lg md:w-1/2">
+                    <h2 class="text-gray-500 text-lg font-semibold pb-1">Usuarios</h2>
+                    <div class="my-1"></div> <!-- Espacio de separación -->
+                    <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div> <!-- Línea con gradiente -->
+                    <div class="chart-container" style="position: relative; height:150px; width:100%">
+                        <!-- El canvas para la gráfica -->
+                        <canvas id="usersChart"></canvas>
+                    </div>
                 </div>
 
-
+                <!-- Segundo contenedor -->
+                <!-- Sección 2 - Gráfica de Comercios -->
+                <div class="flex-1 bg-white p-4 shadow rounded-lg md:w-1/2">
+                    <h2 class="text-gray-500 text-lg font-semibold pb-1">Comercios</h2>
+                    <div class="my-1"></div> <!-- Espacio de separación -->
+                    <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div> <!-- Línea con gradiente -->
+                    <div class="chart-container" style="position: relative; height:150px; width:100%">
+                        <!-- El canvas para la gráfica -->
+                        <canvas id="commercesChart"></canvas>
+                    </div>
+                </div>
             </div>
-</div>
 
+@endsection
 

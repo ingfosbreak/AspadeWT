@@ -1,38 +1,54 @@
-<!-- follow me on twitter @asad_codes -->
+@extends('layouts.admin')
 
-<div class="flex flex-wrap">
-    <section class="relative mx-auto">
-        <!-- navbar -->
-        <nav class="flex justify-between bg-gray-900 text-white w-screen">
-            <div class="px-5 xl:px-12 py-6 flex w-full items-center">
-                <a class="text-3xl font-bold font-heading" href="#">
-                    <img class="h-16"
-                        src="https://media.discordapp.net/attachments/1133336224237629504/1135067839271796806/image.png?width=1368&height=701"
-                        alt="logo">
-                </a>
-                <!-- Nav Links -->
-                <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-                    
-                </ul>
-                <div class="flex  rounded bg-white" x-data="{ search: '' }">
-                    <input type="search"
-                        class="w-full border-none bg-transparent px-4 py-1 text-gray-900 focus:outline-none"
-                        placeholder="search" x-model="search">
-                    <button class="m-2 rounded px-4 py-2 font-semibold text-gray-100 bg-gray-500 cursor-not-allowed"
-                        :class="(search) ? 'bg-purple-500' : 'bg-gray-500 cursor-not-allowed'" :disabled="!search"
-                        disabled="disabled">search</button>
+@section('content')
+<div class="mt-8 bg-white p-4 shadow rounded-lg">
+                <h2 class="text-gray-500 text-lg font-semibold pb-4">Autorizaciones Pendientes</h2>
+                <div class="my-1"></div> <!-- Espacio de separación -->
+                <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div> <!-- Línea con gradiente -->
+                <table class="w-full table-auto text-sm">
+                    <thead>
+                        <tr class="text-sm leading-normal">
+                            <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Foto</th>
+                            <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Nombre</th>
+                            <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Rol</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="hover:bg-grey-lighter">
+                            <td class="py-2 px-4 border-b border-grey-light"><img src="https://via.placeholder.com/40" alt="Foto Perfil" class="rounded-full h-10 w-10"></td>
+                            <td class="py-2 px-4 border-b border-grey-light">Juan Pérez</td>
+                            <td class="py-2 px-4 border-b border-grey-light">Comercio</td>
+                        </tr>
+                        <!-- Añade más filas aquí como la anterior para cada autorización pendiente -->
+                        <tr class="hover:bg-grey-lighter">
+                            <td class="py-2 px-4 border-b border-grey-light"><img src="https://via.placeholder.com/40" alt="Foto Perfil" class="rounded-full h-10 w-10"></td>
+                            <td class="py-2 px-4 border-b border-grey-light">María Gómez</td>
+                            <td class="py-2 px-4 border-b border-grey-light">Usuario</td>
+                        </tr>
+                        </tr>
+                        <tr class="hover:bg-grey-lighter">
+                            <td class="py-2 px-4 border-b border-grey-light"><img src="https://via.placeholder.com/40" alt="Foto Perfil" class="rounded-full h-10 w-10"></td>
+                            <td class="py-2 px-4 border-b border-grey-light">Carlos López</td>
+                            <td class="py-2 px-4 border-b border-grey-light">Usuario</td>
+                        </tr>
+                        <tr class="hover:bg-grey-lighter">
+                            <td class="py-2 px-4 border-b border-grey-light"><img src="https://via.placeholder.com/40" alt="Foto Perfil" class="rounded-full h-10 w-10"></td>
+                            <td class="py-2 px-4 border-b border-grey-light">Laura Torres</td>
+                            <td class="py-2 px-4 border-b border-grey-light">Comercio</td>
+                        </tr>
+                        <tr class="hover:bg-grey-lighter">
+                            <td class="py-2 px-4 border-b border-grey-light"><img src="https://via.placeholder.com/40" alt="Foto Perfil" class="rounded-full h-10 w-10"></td>
+                            <td class="py-2 px-4 border-b border-grey-light">Ana Ramírez</td>
+                            <td class="py-2 px-4 border-b border-grey-light">Usuario</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- Botón "Ver más" para la tabla de Autorizaciones Pendientes -->
+                <div class="text-right mt-4">
+                    <button class="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-2 px-4 rounded">
+                        Ver más
+                    </button>
                 </div>
-                <!-- Sign In / Register      -->
-                <div class="flex items-center hover:text-gray-200" id="but">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                </div>
-
-
             </div>
-</div>
-
+@endsection
 
