@@ -140,6 +140,7 @@ Route::middleware(['web'])->group(function () {
 
 
 Route::post('/createProcess', [ProcessController::class,'createProcess'] )->name('create.process');
+Route::post('/editProcess', [ProcessController::class,'editProcess'] )->name('edit.process');
 
 
 

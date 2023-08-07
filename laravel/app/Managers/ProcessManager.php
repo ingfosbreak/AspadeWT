@@ -32,6 +32,11 @@ class ProcessManager {
         return false;
     }
 
+    public function editProcess(Request $request) {
+
+        
+    }
+
 
 
     

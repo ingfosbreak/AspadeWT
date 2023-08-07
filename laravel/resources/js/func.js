@@ -12,7 +12,7 @@ function postAjax(url, token) {
     return callAjax('POST', url, data)
 }
 
-function callAjax(type, url, token, data=null) {
+function createAjax(type, url, token, data=null) {
             
     $.ajax({
         type  : type,
@@ -32,6 +32,28 @@ function callAjax(type, url, token, data=null) {
     
 }
 
+function editAjax(type, url, token, data=null) {
+            
+    $.ajax({
+        type  : type,
+        url   : url,
+        data  : { _token: token,
+                    data: data},
+        async : false,
+        success:function(data) {
+            if (data == true) {
+                alert("success edit task");
+            }
+            else {
+                alert("failed to edit task");
+            }
+        }
+    });
+    
+}
+
+
+
 
 // $.ajax({
             //    type:'POST',
@@ -42,4 +64,4 @@ function callAjax(type, url, token, data=null) {
             //    }
             // });
 
-export {reply_click , callAjax};
+export {reply_click , createAjax, editAjax};
