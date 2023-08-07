@@ -150,3 +150,16 @@ body {
 
 
 
+/* เปลี่ยนสีพื้นหลังและสีของลิงก์ */
+.pagination {
+    background-color: #f0f0f0;
+}
+
+.pagination a {
+    color: #333;
+}
+
+/* เพิ่มเงาให้ลิงก์เมื่อเม้าส์ hover */
+.pagination a:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}

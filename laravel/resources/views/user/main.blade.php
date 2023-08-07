@@ -52,7 +52,7 @@
                                     </button>
                                 </a>
                                 @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))              
-                                <a href="{{ route('event.form', ['event' => $event])}}">
+                                <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
                                     <button
                                         class="rounded-lg bg-orange-500 mt-5 ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                                         Join
@@ -94,7 +94,7 @@
                                     </button>
                                 </a>
                                 @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))              
-                                <a href="{{ route('event.form', ['event' => $event])}}">
+                                <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
                                     <button
                                         class="rounded-lg bg-orange-500 mt-5 ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                                         Join
@@ -136,7 +136,7 @@
                                     </button>
                                 </a>
                                 @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))              
-                                <a href="{{ route('event.form', ['event' => $event])}}">
+                                <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
                                     <button
                                         class="rounded-lg bg-orange-500 mt-5 ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                                         Join
@@ -152,7 +152,7 @@
                 @endforeach
             </ul>
 
-
+            {{$events->links()}}
         </div>
     </div>
 </section>
