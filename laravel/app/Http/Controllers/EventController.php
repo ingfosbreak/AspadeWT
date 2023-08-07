@@ -19,7 +19,7 @@ class EventController extends Controller
     }
 
     public function getJoinEventFormPage(Event $event){
-        return view('event.form', [
+        return view('event.formJoinEvent', [
             'event' => $event
         ]);
     }
