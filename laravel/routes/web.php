@@ -83,6 +83,9 @@ Route::middleware(['web'])->group(function () {
             Route::get('/user/requestingEvent', function (){
                 return view('user.rquestingEvent');
             })->name('user.rquestingEvent');
+
+            Route::get('/event/{event}/kanban', [EventController::class, 'getEventKanbanPage'])->name('event.kanban');
+
             
         });
 
@@ -116,12 +119,12 @@ Route::middleware(['web'])->group(function () {
   
     });
 
+    
+        
+    
     Route::get('/test', function(){
         return view('test');
     })->name('test');
-        
-    
-
 
 
 });

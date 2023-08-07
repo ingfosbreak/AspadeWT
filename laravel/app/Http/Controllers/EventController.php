@@ -28,5 +28,9 @@ class EventController extends Controller
             'event' => $event
         ]);
     }
+
+    public function getEventKanbanPage(Event $event) {
+        return view('event.kanban',['event' => $event]);
+    }
     
 }

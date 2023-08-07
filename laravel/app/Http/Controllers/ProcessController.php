@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Process;
+use App\Services\ProcessService;
 
 
 class ProcessController extends Controller
@@ -14,10 +15,14 @@ class ProcessController extends Controller
     }
 
     public function createProcess(Request $request) {
-        return $request;
-        // $process = new Process();
-        // $process->event_id = $event_id;
-        // $process->name = name;        
+        
+        $success = ProcessService::getProcessManager()->createProcess($request);
+        if ($success != false) {
+            return true;
+        }
+        
+        return false;
+        
     }
 
     public function updateProcessStatus() {

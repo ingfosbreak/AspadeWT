@@ -18,11 +18,15 @@ function callAjax(type, url, token, data=null) {
         type  : type,
         url   : url,
         data  : { _token: token,
-                    text: data},
+                    data: data},
         async : false,
         success:function(data) {
-            console.log(data._token);
-            console.log(data.text);
+            if (data == true) {
+                alert("success created task");
+            }
+            else {
+                alert("failed to create task");
+            }
         }
     });
     

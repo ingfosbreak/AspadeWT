@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Managers\ProcessManagers;
+use App\Managers\ProcessManager;
 
 
 class ProcessService {
