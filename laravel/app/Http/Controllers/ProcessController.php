@@ -27,6 +27,18 @@ class ProcessController extends Controller
         
     }
 
+    public function editProcess(Request $request) {
+    
+
+        $success = ProcessService::getProcessManager()->editProcess($request);
+        if ($success != false) {
+            return true;
+        }
+
+        return true;
+
+    }
+
     public function updateProcessStatus() {
 
     }

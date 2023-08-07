@@ -34,7 +34,15 @@ class ProcessManager {
 
     public function editProcess(Request $request) {
 
-        
+        $process = Process::find( (int) $request->data['process_id']);
+        $process->name = $request->data['text'];
+
+        if ($process->save()) {
+            return $process;
+        }
+        return false;
+
+
     }
 
 

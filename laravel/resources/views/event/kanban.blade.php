@@ -146,6 +146,7 @@
 
       const drake = dragula([$('#first').get(0), $('#second').get(0),$('#third').get(0)], { revertOnSpill: true });
     
+      // editAjax('POST','{{route('edit.process')}}', '{{csrf_token()}}', {'process_id':"3",'text':"gggggg"});
 
             drake.on('drop', function(el, target, source, sibling) {
                 
@@ -202,9 +203,11 @@
   function show(id,type) {
 
     
+    
     if ($('#done-text'+'-'+id).is(':hidden')) {
       $('#done-text'+'-'+id).stop().fadeIn();
       $('#done-add-text'+'-'+id).html("cancel");
+      console.log(id);
     }
     else  {
       $('#done-text'+'-'+id).stop().fadeOut();
@@ -219,12 +222,12 @@
       if(e.which == 13){
                 
         if ($("#message"+'-'+id).val() !== "") {
-            if (id = "999"){
+            if (id == "999"){
               createAjax('POST','{{route('create.process')}}', '{{csrf_token()}}', {'event_id':{{$event->id}},'text':$("#message"+'-'+id).val()});
               window.location.reload(true);
             }
             else {
-              editAjax('POST','{{route('edit.process')}}', '{{csrf_token()}}', {'event_id':{{$event->id}},'text':$("#message"+'-'+id).val()});
+              editAjax('POST','{{route('edit.process')}}', '{{csrf_token()}}', {'process_id':id,'text':$("#message"+'-'+id).val()});
               window.location.reload(true);
             }
             
