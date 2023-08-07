@@ -84,8 +84,9 @@ Route::middleware(['web'])->group(function () {
                 return view('user.rquestingEvent');
             })->name('user.rquestingEvent');
 
-            Route::get('/event/{event}/kanban', [EventController::class, 'getEventKanbanPage'])->name('event.kanban');
             Route::post('/event/form',[ArtistController::class,'storeRequest'])->name('event.request.store');
+            Route::get('/event/{event}/kanban', [ProcessController::class, 'getEventKanbanPage'])->name('event.kanban');
+
             
         });
 
@@ -122,10 +123,7 @@ Route::middleware(['web'])->group(function () {
     
         
     
-    Route::get('/test', function(){
-        return view('test');
-    })->name('test');
-
+   
 
 });
 

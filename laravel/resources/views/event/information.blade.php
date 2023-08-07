@@ -48,6 +48,13 @@
                     Join
                 </button>
             </a>
+            <a href="{{ route('event.kanban',['event'=> $event])}}">
+                <button
+                    class="rounded-lg bg-orange-500 py-5 px-10 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    data-ripple-light="true">
+                    Kanban
+                </button>
+            </a>
         </div>
 
     </div>

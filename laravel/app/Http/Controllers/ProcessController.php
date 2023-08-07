@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Process;
 use App\Services\ProcessService;
+use App\Models\Event;
 
 
 class ProcessController extends Controller
 {
-    public function getProcessPage() {
-        return view('test');
 
+
+    public function getEventKanbanPage(Event $event) {
+        return view('event.kanban',['event' => $event]);
     }
 
     public function createProcess(Request $request) {
