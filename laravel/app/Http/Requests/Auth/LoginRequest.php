@@ -45,7 +45,7 @@ class LoginRequest extends FormRequest
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'error' => "Can't attempt your credentials",
+                'error' => "Failed to attempt your credentials",
             ]);
         }
 

@@ -72,6 +72,26 @@ function updateAjax(type, url, token, data=null) {
     
 }
 
+function removeAjax(type, url, token, data=null) {
+    
+    $.ajax({
+        type  : type,
+        url   : url,
+        data  : { _token: token,
+                    data: data},
+        async : false,
+        success:function(data) {
+            if (data == true) {
+                alert("success remove task");
+            }
+            else {
+                alert("failed to remove task");
+            }
+        }
+    });
+    
+}
+
 
 
 
@@ -84,4 +104,4 @@ function updateAjax(type, url, token, data=null) {
             //    }
             // });
 
-export { reply_click , createAjax, editAjax, updateAjax };
+export { reply_click , createAjax, editAjax, updateAjax, removeAjax };

@@ -141,6 +141,7 @@ Route::middleware(['web'])->group(function () {
 Route::post('/createProcess', [ProcessController::class,'createProcess'] )->name('create.process');
 Route::post('/editProcess', [ProcessController::class,'editProcess'] )->name('edit.process');
 Route::post('/updateProcess', [ProcessController::class,'updateProcess'] )->name('update.process');
+Route::post('/removeProcess', [ProcessController::class,'removeProcess'] )->name('remove.process');
 
 
 

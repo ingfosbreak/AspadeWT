@@ -27,7 +27,7 @@ class ProcessManager {
         $process->name = $request->data['text'];    
 
         if ($process->save()) {
-            return $process;
+            return true;
         }
         return false;
     }
@@ -38,7 +38,7 @@ class ProcessManager {
         $process->name = $request->data['text'];
 
         if ($process->save()) {
-            return $process;
+            return true;
         }
         return false;
 
@@ -51,12 +51,24 @@ class ProcessManager {
         $process->status = $request->data['status'];
 
         if ($process->save()) {
-            return $process;
+            return true;
         }
         return false;
 
 
     }
+
+    public function removeProcess(Request $request) {
+
+        $process = Process::find( (int) $request->data['process_id']);
+        
+        if ($process->delete()) {
+            return true;
+        }
+        return false;
+
+    }
+
 
 
     

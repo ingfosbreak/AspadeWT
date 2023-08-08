@@ -34,7 +34,7 @@ class ProcessController extends Controller
             return true;
         }
 
-        return true;
+        return false;
 
     }
 
@@ -45,6 +45,17 @@ class ProcessController extends Controller
             return true;
         }
 
+        return false;
+    }
+    
+    public function removeProcess(Request $request) {
+
+        $success = ProcessService::getProcessManager()->removeProcess($request);
+        if ($success != false) {
+            return true;
+        }
+
         return true;
     }
+
 }
