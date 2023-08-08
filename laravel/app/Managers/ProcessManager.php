@@ -45,6 +45,18 @@ class ProcessManager {
 
     }
 
+    public function updateProcess(Request $request) {
+
+        $process = Process::find( (int) $request->data['process_id']);
+        $process->status = $request->data['status'];
+
+        if ($process->save()) {
+            return $process;
+        }
+        return false;
+
+
+    }
 
 
     

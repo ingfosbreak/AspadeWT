@@ -14,11 +14,12 @@ import.meta.glob([
     '../images/**'
 ]);
 
-import { reply_click, createAjax, editAjax} from './func';
+import { reply_click, createAjax, editAjax, updateAjax } from './func';
 
 window.reply_click = reply_click;
 window.createAjax = createAjax;
 window.editAjax = editAjax;
+window.updateAjax = updateAjax;
 
 
 Alpine.start();

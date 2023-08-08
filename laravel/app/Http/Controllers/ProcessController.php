@@ -29,7 +29,6 @@ class ProcessController extends Controller
 
     public function editProcess(Request $request) {
     
-
         $success = ProcessService::getProcessManager()->editProcess($request);
         if ($success != false) {
             return true;
@@ -39,7 +38,13 @@ class ProcessController extends Controller
 
     }
 
-    public function updateProcessStatus() {
+    public function updateProcess(Request $request) {
 
+        $success = ProcessService::getProcessManager()->updateProcess($request);
+        if ($success != false) {
+            return true;
+        }
+
+        return true;
     }
 }

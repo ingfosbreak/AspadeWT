@@ -31,7 +31,7 @@
             </div>
           </div>
           <!-- board card -->
-          <div class="grid grid-rows-2 gap-2 border border-dashed rounded-lg" id = "first">
+          <div class="grid grid-rows-2 gap-2 border border-dashed rounded-lg" id = "todo">
           @foreach ($event->processes as $process)
             @if ($process->status == "todo")
             <div class="p-2 rounded bg-gray-100 shadow-sm border-gray-100 border-2" data-id="{{$process->id}}">
@@ -80,10 +80,10 @@
             </div>
           </div>
           <!-- board card -->
-          <div class="grid grid-rows-2 gap-2 border border-dashed rounded-lg" id ="second" >
+          <div class="grid grid-rows-2 gap-2 border border-dashed rounded-lg" id ="doing" >
           @foreach ($event->processes as $process)
             @if ($process->status == "doing")
-            <div class="p-2 rounded bg-gray-100 shadow-sm border-gray-100 border-2">
+            <div class="p-2 rounded bg-gray-100 shadow-sm border-gray-100 border-2"  data-id="{{$process->id}}">
               <h3 class="text-sm mb-3 text-gray-700">{{$process->name}}</h3>
               <p class="bg-yellow-100 text-xs w-max p-1 rounded mr-2 text-gray-700">WIP</p>
               <div class="flex flex-row items-center mt-2">
@@ -111,12 +111,12 @@
             </div>
           </div>
           <!-- board card -->
-          <div class="grid grid-rows-2 gap-2 border border-dashed rounded-lg" id="third" onClick="reply_click(this.id)">
+          <div class="grid grid-rows-2 gap-2 border border-dashed rounded-lg" id="done" onClick="reply_click(this.id)">
           @foreach ($event->processes as $process)
             @if ($process->status == "done")
-            <div class="p-2 rounded bg-gray-100 shadow-sm border-gray-100 border-2">
+            <div class="p-2 rounded bg-gray-100 shadow-sm border-gray-100 border-2"  data-id="{{$process->id}}">
               <h3 class="text-sm mb-3 text-gray-700">{{$process->name}}</h3>
-              <p class="bg-yellow-100 text-xs w-max p-1 rounded mr-2 text-gray-700">WIP</p>
+              <p class="bg-green-100 text-xs w-max p-1 rounded mr-2 text-gray-700">Done</p>
               <div class="flex flex-row items-center mt-2">
                 <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
                 <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
@@ -134,7 +134,7 @@
 </body>
 </html>
 <style>
-  #first,#second,#third{
+  #todo,#doing,#done{
     min-height: 150px;
   }
 
@@ -144,13 +144,15 @@
 
   $( document ).ready(function() {
 
-      const drake = dragula([$('#first').get(0), $('#second').get(0),$('#third').get(0)], { revertOnSpill: true });
+      const drake = dragula([$('#todo').get(0), $('#doing').get(0),$('#done').get(0)], { revertOnSpill: true });
     
       // editAjax('POST','{{route('edit.process')}}', '{{csrf_token()}}', {'process_id':"3",'text':"gggggg"});
 
             drake.on('drop', function(el, target, source, sibling) {
                 
-                console.log(el);
+              // console.log(el.getAttribute("data-id"));
+              updateAjax('POST','{{route('update.process')}}', '{{csrf_token()}}', {'process_id':el.getAttribute("data-id"),'status':target.id});
+              window.location.reload(true);
 
             });
 
@@ -206,12 +208,17 @@
     
     if ($('#done-text'+'-'+id).is(':hidden')) {
       $('#done-text'+'-'+id).stop().fadeIn();
-      $('#done-add-text'+'-'+id).html("cancel");
-      console.log(id);
+      $('#done-add-text'+'-'+id).html("Cancel");
+      
     }
     else  {
       $('#done-text'+'-'+id).stop().fadeOut();
-      $('#done-add-text'+'-'+id).html("new");
+      if (id == "999"){
+        $('#done-add-text'+'-'+id).html("New");
+      }
+      else {
+        $('#done-add-text'+'-'+id).html("Edit");
+      }
     }
                 
 
