@@ -12,30 +12,35 @@
 </head>
 
 <body>
-    <div class="flex flex-col h-screen bg-red-100">
+    <div class="flex flex-col h-screen bg-rose-200 w-full">
 
 
         <div class=" text-white shadow w-full p-2 flex items-center justify-between">
             <div class="flex items-center">
-                <div class="flex items-center">
-                    <img src="https://media.discordapp.net/attachments/1133336224237629504/1135067839271796806/image.png?width=881&height=451" alt="Logo"
-                        class="w-28 h-18 mr-2">
-                    <h2 class="font-bold text-xl text-gray-500">Aspade ADMIN</h2>
+                <img src="https://media.discordapp.net/attachments/1135564910131151019/1138487250234114109/remove.png?width=872&height=446"
+                    alt="Logo" class="w-28 h-18 mr-2">
+                <h2 class="font-bold text-xl text-gray-500">Aspade ADMIN</h2>
+            </div>
+            <div class = "justify-end">
+                <div class="flex items-center hover:text-gray-200" id="profilebut">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 hover:text-gray-200" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                 </div>
-                <div class="md:hidden flex items-center">
-                    <!-- Se muestra solo en dispositivos pequeños -->
-                    <button id="menuBtn">
-                        <i class="fas fa-bars text-gray-500 text-lg"></i> <!-- Ícono de menú -->
-                    </button>
+                <div class="flex flex-wrap">
+                    @include('components.profileClick')
                 </div>
             </div>
+
 
         </div>
 
         <!-- Contenido principal -->
         <div class="flex-1 flex flex-wrap ">
             <!-- Barra lateral de navegación (oculta en dispositivos pequeños) -->
-            <div class="p-2 bg-red-100 w-full md:w-60 flex flex-col md:flex hidden " id="sideNav" >
+            <div class="p-2 bg-red-100 w-full shadow md:w-60 flex flex-col md:flex hidden " id="sideNav">
                 <nav>
                     <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white"
                         href="{{route('admin-access')}}">
@@ -64,11 +69,6 @@
                     href="#">
                 </a>
 
-                <!-- Señalador de ubicación -->
-                <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mt-2"></div>
-
-                <!-- Copyright al final de la navegación lateral -->
-                <p class="mb-1 px-5 py-3 text-left text-xs text-cyan-500">Copyright WCSLAT@2023</p>
 
             </div>
 
@@ -79,5 +79,54 @@
         </div>
     </div>
 </body>
+<script type="module">
+$(document).ready(function() {
+    $('#profileNav').hide();
+
+    $("#profilebut").on({
+        mouseenter: function(event) {
+            $('#profileNav').stop().fadeIn();
+            $("#profileNav").css({
+                left: event.clientX - 250 + 'px',
+                top: event.clientY + 20 + 'px',
+            });
+            $("#profileNav").css("z-index", "999");
+
+
+            $("#profileNav").on({
+                mouseenter: function(event) {
+                    $('#profileNav').stop().fadeIn();
+
+                },
+                mouseleave: function() {
+                    setTimeout(function() {
+                        $('#profileNav').stop().fadeOut();
+                    }, 1000);
+                }
+            });
+
+
+        },
+        mouseleave: function() {
+            // setTimeout(function() {
+            //     $('#profileNav').hide();
+            // }, 5000);
+        },
+        click: function() {
+            if ($('#profileNav').is(':visible')) {
+                $('#profileNav').stop().fadeOut();
+            }
+            if ($('#profileNav').is(':hidden')) {
+                $('#profileNav').stop().fadeIn();
+                $("#profileNav").css({
+                    left: event.clientX - 250 + 'px',
+                    top: event.clientY + 20 + 'px',
+                });
+                $("#profileNav").css("z-index", "999");
+            }
+        }
+    });
+});
+</script>
 
 </html>
