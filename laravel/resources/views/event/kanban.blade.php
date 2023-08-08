@@ -90,7 +90,15 @@
                 <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
                 <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
               </div>
-              <p class="text-xs text-gray-500 mt-2">2</p>
+              <div class="flex flex-row items-center text-gray-300 mt-2 px-1" id="done-add-{{$process->id}}" onClick="show({{$process->id}})">
+                <p class="rounded mr-2 text-2xl">+</p>
+                <p class="pt-1 rounded text-sm" id="done-add-text-{{$process->id}}">Edit</p>
+              </div>
+              <div class="not-show" id="done-text-{{$process->id}}">
+                <label for="message-{{$process->id}}" class="block mb-2 text-sm font-medium text-gray-900">Add new task</label>
+                <textarea id="message-{{$process->id}}" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " placeholder="Write your thoughts here..."></textarea>
+              </div>
+            
             </div>
             @endif
           @endforeach
@@ -121,7 +129,7 @@
                 <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
                 <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
               </div>
-              <p class="text-xs text-gray-500 mt-2">2</p>
+              
             </div>
             @endif
           @endforeach
