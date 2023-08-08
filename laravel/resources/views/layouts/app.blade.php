@@ -11,7 +11,7 @@
 
     @include('layouts.navbar')
 
-    <main class="flex flex-wrap h-auto items-center justify-center w-full">
+    <main class=" bg-slate-900 ">
         @yield('content')
     </main>
 </body>

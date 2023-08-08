@@ -1,58 +1,67 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>AspadeWT</title>
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body>
-    <div class="flex flex-col h-screen bg-gray-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        
-        <div class="bg-white text-white shadow w-full p-2 flex items-center justify-between">
+    <title>AspadeWT</title>
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body>
+    <div class="flex flex-col h-screen bg-red-100">
+
+
+        <div class=" text-white shadow w-full p-2 flex items-center justify-between">
             <div class="flex items-center">
-                <div class="flex items-center"> 
-                    <img src="https://www.emprenderconactitud.com/img/POC%20WCS%20(1).png" alt="Logo" class="w-28 h-18 mr-2">
+                <div class="flex items-center">
+                    <img src="https://media.discordapp.net/attachments/1133336224237629504/1135067839271796806/image.png?width=881&height=451" alt="Logo"
+                        class="w-28 h-18 mr-2">
                     <h2 class="font-bold text-xl text-gray-500">Aspade ADMIN</h2>
                 </div>
-                <div class="md:hidden flex items-center"> <!-- Se muestra solo en dispositivos pequeños -->
+                <div class="md:hidden flex items-center">
+                    <!-- Se muestra solo en dispositivos pequeños -->
                     <button id="menuBtn">
                         <i class="fas fa-bars text-gray-500 text-lg"></i> <!-- Ícono de menú -->
                     </button>
                 </div>
             </div>
-            
+
         </div>
 
         <!-- Contenido principal -->
-        <div class="flex-1 flex flex-wrap">
+        <div class="flex-1 flex flex-wrap ">
             <!-- Barra lateral de navegación (oculta en dispositivos pequeños) -->
-            <div class="p-2 bg-white w-full md:w-60 flex flex-col md:flex hidden" id="sideNav">
+            <div class="p-2 bg-red-100 w-full md:w-60 flex flex-col md:flex hidden " id="sideNav" >
                 <nav>
-                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="{{route('admin-access')}}">
+                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white"
+                        href="{{route('admin-access')}}">
                         <i class="fas fa-home mr-2"></i>Event Requests
                     </a>
-                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="{{route('admin-report')}}">
+                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white"
+                        href="{{route('admin-report')}}">
                         <i class="fas fa-file-alt mr-2"></i>Join Requests
                     </a>
-                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="{{route('admin-ban')}}">
+                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white"
+                        href="{{route('admin-ban')}}">
                         <i class="fas fa-users mr-2"></i>Ban Requests
                     </a>
-                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="#">
+                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white"
+                        href="#">
                         <i class="fas fa-store mr-2"></i>Comercios
                     </a>
-                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="#">
+                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white"
+                        href="#">
                         <i class="fas fa-exchange-alt mr-2"></i>Transacciones
                     </a>
                 </nav>
 
                 <!-- Ítem de Cerrar Sesión -->
-                <a class="block text-gray-500 py-2.5 px-4 my-2 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white mt-auto" href="#">
-                    
+                <a class="block text-gray-500 py-2.5 px-4 my-2 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white mt-auto"
+                    href="#">
                 </a>
 
                 <!-- Señalador de ubicación -->
@@ -68,6 +77,7 @@
                 @yield('content')
             </div>
         </div>
-        </div>
-    </body>
+    </div>
+</body>
+
 </html>
