@@ -5,23 +5,46 @@
 
 
 <section id="testimonies" class="py-20 bg-slate-900 w-full">
-    <div class="max-w-6xl mx-8 md:mx-10 lg:mx-20 xl:mx-auto">
+    
+<div class="transition duration-500 ease-in-out transform scale-100 translate-x-0 translate-y-0 opacity-100">
+<div class="mb-12 space-y-5 md:text-center">
+    <aside class="w-full rounded-lg border-2 border-purple-600 p-4 max-w-lg mx-auto">
+        <h2 class="font-os text-white text-lg font-bold">Categories</h2>
+        <ul class="flex items-start flex-wrap mt-4">
+            <li class="flex mx-1">
+                <a class="p-2 px-3 border-purple-800 mb-4 rounded font-medium hover:bg-transparent hover:border-purple-800 border bg-purple-400/25  text-white"
+                    href="category/all">
+                    <h2>all</h2>
+                </a>
+            </li>
+            <li class="flex mx-1">
+                <a class="p-2 px-3 border-purple-800 mb-4 rounded font-medium hover:bg-transparent hover:border-purple-800 border bg-purple-400/25  text-white"
+                    href="category/react-js">
+                    <h2>react js</h2>
+                </a>
+            </li>
+            <li class="flex mx-1">
+                <a class="p-2 px-3 border-purple-800 mb-4 rounded font-medium hover:bg-transparent hover:border-purple-800 border bg-purple-400/25  text-white"
+                    href="category/redux">
+                    <h2>redux</h2>
+                </a>
+            </li>
+            <li class="flex mx-1">
+                <a class="p-2 px-3 border-purple-800 mb-4 rounded font-medium hover:bg-transparent hover:border-purple-800 border bg-purple-400/25  text-white"
+                    href="category/ui-design">
+                    <h2>ui design</h2>
+                </a>
+            </li>
+            
+
+        </ul>
+    </aside>
+</div>
+</div>    
 
 
-        <div class="transition duration-500 ease-in-out transform scale-100 translate-x-0 translate-y-0 opacity-100">
-            <div class="mb-12 space-y-5 md:mb-16 md:text-center">
-                <div
-                    class="inline-block px-3 py-1 text-sm font-semibold text-indigo-100 rounded-lg md:text-center text-cn bg-[#202c47] bg-opacity-60 hover:cursor-pointer hover:bg-opacity-40">
-                    Words from Others
-                </div>
-                <h1 class="mb-5 text-3xl font-semibold text-white md:text-center md:text-5xl">
-                    It's not just us.
-                </h1>
-                <p class="text-xl text-gray-100 md:text-center md:text-2xl">
-                    Here's what others have to say about us.
-                </p>
-            </div>
-        </div>
+<div class="max-w-6xl mx-8 md:mx-10 lg:mx-20 xl:mx-auto">
+
 
 
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">

@@ -7,13 +7,11 @@
 
             <a class="text-3xl font-bold font-heading" href="#">
                 <img class="h-16"
-                    src="https://media.discordapp.net/attachments/1133336224237629504/1135067839271796806/image.png?width=1368&height=701"
+                    src="https://media.discordapp.net/attachments/1135564910131151019/1138487250234114109/remove.png?width=1396&height=714"
                     alt="logo">
             </a>
             <!-- Nav Links -->
-            <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-
-            </ul>
+            
 
             <div>
                 <form
