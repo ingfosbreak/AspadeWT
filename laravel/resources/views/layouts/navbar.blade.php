@@ -5,14 +5,14 @@
         <!-- navbar -->
         <nav class="flex justify-between bg-gray-900 text-white w-screen px-5 xl:px-12 py-6 items-center">
 
-            <a class="text-3xl font-bold font-heading" href="#">
+            <a class="text-3xl font-bold font-heading" href="{{route('user.main')}}">
                 <img class="h-16"
                     src="https://media.discordapp.net/attachments/1135564910131151019/1138487250234114109/remove.png?width=1396&height=714"
                     alt="logo">
             </a>
             <!-- Nav Links -->
             
-
+            @if (Request::url() == route('user.main'))
             <div>
                 <form
                     class="mx-auto max-w-xl py-2 px-6 rounded-full bg-gray-50 border flex focus-within:border-gray-300">
@@ -25,6 +25,7 @@
                     </button>
                 </form>
             </div>
+            @endif
             <!-- Sign In / Register      -->
             <div class="flex items-center hover:text-gray-200" id="profilebut">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 hover:text-gray-200" fill="none"
