@@ -26,11 +26,14 @@
 				
 				<div class="mb-6">
 					<label for="email" class="block mb-2 text-green-200 font-mono text-xs">Your Email</label>
-					<input type="email" name="email" id="email" class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="email (Optional)">
+					<input type="email" name="email" id="email" class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="email (Optional)"  value="{{ old('email','')}}">
 				</div>
+				@error('email')
+    			<div class="text-red-700 mb-5">{{ $message }}</div>
+				@enderror
 				<div class="mb-6">
 					<label for="faculty" class="block mb-2 text-green-200 font-mono text-xs">Your Faculty</label>
-					<input type="faculty" name="faculty" id="faculty" class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="faculty (Optional)">
+					<input type="faculty" name="faculty" id="faculty" class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="faculty (Optional)"  value="{{ old('faculty','')}}">
 				</div>
 
 
@@ -41,14 +44,14 @@
 						<label class="block mb-2 text-green-200 font-mono text-xs" for="grid-first-name">
 							First Name
 						</label>
-						<input class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " id="grid-first-name" name="firstname" type="text" placeholder="firstname (Optional)">
+						<input class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " id="grid-first-name" name="firstname" type="text" placeholder="firstname (Optional)"  value="{{ old('firstname','')}}">
 					
 						</div>
 						<div class="md:w-1/2 ml-3">
 						<label class="block mb-2 text-green-200 font-mono text-xs" for="grid-last-name">
 							Last Name
 						</label>
-						<input class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " id="grid-last-name" name="lastname" type="text" placeholder="lastname (Optional)">
+						<input class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " id="grid-last-name" name="lastname" type="text" placeholder="lastname (Optional)"  value="{{ old('lastname','')}}">
 						</div>
 					</div>
 					<div class=" md:flex mb-6 mt-6">
@@ -65,8 +68,12 @@
 						<label class="block mb-2 text-green-200 font-mono text-xs" for="grid-year">
 							Year
 						</label>
-						<input class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " id="grid-year" name="year" type="number" placeholder="year (Optional)">
+						<input class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " id="grid-year" name="year" type="number" placeholder="year (Optional)"  value="{{ old('year','')}}">
+						@error('year')
+    					<div class="text-red-700 mb-5">{{ $message }}</div>
+						@enderror
 						</div>
+						
 					</div>
 				</div>
 

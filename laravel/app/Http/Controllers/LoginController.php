@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Services\UserService;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\Auth\LoginRequest;
+use Illuminate\Validation\ValidationException;
 
 
 class LoginController extends Controller
@@ -15,64 +16,57 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function login(Request $request) {
+    public function login(LoginRequest $request) {
         
-        $validated = UserService::getUserManager()->getUserLoginValidate($request);
-        
-        if ($validated) {
 
-            $account = UserService::getUserManager()->login($request);
-            
-            if ($account == "admin") {
+        UserService::getUserManager()->authenticate($request);    
 
-                $token = UserService::getUserManager()->generateToken();
+        $account = UserService::getUserManager()->login($request);
+                
+        if ($account == "admin") {
 
-                if (UserService::getUserManager()->getTokenValidate() != false) {
-                    
-                    $token = UserService::getUserManager()->getTokenValidate();
-                    $request->session()->put('token', $token);
-                    
-                    return redirect()->route('admin.main');
+            $token = UserService::getUserManager()->generateToken();
 
-                }
-            
-                if (UserService::getUserManager()->pushTokenToUserToken($token) == false) {
-                    return redirect()->back()->with('error', 'Can not generate login token');
-                } 
+            if (UserService::getUserManager()->getTokenValidate() != false) {
+                        
+                $token = UserService::getUserManager()->getTokenValidate();
+                $request->session()->put('token', $token);
+                        
+                return redirect()->route('admin.main');
+
+            }
+                
+            if (UserService::getUserManager()->pushTokenToUserToken($token) == false) {
+                return redirect()->back()->with('error', 'Can not generate login token');
+            } 
 
                 $request->session()->put('token', $token);
 
                 return redirect()->route('admin.main');
-            }
-
-            if ($account == "user") {
-                
-                $token = UserService::getUserManager()->generateToken();
-
-                if (UserService::getUserManager()->getTokenValidate() != false) {
-                    
-                    $token = UserService::getUserManager()->getTokenValidate();
-                    $request->session()->put('token', $token);
-                    
-                    return redirect()->route('user.main');
-
-                }
-                
-                if (UserService::getUserManager()->pushTokenToUserToken($token) == false) {
-                    return redirect()->back()->with('error', 'Can not generate login token');
-                } 
-
-                $request->session()->put('token', $token);
-
-                return redirect()->route('user.main');
-            }
-
-            return redirect()->back()->with('error', 'Please check your username or password again');
-
-            
         }
 
-        return redirect()->back()->with('error', 'Your request is not validated');
+        if ($account == "user") {
+                    
+            $token = UserService::getUserManager()->generateToken();
+
+            if (UserService::getUserManager()->getTokenValidate() != false) {
+                        
+                $token = UserService::getUserManager()->getTokenValidate();
+                $request->session()->put('token', $token);
+                        
+                return redirect()->route('user.main');
+
+            }
+                    
+            if (UserService::getUserManager()->pushTokenToUserToken($token) == false) {
+                return redirect()->back()->with('error', 'Can not generate login token');
+            } 
+
+            $request->session()->put('token', $token);
+
+            return redirect()->route('user.main');
+        }
+        
 
 
     }

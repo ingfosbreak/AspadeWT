@@ -23,14 +23,29 @@
 			<div class="mt-4 flex">
 				<form action="{{route('login')}}" class="mb-5 mx-5 w-full" method="POST">
 				@csrf
+
+				
 				<div class="mb-6">
 					<label for="username" class="block mb-2 text-green-200 font-mono text-xs ">username</label>
-					<input type="text" name="username" id="username" class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="username" required>
+					<input type="text" name="username" id="username" class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="username" value="{{ old('username','')}}" >
 				</div>
+
+				@error('username')
+    			<div class="text-red-700 mb-5">{{ $message }}</div>
+				@enderror
+
 				<div class="mb-6">
 					<label for="password" class="block mb-2 text-green-200 font-mono text-xs ">password</label>
-					<input type="password" name="password"id="password" class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="password" required>
+					<input type="password" name="password"id="password" class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="password" value="{{ old('password','')}}" >
 				</div>
+
+				@error('password')
+    			<div class="text-red-700 mb-5">{{ $message }}</div>
+				@enderror
+
+				@error('error')
+				<div class="text-red-700 mb-5">{{ $message }}</div>
+				@enderror
 
 				@if (session('error'))
 					<div class="text-red-700 mb-5">{{ session('error') }}</div>

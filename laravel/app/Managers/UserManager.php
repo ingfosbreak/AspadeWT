@@ -6,8 +6,11 @@ use App\Models\User;
 use App\Models\UserFull;
 use App\Models\UserToken;
 use App\Models\UserImage;
+use Illuminate\Support\Facades\RateLimiter;
 use Hash;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
+use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
@@ -18,10 +21,13 @@ use Illuminate\Support\Facades\Storage;
 use App\Services\ImageService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;  
 use App\Http\Requests\OldPasswordRequest;
+use App\Http\Requests\Auth\LoginRequest;
 
 
 
 class UserManager {
+    
+    public $decayMinutes = 0.01;
 
     public function __construct() {}
 
@@ -38,16 +44,26 @@ class UserManager {
 
     public function getUserLoginValidate(Request $request) {
 
-        $validated =  Validator::make($request->all(),[
+        $request->validate([
             'username' => 'required',
             'password' => 'required',
         ]);
-        
-        if ($validated->fails()) {
-            return false;
-        }
 
-        return true;
+        // $validated =  Validator::make($request->all(),[
+        //     'username' => 'required',
+        //     'password' => 'required',
+        // ]);
+        
+        // if ($validated->fails()) {
+        //     return false;
+        // }
+
+        // return true;
+    }
+
+    public function authenticate(LoginRequest $request)
+    {
+        $request->authenticate();
     }
 
     public function generateToken() {
@@ -94,7 +110,7 @@ class UserManager {
 
     }
 
-    public function login(Request $request) {
+    public function login(LoginRequest $request) {
         
         $credentials = array(
             'username' => $request->username,
@@ -102,10 +118,12 @@ class UserManager {
         );
         
         if (Auth::attempt($credentials, true) && Auth::getUser()->role == "admin") {
+            $request->session()->regenerate();
             return "admin";
         }
 
         if (Auth::attempt($credentials, true) && Auth::getUser()->role == "user") {
+            $request->session()->regenerate();
             return "user";
         }
 
@@ -128,16 +146,21 @@ class UserManager {
 
     public function getUserRegisterValidate(Request $request) {
 
-        $validated = Validator::make($request->all(),[
+        $request->validate([
             'username' => ['required', 'string', 'max:255', 'unique:'.User::class],
             'password' => 'required',
         ]);
 
-        if ($validated->fails()) {
-            return false;
-        }
+        // $validated = Validator::make($request->all(),[
+        //     'username' => ['required', 'string', 'max:255', 'unique:'.User::class],
+        //     'password' => 'required',
+        // ]);
 
-        return true;
+        // if ($validated->fails()) {
+        //     return false;
+        // }
+
+        // return true;
 
     }
 
@@ -178,22 +201,32 @@ class UserManager {
 
     public function getUserRegisterSecondValidate(Request $request) {
 
-        $validated = Validator::make($request->all(),[
+        $request->validate([
             'email' => ['nullable','unique:'.UserFull::class],
             'faculty' => 'nullable',
             'firstname' => 'nullable',
             'lastname' => 'nullable',
             'image' => 'nullable',
             'images.*' => 'nullable|mimes:png,gif,jpg,jpeg,bmp|max:2048',
-            'year' => 'nullable',
-
+            'year' => 'nullable|numeric|min:1',
         ]);
 
-        if ($validated->fails()) {
-            return false;
-        }
+        // $validated = Validator::make($request->all(),[
+        //     'email' => ['nullable','unique:'.UserFull::class],
+        //     'faculty' => 'nullable',
+        //     'firstname' => 'nullable',
+        //     'lastname' => 'nullable',
+        //     'image' => 'nullable',
+        //     'images.*' => 'nullable|mimes:png,gif,jpg,jpeg,bmp|max:2048',
+        //     'year' => 'nullable',
 
-        return true;
+        // ]);
+
+        // if ($validated->fails()) {
+        //     return false;
+        // }
+
+        // return true;
 
     }
 

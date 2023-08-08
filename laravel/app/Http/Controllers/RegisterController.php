@@ -20,21 +20,21 @@ class RegisterController extends Controller
 
         $validated = UserService::getUserManager()->getUserRegisterValidate($request);
 
-        if ($validated) {
+        // if ($validated) {
 
             $user = UserService::getUserManager()->createUser($request);
 
             if ($user == false) {
-                redirect()->back()->with('error', 'failed to regis your user');
+                redirect()->back()->with('error', 'failed to registered your user');
             }
 
             $request->session()->put('user_id', $user->id);
 
             return redirect()->route('register.info');
         
-        }
+        // }
         
-        return redirect()->back()->with('error', 'Username already in use');
+        // return redirect()->back()->with('error', 'Username already in use');
         
     }
 
@@ -42,7 +42,7 @@ class RegisterController extends Controller
 
         $validated = UserService::getUserManager()->getUserRegisterSecondValidate($request);
 
-        if ($validated) {
+        // if ($validated) {
 
             $userfull = UserService::getUserManager()->createUserFull($request);
 
@@ -57,8 +57,8 @@ class RegisterController extends Controller
 
             return redirect()->back()->with('error', 'failed to regis your infomation');
 
-        }
+        // }
         
-        return redirect()->back()->with('error', 'email already in use');
+        // return redirect()->back()->with('error', 'email already in use');
     }
 }

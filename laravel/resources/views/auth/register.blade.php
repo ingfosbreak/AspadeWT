@@ -25,15 +25,22 @@
 				@csrf
 				<div class="mb-6">
 					<label for="username" class="block mb-2 text-green-200 font-mono text-xs">Your username</label>
-					<input type="text" name="username" id="username" class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="username" required>
+					<input type="text" name="username" id="username" class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="username"  value="{{ old('username','')}}" >
 				</div>
+
+				@error('username')
+    			<div class="text-red-700 mb-5">{{ $message }}</div>
+				@enderror
+
 				<div class="mb-6">
 					<label for="password" class="block mb-2 text-green-200 font-mono text-xs">Your password</label>
-					<input type="password" name="password"id="password" class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="password" required>
+					<input type="password" name="password"id="password" class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="password" value="{{ old('password','')}}" >
 				</div>
+
 				@if (session('error'))
 					<div class="text-red-700 mb-5">{{ session('error') }}</div>
 				@endif
+
 				<button type="submit" class="text-white  focus:outline-none  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">Submit</button>
 				</form>
 			</div>

@@ -38,10 +38,9 @@ Route::middleware(['web'])->group(function () {
     
         Route::get('/login', 'getLoginPage')->name('login');
         
-        Route::post('/login','login')->name('login');
+        Route::post('/login','login')->middleware('throttle:login')->name('login');
         
     });
-
 
 
     // Register page
