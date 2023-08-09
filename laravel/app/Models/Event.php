@@ -36,14 +36,10 @@ class Event extends Model
     public function certificates(): HasMany {
         return $this->hasMany(Certificate::class);
     }
-<<<<<<< HEAD
-    
-=======
 
     public function event_infos(): HasMany {
         return $this->hasMany(EventInfo::class);
     }
 
->>>>>>> 0c29b6e2347b6c17ce3487464d85dc600b0b1dd2
     
 }
