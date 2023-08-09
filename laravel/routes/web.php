@@ -80,10 +80,10 @@ Route::middleware(['web'])->group(function () {
             Route::get('/event/main/infomation/{event}',[EventController::class, 'getInfoEventPageFormMainEvent'])->name('event.main.information');
             Route::get('/event/{event}/form',[EventController::class, 'getJoinEventFormPage'])->name('event.formJoinEvent');
             Route::get('/user/requestingEvent', function (){
-                return view('user.rquestingEvent');
-            })->name('user.rquestingEvent');
+                return view('user.formRequestEvent');
+            })->name('user.formRequestEvent');
 
-            Route::post('/event/form',[ArtistController::class,'storeRequest'])->name('event.request.store');
+            Route::post('/event/form',[ArtistController::class])->name('event.request.store');
             Route::get('/event/{event}/kanban', [ProcessController::class, 'getEventKanbanPage'])->name('event.kanban');
 
             

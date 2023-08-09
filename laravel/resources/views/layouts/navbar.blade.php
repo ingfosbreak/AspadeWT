@@ -26,6 +26,13 @@
                 </form>
             </div>
             @endif
+            <div>
+                <a href="{{ route('user.formRequestEvent')}}">
+                    <button>
+                        request
+                    </button>
+                </a>
+            </div>
             <!-- Sign In / Register      -->
             <div class="flex items-center hover:text-gray-200" id="profilebut">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 hover:text-gray-200" fill="none"

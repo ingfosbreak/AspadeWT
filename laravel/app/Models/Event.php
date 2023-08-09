@@ -35,6 +35,6 @@ class Event extends Model
     public function certificates(): HasMany {
         return $this->hasMany(Certificate::class);
     }
-
+    
     
 }
