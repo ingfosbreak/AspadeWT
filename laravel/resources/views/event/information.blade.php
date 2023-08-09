@@ -41,7 +41,7 @@
                         publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                     </p>
 
-                    <h3 class="text-2xl font-bold my-5" contenteditable="true">#1. What is Lorem Ipsum?</h3>
+                    <h3 class="text-2xl font-bold my-5" contenteditable="true" id="test2" onFocus="makefocus(this.id)">#1. What is Lorem Ipsum?</h3>
                     <p class="text-gray-400">escape to <span class="text-red-500">cancel</span> press to <span class="text-blue-500">save</span></p>
 
                     <p class="text-base leading-8 my-5">
