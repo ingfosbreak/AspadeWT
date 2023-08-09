@@ -4,6 +4,7 @@ namespace App\Managers;
 
 
 use App\Models\Event;
+use App\Models\EventInfo;
 
 use Illuminate\Support\ItemNotFoundException;
 use Illuminate\Http\Request;
@@ -34,6 +35,36 @@ class EventManager {
         }
     }
 
+
+    // EventInfo
+
+    public function createEventInfo(Request $request) {
+
+        if (EventInfo::count() == 0) {
+            
+            $event_info = new EventInfo;
+            $event_info->event_id = (int) $request->data['event_id'];
+            $event_info->order = 1000;
+
+            if ($event_info->save()) {
+                return true;
+            }
+            return false;
+              
+        }
+
+        $maxValue = EventInfo::max('order');
+
+        $event_info = new EventInfo;
+        $event_info->event_id = (int) $request->data['event_id'];  
+        $event_info->order =  $maxValue + 1000;  
+
+        if ($event_info->save()) {
+            return true;
+        }
+        return false;
+
+    }
     
 
 

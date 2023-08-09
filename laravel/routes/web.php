@@ -137,11 +137,17 @@ Route::middleware(['web'])->group(function () {
 
     
 
-
+// Processes
 Route::post('/createProcess', [ProcessController::class,'createProcess'] )->name('create.process');
 Route::post('/editProcess', [ProcessController::class,'editProcess'] )->name('edit.process');
 Route::post('/updateProcess', [ProcessController::class,'updateProcess'] )->name('update.process');
 Route::post('/removeProcess', [ProcessController::class,'removeProcess'] )->name('remove.process');
+
+// EventInfo
+Route::post('/createEventInfo', [EventController::class, 'createEventInfo'] )->name('create.info');
+
+
+
 
 
 
