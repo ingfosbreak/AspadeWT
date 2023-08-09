@@ -46,5 +46,16 @@ class EventController extends Controller
         return false;
     }
 
+    public function editEventInfo(Request $request) {
+
+        $success = EventService::getEventManager()->editEventInfo($request);
+        if ($success != false) {
+            return true;
+        }
+
+        return false;
+
+    }
+
     
 }

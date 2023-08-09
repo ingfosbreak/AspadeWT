@@ -145,6 +145,7 @@ Route::post('/removeProcess', [ProcessController::class,'removeProcess'] )->name
 
 // EventInfo
 Route::post('/createEventInfo', [EventController::class, 'createEventInfo'] )->name('create.info');
+Route::post('/editEventInfo', [EventController::class, 'editEventInfo'] )->name('edit.info');
 
 
 

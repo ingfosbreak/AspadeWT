@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Event::class);
             $table->Integer('order');
-            $table->longText('text')->nullable();
+            $table->text('text')->nullable();
             $table->enum('type',['small','bold'])->default("small");
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);

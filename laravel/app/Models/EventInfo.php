@@ -17,4 +17,8 @@ class EventInfo extends Model
     {
         return $this->belongsTo(Event::class);
     }
+
+    public function realText() {
+        return 'asdasd<br>asdas'; 
+    }
 }
