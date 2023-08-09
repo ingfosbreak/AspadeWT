@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Services\EventService;
 use App\Models\Event;
 
 class EventController extends Controller
@@ -27,6 +28,20 @@ class EventController extends Controller
         return view('event.main.information', [
             'event' => $event
         ]);
+    }
+
+
+
+    // eventInfo
+
+    public function createEventInfo(Request $request) {
+        
+        $success = EventService::getEventManager()->createEventInfo($request);
+        if ($success != false) {
+            return true;
+        }
+        
+        return false;
     }
 
     

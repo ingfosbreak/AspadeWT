@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\EventUser;
 use App\Models\Process;
 use App\Models\ProcessUser;
+use App\Models\EventInfo;
 
 class Event extends Model
 {
@@ -34,6 +35,10 @@ class Event extends Model
 
     public function certificates(): HasMany {
         return $this->hasMany(Certificate::class);
+    }
+
+    public function event_infos(): HasMany {
+        return $this->hasMany(EventInfo::class);
     }
 
     
