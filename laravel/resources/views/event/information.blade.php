@@ -9,7 +9,7 @@
         <div class="max-w-3xl mx-auto">
             <div
                 class="mt-3 bg-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
-                <div class="bg-white relative top-0 -mt-32 p-5 sm:p-10">
+                <div class="bg-white relative top-0 -mt-32 p-5 sm:p-10" id="info-container">
                     <h1 href="#" class="text-gray-900 font-bold text-3xl mb-2">Revenge of the Never Trumpers</h1>
                     <p class="text-gray-700 text-xs mt-2">Written By:
                         <a href="#"
@@ -41,7 +41,7 @@
                         publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                     </p>
 
-                    <h3 class="text-2xl font-bold my-5">#1. What is Lorem Ipsum?</h3>
+                    <h3 class="text-2xl font-bold my-5" contenteditable="true">#1. What is Lorem Ipsum?</h3>
 
                     <p class="text-base leading-8 my-5">
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
@@ -57,7 +57,7 @@
                         publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                     </p>
 
-                    <blockquote class="border-l-4 text-base italic leading-8 my-5 p-5 text-indigo-600">Lorem Ipsum is
+                    <blockquote class="border-l-4 text-base italic leading-8 my-5 p-5 text-indigo-600" contenteditable="true">Lorem Ipsum is
                         simply
                         dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
                         standard
@@ -80,28 +80,29 @@
 
 
                     <div class="align-items:flex-end" style="display: flex; justify-content: space-between;">
-                <a href="{{ route('user.main')}}">
-                    <button
-                        class="rounded-lg bg-wirte-500 py-5 px-10 font-sans text-xs font-bold uppercase text-black shadow-md shadow-black-500/20 transition-all hover:shadow-lg hover:shadow-black-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                        data-ripple-light="true">
-                        Back
-                    </button>
-                </a>
-                <a href="{{ route('event.main.main',['event'=> $event])}}">
-                    <button
-                        class="rounded-lg bg-orange-500 py-5 px-10 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                        data-ripple-light="true">
-                        Join
-                    </button>
-                </a>
-                <a href="{{ route('event.kanban',['event'=> $event])}}">
-                    <button
-                        class="rounded-lg bg-orange-500 py-5 px-10 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                        data-ripple-light="true">
-                        Kanban
-                    </button>
-                </a>
-            </div>
+                        <a href="{{ route('user.main')}}">
+                        <button
+                            class="rounded-lg bg-wirte-500 py-5 px-10 font-sans text-xs font-bold uppercase text-black shadow-md shadow-black-500/20 transition-all hover:shadow-lg hover:shadow-black-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            data-ripple-light="true">
+                            Back
+                        </button>
+                        </a>
+                        <a href="{{ route('event.main.main',['event'=> $event])}}">
+                            <button
+                                class="rounded-lg bg-orange-500 py-5 px-10 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                data-ripple-light="true">
+                                Join
+                            </button>
+                        </a>
+                        <a href="{{ route('event.kanban',['event'=> $event])}}">
+                            <button
+                                class="rounded-lg bg-orange-500 py-5 px-10 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                data-ripple-light="true">
+                                Kanban
+                            </button>
+                        </a>
+            
+                    </div>
 
                 </div>
 
@@ -110,6 +111,26 @@
     </div>
 
 
+
+    <script type="module" >
+        $( document ).ready(function() {
+
+        const drake = dragula([$('#info-container').get(0)], { revertOnSpill: true });
+
+        // editAjax('POST','{{route('edit.process')}}', '{{csrf_token()}}', {'process_id':"3",'text':"gggggg"});
+
+            drake.on('drop', function(el, target, source, sibling) {
+                
+                // console.log(el.getAttribute("data-id"));
+                updateAjax('POST','{{route('update.process')}}', '{{csrf_token()}}', {'process_id':el.getAttribute("data-id"),'status':target.id});
+                
+
+            });
+
+        });
+
+
+    </script>
     @endsection
 
 
