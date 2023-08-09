@@ -42,6 +42,7 @@
                     </p>
 
                     <h3 class="text-2xl font-bold my-5" contenteditable="true">#1. What is Lorem Ipsum?</h3>
+                    <p class="text-gray-400">escape to <span class="text-red-500">cancel</span> press to <span class="text-blue-500">save</span></p>
 
                     <p class="text-base leading-8 my-5">
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
@@ -57,7 +58,7 @@
                         publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                     </p>
 
-                    <blockquote class="border-l-4 text-base italic leading-8 my-5 p-5 text-indigo-600" contenteditable="true">Lorem Ipsum is
+                    <blockquote class="border-l-4 text-base italic leading-8 my-5 p-5 text-indigo-600" contenteditable="true" id="test" onFocus="makefocus(this.id)">Lorem Ipsum is
                         simply
                         dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
                         standard
@@ -126,9 +127,43 @@
                 
 
             });
+            
 
+            
         });
 
+
+    </script>
+
+    <script>
+
+
+        function makefocus(id) {
+
+
+            var before = $('#'+id).html();
+            console.log(before);
+
+            $('#'+id).on('blur', function () {
+                    console.log("change");
+
+            });
+
+
+            // $('#'+id).on('focus', '[contenteditable]', function() {
+            //     before = $('#'+id).html();
+                
+
+            
+            // }).on('blur', '[contenteditable]', function() {
+            //     if (before != $('#'+id).html()) { 
+            //         console.log("change");
+            //     }
+
+            // });
+
+
+        }
 
     </script>
     @endsection
