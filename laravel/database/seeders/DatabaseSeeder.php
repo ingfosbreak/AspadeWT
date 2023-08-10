@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ProcessSeeder::class);
         $this->call(ProcessUserSeeder::class);
         $this->call(CertificateSeeder::class);
-        $this->call(RequestSeeder::class);
         $this->call(ComplaintSeeder::class);
     }
 }

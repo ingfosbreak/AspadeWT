@@ -22,6 +22,7 @@ use App\Models\ProcessUser;
 use App\Models\Request;
 use App\Models\Complaint;
 use App\Models\Certificate;
+use App\Models\RequestCreateEvent;
 
 
 class User extends Authenticatable
@@ -105,4 +106,11 @@ class User extends Authenticatable
         return $this->hasOne(UserImage::class);
     }
 
+    public function noti():HasMany{
+        return $this->hasMany(UserNoti::class);
+    }
+
+    public function requestCreateEvent(): HasMany {
+        return $this->hasMany(RequestCreateEvent::class);
+    }
 }

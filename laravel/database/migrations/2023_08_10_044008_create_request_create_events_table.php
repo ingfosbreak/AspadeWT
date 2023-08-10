@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('requests', function (Blueprint $table) {
+        Schema::create('request_create_events', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
             $table->string("name");
@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('date');
             $table->string('location');
             $table->string("description");
-            $table->enum('status-check',['todo','doing','done'])->default("todo");
             $table->enum('status-request',['approved','denied'])->nullable();
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('requests');
+        Schema::dropIfExists('request_create_events');
     }
 };
