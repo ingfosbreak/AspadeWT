@@ -23,6 +23,7 @@ use App\Models\Request;
 use App\Models\Complaint;
 use App\Models\Certificate;
 use App\Models\RequestCreateEvent;
+use App\Models\RequestJoinEvent;
 
 
 class User extends Authenticatable
@@ -112,5 +113,9 @@ class User extends Authenticatable
 
     public function requestCreateEvent(): HasMany {
         return $this->hasMany(RequestCreateEvent::class);
+    }
+
+    public function requestJoinEvent(): HasMany {
+        return $this->hasMany(RequestJoinEvent::class);
     }
 }
