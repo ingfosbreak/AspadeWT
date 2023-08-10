@@ -64,7 +64,7 @@ $(document).ready(function() {
         mouseenter: function(event) {
             $('#profileNav').stop().fadeIn();
             $("#profileNav").css({
-                left: event.clientX - 250 + 'px',
+                left: event.clientX - 220 + 'px',
                 top: event.clientY + 20 + 'px',
             });
             $("#profileNav").css("z-index", "999");
@@ -96,7 +96,7 @@ $(document).ready(function() {
             if ($('#profileNav').is(':hidden')) {
                 $('#profileNav').stop().fadeIn();
                 $("#profileNav").css({
-                    left: event.clientX - 250 + 'px',
+                    left: event.clientX - 220 + 'px',
                     top: event.clientY + 20 + 'px',
                 });
                 $("#profileNav").css("z-index", "999");

@@ -236,12 +236,12 @@ class UserManager {
 
 
 
-    public function createUserFull(Request $request) {
+    public function createUserFull(Request $request, int $userid) {
         
-        $user_id = $request->session()->get('user_id');
+        // $user_id = $request->session()->get('user_id');
 
         $userfull = new UserFull();
-        $userfull->user_id = $user_id;
+        $userfull->user_id = $userid;
         $userfull->email = $request->email;
         $userfull->faculty = $request->faculty;
         $userfull->firstname = $request->firstname;
@@ -256,7 +256,7 @@ class UserManager {
                 return false;
             }
             
-            if (!$this->createUserImage($success_image, $user_id)) {
+            if (!$this->createUserImage($success_image, $userid)) {
                 return false;
             }
 

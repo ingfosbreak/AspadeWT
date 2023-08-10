@@ -39,8 +39,12 @@
             </div>
             <div class="flex flex-col items-center -mt-20">
                 @if (Auth::getUser()->image != null)
-                <img src="{{ Vite::asset('storage/app/public/'. Auth::getUser()->image->image_path) }}" class="w-40 h-40 object-cover border-4 border-white rounded-full">
+                <img src="{{ asset('storage/'. Auth::getUser()->image->image_path) }}" class="w-40 h-40 object-cover border-4 border-white rounded-full">
+                @else
+                <img src="https://images-ext-2.discordapp.net/external/g284NahQlbC01_TG1N2RxQ7YOcAzHUizwQjo4yS9tuI/%3Fw%3D1380%26t%3Dst%3D1691673786~exp%3D1691674386~hmac%3D99e1638c243d744e8648c7255cba9bf267a036e13aa5eeb1c3db56382b0e8a44/https/img.freepik.com/free-vector/illustration-businessman_53876-5856.jpg?width=1170&height=1170" class="w-40 h-40 object-cover border-4 border-white rounded-full">
                 @endif
+
+
                 <div class="flex items-center space-x-2 mt-2">
                     <p class="text-2xl">{{Auth::getUser()->userFull->firstname ." ". Auth::getUser()->userFull->lastname}}</p>
                     <span class="bg-blue-500 rounded-full p-1" title="Verified">

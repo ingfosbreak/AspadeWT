@@ -90,14 +90,14 @@
           </div>
 
           <!-- Add -->
-          <div class="flex flex-row items-center text-gray-300 mt-2 px-1" id="done-add-999" onClick="show(999)">
+          <div class="flex flex-row items-center text-gray-300 mt-2 px-1" id="done-add-99999999" onClick="show(99999999)">
             <p class="rounded mr-2 text-2xl">+</p>
-            <p class="pt-1 rounded text-sm" id="done-add-text-999">New</p>
+            <p class="pt-1 rounded text-sm" id="done-add-text-99999999">New</p>
           </div>
-          <div class="not-show" id="done-text-999">
-                <label for="message-999" class="block mb-2 text-sm font-medium text-white">Add new task</label>
-                <textarea id="message-999" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " placeholder="Write your thoughts here..."></textarea>
-                <button class="rounded-2xl bg-blue-600 px-4 mt-2 py-2 font-bold leading-none text-white" id="done-button-999">Submit</button>
+          <div class="not-show" id="done-text-99999999">
+                <label for="message-99999999" class="block mb-2 text-sm font-medium text-white">Add new task</label>
+                <textarea id="message-99999999" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " placeholder="Write your thoughts here..."></textarea>
+                <button class="rounded-2xl bg-blue-600 px-4 mt-2 py-2 font-bold leading-none text-white" id="done-button-99999999">Submit</button>
             </div>
         </div>
 
@@ -229,7 +229,7 @@
     }
     else  {
       $('#done-text'+'-'+id).stop().fadeOut();
-      if (id == "999"){
+      if (id == "99999999"){
         $('#done-add-text'+'-'+id).html("New");
       }
       else {
@@ -242,7 +242,7 @@
       if(e.which == 13){
                 
         if ($("#message"+'-'+id).val() !== "") {
-            if (id == "999"){
+            if (id == "99999999"){
               createAjax('POST','{{route('create.process')}}', '{{csrf_token()}}', {'event_id':{{$event->id}},'text':$("#message"+'-'+id).val()});
               window.location.reload(true);
             }
@@ -265,7 +265,7 @@
     
     $("#done-button"+'-'+id).click(function(){
       if ($("#message"+'-'+id).val() !== "") {
-            if (id == "999"){
+            if (id == "99999999"){
               createAjax('POST','{{route('create.process')}}', '{{csrf_token()}}', {'event_id':{{$event->id}},'text':$("#message"+'-'+id).val()});
               window.location.reload(true);
             }

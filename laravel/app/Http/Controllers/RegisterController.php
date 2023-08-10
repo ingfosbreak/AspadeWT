@@ -12,13 +12,13 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    public function getRegisterSecondPage() {
-        return view('auth.register2');
+    public function getRegisterSecondPage(int $userid) {
+        return view('auth.register2',['userid' => $userid]);
     }
 
     public function registerFirstStage(Request $request) {
 
-        $validated = UserService::getUserManager()->getUserRegisterValidate($request);
+        UserService::getUserManager()->getUserRegisterValidate($request);
 
         // if ($validated) {
 
@@ -28,9 +28,9 @@ class RegisterController extends Controller
                 redirect()->back()->with('error', 'failed to registered your user');
             }
 
-            $request->session()->put('user_id', $user->id);
-
-            return redirect()->route('register.info');
+            // $request->session()->put('user_id', $user->id);
+            $userid = $user->id;
+            return redirect()->route('register.info',['userid' => $userid]);
         
         // }
         
@@ -38,19 +38,19 @@ class RegisterController extends Controller
         
     }
 
-    public function registerSecondStage(Request $request) {
+    public function registerSecondStage(Request $request, int $userid) {
 
-        $validated = UserService::getUserManager()->getUserRegisterSecondValidate($request);
+        UserService::getUserManager()->getUserRegisterSecondValidate($request);
 
         // if ($validated) {
 
-            $userfull = UserService::getUserManager()->createUserFull($request);
+            $userfull = UserService::getUserManager()->createUserFull($request, $userid);
 
             if ($userfull) {
 
-                if ($request->session()->exists('user_id')) {
-                    $request->session()->forget('user_id');
-                }
+                // if ($request->session()->exists('user_id')) {
+                //     $request->session()->forget('user_id');
+                // }
 
                 return redirect()->route('login')->with('success','You have successful registered');
             }
