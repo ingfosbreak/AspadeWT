@@ -21,4 +21,5 @@ class RequestJoinEvent extends Model
     public function requestImage(): HasMany {
         return $this->hasMany(RequestJoinEventImage::class);
     }
+
 }

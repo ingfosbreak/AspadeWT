@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\RequestJoinEventImage;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +18,8 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignIdFor(User::class);
             $table->string('reason');
-            $table->softDeletes($column = 'deleted_at', $precision = 0);
+            $table->softDeletes();
+
         });
     }
 

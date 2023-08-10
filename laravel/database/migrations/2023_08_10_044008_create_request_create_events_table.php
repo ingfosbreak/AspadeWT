@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string("description");
             $table->enum('status-request',['approved','denied'])->nullable();
             $table->timestamps();
-            $table->softDeletes($column = 'deleted_at', $precision = 0);
+            $table->softDeletes();
         });
     }
 
