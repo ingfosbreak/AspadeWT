@@ -68,6 +68,10 @@
             /* white-space: pre-wrap; */
             
         }
+
+        #info-container {
+            min-height: 200px;
+        }
     </style>
 
 
