@@ -45,9 +45,4 @@ class Event extends Model
         return $this->hasMany(EventInfo::class);
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 3f4c702fa14316d697c6296e21ffc303612c4f9a
-    
 }

@@ -191,25 +191,6 @@
                 $('#under'+'-'+id).stop().fadeOut();
 
             });
-
-<<<<<<< HEAD
-            
-
-            // $('#'+id).on('focus', '[contenteditable]', function() {
-            //     before = $('#'+id).html();
-                
-
-
-            // }).on('blur', '[contenteditable]', function() {
-            //     if (before != $('#'+id).html()) { 
-            //         console.log("change");
-            //     }
-
-            // });
-
-
-=======
->>>>>>> 3f4c702fa14316d697c6296e21ffc303612c4f9a
         }
 
     </script>
