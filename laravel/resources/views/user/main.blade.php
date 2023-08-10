@@ -55,39 +55,47 @@
             @foreach ($events as $event)
                 @if ($event->id % 3 == 0)
                 <li class="text-sm leading-6">
-                    <div class="relative group">
-                        <div class="absolute transition rounded-lg opacity-25 -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 blur duration-400 group-hover:opacity-100 group-hover:duration-200"></div>
-                            <div
-                                class="relative p-6 space-y-6 leading-none rounded-lg bg-slate-800 ring-1 ring-gray-900/5">
-                                <div class="flex items-center space-x-4"><img
-                                        src="https://pbs.twimg.com/profile_images/1276461929934942210/cqNhNk6v_400x400.jpg"
-                                        class="w-12 h-12 bg-center bg-cover border rounded-full" alt="Kanye West">
-                                    <div>
-                                        <h3 class="text-lg font-semibold text-white">{{$event->name}}</h3>
-                                        <p class="text-gray-500 text-md">Rapper &amp; Entrepreneur</p>
-                                        
+                    <a href="{{ route('event.information',['event'=> $event])}}">
+                        <div class="relative group">
+                            <div class="absolute transition rounded-lg opacity-25 -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 blur duration-400 group-hover:opacity-100 group-hover:duration-200"></div>
+                                <div
+                                    class="relative p-6 space-y-6 leading-none rounded-lg bg-slate-800 ring-1 ring-gray-900/5">
+                                    <div class="flex items-center space-x-4"><img
+                                            src="https://pbs.twimg.com/profile_images/1276461929934942210/cqNhNk6v_400x400.jpg"
+                                            class="w-12 h-12 bg-center bg-cover border rounded-full" alt="Kanye West">
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-white">{{$event->name}}</h3>
+                                            <p class="text-gray-500 text-md">Rapper &amp; Entrepreneur</p>
+                                            
+                                        </div>
                                     </div>
+                                    <p class="leading-normal text-gray-300 text-md mt-5 text-xl">{{$event->description}}</p>
+                                    
+                                    <div class="flex justify-between items-center text-3xl">
+                                        @if ($event->getMembersCount() == $event->num_member)
+                                        <p class="text-red-500 "> {{$event->getMembersCount()}} / {{$event->num_member}}</p>
+                                        @endif
+                                        @if ($event->getMembersCount() < $event->num_member)
+                                        <p class="text-green-300"> {{$event->getMembersCount()}} / {{$event->num_member}}</p>
+                                        @endif
+                                        @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))              
+                                        <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
+                                            <button
+                                                class="rounded-lg bg-green-600 flex items-center justify-center ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-black transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                                                Join
+                                                <span class="ml-4 ">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path fill="currentColor" d="M17.92,11.62a1,1,0,0,0-.21-.33l-5-5a1,1,0,0,0-1.42,1.42L14.59,11H7a1,1,0,0,0,0,2h7.59l-3.3,3.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l5-5a1,1,0,0,0,.21-.33A1,1,0,0,0,17.92,11.62Z"></path>
+                                                </svg>
+                                            </span>
+                                            </button>
+                                           
+                                        </a>
+                                        @endif
+                                    </div>
+                                    
                                 </div>
-                                <p class="leading-normal text-gray-300 text-md">{{$event->description}}</p>
-                                <a href="{{ route('event.information',['event'=> $event])}}">
-                                    <button
-                                        class="rounded-lg bg-white border border-black py-3 px-6 font-sans text-xs font-bold uppercase text-black shadow-md">
-                                    Info
-                                    </button>
-                                </a>
-                                <p class="text-white"> {{$event->getMembersCount()}} : {{$event->num_member}}</p>
-                                <!-- @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))              
-                                <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
-                                    <button
-                                        class="rounded-lg bg-orange-500 mt-5 ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
-                                        Join
-                                    </button>
-                                </a>
-                                @endif -->
-                                
-                            </div>
-                    </div>
-                    
+                        </div>
+                        </a>
                 </li>
                 @endif
                 @endforeach
@@ -113,22 +121,29 @@
                                             
                                         </div>
                                     </div>
-                                    <p class="leading-normal text-gray-300 text-md">{{$event->description}}</p>
-                                    <!-- <a href="{{ route('event.information',['event'=> $event])}}">
-                                        <button
-                                            class="rounded-lg bg-white border border-black py-3 px-6 font-sans text-xs font-bold uppercase text-black shadow-md">
-                                        Info
-                                        </button>
-                                    </a> -->
-                                    <p > {{$event->getMembersCount()}} : {{$event->num_member}}</p>
-                                    @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))              
-                                    <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
-                                        <button
-                                            class="rounded-lg bg-orange-500 mt-5 ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
-                                            Join
-                                        </button>
-                                    </a>
-                                    @endif
+                                    <p class="leading-normal text-gray-300 text-md mt-5 text-xl">{{$event->description}}</p>
+                                    
+                                    <div class="flex justify-between items-center text-3xl">
+                                        @if ($event->getMembersCount() == $event->num_member)
+                                        <p class="text-red-500 "> {{$event->getMembersCount()}} / {{$event->num_member}}</p>
+                                        @endif
+                                        @if ($event->getMembersCount() < $event->num_member)
+                                        <p class="text-green-300"> {{$event->getMembersCount()}} / {{$event->num_member}}</p>
+                                        @endif
+                                        @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))              
+                                        <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
+                                            <button
+                                                class="rounded-lg bg-green-600 flex items-center justify-center ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-black transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                                                Join
+                                                <span class="ml-4 ">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path fill="currentColor" d="M17.92,11.62a1,1,0,0,0-.21-.33l-5-5a1,1,0,0,0-1.42,1.42L14.59,11H7a1,1,0,0,0,0,2h7.59l-3.3,3.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l5-5a1,1,0,0,0,.21-.33A1,1,0,0,0,17.92,11.62Z"></path>
+                                                </svg>
+                                            </span>
+                                            </button>
+                                           
+                                        </a>
+                                        @endif
+                                    </div>
                                     
                                 </div>
                         </div>
@@ -144,39 +159,47 @@
             @foreach ($events as $event)
                 @if ($event->id % 3 == 2)
                 <li class="text-sm leading-6">
-                    <div class="relative group">
-                        <div class="absolute transition rounded-lg opacity-25 -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 blur duration-400 group-hover:opacity-100 group-hover:duration-200"></div>
-                            <div
-                                class="relative p-6 space-y-6 leading-none rounded-lg bg-slate-800 ring-1 ring-gray-900/5">
-                                <div class="flex items-center space-x-4"><img
-                                        src="https://pbs.twimg.com/profile_images/1276461929934942210/cqNhNk6v_400x400.jpg"
-                                        class="w-12 h-12 bg-center bg-cover border rounded-full" alt="Kanye West">
-                                    <div>
-                                        <h3 class="text-lg font-semibold text-white">{{$event->name}}</h3>
-                                        <p class="text-gray-500 text-md">Rapper &amp; Entrepreneur</p>
-                                        
+                    <a href="{{ route('event.information',['event'=> $event])}}">
+                        <div class="relative group">
+                            <div class="absolute transition rounded-lg opacity-25 -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 blur duration-400 group-hover:opacity-100 group-hover:duration-200"></div>
+                                <div
+                                    class="relative p-6 space-y-6 leading-none rounded-lg bg-slate-800 ring-1 ring-gray-900/5">
+                                    <div class="flex items-center space-x-4"><img
+                                            src="https://pbs.twimg.com/profile_images/1276461929934942210/cqNhNk6v_400x400.jpg"
+                                            class="w-12 h-12 bg-center bg-cover border rounded-full" alt="Kanye West">
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-white">{{$event->name}}</h3>
+                                            <p class="text-gray-500 text-md">Rapper &amp; Entrepreneur</p>
+                                            
+                                        </div>
                                     </div>
+                                    <p class="leading-normal text-gray-300 text-md mt-5 text-xl">{{$event->description}}</p>
+                                    
+                                    <div class="flex justify-between items-center text-3xl">
+                                        @if ($event->getMembersCount() == $event->num_member)
+                                        <p class="text-red-500 "> {{$event->getMembersCount()}} / {{$event->num_member}}</p>
+                                        @endif
+                                        @if ($event->getMembersCount() < $event->num_member)
+                                        <p class="text-green-300"> {{$event->getMembersCount()}} / {{$event->num_member}}</p>
+                                        @endif
+                                        @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))              
+                                        <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
+                                            <button
+                                                class="rounded-lg bg-green-600 flex items-center justify-center ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-black transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                                                Join
+                                                <span class="ml-4 ">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path fill="currentColor" d="M17.92,11.62a1,1,0,0,0-.21-.33l-5-5a1,1,0,0,0-1.42,1.42L14.59,11H7a1,1,0,0,0,0,2h7.59l-3.3,3.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l5-5a1,1,0,0,0,.21-.33A1,1,0,0,0,17.92,11.62Z"></path>
+                                                </svg>
+                                            </span>
+                                            </button>
+                                           
+                                        </a>
+                                        @endif
+                                    </div>
+                                    
                                 </div>
-                                <p class="leading-normal text-gray-300 text-md">{{$event->description}}</p>
-                                <a href="{{ route('event.information',['event'=> $event])}}">
-                                    <button
-                                        class="rounded-lg bg-white border border-black py-3 px-6 font-sans text-xs font-bold uppercase text-black shadow-md">
-                                    Info
-                                    </button>
-                                </a>
-                                <p class="text-white"> {{$event->getMembersCount()}} : {{$event->num_member}}</p>
-                                <!-- @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))              
-                                <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
-                                    <button
-                                        class="rounded-lg bg-orange-500 mt-5 ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
-                                        Join
-                                    </button>
-                                </a>
-                                @endif -->
-                                
-                            </div>
-                    </div>
-                    
+                        </div>
+                        </a>
                 </li>
                 @endif
                 @endforeach
