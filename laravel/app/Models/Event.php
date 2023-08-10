@@ -17,6 +17,10 @@ class Event extends Model
 {
     use HasFactory, SoftDeletes;
 
+    public function getMembersCount() {
+        return $this->users->count();
+    }
+
     public function users(): BelongsToMany {
         return $this->belongsToMany(User::class);
     }

@@ -192,21 +192,6 @@
 
             });
 
-            
-
-            // $('#'+id).on('focus', '[contenteditable]', function() {
-            //     before = $('#'+id).html();
-                
-
-            
-            // }).on('blur', '[contenteditable]', function() {
-            //     if (before != $('#'+id).html()) { 
-            //         console.log("change");
-            //     }
-
-            // });
-
-
         }
 
     </script>
