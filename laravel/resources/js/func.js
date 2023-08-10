@@ -21,12 +21,12 @@ function createAjax(type, url, token, data=null) {
                     data: data},
         async : false,
         success:function(data) {
-            if (data == true) {
-                alert("success created task");
-            }
-            else {
-                alert("failed to create task");
-            }
+            // if (data == true) {
+            //     alert("success created task");
+            // }
+            // else {
+            //     alert("failed to create task");
+            // }
         }
     });
     
@@ -41,12 +41,12 @@ function editAjax(type, url, token, data=null) {
                     data: data},
         async : false,
         success:function(data) {
-            if (data == true) {
-                alert("success edit task");
-            }
-            else {
-                alert("failed to edit task");
-            }
+            // if (data == true) {
+            //     alert("success edit task");
+            // }
+            // else {
+            //     alert("failed to edit task");
+            // }
         }
     });
     
@@ -61,12 +61,12 @@ function updateAjax(type, url, token, data=null) {
                     data: data},
         async : false,
         success:function(data) {
-            if (data == true) {
-                alert("success update task");
-            }
-            else {
-                alert("failed to update task");
-            }
+            // if (data == true) {
+            //     alert("success update task");
+            // }
+            // else {
+            //     alert("failed to update task");
+            // }
         }
     });
     
@@ -81,12 +81,12 @@ function removeAjax(type, url, token, data=null) {
                     data: data},
         async : false,
         success:function(data) {
-            if (data == true) {
-                alert("success remove task");
-            }
-            else {
-                alert("failed to remove task");
-            }
+            // if (data == true) {
+            //     alert("success remove task");
+            // }
+            // else {
+            //     alert("failed to remove task");
+            // }
         }
     });
     

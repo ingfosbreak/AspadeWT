@@ -30,23 +30,14 @@
                     @foreach ($event->event_infos as $info)
                     <div class="flex text-gray-100 hover:text-gray-400">
                         <p class="rounded mr-2  text-2xl self-center mt-2">::</p>
-                        <p class="text-base text-black leading-8 my-5 bg-white hover:bg-gray-100 focus:bg-gray-100 rounded-md pt-2 pl-2 flex-1" contenteditable="true" id="{{$info->id}}" onFocus="makefocus({{$info->id}})">
-                        </p>{{$info->text}}
+                        <p class="text-base text-black leading-8 my-5 bg-white hover:bg-gray-100 focus:bg-gray-100 rounded-md pt-2 pl-2 flex-1 formysql" contenteditable="true" id="text-{{$info->id}}" onFocus="makefocus({{$info->id}})">
+                        {!! nl2br(($info->text), true) !!}
+                        </p>
                     </div>
                     <p class="text-gray-400 not-show ml-5" id="under-{{$info->id}}">escape to <span class="text-red-500">cancel</span> press to <span class="text-blue-500">save</span></p>
                     @endforeach
                     <p class="text-base leading-8 my-5">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the
-                        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                        type
-                        and scrambled it to make a type specimen book. It has survived not only five centuries, but also
-                        the
-                        leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
-                        1960s
-                        with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-                        desktop
-                        publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        
                     </p>
 
 
@@ -127,8 +118,11 @@
     </div>
 
     <style>
-        p{
+        .formysql{
             min-height: 50px;
+            /* display:inline-block; */
+            /* white-space: pre-wrap; */
+            
         }
     </style>
 
@@ -166,22 +160,39 @@
 
         function makefocus(id) {
 
-
-            var before = $('#'+id).html();
-            console.log(before);
+            
+            var before = $('#text-'+id).html();
 
             if ($('#under'+'-'+id).is(':hidden')) {
                 $('#under'+'-'+id).stop().fadeIn();
                 
-      
             }
 
-            $('#'+id).on('blur', function () {
-                    console.log("change");
-                    $('#under'+'-'+id).stop().fadeOut();
+
+            $('#text-'+id).on('blur', function () {
+                console.log($('#text-'+id).html());
+                
+                if (before != $('#text-'+id).html()) { 
+                    
+                    var mytext = $('#text-'+id).html();
+                    var z = mytext.replaceAll("<div>","<br>").replaceAll("</div>","").replaceAll(/\s/g, '');
+
+                    if (z == '<br>') {
+                        editAjax('POST', '{{route('edit.info')}}', '{{csrf_token()}}', {'info_id':id,'text':""});
+                        window.location.reload(true);
+                    }
+                    else {
+                        editAjax('POST', '{{route('edit.info')}}', '{{csrf_token()}}', {'info_id':id,'text':z});
+                        window.location.reload(true);
+                        
+                    }
+                }
+                    
+                $('#under'+'-'+id).stop().fadeOut();
 
             });
 
+<<<<<<< HEAD
             
 
             // $('#'+id).on('focus', '[contenteditable]', function() {
@@ -197,6 +208,8 @@
             // });
 
 
+=======
+>>>>>>> 3f4c702fa14316d697c6296e21ffc303612c4f9a
         }
 
     </script>

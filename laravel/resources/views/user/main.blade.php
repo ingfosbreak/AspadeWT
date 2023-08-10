@@ -75,14 +75,15 @@
                                     Info
                                     </button>
                                 </a>
-                                @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))              
+                                <p class="text-white"> {{$event->getMembersCount()}} : {{$event->num_member}}</p>
+                                <!-- @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))              
                                 <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
                                     <button
                                         class="rounded-lg bg-orange-500 mt-5 ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                                         Join
                                     </button>
                                 </a>
-                                @endif
+                                @endif -->
                                 
                             </div>
                     </div>
@@ -96,40 +97,44 @@
             <ul class=" space-y-8 sm:block">
             @foreach ($events as $event)
                 @if ($event->id % 3 == 1)
+                
                 <li class="text-sm leading-6">
-                    <div class="relative group">
-                        <div class="absolute transition rounded-lg opacity-25 -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 blur duration-400 group-hover:opacity-100 group-hover:duration-200"></div>
-                            <div
-                                class="relative p-6 space-y-6 leading-none rounded-lg bg-slate-800 ring-1 ring-gray-900/5">
-                                <div class="flex items-center space-x-4"><img
-                                        src="https://pbs.twimg.com/profile_images/1276461929934942210/cqNhNk6v_400x400.jpg"
-                                        class="w-12 h-12 bg-center bg-cover border rounded-full" alt="Kanye West">
-                                    <div>
-                                        <h3 class="text-lg font-semibold text-white">{{$event->name}}</h3>
-                                        <p class="text-gray-500 text-md">Rapper &amp; Entrepreneur</p>
-                                        
+                    <a href="{{ route('event.information',['event'=> $event])}}">
+                        <div class="relative group">
+                            <div class="absolute transition rounded-lg opacity-25 -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 blur duration-400 group-hover:opacity-100 group-hover:duration-200"></div>
+                                <div
+                                    class="relative p-6 space-y-6 leading-none rounded-lg bg-slate-800 ring-1 ring-gray-900/5">
+                                    <div class="flex items-center space-x-4"><img
+                                            src="https://pbs.twimg.com/profile_images/1276461929934942210/cqNhNk6v_400x400.jpg"
+                                            class="w-12 h-12 bg-center bg-cover border rounded-full" alt="Kanye West">
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-white">{{$event->name}}</h3>
+                                            <p class="text-gray-500 text-md">Rapper &amp; Entrepreneur</p>
+                                            
+                                        </div>
                                     </div>
+                                    <p class="leading-normal text-gray-300 text-md">{{$event->description}}</p>
+                                    <!-- <a href="{{ route('event.information',['event'=> $event])}}">
+                                        <button
+                                            class="rounded-lg bg-white border border-black py-3 px-6 font-sans text-xs font-bold uppercase text-black shadow-md">
+                                        Info
+                                        </button>
+                                    </a> -->
+                                    <p > {{$event->getMembersCount()}} : {{$event->num_member}}</p>
+                                    <!-- @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))              
+                                    <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
+                                        <button
+                                            class="rounded-lg bg-orange-500 mt-5 ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                                            Join
+                                        </button>
+                                    </a>
+                                    @endif -->
+                                    
                                 </div>
-                                <p class="leading-normal text-gray-300 text-md">{{$event->description}}</p>
-                                <a href="{{ route('event.information',['event'=> $event])}}">
-                                    <button
-                                        class="rounded-lg bg-white border border-black py-3 px-6 font-sans text-xs font-bold uppercase text-black shadow-md">
-                                    Info
-                                    </button>
-                                </a>
-                                @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))              
-                                <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
-                                    <button
-                                        class="rounded-lg bg-orange-500 mt-5 ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
-                                        Join
-                                    </button>
-                                </a>
-                                @endif
-                                
-                            </div>
-                    </div>
-                    
+                        </div>
+                        </a>
                 </li>
+                
                 @endif
                 @endforeach
             </ul>
@@ -159,14 +164,15 @@
                                     Info
                                     </button>
                                 </a>
-                                @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))              
+                                <p class="text-white"> {{$event->getMembersCount()}} : {{$event->num_member}}</p>
+                                <!-- @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))              
                                 <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
                                     <button
                                         class="rounded-lg bg-orange-500 mt-5 ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                                         Join
                                     </button>
                                 </a>
-                                @endif
+                                @endif -->
                                 
                             </div>
                     </div>

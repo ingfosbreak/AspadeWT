@@ -65,6 +65,20 @@ class EventManager {
         return false;
 
     }
+
+
+    public function editEventInfo(Request $request) {
+
+        $event_info = EventInfo::find($request->data['info_id']);
+        $event_info->text = $request->data['text'];
+
+        if ($event_info->save()) {
+            return true;
+        }
+        return false;
+        
+
+    }
     
 
 
