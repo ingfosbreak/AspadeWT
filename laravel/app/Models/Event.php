@@ -24,6 +24,10 @@ class Event extends Model
         return $this->users->count();
     }
 
+    public function getInfoSorted() {
+        return $this->hasMany(EventInfo::class)->orderBy('order', 'asc');
+    }
+
     public function users(): BelongsToMany {
         return $this->belongsToMany(User::class);
     }

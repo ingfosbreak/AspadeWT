@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Http\RedirectResponse;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -54,6 +53,18 @@ class EventController extends Controller
         }
 
         return false;
+
+    }
+
+    public function updatePosEventInfo(Request $request) {
+
+        $success = EventService::getEventManager()->editOrder($request);
+        if ($success != false) {
+            return true;
+        }
+
+        return false;
+
 
     }
 
