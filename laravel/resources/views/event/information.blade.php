@@ -26,7 +26,7 @@
                         </a>
 
                     </p>
-                    
+
                     @foreach ($event->event_infos as $info)
                     <div class="flex text-gray-100 hover:text-gray-400">
                         <p class="rounded mr-2  text-2xl self-center mt-2">::</p>
@@ -48,7 +48,7 @@
                         desktop
                         publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                     </p>
-                    
+
 
                     <h3 class="text-2xl font-bold my-5" contenteditable="true" id="test2" onFocus="makefocus(this.id)">#1. What is Lorem Ipsum?</h3>
                     <p class="text-gray-400">escape to <span class="text-red-500">cancel</span> press to <span class="text-blue-500">save</span></p>
@@ -95,30 +95,30 @@
 
 
                     <div class="align-items:flex-end mt-5" style="display: flex; justify-content: space-between;">
-                        <a href="{{ route('user.main')}}">
-                        <button
-                            class="rounded-lg bg-wirte-500 py-5 px-10 font-sans text-xs font-bold uppercase text-black shadow-md shadow-black-500/20 transition-all hover:shadow-lg hover:shadow-black-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                            data-ripple-light="true">
-                            Back
-                        </button>
-                        </a>
-                        <a href="{{ route('event.main.main',['event'=> $event])}}">
-                            <button
-                                class="rounded-lg bg-orange-500 py-5 px-10 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                data-ripple-light="true">
-                                Join
-                            </button>
-                        </a>
-                        <a href="{{ route('event.kanban',['event'=> $event])}}">
-                            <button
-                                class="rounded-lg bg-orange-500 py-5 px-10 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                data-ripple-light="true">
-                                Kanban
-                            </button>
-                        </a>
+                <a href="{{ route('user.main')}}">
+                    <button
+                        class="rounded-lg bg-wirte-500 py-5 px-10 font-sans text-xs font-bold uppercase text-black shadow-md shadow-black-500/20 transition-all hover:shadow-lg hover:shadow-black-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                        data-ripple-light="true">
+                        Back
+                    </button>
+                </a>
+                <a href="{{ route('event.main.main',['event'=> $event])}}">
+                    <button
+                        class="rounded-lg bg-orange-500 py-5 px-10 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                        data-ripple-light="true">
+                        Join
+                    </button>
+                </a>
+                <a href="{{ route('event.kanban',['event'=> $event])}}">
+                    <button
+                        class="rounded-lg bg-orange-500 py-5 px-10 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                        data-ripple-light="true">
+                        Kanban
+                    </button>
+                </a>
             
-                    </div>
-                    
+            </div>
+
 
                 </div>
 
@@ -188,7 +188,7 @@
             //     before = $('#'+id).html();
                 
 
-            
+
             // }).on('blur', '[contenteditable]', function() {
             //     if (before != $('#'+id).html()) { 
             //         console.log("change");

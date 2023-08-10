@@ -3,7 +3,7 @@
 <div class="flex flex-wrap">
     <section class="relative mx-auto">
         <!-- navbar -->
-        <nav class="flex justify-between bg-gray-900 text-white w-screen px-5 xl:px-12 py-6 items-center">
+        <nav class="flex justify-between bg-teal-500 text-white w-screen px-5 xl:px-12 items-center">
 
             <a class="text-3xl font-bold font-heading" href="{{route('user.main')}}">
                 <img class="h-16"
@@ -30,6 +30,11 @@
                 <a href="{{ route('user.formRequestEvent')}}">
                     <button>
                         request
+                    </button>
+                </a>
+                <a href="{{ route('user.myEventHistory')}}">
+                    <button>
+                        my history
                     </button>
                 </a>
             </div>

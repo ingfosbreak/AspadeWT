@@ -40,10 +40,17 @@
                                         จำนวนStuffที่ต้องการในEvent</label>
                                 </div>
                                 <!-- Category -->
-                                <div class="relative z-0">
-                                    <input type="text" id="category"
-                                        class="block py-2.5 px-0 w-full text-base bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                        placeholder=" " autocomplete="off" />
+                                <div>
+                                    <label
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
+                                    <select type="text" id="role"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Choose a role for joining" required="">
+                                        <option selected>-</option>
+                                        <option value="Joiner">กลางแจ้ง</option>
+                                        <option value="stuff">ในร่ม</option>
+                                        <option value="E">TOTO</option>
+                                    </select>
                                     <label for="category"
                                         class="absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                                         ประเภทกิจกรรม</label>
@@ -93,21 +100,35 @@
                                             class="absolute text-sm dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                                             ยืนยันpassword</label>
                                     </div>
-                                    <div class="flex flex-row space-x-52 ">
-
-                                        <!-- ยังกด back บ่ได้นะ -->
-                                        <a href="{{ route('user.main')}}">
-                                            <button
-                                                class="mt-5 rounded-full  text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-                                                data-ripple-light="true">
-                                                Back
+                                    <div class="flex gap-10">
+                                        <a href="#_"
+                                            class=" mt-5 mb-5 rounded-lg w-40 text-center px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-4 font-medium border-black text-indigo-600 text-white">
+                                            <button formaction="{{ route('user.main')}}" formnovalidate>
+                                                <span
+                                                    class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-red-500 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+                                                <span
+                                                    class="relative text-red-500 transition duration-300 group-hover:text-white ease">
+                                                    <h4 class="text-xl text-black font-bold">Back</h4>
+                                                </span>
                                             </button>
                                         </a>
 
-                                        <button type="submit"
-                                            class="mt-5 rounded-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
-                                            Request
-                                        </button>
+
+                                        <!-- submit button -->
+                                        <a href="#_"
+                                            class=" mt-5 mb-5 rounded-lg w-40 text-center px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-4 font-medium border-black text-indigo-600 text-white">
+                                            <button type="submit">
+                                                <span
+                                                    class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-orange-500 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+                                                <span
+                                                    class="relative text-orange-500 transition duration-300 group-hover:text-white ease">
+                                                    <h4 class="text-xl text-black font-bold">Submit</h4>
+                                                </span>
+                                            </button>
+                                        </a>
+
+                                        <!--end submit button -->
+
                                     </div>
 
 

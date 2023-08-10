@@ -3,8 +3,9 @@
 @section('content')
 <!-- from https://tailwindcomponents.com/component/grid-blog-page -->
 
+<!-- bg-slate-900 -->
 
-<section id="testimonies" class="py-20 bg-slate-900 w-full">
+<section id="testimonies" class="py-20 bg-[url(https://cdn.discordapp.com/attachments/1135564910131151019/1138908881062473759/pexels-cameron-casey-1152853_1.jpg)] bg-cover bg-center bg-fixed w-full">
     
 <div class="transition duration-500 ease-in-out transform scale-100 translate-x-0 translate-y-0 opacity-100">
 <div class="mb-12 space-y-5 md:text-center">
@@ -48,7 +49,7 @@
 
 
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-
+    
 
             <ul class="space-y-8">
             @foreach ($events as $event)
@@ -174,7 +175,7 @@
                 @endif
                 @endforeach
             </ul>
-
+        </div>
             {{$events->links()}}
         </div>
     </div>

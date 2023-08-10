@@ -82,6 +82,9 @@ Route::middleware(['web'])->group(function () {
             Route::get('/user/requestingEvent', function (){
                 return view('user.formRequestEvent');
             })->name('user.formRequestEvent');
+            Route::get('/user/myEventHistory', function (){
+                return view('user.myEventHistory');
+            })->name('user.myEventHistory');
 
             Route::post('/event/form',[ArtistController::class])->name('event.request.store');
             Route::get('/event/{event}/kanban', [ProcessController::class, 'getEventKanbanPage'])->name('event.kanban');
