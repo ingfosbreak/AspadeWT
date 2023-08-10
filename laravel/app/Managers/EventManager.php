@@ -35,6 +35,18 @@ class EventManager {
         }
     }
 
+    // Event
+    public function editPublistEvent(Request $request) {
+        
+        $event = Event::find((int) $request->data['event_id']);
+        $event->publish = $request->data['publish'];
+        
+        if ($event->save()) {
+            return true;
+        }
+        return false;
+    }
+
 
     // EventInfo
 
@@ -80,7 +92,7 @@ class EventManager {
 
     }
 
-    public function editOrder(Request $request) {
+    public function editOrderInfo(Request $request) {
 
         $all_event_infos = EventInfo::where('event_id',$request->data['event_id'])->orderBy('order', 'asc')->get();
         $event_info = $event_info = EventInfo::find((int)$request->data['info_id']);
@@ -150,6 +162,27 @@ class EventManager {
         return true;
     
         
+    }
+
+    public function editTypeInfo(Request $request) {
+        
+        $event_info = EventInfo::find((int) $request->data['info_id']);
+        $event_info->type = $request->data['type'];
+
+        if ($event_info->save()) {
+            return true;
+        }
+        return false;
+    }
+
+    public function removeEventInfo(Request $request) {
+        
+        $event_info = EventInfo::find((int) $request->data['info_id']);
+        
+        if ($event_info->delete()) {
+            return true;
+        }
+        return false;
     }
     
 

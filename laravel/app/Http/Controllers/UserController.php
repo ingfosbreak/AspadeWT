@@ -14,7 +14,8 @@ use App\Models\EventUser;
 class UserController extends Controller
 {
     public function userPopEvent(){
-        $events = Event::paginate(15);
+        $events = Event::getPublishEventPaginate();
+        // $events = Event::paginate(15);
 
         return view('user.main', [
             'events' => $events

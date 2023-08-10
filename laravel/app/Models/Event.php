@@ -24,6 +24,10 @@ class Event extends Model
         return $this->users->count();
     }
 
+    public static function getPublishEventPaginate() {
+        return Event::where('publish','publish')->paginate(15);
+    }
+
     public function getInfoSorted() {
         return $this->hasMany(EventInfo::class)->orderBy('order', 'asc');
     }

@@ -86,8 +86,9 @@ Route::middleware(['web'])->group(function () {
                 return view('user.myEventHistory');
             })->name('user.myEventHistory');
 
-            Route::post('/event/form',[ArtistController::class])->name('event.request.store');
             Route::get('/event/{event}/kanban', [ProcessController::class, 'getEventKanbanPage'])->name('event.kanban');
+
+            Route::post('/editPublish', [EventController::class, 'editPublistEvent'])->name('publish.event');
 
             
         });
@@ -150,7 +151,8 @@ Route::post('/removeProcess', [ProcessController::class,'removeProcess'] )->name
 Route::post('/createEventInfo', [EventController::class, 'createEventInfo'] )->name('create.info');
 Route::post('/editEventInfo', [EventController::class, 'editEventInfo'] )->name('edit.info');
 Route::post('/updatePosEventInfo', [EventController::class, 'updatePosEventInfo'])->name('updatepos.info');
-
+Route::post('/typeEventInfo', [EventController::class,'editTypeEventInfo'])->name('type.info');
+Route::post('/removeEventInfo', [EventController::class,'removeEventInfo'])->name('remove.info');
 
 
 

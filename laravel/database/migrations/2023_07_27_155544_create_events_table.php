@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('location');
             $table->string('description');
             $table->enum('status',['in-progress','finished'])->default("in-progress");
+            $table->enum('publish',['draft','publish'])->default("draft");
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });

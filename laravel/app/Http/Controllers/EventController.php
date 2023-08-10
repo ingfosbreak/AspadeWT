@@ -30,10 +30,18 @@ class EventController extends Controller
     }
     
 
+    // Event
+    public function editPublistEvent(Request $request) {
+        
+        $success = EventService::getEventManager()->editPublistEvent($request);
+        if ($success != false) {
+            return true;
+        }
+        
+        return false;
+    }
 
-
-
-    // eventInfo
+    // EventInfo
 
     public function createEventInfo(Request $request) {
         
@@ -58,7 +66,31 @@ class EventController extends Controller
 
     public function updatePosEventInfo(Request $request) {
 
-        $success = EventService::getEventManager()->editOrder($request);
+        $success = EventService::getEventManager()->editOrderInfo($request);
+        if ($success != false) {
+            return true;
+        }
+
+        return false;
+
+
+    }
+
+    public function editTypeEventInfo(Request $request) {
+
+        $success = EventService::getEventManager()->editTypeInfo($request);
+        if ($success != false) {
+            return true;
+        }
+
+        return false;
+
+
+    }
+
+    public function removeEventInfo(Request $request) {
+
+        $success = EventService::getEventManager()->removeEventInfo($request);
         if ($success != false) {
             return true;
         }
