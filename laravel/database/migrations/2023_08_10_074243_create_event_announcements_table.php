@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('event_advertises', function (Blueprint $table) {
+        Schema::create('event_announcements', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Event::class);
             $table->string('title');
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('event_advertises');
+        Schema::dropIfExists('event_announcements');
     }
 };

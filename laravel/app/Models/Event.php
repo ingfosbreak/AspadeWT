@@ -14,7 +14,7 @@ use App\Models\Process;
 use App\Models\ProcessUser;
 use App\Models\EventInfo;
 use App\Models\EventTeam;
-use App\Models\EventAdvertise;
+use App\Models\EventAnnouncement;
 
 class Event extends Model
 {
@@ -57,7 +57,7 @@ class Event extends Model
     public function event_teams(): HasMany {
         return $this->hasMany(EventTeam::class);
     }
-    public function event_advertise(): HasMany {
-        return $this->hasMany(EventAdvertise::class);
+    public function event_announcement(): HasMany {
+        return $this->hasMany(EventAnnouncement::class);
     }
 }

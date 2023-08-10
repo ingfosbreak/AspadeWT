@@ -32,8 +32,12 @@ class UserSeeder extends Seeder
         $userEntry->role = "user";
         $userEntry->status = "ban";
         $userEntry->save();
+        // user ธรรมดา
+        $user = User::factory()->count(100)->create();
+        }
+
+
 
         
         
-    }
 }

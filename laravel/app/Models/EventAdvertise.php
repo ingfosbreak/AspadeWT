@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\Event;
-class EventAdvertise extends Model
+class EventAnnouncement extends Model
 {
     use HasFactory,SoftDeletes;
     public function event(): BelongsTo {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Event::class);
     }
 }

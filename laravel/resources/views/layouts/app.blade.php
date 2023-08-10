@@ -11,9 +11,9 @@
 
     @include('layouts.navbar')
 
-    <main class=" bg-slate-900 ">
+    <body class=" bg-slate-900 ">
         @yield('content')
-    </main>
+    </body>
     
 </body>
 </html>

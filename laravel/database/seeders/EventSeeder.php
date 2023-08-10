@@ -120,5 +120,50 @@ class EventSeeder extends Seeder
         $event->location = "KU";
         $event->description = "เสริมสร้างร่างกายด้วยค่ายออกกำลังกายในเส้นทางนี้";
         $event->save();
+
+        $event = new Event();
+        $event->name = "งานเปิดตัวหนังสือ";
+        $event->num_member = 20;
+        $event->budget = 5000;
+        $event->date = "1/2/1999";
+        $event->location = "KU";
+        $event->description = "ร่วมงานเปิดตัวหนังสือใหม่ๆ";
+        $event->save();
+
+        $event = new Event();
+        $event->name = "การแข่งขันถ่ายภาพ";
+        $event->num_member = 20;
+        $event->budget = 5000;
+        $event->date = "1/2/1999";
+        $event->location = "KU";
+        $event->description = "ส่งต่อฝีมือกับการถ่ายภาพในงานแข่งขัน";
+        $event->save();
+
+        $event = new Event();
+        $event->name = "งานประชาสัมพันธ์เทคโนโลยี";
+        $event->num_member = 20;
+        $event->budget = 5000;
+        $event->date = "1/2/1999";
+        $event->location = "KU";
+        $event->description = "ติดตามเทคโนโลยีที่ก้าวไกลที่สุดในงานประชาสัมพันธ์นี้";
+        $event->save();
+
+        $event = new Event();
+        $event->name = "คอร์สทำอาหาร";
+        $event->num_member = 20;
+        $event->budget = 5000;
+        $event->date = "1/2/1999";
+        $event->location = "KU";
+        $event->description = "เรียนรู้ศิลปะการทำอาหารอร่อยๆ กับคอร์สนี้";
+        $event->save();
+
+        $event = new Event();
+        $event->name = "ค่ายออกกำลังกาย";
+        $event->num_member = 20;
+        $event->budget = 5000;
+        $event->date = "1/2/1999";
+        $event->location = "KU";
+        $event->description = "เสริมสร้างร่างกายด้วยค่ายออกกำลังกายในเส้นทางนี้";
+        $event->save();
     }
 }
