@@ -79,6 +79,14 @@ class EventManager {
         
 
     }
+
+    public function editOrder (Request $request) {
+
+        $all_event_infos = EventInfo::get();
+
+        
+        
+    }
     
 
 

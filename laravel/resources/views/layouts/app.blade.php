@@ -14,7 +14,6 @@
     <main class=" bg-slate-900 ">
         @yield('content')
     </main>
+    
 </body>
 </html>
-
-@yield('layouts.footer')

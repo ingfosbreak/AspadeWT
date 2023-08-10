@@ -6,24 +6,16 @@ use App\Models\User;
 use App\Models\UserFull;
 use App\Models\UserToken;
 use App\Models\UserImage;
-use Illuminate\Support\Facades\RateLimiter;
-use Hash;
 use Carbon\Carbon;
-use Illuminate\Support\Str;
-use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Phattarachai\LaravelMobileDetect\Agent;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Storage;
 use App\Services\ImageService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;  
 use App\Http\Requests\OldPasswordRequest;
 use App\Http\Requests\Auth\LoginRequest;
-
-
+use Illuminate\Support\Facades\Hash;
 
 class UserManager {
     
