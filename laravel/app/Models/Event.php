@@ -7,11 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Models\User;
 use App\Models\EventUser;
 use App\Models\Process;
 use App\Models\ProcessUser;
 use App\Models\EventInfo;
+use App\Models\EventTeam;
+use App\Models\EventAdvertise;
 
 class Event extends Model
 {
@@ -44,5 +47,13 @@ class Event extends Model
     public function event_infos(): HasMany {
         return $this->hasMany(EventInfo::class);
     }
-
+    public function event_image(): HasOne {
+        return $this->hasOne(EventImage::class);
+    }
+    public function event_teams(): HasMany {
+        return $this->hasMany(EventTeam::class);
+    }
+    public function event_advertise(): HasMany {
+        return $this->hasMany(EventAdvertise::class);
+    }
 }

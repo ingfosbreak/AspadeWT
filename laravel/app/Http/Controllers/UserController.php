@@ -25,9 +25,5 @@ class UserController extends Controller
             'event' => $event
         ]);
     }
-    public function checkUerEvent(Event $event ,EventUser $eventuser){
-        if (condition) {
-            # code...
-        }
-    }
+    
 }

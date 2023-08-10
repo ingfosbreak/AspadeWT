@@ -5,6 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\User;
 use App\Models\Event;
+use App\Models\EventTeam;
 
 return new class extends Migration
 {
@@ -17,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Event::class);
+            $table->foreignIdFor(EventTeam::class)->nullable();
             $table->enum('event_role',['header','staff','participant']);
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);

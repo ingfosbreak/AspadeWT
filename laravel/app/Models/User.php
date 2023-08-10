@@ -118,4 +118,5 @@ class User extends Authenticatable
     public function requestJoinEvent(): HasMany {
         return $this->hasMany(RequestJoinEvent::class);
     }
+
 }
