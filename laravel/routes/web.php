@@ -90,6 +90,19 @@ Route::middleware(['web'])->group(function () {
 
             Route::post('/editPublish', [EventController::class, 'editPublistEvent'])->name('publish.event');
 
+            // Processes
+            Route::post('/createProcess', [ProcessController::class,'createProcess'] )->name('create.process');
+            Route::post('/editProcess', [ProcessController::class,'editProcess'] )->name('edit.process');
+            Route::post('/updateProcess', [ProcessController::class,'updateProcess'] )->name('update.process');
+            Route::post('/removeProcess', [ProcessController::class,'removeProcess'] )->name('remove.process');
+
+            // EventInfo
+            Route::post('/createEventInfo', [EventController::class, 'createEventInfo'] )->name('create.info');
+            Route::post('/editEventInfo', [EventController::class, 'editEventInfo'] )->name('edit.info');
+            Route::post('/updatePosEventInfo', [EventController::class, 'updatePosEventInfo'])->name('updatepos.info');
+            Route::post('/typeEventInfo', [EventController::class,'editTypeEventInfo'])->name('type.info');
+            Route::post('/removeEventInfo', [EventController::class,'removeEventInfo'])->name('remove.info');
+
             
         });
 
@@ -141,18 +154,7 @@ Route::middleware(['web'])->group(function () {
 
     
 
-// Processes
-Route::post('/createProcess', [ProcessController::class,'createProcess'] )->name('create.process');
-Route::post('/editProcess', [ProcessController::class,'editProcess'] )->name('edit.process');
-Route::post('/updateProcess', [ProcessController::class,'updateProcess'] )->name('update.process');
-Route::post('/removeProcess', [ProcessController::class,'removeProcess'] )->name('remove.process');
 
-// EventInfo
-Route::post('/createEventInfo', [EventController::class, 'createEventInfo'] )->name('create.info');
-Route::post('/editEventInfo', [EventController::class, 'editEventInfo'] )->name('edit.info');
-Route::post('/updatePosEventInfo', [EventController::class, 'updatePosEventInfo'])->name('updatepos.info');
-Route::post('/typeEventInfo', [EventController::class,'editTypeEventInfo'])->name('type.info');
-Route::post('/removeEventInfo', [EventController::class,'removeEventInfo'])->name('remove.info');
 
 
 
