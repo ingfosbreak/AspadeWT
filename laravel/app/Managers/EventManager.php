@@ -96,7 +96,7 @@ class EventManager {
     public function editOrderInfo(Request $request) {
 
         $all_event_infos = EventInfo::where('event_id',$request->get('data')['event_id'])->orderBy('order', 'asc')->get();
-        $event_info = $event_info = EventInfo::find((int)$request->get('data')['info_id']);
+        $event_info = EventInfo::find((int)$request->get('data')['info_id']);
         $pos = 0;
 
         foreach ($all_event_infos as $event) {
@@ -145,10 +145,31 @@ class EventManager {
             return true;
         }
 
-        
-        if ( ( $all_event_infos[(int) $request->get('data')['pos']]->order - $all_event_infos[((int) $request->get('data')['pos']) - 1]->order ) == 1 ) {
+        // if order > pos
 
-            for ($x = (int) $request->get('data')['pos']; $x <= ((EventInfo::where('event_id',(int)$request->get('data')['event_id'])->count()) - 1); $x++) {
+        if ($event_info->order > $all_event_infos[(int) $request->get('data')['pos']]->order) {
+
+            if ( ( $all_event_infos[(int) $request->get('data')['pos']]->order - $all_event_infos[((int) $request->get('data')['pos']) - 1]->order ) == 1 ) {
+
+                for ($x = (int) $request->get('data')['pos']; $x <= ((EventInfo::where('event_id',(int)$request->get('data')['event_id'])->count()) - 1); $x++) {
+                    $all_event_infos[$x]->order = $all_event_infos[$x]->order + 1000;
+                    $all_event_infos[$x]->save();
+                }
+    
+            }
+
+
+            $order = round( ( $all_event_infos[(int) $request->get('data')['pos']]->order + $all_event_infos[(int) $request->get('data')['pos'] - 1]->order ) / 2 );
+            $event_info->order = $order;
+            $event_info->save();
+
+            return true;
+
+        }
+
+        if ( ( $all_event_infos[(int) $request->get('data')['pos'] + 1]->order - $all_event_infos[((int) $request->get('data')['pos'])]->order ) == 1 ) {
+
+            for ($x = (int) $request->get('data')['pos'] + 1; $x <= ((EventInfo::where('event_id',(int)$request->get('data')['event_id'])->count()) - 1); $x++) {
                 $all_event_infos[$x]->order = $all_event_infos[$x]->order + 1000;
                 $all_event_infos[$x]->save();
             }
@@ -160,6 +181,7 @@ class EventManager {
         $event_info->order = $order;
         $event_info->save();
 
+        // if order < pos
         return true;
     
         
@@ -185,7 +207,7 @@ class EventManager {
         }
         return false;
     }
-    
+
     public function requestCreateEvent(Request $request){
 
         $event = new RequestCreateEvent();
