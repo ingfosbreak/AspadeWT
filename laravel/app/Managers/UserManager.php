@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Phattarachai\LaravelMobileDetect\Agent;
 use Illuminate\Support\Facades\Validator;
-use App\Services\ImageService;
+use App\Services\FileService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;  
 use App\Http\Requests\OldPasswordRequest;
 use App\Http\Requests\Auth\LoginRequest;
@@ -250,7 +250,7 @@ class UserManager {
 
         if ( $request->image != null ) {
             $file = $request->file('image');
-            $success_image = ImageService::getImageManager()->uploadOneImage('profile_images/',$file);
+            $success_image = FileService::getFileManager()->uploadFile('profile_images/',$file);
             
             if ($success_image == false) {
                 return false;
@@ -389,7 +389,7 @@ class UserManager {
             if ( $request->image != null ) {
                 
                 $file = $request->file('image');
-                $success_image = ImageService::getImageManager()->uploadOneImage('profile_images/',$file);
+                $success_image = FileService::getFileManager()->uploadFile('profile_images/',$file);
                 
                 if ($success_image == false) {
                     return false;
@@ -408,7 +408,7 @@ class UserManager {
         }
 
         $file = $request->file('image');
-        $success_image = ImageService::getImageManager()->uploadOneImage('profile_images/',$file);
+        $success_image = FileService::getFileManager()->uploadFile('profile_images/',$file);
                 
         if ($success_image == false) {
             return false;

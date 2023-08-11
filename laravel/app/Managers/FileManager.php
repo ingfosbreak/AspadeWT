@@ -2,19 +2,20 @@
 
 namespace App\Managers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+
+
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 
-class ImageManager {
+class FileManager {
 
     public function __construct() {}
 
-    public function uploadOneImage(string $path, $file) {
+    public function uploadFile(string $path, $file) {
         
         if($file) {
-            $image_name = $file->getClientOriginalName();
+            $image_name = Carbon::now() . $file->getClientOriginalName();
             $image_path = $path . $image_name;
             
             if (Storage::disk('public')->put($image_path, file_get_contents($file))) {
@@ -31,7 +32,7 @@ class ImageManager {
         return false;
     }
 
-    public function uploadMultipleImages(string $path, $files) {
+    public function uploadMultipleFiles(string $path, $files) {
         
         if($files) {
 

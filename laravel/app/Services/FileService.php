@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Managers\ImageManager;
+use App\Managers\FileManager;
 
 
-class ImageService {
+class FileService {
 
 
     private static $instance = null;
@@ -15,11 +15,11 @@ class ImageService {
    
 
     /* Singleton Service */
-    public static function getImageManager() {
+    public static function getFileManager() {
       
       if (self::$instance == null)
       {
-        self::$instance = new ImageManager();
+        self::$instance = new FileManager();
       }
    
       return self::$instance;
