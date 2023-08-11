@@ -11,7 +11,8 @@
 
             </div>
             <div class="flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0 mb-10 -mt-5">
-                <form action="{{ route('user.requestjoinEventMember.create',['event'=>$event])}}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('user.requestjoinEventMember.create',['event'=>$event])}}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     <div
                         class="bg-opacity-75 w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 mt-8">
@@ -85,18 +86,20 @@
                                     placeholder="Write your Reasons here..."></textarea>
                             </div>
 
-                            <div class="flex gap-10">
-                                <a href="#_"
-                                    class=" mt-5 mb-5 rounded-lg w-40 text-center px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-4 font-medium border-black text-indigo-600 text-white">
-                                    <button formaction="{{ route('user.main')}}" formnovalidate>
+
+                            <div class="flex">
+                                <a href="{{ route('user.main')}}">
+                                    <div
+                                        class=" mt-5 mb-5 rounded-lg w-40 text-center px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-4 font-medium border-black text-indigo-600 text-white">
                                         <span
                                             class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-red-500 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
                                         <span
                                             class="relative text-red-500 transition duration-300 group-hover:text-white ease">
                                             <h4 class="text-xl text-black font-bold">Back</h4>
                                         </span>
-                                    </button>
+                                    </div>
                                 </a>
+
 
 
                                 <!-- submit button -->
@@ -109,18 +112,18 @@
                                         <h4 class="text-xl text-black font-bold">Submit</h4>
                                     </span>
                                 </button>
-
-                                <!--end submit button -->
-
                             </div>
-
-
+                            <!--end submit button -->
 
                         </div>
-                    </div>
-                </form>
 
+
+
+                    </div>
             </div>
+            </form>
+
+        </div>
         </div>
     </section>
 

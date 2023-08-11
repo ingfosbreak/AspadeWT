@@ -1,10 +1,13 @@
-<div class="flex flex-col items-center justify-between bg-slate-700 rounded-lg shadow-lg">
+<div class="flex flex-col items-center justify-between bg-black rounded-lg shadow-lg">
     <ul class=" menu-hover-fill flex flex-col leading-none text-2xl uppercase space-y-4 p-8 rounded-lg">
-        <a href="{{ route('event.main.information',['event'=> $event]) }}" class="text-2xl text-white bg-slate-700 hover:bg-gray-900 rounded-xl">
+        <a href="{{ route('event.main.information',['event'=> $event]) }}" class="text-2xl text-white bg-black hover:bg-gray-900 rounded-xl p-5">
             Info
         </a>
-        <a href="{{ route('event.main.main',['event'=> $event]) }}" class="text-2xl text-white bg-slate-700 hover:bg-gray-900 rounded-xl">
+        <a href="{{ route('event.main.main',['event'=> $event]) }}" class="text-2xl text-white bg-black hover:bg-gray-900 rounded-xl p-5">
         Announcement
+        </a>
+        <a href="{{ route('event.kanban',['event'=> $event])}}" class="text-2xl text-white bg-black hover:bg-gray-900 rounded-xl p-5">
+        Kanban
         </a>
     </ul>
 

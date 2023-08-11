@@ -63,7 +63,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-row items-center text-gray-300 mt-2 px-1 hover:text-black px-10 mb-5" id="New-text" onClick="newText()" >
+                <div class="flex flex-row items-center text-gray-300 mt-2 hover:text-black px-10 mb-5" id="New-text" onClick="newText()" >
                         <p class="rounded mr-2 text-5xl">+</p>
                         <p class="pt-1 rounded text-md" >New text</p>
                 </div>
@@ -77,20 +77,23 @@
                         Back
                     </button>
                 </a>
+
+                
                 <a href="{{ route('event.main.main',['event'=> $event])}}">
                     <button
                         class="rounded-lg bg-orange-500 py-5 px-10 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                         data-ripple-light="true">
+                        Info
+                    </button>
+                </a>
+                <a href="{{route('event.formJoinEvent', ['event' => $event])}}">
+                    <button
+                        class="rounded-lg bg-green-500 py-5 px-10 font-sans text-xs font-bold uppercase text-white shadow-md shadow-black-500/20 transition-all hover:shadow-lg hover:shadow-black focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                        data-ripple-light="true">
                         Join
                     </button>
                 </a>
-                <a href="{{ route('event.kanban',['event'=> $event])}}">
-                    <button
-                        class="rounded-lg bg-orange-500 py-5 px-10 font-sans text-xs font-bold uppercase text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                        data-ripple-light="true">
-                        Kanban
-                    </button>
-                </a>
+                
             
             </div>
 
