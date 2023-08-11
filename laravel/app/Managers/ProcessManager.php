@@ -23,8 +23,8 @@ class ProcessManager {
     public function createProcess(Request $request) {
         
         $process = new Process();
-        $process->event_id = (int) $request->data['event_id'];
-        $process->name = $request->data['text'];    
+        $process->event_id = (int) $request->get('data')['event_id'];
+        $process->name = $request->get('data')['text'];    
 
         if ($process->save()) {
             return true;
@@ -34,8 +34,8 @@ class ProcessManager {
 
     public function editProcess(Request $request) {
 
-        $process = Process::find( (int) $request->data['process_id']);
-        $process->name = $request->data['text'];
+        $process = Process::find( (int) $request->get('data')['process_id']);
+        $process->name = $request->get('data')['text'];
 
         if ($process->save()) {
             return true;
@@ -47,8 +47,8 @@ class ProcessManager {
 
     public function updateProcess(Request $request) {
 
-        $process = Process::find( (int) $request->data['process_id']);
-        $process->status = $request->data['status'];
+        $process = Process::find( (int) $request->get('data')['process_id']);
+        $process->status = $request->get('data')['status'];
 
         if ($process->save()) {
             return true;
@@ -60,7 +60,7 @@ class ProcessManager {
 
     public function removeProcess(Request $request) {
 
-        $process = Process::find( (int) $request->data['process_id']);
+        $process = Process::find( (int) $request->get('data')['process_id']);
         
         if ($process->delete()) {
             return true;
