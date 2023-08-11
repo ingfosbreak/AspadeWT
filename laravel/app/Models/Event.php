@@ -21,7 +21,11 @@ class Event extends Model
     use HasFactory, SoftDeletes;
 
     public function getMembersCount() {
-        return $this->users->count();
+        return $this->user_pivots->where('event_role','participant')->count();
+    }
+
+    public function getStaffsCount() {
+        return $this->user_pivots->where('event_role','staff')->count();
     }
 
     public static function getPublishEventPaginate() {
@@ -36,7 +40,7 @@ class Event extends Model
         return $this->belongsToMany(User::class);
     }
 
-    public function user_roles(): HasMany {
+    public function user_pivots(): HasMany {
         return $this->hasMany(EventUser::class);
     }
 
@@ -44,7 +48,7 @@ class Event extends Model
         return $this->hasMany(Process::class);
     }
 
-    public function processes_statuses(): HasMany {
+    public function processes_pivots(): HasMany {
         return $this->hasMany(ProcessUser::class);
     }
 

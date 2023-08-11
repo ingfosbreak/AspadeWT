@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer("num_member");
+            $table->integer("num_staff");
             $table->integer("budget");
             $table->string('date');
             $table->string('location');

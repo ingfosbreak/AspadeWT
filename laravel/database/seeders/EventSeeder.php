@@ -16,6 +16,7 @@ class EventSeeder extends Seeder
         $event = new Event();
         $event->name = "คอนเสิร์ตเพลง";
         $event->num_member = 20;
+        $event->num_staff = 20;
         $event->budget = 5000;
         $event->date = "2/2/2222";
         $event->location = "KU";
@@ -25,6 +26,7 @@ class EventSeeder extends Seeder
         $event = new Event();
         $event->name = "กิจกรรมวิ่งกองกำลังช่วยเหลือ";
         $event->num_member = 20;
+        $event->num_staff = 20;
         $event->budget = 5000;
         $event->date = "2/2/2222";
         $event->location = "KU";
@@ -34,6 +36,7 @@ class EventSeeder extends Seeder
         $event = new Event();
         $event->name = "เทศกาลอาหาร";
         $event->num_member = 20;
+        $event->num_staff = 20;
         $event->budget = 5000;
         $event->date = "2/2/2222";
         $event->location = "KU";
@@ -43,6 +46,7 @@ class EventSeeder extends Seeder
         $event = new Event();
         $event->name = "งานฉายภาพยนตร์ใต้ดาว";
         $event->num_member = 20;
+        $event->num_staff = 20;
         $event->budget = 5000;
         $event->date = "1/2/1999";
         $event->location = "KU";
@@ -52,6 +56,7 @@ class EventSeeder extends Seeder
         $event = new Event();
         $event->name = "สัมมนาโยคะ";
         $event->num_member = 20;
+        $event->num_staff = 20;
         $event->budget = 5000;
         $event->date = "1/2/1999";
         $event->location = "KU";
@@ -61,6 +66,7 @@ class EventSeeder extends Seeder
         $event = new Event();
         $event->name = "เทศกาลวิทยาศาสตร์";
         $event->num_member = 20;
+        $event->num_staff = 20;
         $event->budget = 5000;
         $event->date = "1/2/1999";
         $event->location = "KU";
@@ -70,6 +76,7 @@ class EventSeeder extends Seeder
         $event = new Event();
         $event->name = "คอร์สเต้นแอโรบิก";
         $event->num_member = 20;
+        $event->num_staff = 20;
         $event->budget = 5000;
         $event->date = "1/2/1999";
         $event->location = "KU";
@@ -79,6 +86,7 @@ class EventSeeder extends Seeder
         $event = new Event();
         $event->name = "งานเปิดตัวหนังสือ";
         $event->num_member = 20;
+        $event->num_staff = 20;
         $event->budget = 5000;
         $event->date = "1/2/1999";
         $event->location = "KU";
@@ -88,6 +96,7 @@ class EventSeeder extends Seeder
         $event = new Event();
         $event->name = "การแข่งขันถ่ายภาพ";
         $event->num_member = 20;
+        $event->num_staff = 20;
         $event->budget = 5000;
         $event->date = "1/2/1999";
         $event->location = "KU";
@@ -97,6 +106,7 @@ class EventSeeder extends Seeder
         $event = new Event();
         $event->name = "งานประชาสัมพันธ์เทคโนโลยี";
         $event->num_member = 20;
+        $event->num_staff = 20;
         $event->budget = 5000;
         $event->date = "1/2/1999";
         $event->location = "KU";
@@ -106,6 +116,7 @@ class EventSeeder extends Seeder
         $event = new Event();
         $event->name = "คอร์สทำอาหาร";
         $event->num_member = 20;
+        $event->num_staff = 20;
         $event->budget = 5000;
         $event->date = "1/2/1999";
         $event->location = "KU";
@@ -115,6 +126,7 @@ class EventSeeder extends Seeder
         $event = new Event();
         $event->name = "ค่ายออกกำลังกาย";
         $event->num_member = 20;
+        $event->num_staff = 20;
         $event->budget = 5000;
         $event->date = "1/2/1999";
         $event->location = "KU";
@@ -124,6 +136,7 @@ class EventSeeder extends Seeder
         $event = new Event();
         $event->name = "งานเปิดตัวหนังสือ";
         $event->num_member = 20;
+        $event->num_staff = 20;
         $event->budget = 5000;
         $event->date = "1/2/1999";
         $event->location = "KU";
@@ -133,6 +146,7 @@ class EventSeeder extends Seeder
         $event = new Event();
         $event->name = "การแข่งขันถ่ายภาพ";
         $event->num_member = 20;
+        $event->num_staff = 20;
         $event->budget = 5000;
         $event->date = "1/2/1999";
         $event->location = "KU";
@@ -142,6 +156,7 @@ class EventSeeder extends Seeder
         $event = new Event();
         $event->name = "งานประชาสัมพันธ์เทคโนโลยี";
         $event->num_member = 20;
+        $event->num_staff = 20;
         $event->budget = 5000;
         $event->date = "1/2/1999";
         $event->location = "KU";
@@ -151,6 +166,7 @@ class EventSeeder extends Seeder
         $event = new Event();
         $event->name = "คอร์สทำอาหาร";
         $event->num_member = 20;
+        $event->num_staff = 20;
         $event->budget = 5000;
         $event->date = "1/2/1999";
         $event->location = "KU";
@@ -160,6 +176,7 @@ class EventSeeder extends Seeder
         $event = new Event();
         $event->name = "ค่ายออกกำลังกาย";
         $event->num_member = 20;
+        $event->num_staff = 20;
         $event->budget = 5000;
         $event->date = "1/2/1999";
         $event->location = "KU";

@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Event;
+use App\Models\EventTeam;
 
 return new class extends Migration
 {
@@ -15,9 +16,9 @@ return new class extends Migration
         Schema::create('processes', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Event::class); 
+            $table->foreignIdFor(EventTeam::class)->nullable();
             $table->string('name');
             $table->enum('status',['todo','doing','done'])->default("todo");
-            $table->integer("num_member")->default(0);
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
