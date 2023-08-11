@@ -62,7 +62,7 @@ function updateAjax(type, url, token, data=null) {
                     data: data},
         async : false,
         success:function(data) {
-            console.log(data);
+            // console.log(data);
             // if (data == true) {
             //     alert("success update task");
             // }
