@@ -3,41 +3,27 @@
 <div class="flex flex-wrap">
     <section class="relative mx-auto">
         <!-- navbar -->
-        <nav class="flex justify-between bg-teal-500 text-white w-screen px-5 xl:px-12 items-center">
+        <nav class="flex justify-between bg-gray-200 text-black w-screen px-5 xl:px-12 items-center">
 
             <a class="text-3xl font-bold font-heading" href="{{route('user.main')}}">
                 <img class="h-16"
                     src="https://media.discordapp.net/attachments/1135564910131151019/1138487250234114109/remove.png?width=1396&height=714"
                     alt="logo">
             </a>
-            <!-- Nav Links -->
-            
-            @if (Request::url() == route('user.main'))
-            <div>
-                <form
-                    class="mx-auto max-w-xl py-2 px-6 rounded-full bg-gray-50 border flex focus-within:border-gray-300">
-                    <input type="text" placeholder="Search anything"
-                        class="bg-transparent w-full focus:outline-none pr-4 font-semibold border-0 focus:ring-0 px-0 py-0 text-black"
-                        name="topic">
-                    <button
-                        class="flex flex-row items-center justify-center min-w-[130px] px-4 rounded-full font-medium tracking-wide border disabled:cursor-not-allowed disabled:opacity-50 transition ease-in-out duration-150 text-base bg-black text-white font-medium tracking-wide border-transparent py-1.5 h-[38px] -mr-3">
-                        Search
-                    </button>
-                </form>
-            </div>
-            @endif
-            <div>
-                <a href="{{ route('user.formRequestEvent')}}">
-                    <button>
-                        request
-                    </button>
-                </a>
-                <a href="{{ route('user.myEventHistory')}}">
-                    <button>
-                        my history
-                    </button>
-                </a>
-            </div>
+            <!-- navigation -->
+            <nav class="nav font-semibold text-lg">
+                <ul class="flex items-start">
+                    <li
+                        class="p-4 border-b-2 border-slate-500 border-opacity-0 hover:border-opacity-100 hover:text-slate-800 duration-200 cursor-pointer active">
+                        <a href="{{ route('user.formRequestEvent')}}">Request</a>
+                    </li>
+                    <li
+                        class="p-4 border-b-2 border-slate-500 border-opacity-0 hover:border-opacity-100 hover:text-slate-800 duration-200 cursor-pointer">
+                        <a href="{{ route('user.myEventHistory')}}">My history</a>
+                    </li>
+                </ul>
+            </nav>
+    
             <!-- Sign In / Register      -->
             <div class="flex items-center hover:text-gray-200" id="profilebut">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 hover:text-gray-200" fill="none"

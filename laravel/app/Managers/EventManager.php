@@ -5,7 +5,8 @@ namespace App\Managers;
 
 use App\Models\Event;
 use App\Models\EventInfo;
-
+use App\Models\RequestCreateEvent;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ItemNotFoundException;
 use Illuminate\Http\Request;
 
@@ -183,6 +184,23 @@ class EventManager {
             return true;
         }
         return false;
+    }
+    public function requestCreateEvent(Request $request){
+
+        $event = new RequestCreateEvent();
+        $event->user_id = Auth::getUser()->id;
+        $event->name = $request->get('name');
+        $event->num_member = $request->get('num_member');
+        $event->budget = $request->get('budget');
+        $event->date = $request->get('date');
+        $event->location = $request->get('location');
+        $event->description = $request->get('description');
+        
+        if ($event->save()) {
+            return true;
+        }
+        return false;
+
     }
     
 

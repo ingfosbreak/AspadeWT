@@ -11,7 +11,7 @@
 
             </div>
             <div class="flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0 mb-10 -mt-5">
-                <form action="">
+                <form action="{{ route('user.formRequestEvent.create')}}" method="POST">
                     @csrf
                     <div
                         class="bg-opacity-75 w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 mt-8">
@@ -20,22 +20,22 @@
                                 class="text-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                                 Request for to Open Event
                             </h1>
-                            <form class="space-y-4 md:space-y-6" action="#">
+                            <div class="space-y-4 md:space-y-6">
                                 <!-- name -->
                                 <div class="relative z-0">
-                                    <input type="name" id="name"
+                                    <input type="text" id="name" name="name"
                                         class="block py-2.5 px-0 w-full text-base  bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                         placeholder=" " autocomplete="off" data-te-input-showcounter="true" />
-                                    <label for="floating_standard"
+                                    <label for="name"
                                         class="absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                                         NameEvent</label>
                                 </div>
                                 <!-- Stuff  -->
                                 <div class="relative z-0">
-                                    <input type="number" id="stuff"
+                                    <input type="number" id="num_member" name="num_member"
                                         class="block py-2.5 px-0 w-full text-base  bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                         placeholder=" " autocomplete="off" />
-                                    <label for="stuff"
+                                    <label for="num_member"
                                         class="absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                                         จำนวนStuffที่ต้องการในEvent</label>
                                 </div>
@@ -57,7 +57,7 @@
                                 </div>
                                 <!-- budget -->
                                 <div class="relative z-0">
-                                    <input type="number" id="budget"
+                                    <input type="number" id="budget" name="budget"
                                         class="block py-2.5 px-0 w-full text-base  bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                         placeholder=" " autocomplete="off" />
                                     <label for="budget"
@@ -66,7 +66,7 @@
                                 </div>
                                 <!-- date Event -->
                                 <div class="relative z-0">
-                                    <input type="date" id="date"
+                                    <input type="date" id="date" name="date"
                                         class="block py-2.5 px-0 w-full text-base bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                         placeholder="d/m/y" autocomplete="off" />
                                     <label for="date"
@@ -76,7 +76,7 @@
 
                                 <!-- location -->
                                 <div class="relative z-0">
-                                    <input type="text" id="location"
+                                    <input type="text" id="location" name="location"
                                         class="block py-2.5 px-0 w-full text-base bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                         placeholder=" " autocomplete="off" />
                                     <label for="location"
@@ -86,7 +86,7 @@
 
                                 <label for="description"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">description</label>
-                                <textarea id="description" rows="4"
+                                <textarea type=text id="description" name="description" rows="4"
                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Write your Description here..."></textarea>
 
@@ -101,41 +101,41 @@
                                             ยืนยันpassword</label>
                                     </div>
                                     <div class="flex gap-10">
-                                        <a href="#_"
+                                        <a href="{{ route('user.main')}}"
                                             class=" mt-5 mb-5 rounded-lg w-40 text-center px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-4 font-medium border-black text-indigo-600 text-white">
-                                            <button formaction="{{ route('user.main')}}" formnovalidate>
+                                            
                                                 <span
                                                     class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-red-500 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
                                                 <span
                                                     class="relative text-red-500 transition duration-300 group-hover:text-white ease">
                                                     <h4 class="text-xl text-black font-bold">Back</h4>
                                                 </span>
-                                            </button>
+                                            
                                         </a>
 
 
                                         <!-- submit button -->
-                                        <a href="#_"
+
+                                        <button type="submit"
                                             class=" mt-5 mb-5 rounded-lg w-40 text-center px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-4 font-medium border-black text-indigo-600 text-white">
-                                            <button type="submit">
-                                                <span
-                                                    class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-orange-500 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
-                                                <span
-                                                    class="relative text-orange-500 transition duration-300 group-hover:text-white ease">
-                                                    <h4 class="text-xl text-black font-bold">Submit</h4>
-                                                </span>
-                                            </button>
-                                        </a>
+                                            <span
+                                                class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-orange-500 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+                                            <span
+                                                class="relative text-orange-500 transition duration-300 group-hover:text-white ease">
+                                                <h4 class="text-xl text-black font-bold">Submit</h4>
+                                            </span>
+                                        </button>
+
 
                                         <!--end submit button -->
 
                                     </div>
 
 
-                            </form>
+                                </div>
 
+                            </div>
                         </div>
-                    </div>
                 </form>
             </div>
         </div>

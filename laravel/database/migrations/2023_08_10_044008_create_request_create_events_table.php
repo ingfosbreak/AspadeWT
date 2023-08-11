@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("name");
             $table->integer("num_member");
             $table->integer("budget");
-            $table->string('date');
+            $table->date('date');
             $table->string('location');
             $table->string("description");
             $table->enum('status-request',['approved','denied'])->nullable();

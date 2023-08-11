@@ -18,7 +18,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
-        $event->date = "2/2/2222";
+        $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
         $event->description = "สนุกกับคอนเสิร์ตเพลงสดๆ กับศิลปินที่มีชื่อเสียง";
         $event->save();
@@ -28,7 +28,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
-        $event->date = "2/2/2222";
+        $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
         $event->description = "เข้าร่วมกิจกรรมวิ่งเพื่อเปิดโอกาสให้ช่วยเหลือคนที่ต้องการ";
         $event->save();
@@ -38,7 +38,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
-        $event->date = "2/2/2222";
+        $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
         $event->description = "คำอธิบาย: สำรวจอาหารอร่อยจากวัฒนธรรมต่างๆ ในเทศกาลอาหารที่น่าตื่นเต้น";
         $event->save();
@@ -48,7 +48,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
-        $event->date = "1/2/1999";
+        $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
         $event->description = "ชมภาพยนตร์เรื่องดังภายใต้ฟ้ากลางคืน";
         $event->save();
@@ -58,7 +58,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
-        $event->date = "1/2/1999";
+        $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
         $event->description = "ฝึกฝนโยคะและสัมผัสความสงบใจ";
         $event->save();
@@ -68,7 +68,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
-        $event->date = "1/2/1999";
+        $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
         $event->description = "สนุกกับกิจกรรมทางวิทยาศาสตร์ต่างๆ ในเทศกาลวิทยาศาสตร์น่าสนใจ";
         $event->save();
@@ -78,7 +78,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
-        $event->date = "1/2/1999";
+        $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
         $event->description = "ได้เรียนรู้เต้นทุกรูปแบบกับคอร์สเต้นแอโรบิก";
         $event->save();
@@ -88,7 +88,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
-        $event->date = "1/2/1999";
+        $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
         $event->description = "ร่วมงานเปิดตัวหนังสือใหม่ๆ";
         $event->save();
@@ -98,7 +98,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
-        $event->date = "1/2/1999";
+        $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
         $event->description = "ส่งต่อฝีมือกับการถ่ายภาพในงานแข่งขัน";
         $event->save();
@@ -108,7 +108,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
-        $event->date = "1/2/1999";
+        $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
         $event->description = "ติดตามเทคโนโลยีที่ก้าวไกลที่สุดในงานประชาสัมพันธ์นี้";
         $event->save();
@@ -118,7 +118,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
-        $event->date = "1/2/1999";
+        $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
         $event->description = "เรียนรู้ศิลปะการทำอาหารอร่อยๆ กับคอร์สนี้";
         $event->save();
@@ -128,7 +128,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
-        $event->date = "1/2/1999";
+        $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
         $event->description = "เสริมสร้างร่างกายด้วยค่ายออกกำลังกายในเส้นทางนี้";
         $event->save();
@@ -138,7 +138,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
-        $event->date = "1/2/1999";
+        $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
         $event->description = "ร่วมงานเปิดตัวหนังสือใหม่ๆ";
         $event->save();
@@ -148,7 +148,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
-        $event->date = "1/2/1999";
+        $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
         $event->description = "ส่งต่อฝีมือกับการถ่ายภาพในงานแข่งขัน";
         $event->save();
@@ -158,7 +158,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
-        $event->date = "1/2/1999";
+        $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
         $event->description = "ติดตามเทคโนโลยีที่ก้าวไกลที่สุดในงานประชาสัมพันธ์นี้";
         $event->save();
@@ -168,7 +168,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
-        $event->date = "1/2/1999";
+        $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
         $event->description = "เรียนรู้ศิลปะการทำอาหารอร่อยๆ กับคอร์สนี้";
         $event->save();
@@ -178,7 +178,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
-        $event->date = "1/2/1999";
+        $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
         $event->description = "เสริมสร้างร่างกายด้วยค่ายออกกำลังกายในเส้นทางนี้";
         $event->save();

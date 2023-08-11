@@ -79,16 +79,16 @@ Route::middleware(['web'])->group(function () {
             Route::get('/event/infomation/{event}',[EventController::class, 'getInfoEventPage'])->name('event.information');
             Route::get('/event/main/infomation/{event}',[EventController::class, 'getInfoEventPageFormMainEvent'])->name('event.main.information');
             Route::get('/event/{event}/form',[EventController::class, 'getJoinEventFormPage'])->name('event.formJoinEvent');
-            Route::get('/user/requestingEvent', function (){
-                return view('user.formRequestEvent');
-            })->name('user.formRequestEvent');
-            Route::get('/user/myEventHistory', function (){
-                return view('user.myEventHistory');
-            })->name('user.myEventHistory');
+            Route::get('/user/myEventHistory', function (){return view('user.myEventHistory');})->name('user.myEventHistory');
 
             Route::get('/event/{event}/kanban', [ProcessController::class, 'getEventKanbanPage'])->name('event.kanban');
 
             Route::post('/editPublish', [EventController::class, 'editPublistEvent'])->name('publish.event');
+
+            //RequestCreateEvent
+            Route::get('/user/requestingEvent', function (){return view('user.formRequestEvent');})->name('user.formRequestEvent');
+            Route::post('/user/requestingEvent',[EventController::class,'requestCreateEvent'])->name('user.formRequestEvent.create');
+            Route::get('/artists/{artist}/songs',)->name('artists.songs.create');
 
             // Processes
             Route::post('/createProcess', [ProcessController::class,'createProcess'] )->name('create.process');
