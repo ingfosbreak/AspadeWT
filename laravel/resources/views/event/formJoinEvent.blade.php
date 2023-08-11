@@ -11,7 +11,7 @@
 
             </div>
             <div class="flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0 mb-10 -mt-5">
-                <form action="">
+                <form action="{{ route('user.requestjoinEventMember.create',['event'=>$event])}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div
                         class="bg-opacity-75 w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 mt-8">
@@ -73,7 +73,7 @@
                                 for="multiple_files">Upload multiple files</label>
                             <input
                                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                id="multiple_files" name='user_file' type="file" multiple>
+                                id="multiple_files" name='user_file[]' type="file" multiple>
 
 
 

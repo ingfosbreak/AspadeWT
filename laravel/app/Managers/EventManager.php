@@ -5,10 +5,14 @@ namespace App\Managers;
 
 use App\Models\Event;
 use App\Models\EventInfo;
+use App\Models\RequestJoinEvent;
+use App\Models\RequestJoinEventFile;
+use App\Services\FileService;
 use App\Models\RequestCreateEvent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ItemNotFoundException;
 use Illuminate\Http\Request;
+
 
 
 class EventManager {
@@ -225,27 +229,38 @@ class EventManager {
         return false;
 
     }
-    // public function requestjoinEventMember(Request $request){
-    //     $requestjoin = new RequestjoinEvent();
-    //     $requestjoin->user_id = Auth::getUser()->id;
-    //     $requestjoin->reson = $request->get('reson');
-
-    //     if ($request->get('user_file')) {
-    //         $files = $request->file('user_file');
-
-    //         foreach ($files as $file) {
-    //             $success_files = ImageService::getImageManager()->uploadMultipleImages('usersjoin/'.Auth::getUser()->username.'/',$files);
-
-    //             if ($success_files == false) {
-    //                 rcontinue;
-    //             }
-
-    //             if ()_
-    //         }
-    //     }
+    public function requestjoinEventMember(Request $request ,Event $event){
+        $requestjoin = new RequestJoinEvent();
+        $requestjoin->user_id = Auth::getUser()->id;
+        $requestjoin->event_id = $event->id;
+        $requestjoin->reason = $request->get('reason');
+        if ($requestjoin->save()){
+            if ($request->user_file != null) {
+                // $files = $request->file('user_file');
+    
+                
+                foreach ($request->user_file as $file) {
+                    
+                    $success_files = FileService::getFileManager()->uploadFile('usersjoin/',$file);
+    
+                    if ($success_files == false) {
+                        continue;
+                    }
+                    $requestjoinfile = new RequestJoinEventFile();
+                    $requestjoinfile->request_join_event_id = $requestjoin->id;
+                    $requestjoinfile->file_path = $success_files['image_path'];
+                    $requestjoinfile->save();
+    
+                
+                }
+            }
+            return true;
+        }
+        
+        return false ;
 
         
-    // }
+    }
     
 
 
