@@ -1,8 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.event')
 @section('content')
 
 <div class="flex h-full">
-    @include('components.event.sidebarEvent')
     <!-- from :https://tailwindcomponents.com/component/blog-post -->
     <!-- component -->
     <div class="flex flex-col mx-auto bg-white w-full items-center">

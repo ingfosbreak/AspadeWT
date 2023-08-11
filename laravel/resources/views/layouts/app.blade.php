@@ -12,10 +12,10 @@
 
     @include('layouts.navbar')
 
-    <body class=" bg-slate-800">
+    <div class=" bg-slate-800">
         @yield('content')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
-    </body>
+    </div>
     
 </body>
 </html>

@@ -106,6 +106,7 @@ Route::middleware(['web'])->group(function () {
             //RequestJoinEvent
             Route::get('/event/{event}/form',[EventController::class, 'getJoinEventFormPage'])->name('event.formJoinEvent');
             Route::post('/event/{event}/form',[EventController::class, 'requestjoinEventMember'])->name('user.requestjoinEventMember.create');
+
             
         });
 
@@ -157,7 +158,9 @@ Route::middleware(['web'])->group(function () {
 
     
 
-
+Route::get('/profile',function(){
+    return view('layouts.event');
+})->name('profile');
 
 
 
@@ -168,9 +171,7 @@ Route::post('/getmsg',function(){
 });
 
 
-Route::get('/profile',function(){
-    return view('profile');
-})->name('profile');
+
 
 
 
