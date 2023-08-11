@@ -105,8 +105,8 @@ class UserManager {
     public function login(LoginRequest $request) {
         
         $credentials = array(
-            'username' => $request->username,
-            'password' => $request->password,
+            'username' => $request->get('username'),
+            'password' => $request->get('password'),
         );
         
         if (Auth::attempt($credentials, true) && Auth::getUser()->role == "admin") {
@@ -159,10 +159,10 @@ class UserManager {
     public function createUser(Request $request) {
 
         $user = new User();
-        $user->username = $request->username;
+        $user->username = $request->get('username');
         $user->role = "user";
         $user->status = "active";
-        $user->password = Hash::make($request->password);
+        $user->password = Hash::make($request->get('password'));
         
         if ($user->save()) {
             return $user;
@@ -242,11 +242,11 @@ class UserManager {
 
         $userfull = new UserFull();
         $userfull->user_id = $userid;
-        $userfull->email = $request->email;
-        $userfull->faculty = $request->faculty;
-        $userfull->firstname = $request->firstname;
-        $userfull->lastname = $request->lastname;
-        $userfull->year = $request->year;
+        $userfull->email = $request->get('email');
+        $userfull->faculty = $request->get('faculty');
+        $userfull->firstname = $request->get('firstname');
+        $userfull->lastname = $request->get('lastname');
+        $userfull->year = $request->get('year');
 
         if ( $request->image != null ) {
             $file = $request->file('image');
@@ -302,7 +302,7 @@ class UserManager {
     public function resetPassword(Request $request) {
 
         $user = Auth::getUser();
-        $user->password = Hash::make($request->newpassword);
+        $user->password = Hash::make($request->get('newpassword'));
             
         return $user->save();
     }
@@ -339,23 +339,23 @@ class UserManager {
 
         $userfull = Auth::getUser()->userFull;
 
-        if ($request->email != null) {
-            $userfull->email = $request->email;
+        if ($request->get('email') != null) {
+            $userfull->email = $request->get('email');
         }
 
-        if ($request->firstname != null) {
-            $userfull->firstname = $request->firstname;
+        if ($request->get('firstname') != null) {
+            $userfull->firstname = $request->get('firstname');
         }
 
-        if ($request->lastname != null) {
-            $userfull->lastname = $request->lastname;
+        if ($request->get('lastname') != null) {
+            $userfull->lastname = $request->get('lastname');
         }
 
-        if ($request->faculty != null) {
-            $userfull->faculty = $request->faculty;
+        if ($request->get('faculty') != null) {
+            $userfull->faculty = $request->get('faculty');
         }
-        if ($request->year != null) {
-            $userfull->year = $request->year;
+        if ($request->get('year') != null) {
+            $userfull->year = $request->get('year');
         }
         return $userfull->save();
     }

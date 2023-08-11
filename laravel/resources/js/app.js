@@ -10,6 +10,9 @@ window.$ = jQuery;
 import dragula from "dragula";
 window.dragula = dragula;
 
+import axios from 'axios';
+window.axios = axios;
+
 import.meta.glob([
     '../images/**'
 ]);
