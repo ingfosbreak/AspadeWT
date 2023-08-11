@@ -129,6 +129,7 @@
                 console.log(index);
                 
                 updateAjax('POST', '{{route('updatepos.info')}}', '{{csrf_token()}}', {'info_id':id,'pos':index,'event_id':{{$event->id}}});
+                window.location.reload(true);
                 
             });
 
