@@ -126,6 +126,7 @@
             drake.on('drop', function(el, target, source, sibling) {
                 var index = $(el).index();
                 var id = el.id;
+                console.log(index);
                 
                 updateAjax('POST', '{{route('updatepos.info')}}', '{{csrf_token()}}', {'info_id':id,'pos':index,'event_id':{{$event->id}}});
                 

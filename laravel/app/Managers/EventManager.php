@@ -136,8 +136,8 @@ class EventManager {
 
         // if last
 
-        if ((int) $request->data['pos'] == (EventInfo::count() - 1) ) {
-            $order = $all_event_infos[EventInfo::count() - 1]->order;
+        if ((int) $request->data['pos'] == ((EventInfo::where('event_id', (int) $request->data['event_id'])->count()) - 1) ) {
+            $order = $all_event_infos[(EventInfo::where('event_id', (int) $request->data['event_id'])->count()) - 1]->order;
             $event_info->order = $order + 1000;
             $event_info->save();
 
@@ -145,9 +145,9 @@ class EventManager {
         }
 
         
-        if ( ( $all_event_infos[(int) $request->data['pos']]->order - $all_event_infos[(int) $request->data['pos'] - 1]->order ) == 1 ) {
+        if ( ( $all_event_infos[(int) $request->data['pos']]->order - $all_event_infos[((int) $request->data['pos']) - 1]->order ) == 1 ) {
 
-            for ($x = (int) $request->data['pos']; $x <= (EventInfo::count() - 1); $x++) {
+            for ($x = (int) $request->data['pos']; $x <= ((EventInfo::where('event_id',(int)$request->data['event_id'])->count()) - 1); $x++) {
                 $all_event_infos[$x]->order = $all_event_infos[$x]->order + 1000;
                 $all_event_infos[$x]->save();
             }
@@ -155,7 +155,7 @@ class EventManager {
         }
 
 
-        $order = round( ( $all_event_infos[(int) $request->data['pos']]->order + $all_event_infos[(int) $request->data['pos'] - 1]->order ) / 2 );
+        $order = round( ( $all_event_infos[(int) $request->data['pos']]->order + $all_event_infos[(int) $request->data['pos'] + 1]->order ) / 2 );
         $event_info->order = $order;
         $event_info->save();
 
