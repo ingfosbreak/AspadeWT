@@ -202,6 +202,27 @@ class EventManager {
         return false;
 
     }
+    // public function requestjoinEventMember(Request $request){
+    //     $requestjoin = new RequestjoinEvent();
+    //     $requestjoin->user_id = Auth::getUser()->id;
+    //     $requestjoin->reson = $request->get('reson');
+
+    //     if ($request->get('user_file')) {
+    //         $files = $request->file('user_file');
+
+    //         foreach ($files as $file) {
+    //             $success_files = ImageService::getImageManager()->uploadMultipleImages('usersjoin/'.Auth::getUser()->username.'/',$files);
+
+    //             if ($success_files == false) {
+    //                 rcontinue;
+    //             }
+
+    //             if ()_
+    //         }
+    //     }
+
+        
+    // }
     
 
 

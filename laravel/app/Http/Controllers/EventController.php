@@ -52,6 +52,19 @@ class EventController extends Controller
         return false;
     }
 
+    //requestjoinEventMember
+    public function requestjoinEventMember(Request $request) {
+        
+        $success = EventService::getEventManager()->requestjoinEventMember($request);
+        if ($success != false) {
+            return redirect()->route('user.main')->with('success','create success');
+        }
+        
+        return false;
+    }
+
+
+
 
     // EventInfo
 

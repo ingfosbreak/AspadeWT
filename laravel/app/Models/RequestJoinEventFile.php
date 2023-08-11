@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\RequestJoinEvent;
 
 
-class RequestJoinEventImage extends Model
+class RequestJoinEventFile extends Model
 {
     use HasFactory, SoftDeletes;
 

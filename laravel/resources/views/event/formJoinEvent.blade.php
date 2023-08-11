@@ -20,56 +20,69 @@
                                 class="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                                 Request for Joining Event
                             </h1>
-                            <div>
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
-                                <select id="role"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Choose a role for joining" required="">
-                                    <option selected>-</option>
-                                    <option value="Joiner">Joiner</option>
-                                    <option value="stuff">Stuff</option>
-                                </select>
+                            <div class="relative z-0">
+                                <input type="text" id="disabled-input" name="name"
+                                    value="{{Auth::getUser()->userFull->firstname}}" aria-label="disabled input"
+                                    class="block py-2.5 px-0 w-full text-base  bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    placeholder=" " autocomplete="off" data-te-input-showcounter="true" disabled />
+                                <label for="firstname"
+                                    class="absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    FirstName</label>
                             </div>
-                            <div>
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                    Videos and pictures for consideration.</label>
-                                <div class="flex items-center justify-center w-full">
-                                    <label for="dropzone-file"
-                                        class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 20 16">
-                                                <path stroke="currentColor" stroke-linecap="round"
-                                                    stroke-linejoin="round" stroke-width="2"
-                                                    d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                                            </svg>
-                                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
-                                                    class="font-semibold">Click to upload</span> or drag and drop</p>
-                                            <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF
-                                                (MAX.
-                                                800x400px)</p>
-                                        </div>
-                                        <input id="dropzone-file" type="file" class="hidden" />
-                                    </label>
-                                </div>
+                            <div class="relative z-0">
+                                <input type="text" id="disabled-input" name="name"
+                                    value="{{Auth::getUser()->userFull->lastname}}" aria-label="disabled input"
+                                    class="block py-2.5 px-0 w-full text-base  bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    placeholder=" " autocomplete="off" data-te-input-showcounter="true" disabled />
+                                <label for="lastname"
+                                    class="absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    LastName</label>
                             </div>
+                            <div class="relative z-0">
+                                <input type="text" id="disabled-input" name="faculty"
+                                    value="{{Auth::getUser()->userFull->faculty}}" aria-label="disabled input"
+                                    class="block py-2.5 px-0 w-full text-base  bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    placeholder=" " autocomplete="off" data-te-input-showcounter="true" disabled />
+                                <label for="faculty"
+                                    class="absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    Faculty</label>
+                            </div>
+                            <div class="relative z-0">
+                                <input type="text" id="disabled-input" name="year"
+                                    value="{{Auth::getUser()->userFull->year}}" aria-label="disabled input"
+                                    class="block py-2.5 px-0 w-full text-base  bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    placeholder=" " autocomplete="off" data-te-input-showcounter="true" disabled />
+                                <label for="faculty"
+                                    class="absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    Year</label>
+                            </div>
+                            <div class="relative z-0">
+                                <input type="text" id="disabled-input" name="email"
+                                    value="{{Auth::getUser()->userFull->email}}" aria-label="disabled input"
+                                    class="block py-2.5 px-0 w-full text-base  bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    placeholder=" " autocomplete="off" data-te-input-showcounter="true" disabled />
+                                <label for="email"
+                                    class="absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    Email</label>
+                            </div>
+
+
+
+
+                            <label class="flex block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                for="multiple_files">Upload multiple files</label>
+                            <input
+                                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                id="multiple_files" name='user_file' type="file" multiple>
+
 
 
                             <div>
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Reasons for
                                     wanting to attend this event</label>
-                                <textarea id="description" rows="4"
+                                <textarea id="description" rows="4" name='reason'
                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Write your Reasons here..."></textarea>
-                            </div>
-                            <div class="relative z-0">
-                                <input type="password" id="password"
-                                    class="block py-2.5 px-0 w-full text-base bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder=" " autocomplete="off" />
-                                <label for="password"
-                                    class="absolute text-sm dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                    ยืนยันpassword</label>
                             </div>
 
                             <div class="flex gap-10">
@@ -79,21 +92,23 @@
                                         <span
                                             class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-red-500 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
                                         <span
-                                            class="relative text-red-500 transition duration-300 group-hover:text-white ease"><h4 class="text-xl text-black font-bold">Back</h4></span>
+                                            class="relative text-red-500 transition duration-300 group-hover:text-white ease">
+                                            <h4 class="text-xl text-black font-bold">Back</h4>
+                                        </span>
                                     </button>
                                 </a>
 
 
                                 <!-- submit button -->
-                                <a href="#_"
+                                <button type="submit"
                                     class=" mt-5 mb-5 rounded-lg w-40 text-center px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-4 font-medium border-black text-indigo-600 text-white">
-                                    <button type="submit">
-                                        <span
-                                            class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-orange-500 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
-                                        <span
-                                            class="relative text-orange-500 transition duration-300 group-hover:text-white ease"><h4 class="text-xl text-black font-bold">Submit</h4></span>
-                                    </button>
-                                </a>
+                                    <span
+                                        class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-orange-500 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+                                    <span
+                                        class="relative text-orange-500 transition duration-300 group-hover:text-white ease">
+                                        <h4 class="text-xl text-black font-bold">Submit</h4>
+                                    </span>
+                                </button>
 
                                 <!--end submit button -->
 

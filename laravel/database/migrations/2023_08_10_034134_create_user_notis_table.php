@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class);
             $table->string('name');
+            $table->enum('type',['log','noti']);
             $table->string('description');
             $table->timestamps();
             $table->softDeletes();

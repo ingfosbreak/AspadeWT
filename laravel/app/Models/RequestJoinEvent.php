@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use App\Models\RequestJoinEventImage;
+use App\Models\RequestJoinEventFile;
 
 class RequestJoinEvent extends Model
 {
@@ -18,8 +18,8 @@ class RequestJoinEvent extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function requestImage(): HasMany {
-        return $this->hasMany(RequestJoinEventImage::class);
+    public function requestFiles(): HasMany {
+        return $this->hasMany(RequestJoinEventFile::class);
     }
 
 }

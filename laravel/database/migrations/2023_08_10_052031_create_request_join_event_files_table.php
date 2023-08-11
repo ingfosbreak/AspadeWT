@@ -12,11 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('request_join_event_images', function (Blueprint $table) {
+        Schema::create('request_join_event_files', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('image_path');
-            $table->enum('type',['log','noti']);
+            $table->string('file_path');
             $table->foreignIdFor(RequestJoinEvent::class);
             $table->softDeletes();
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('request_join_event_images');
+        Schema::dropIfExists('request_join_event_files');
     }
 };
