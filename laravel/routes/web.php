@@ -108,8 +108,8 @@ Route::middleware(['web'])->group(function () {
             Route::post('/event/{event}/form',[EventController::class, 'requestjoinEventMember'])->name('user.requestjoinEventMember.create');
 
             //RequestJoinStuffEvent
-            Route::get('/event/{event}/stuff_form',[EventController::class, 'getJoinStuffEventFormPage'])->name('event.formJoinEvent');
-            Route::post('/event/{event}/stuff_form',[EventController::class, 'requestjoinEventStuff'])->name('user.requestjoinEventStuff.create');
+            Route::get('/event/{event}/stuff_form',[EventController::class, 'getJoinStuffEventFormPage'])->name('event.staff.formJoinEvent');
+            Route::post('/event/{event}/stuff_form',[EventController::class, 'requestjoinEventStuff'])->name('user.staff.requestjoinEventStuff.create');
             
 
         });
