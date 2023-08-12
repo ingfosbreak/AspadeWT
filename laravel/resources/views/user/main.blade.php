@@ -85,43 +85,68 @@
                 </button>
             </div>
 
+            <!-- zone category search -->
+            <div class="flex felx-col items-center justify-center">
+                <aside class=" rounded-lg border-2 border-green-600 p-4 max-w-lg mr-5">
+                    <h2 class="font-os text-white text-lg font-bold">Member or Stuff</h2>
+                    <ul class="flex items-start justify-center flex-wrap mt-4">
+                        <li class="flex mx-1">
+                            <a class="p-2 px-3 border-green-800 mb-4 rounded font-medium hover:bg-transparent hover:border-green-800 border bg-green-400/25  text-white"
+                                href="category/all">
+                                <h2>Member</h2>
+                            </a>
+                        </li>
+                        <li class="flex mx-1">
+                            <a class="p-2 px-3 border-green-800 mb-4 rounded font-medium hover:bg-transparent hover:border-green-800 border bg-green-400/25  text-white"
+                                href="category/react-js">
+                                <h2>Stuff</h2>
+                            </a>
+                        </li>
+                    </ul>
+                </aside>
 
 
 
+                <aside class=" rounded-lg border-2 border-purple-600 p-4 max-w-lg ">
+                    <h2 class="font-os text-white text-lg font-bold">Categories</h2>
+                    <ul class="flex items-start flex-wrap mt-4">
+                        <li class="flex mx-1">
+                            <a class="p-2 px-3 border-purple-800 mb-4 rounded font-medium hover:bg-transparent hover:border-purple-800 border bg-purple-400/25  text-white"
+                                href="category/all">
+                                <h2>all</h2>
+                            </a>
+                        </li>
+                        <li class="flex mx-1">
+                            <a class="p-2 px-3 border-purple-800 mb-4 rounded font-medium hover:bg-transparent hover:border-purple-800 border bg-purple-400/25  text-white"
+                                href="category/react-js">
+                                <h2>react js</h2>
+                            </a>
+                        </li>
+                        <li class="flex mx-1">
+                            <a class="p-2 px-3 border-purple-800 mb-4 rounded font-medium hover:bg-transparent hover:border-purple-800 border bg-purple-400/25  text-white"
+                                href="category/redux">
+                                <h2>redux</h2>
+                            </a>
+                        </li>
+                        <li class="flex mx-1">
+                            <a class="p-2 px-3 border-purple-800 mb-4 rounded font-medium hover:bg-transparent hover:border-purple-800 border bg-purple-400/25  text-white"
+                                href="category/ui-design">
+                                <h2>ui design</h2>
+                            </a>
+                        </li>
 
-            <aside class="w-full rounded-lg border-2 border-purple-600 p-4 max-w-lg mx-auto">
-                <h2 class="font-os text-white text-lg font-bold">Categories</h2>
-                <ul class="flex items-start flex-wrap mt-4">
-                    <li class="flex mx-1">
-                        <a class="p-2 px-3 border-purple-800 mb-4 rounded font-medium hover:bg-transparent hover:border-purple-800 border bg-purple-400/25  text-white"
-                            href="category/all">
-                            <h2>all</h2>
-                        </a>
-                    </li>
-                    <li class="flex mx-1">
-                        <a class="p-2 px-3 border-purple-800 mb-4 rounded font-medium hover:bg-transparent hover:border-purple-800 border bg-purple-400/25  text-white"
-                            href="category/react-js">
-                            <h2>react js</h2>
-                        </a>
-                    </li>
-                    <li class="flex mx-1">
-                        <a class="p-2 px-3 border-purple-800 mb-4 rounded font-medium hover:bg-transparent hover:border-purple-800 border bg-purple-400/25  text-white"
-                            href="category/redux">
-                            <h2>redux</h2>
-                        </a>
-                    </li>
-                    <li class="flex mx-1">
-                        <a class="p-2 px-3 border-purple-800 mb-4 rounded font-medium hover:bg-transparent hover:border-purple-800 border bg-purple-400/25  text-white"
-                            href="category/ui-design">
-                            <h2>ui design</h2>
-                        </a>
-                    </li>
+
+                    </ul>
+                </aside>
+
+            </div>
 
 
-                </ul>
-            </aside>
+
             @if (Request::url() == route('user.main'))
-            <div>
+            <div class=flex flex>
+
+
                 <form
                     class="mx-auto max-w-xl py-2 px-6 rounded-full bg-gray-50 border flex focus-within:border-gray-300">
                     <input type="text" placeholder="Search anything"
