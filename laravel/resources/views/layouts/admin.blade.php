@@ -1,132 +1,80 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>AspadeWT</title>
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @vite(['resources/css/app.css', 'resources/js/app.js','resources/css/main.css'])
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet" />
 </head>
 
 <body>
-    <div class="flex flex-col h-screen bg-rose-200 w-full">
-
-
-        <div class=" text-white shadow w-full p-2 flex items-center justify-between">
-            <div class="flex items-center">
-                <img src="https://media.discordapp.net/attachments/1135564910131151019/1138487250234114109/remove.png?width=872&height=446"
-                    alt="Logo" class="w-28 h-18 mr-2">
-                <h2 class="font-bold text-xl text-gray-500">Aspade ADMIN</h2>
-            </div>
-            <div class = "justify-end">
-                <div class="flex items-center hover:text-gray-200" id="profilebut">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 hover:text-gray-200" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+    @include('layouts.navbar')
+    <div class="flex h-full">
+    <aside id="default-sidebar "
+        class=" top-0 left-0 z-40 w-64 transition-transform -translate-x-full sm:translate-x-0"
+        aria-label="Sidebar">
+        <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+            <ul class="space-y-2 font-medium flex flex-col justify-between gap-50 h-full">
+                <div class="flex flex-col gap-3">
+                <li>
+                    <a href="{{route('admin-access')}}"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group text-xl">
+                        <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 22 21">
+                            <path
+                                d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
+                            <path
+                                d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
+                        </svg>
+                        <span class="ml-3">Event Requests</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('admin-report')}}"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group text-xl">
+                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 18 18">
+                            <path
+                                d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
+                        </svg>
+                        <span class="flex-1 ml-3 whitespace-nowrap">Join Requests</span>
+                            
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('admin-ban')}}"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group text-xl">
+                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 20 20">
+                            <path
+                                d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z" />
+                        </svg>
+                        <span class="flex-1 ml-3 whitespace-nowrap">Complaint Requests</span>
+                            
+                    </a>
+                </li>
                 </div>
-                <div class="flex flex-wrap">
-                    @include('components.profileClick')
-                </div>
-            </div>
-
-
+                
+            </ul>
         </div>
+    </aside>
 
-        <!-- Contenido principal -->
-        <div class="flex-1 flex flex-wrap ">
-            <!-- Barra lateral de navegación (oculta en dispositivos pequeños) -->
-            <div class="p-2 bg-red-100 w-full shadow md:w-60 flex flex-col md:flex hidden " id="sideNav">
-                <nav>
-                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white"
-                        href="{{route('admin-access')}}">
-                        <i class="fas fa-home mr-2"></i>Event Requests
-                    </a>
-                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white"
-                        href="{{route('admin-report')}}">
-                        <i class="fas fa-file-alt mr-2"></i>Join Requests
-                    </a>
-                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white"
-                        href="{{route('admin-ban')}}">
-                        <i class="fas fa-users mr-2"></i>Ban Requests
-                    </a>
-                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white"
-                        href="#">
-                        <i class="fas fa-store mr-2"></i>Comercios
-                    </a>
-                    <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white"
-                        href="#">
-                        <i class="fas fa-exchange-alt mr-2"></i>Transacciones
-                    </a>
-                </nav>
-
-                <!-- Ítem de Cerrar Sesión -->
-                <a class="block text-gray-500 py-2.5 px-4 my-2 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white mt-auto"
-                    href="#">
-                </a>
-
-
-            </div>
-
-            <!-- Area -->
-            <div class="flex-1 p-4 w-full md:w-1/2">
-                @yield('content')
-            </div>
+    <div class="p-4 w-full">
+        <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+            @yield('content')
+            
         </div>
     </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
 </body>
-<script type="module">
-$(document).ready(function() {
-    $('#profileNav').hide();
-
-    $("#profilebut").on({
-        mouseenter: function(event) {
-            $('#profileNav').stop().fadeIn();
-            $("#profileNav").css({
-                left: event.clientX - 250 + 'px',
-                top: event.clientY + 20 + 'px',
-            });
-            $("#profileNav").css("z-index", "999");
-
-
-            $("#profileNav").on({
-                mouseenter: function(event) {
-                    $('#profileNav').stop().fadeIn();
-
-                },
-                mouseleave: function() {
-                    setTimeout(function() {
-                        $('#profileNav').stop().fadeOut();
-                    }, 1000);
-                }
-            });
-
-
-        },
-        mouseleave: function() {
-            // setTimeout(function() {
-            //     $('#profileNav').hide();
-            // }, 5000);
-        },
-        click: function() {
-            if ($('#profileNav').is(':visible')) {
-                $('#profileNav').stop().fadeOut();
-            }
-            if ($('#profileNav').is(':hidden')) {
-                $('#profileNav').stop().fadeIn();
-                $("#profileNav").css({
-                    left: event.clientX - 250 + 'px',
-                    top: event.clientY + 20 + 'px',
-                });
-                $("#profileNav").css("z-index", "999");
-            }
-        }
-    });
-});
-</script>
 
 </html>
