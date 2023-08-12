@@ -1,7 +1,7 @@
 @extends('layouts.event')
 @section('content')
 
-<div class="flex h-full">
+<div class="flex h-full w-full justify-center">
     <!-- from :https://tailwindcomponents.com/component/blog-post -->
     <!-- component -->
     <div class="flex flex-col mx-auto bg-white w-full items-center">
