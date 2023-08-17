@@ -128,7 +128,11 @@ Route::middleware(['web'])->group(function () {
 
             Route::get('/admin/request', [AdminController::class, 'getEventRequestPage'])->name("admin.request");
             Route::get('/admin/request/{request}/detail', [AdminController::class, 'getEventRequestDetailPage'])->name('admin.request.detail');
+            Route::post('/admin/request/approve', [AdminController::class, 'approveEventRequest'])->name('admin.request.approve');
+            Route::post('/admin/request/deny', [AdminController::class, 'denyEventRequest'])->name('admin.request.deny');
             Route::post('/admin/request/delete', [AdminController::class,'removeEventRequest'])->name('remove.eventrequest');
+            
+            
                 
             Route::get('/admin/complaint', [AdminController::class, 'getEventComplaintPage'])->name("admin.complaint");
 

@@ -34,7 +34,28 @@ class AdminController extends Controller
     public function getEventComplaintPage() {
         return view('admin.complaint');
     }
+
+    public function approveEventRequest(Request $request) {
         
+        $success = EventService::getEventManager()->approveEventRequest($request);
+        if ($success != false) {
+            return true;
+        }
+
+        return false;
+
+    }
+        
+    public function denyEventRequest(Request $request) {
+
+        $success = EventService::getEventManager()->denyEventRequest($request);
+        if ($success != false) {
+            return true;
+        }
+
+        return false;
+
+    }
 
 
     public function removeEventRequest(Request $request) {

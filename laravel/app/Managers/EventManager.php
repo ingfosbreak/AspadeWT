@@ -241,6 +241,52 @@ class EventManager {
 
     }
 
+    public function approveEventRequest(Request $request) {
+
+        $request = RequestCreateEvent::find((int) $request->get('data')['request_id']);
+        $request->status = "approved";
+
+        if ($request->save()) {
+
+            $event = new Event();
+            $event->name = $request->name;
+            $event->num_member = $request->num_member;
+            $event->num_staff = 20;
+            $event->budget = $request->budget;
+            $event->date = "122";
+            $event->location = $request->location;
+            $event->description = $request->description;
+
+            if ( $event->save() ) {
+
+                $pivot_status = $event->users()->attach($request->user_id, ['event_role' => "header"]);
+
+                if ( $pivot_status == null ) {
+                    return true;
+                }
+
+            }
+
+        }
+        
+        return false;
+         
+
+
+
+    }
+
+    public function denyEventRequest(Request $request) {
+
+        $request = RequestCreateEvent::find((int) $request->get('data')['request_id']);
+        $request->status = "denied";
+
+        if ($request->save()) {
+            return true;
+        }
+        return false;
+    }
+
     public function requestjoinEventMember(Request $request ,Event $event){
         $requestjoin = new RequestJoinEvent();
         $requestjoin->user_id = Auth::getUser()->id;
