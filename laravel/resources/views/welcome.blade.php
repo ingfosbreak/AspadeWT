@@ -32,9 +32,10 @@
       <div class="max-w-xl sm:mt-1 mt-80 space-y-8 text-center sm:text-right sm:ml-auto">
         <h2 class="text-4xl text-white  font-bold sm:text-5xl">
           Get started
-          <span class="hidden sm:block text-4xl">
-          Event & Organize website
-          </span>
+          <div >
+          <h1 id="typewriter" class="text-4xl font-bold">sadas</h1>
+          </div>
+          
         </h2>
 
         <a class="inline-flex text-white items-center px-6 py-3 font-medium bg-rose-500 rounded-lg hover:opacity-75" href="{{ route('register')}}">
@@ -215,6 +216,10 @@
 
 }
 
+#typewriter {
+  min-height: 50px;
+}
+
 </style>
 
 <script type="module" >
@@ -240,6 +245,39 @@
   });
 
 
+</script>
+
+
+<script>
+const words = ["Event & Organize website.", "Create Your Wonderful Event!!", "Manage Your Own teams."];
+let i = 0;
+let j = 0;
+let currentWord = "";
+let isDeleting = false;
+
+function type() {
+  currentWord = words[i];
+  if (isDeleting) {
+    document.getElementById("typewriter").textContent = currentWord.substring(0, j-1);
+    j--;
+    if (j == 0) {
+      isDeleting = false;
+      i++;
+      if (i == words.length) {
+        i = 0;
+      }
+    }
+  } else {
+    document.getElementById("typewriter").textContent = currentWord.substring(0, j+1);
+    j++;
+    if (j == currentWord.length) {
+      isDeleting = true;
+    }
+  }
+  setTimeout(type, 150);
+}
+
+type();
 </script>
 
 
