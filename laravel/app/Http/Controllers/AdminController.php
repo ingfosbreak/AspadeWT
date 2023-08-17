@@ -11,10 +11,6 @@ class AdminController extends Controller
 {
 
     public function getAdminMainPage() {
-        return view('admin.main');
-    }
-
-    public function getAdminDashboardPage(){
         return view('admin.dashboard');
     }
 

@@ -124,8 +124,6 @@ Route::middleware(['web'])->group(function () {
             
             Route::get('/admin/main', [AdminController::class, 'getAdminMainPage'])->name('admin.main');
 
-            Route::get('/admin/dashboard', [AdminController::class, 'getAdminDashboardPage'])->name("admin.dashboard");
-
             Route::get('/admin/request', [AdminController::class, 'getEventRequestPage'])->name("admin.request");
             Route::get('/admin/request/{request}/detail', [AdminController::class, 'getEventRequestDetailPage'])->name('admin.request.detail');
             Route::post('/admin/request/approve', [AdminController::class, 'approveEventRequest'])->name('admin.request.approve');

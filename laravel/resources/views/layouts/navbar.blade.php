@@ -4,13 +4,21 @@
     <section class="relative mx-auto">
         <!-- navbar -->
         <nav class="flex justify-between bg-gray-200 text-black w-screen px-5 xl:px-12 items-center">
-
+            @if (Auth::getUser()->role == "user")
             <a class="text-3xl font-bold font-heading" href="{{route('user.main')}}">
                 <img class="h-16"
                     src="https://media.discordapp.net/attachments/1135564910131151019/1138487250234114109/remove.png?width=1396&height=714"
                     alt="logo">
             </a>
+            @else
+            <a class="text-3xl font-bold font-heading" href="{{route('admin.main')}}">
+                <img class="h-16"
+                    src="https://media.discordapp.net/attachments/1135564910131151019/1138487250234114109/remove.png?width=1396&height=714"
+                    alt="logo">
+            </a>
+            @endif
             <!-- navigation -->
+            @if (Auth::getUser()->role == "user")
             <nav class="nav font-semibold text-lg">
                 <ul class="flex items-start">
                     <li
@@ -23,6 +31,7 @@
                     </li>
                 </ul>
             </nav>
+            @endif
         
             <!-- Sign In / Register      -->
         <div class="flex gap-3 items-center">
