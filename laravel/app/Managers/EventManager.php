@@ -229,6 +229,18 @@ class EventManager {
         return false;
 
     }
+    
+    public function removeEventRequest(Request $request) {
+        
+        $request = RequestCreateEvent::find((int) $request->get('data')['request_id']);
+        
+        if ($request->delete()) {
+            return true;
+        }
+        return false;
+
+    }
+
     public function requestjoinEventMember(Request $request ,Event $event){
         $requestjoin = new RequestJoinEvent();
         $requestjoin->user_id = Auth::getUser()->id;

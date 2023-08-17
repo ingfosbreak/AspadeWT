@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\RequestCreateEvent;
+use App\Services\EventService;
 
 class AdminController extends Controller
 {
@@ -34,4 +35,15 @@ class AdminController extends Controller
         return view('admin.complaint');
     }
         
+
+
+    public function removeEventRequest(Request $request) {
+
+        $success = EventService::getEventManager()->removeEventRequest($request);
+        if ($success != false) {
+            return true;
+        }
+
+        return false;
+    }
 }
