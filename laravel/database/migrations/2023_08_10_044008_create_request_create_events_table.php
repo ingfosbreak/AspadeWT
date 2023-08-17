@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('date');
             $table->string('location');
             $table->string("description");
-            $table->enum('status-request',['approved','denied'])->nullable();
+            $table->enum('status',['approved','denied'])->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

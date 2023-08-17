@@ -122,21 +122,16 @@ Route::middleware(['web'])->group(function () {
         // Admin page
         Route::middleware(['multirole:admin'])->group( function () {
             
-            Route::get('/admin/main', [AdminController::class, 'index'
-            ])->name('admin.main');
+            Route::get('/admin/main', [AdminController::class, 'getAdminMainPage'])->name('admin.main');
 
-            Route::get('/admin/main-access', function () {
-                return view('admin.access');
-                })->name("admin-access");
+            Route::get('/admin/dashboard', [AdminController::class, 'getAdminDashboardPage'])->name("admin.dashboard");
 
-            Route::get('/admin/main-report', function () {
-                return view('admin.report');
-                })->name("admin-report");
+            Route::get('/admin/request', [AdminController::class, 'getEventRequestPage'])->name("admin.request");
+            Route::get('/admin/request/{request}/detail', [AdminController::class, 'getEventRequestDetailPage'])->name('admin.request.detail');
                 
-            Route::get('/admin/main-ban', function () {
-                return view('admin.ban');
-                })->name("admin-ban");
+            Route::get('/admin/complaint', [AdminController::class, 'getEventComplaintPage'])->name("admin.complaint");
 
+            
             
         
         });
