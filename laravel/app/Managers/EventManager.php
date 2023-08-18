@@ -273,7 +273,7 @@ class EventManager {
             $event = new Event();
             $event->name = $request->name;
             $event->num_member = $request->num_member;
-            $event->num_staff = 20;
+            $event->num_staff = $request->num_staff;
             $event->budget = $request->budget;
             $event->date = $request->date;
             $event->location = $request->location;

@@ -148,5 +148,11 @@ class EventController extends Controller
             'event' => $event
         ]);
     }
+
+    public function getEventTeamsPage(Event $event) {
+        return view('event.main.team', [
+            'event' => $event
+        ]);
+    }
     
 }
