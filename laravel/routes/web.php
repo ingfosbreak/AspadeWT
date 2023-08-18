@@ -114,7 +114,7 @@ Route::middleware(['web'])->group(function () {
 
             //Event Staff
             Route::get('/event/main/{event}/member',[EventController::class, 'getEventMembersPage'])->name('event.team.member');
-            // Route::get('/event/main/{event}/team', [EventController::class, 'getEvent '])
+            Route::get('/event/main/{event}/team', [EventController::class, 'getEventTeamsPage'])->name('event.team');
 
             
 
