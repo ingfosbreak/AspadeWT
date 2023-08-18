@@ -67,8 +67,22 @@ class User extends Authenticatable
         return $this->role;
     }
 
+    public function getEventRole(string $event_id){
+        return $this->user_pivots->where('event_id',(int) $event_id)[0]->event_role;
+    }
+
+    public function getEventTeam(int $event_id) {
+        return $this->user_pivots->where('event_id',$event_id)->event_team_id;
+    }
+
+
+
     public function userFull(): HasOne {
         return $this->hasOne(UserFull::class);
+    }
+
+    public function user_pivots(): HasMany {
+        return $this->hasMany(EventUser::class);
     }
 
     public function requests(): HasMany {
@@ -85,10 +99,6 @@ class User extends Authenticatable
 
     public function events(): BelongsToMany {
         return $this->belongsToMany(Event::class);
-    }
-
-    public function events_roles(): HasMany {
-        return $this->hasMany(EventUser::class);
     }
 
     public function processes(): BelongsToMany {

@@ -110,6 +110,11 @@ Route::middleware(['web'])->group(function () {
             //RequestJoinStuffEvent
             Route::get('/event/{event}/stuff_form',[EventController::class, 'getJoinStuffEventFormPage'])->name('event.staff.formJoinEvent');
             Route::post('/event/{event}/stuff_form',[EventController::class, 'requestjoinEventStuff'])->name('user.staff.requestjoinEventStuff.create');
+
+            //Event Staff
+            Route::get('/event/main/{event}/member',[EventController::class, 'getEventMembersPage'])->name('event.team.member');
+            Route::get('/event/main/{event}/team', [EventController::class, 'getEvent '])
+
             
 
         });

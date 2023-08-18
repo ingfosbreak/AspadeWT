@@ -125,5 +125,14 @@ class EventController extends Controller
 
     }
 
+
+
+    // staff
+
+    public function getEventMembersPage(Event $event) {
+        return view('event.main.member', [
+            'event' => $event
+        ]);
+    }
     
 }
