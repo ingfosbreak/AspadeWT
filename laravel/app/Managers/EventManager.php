@@ -5,6 +5,7 @@ namespace App\Managers;
 
 use App\Models\Event;
 use App\Models\EventInfo;
+use App\Models\EventUser;
 use App\Models\RequestJoinEvent;
 use App\Models\RequestJoinEventFile;
 use App\Services\FileService;
@@ -253,15 +254,20 @@ class EventManager {
             $event->num_member = $request->num_member;
             $event->num_staff = 20;
             $event->budget = $request->budget;
-            $event->date = "122";
+            $event->date = $request->date;
             $event->location = $request->location;
             $event->description = $request->description;
 
             if ( $event->save() ) {
+                
 
-                $pivot_status = $event->users()->attach($request->user_id, ['event_role' => "header"]);
+                // $pivot_status = $event->users()->attach($request->user_id, ['event_role' => "header"]);
+                $pivot = new EventUser();
+                $pivot->user_id = $request->user_id;
+                $pivot->event_id = $event->id;
+                $pivot->event_role = "header";
 
-                if ( $pivot_status == null ) {
+                if ( $pivot->save() ) {
                     return true;
                 }
 

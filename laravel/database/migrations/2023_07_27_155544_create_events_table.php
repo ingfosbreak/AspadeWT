@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer("num_member");
             $table->integer("num_staff");
             $table->integer("budget");
-            $table->string('date');
+            $table->date('date');
             $table->string('location');
             $table->string('description');
             $table->enum('status',['in-progress','finished'])->default("in-progress");
