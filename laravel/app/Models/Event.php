@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\ItemNotFoundException;
 use App\Models\User;
 use App\Models\EventUser;
 use App\Models\Process;
@@ -33,6 +34,20 @@ class Event extends Model
 
     public static function getPublishEventPaginate() {
         return Event::where('publish','publish')->paginate(15);
+    }
+
+    public function isUserInEvent(string $userid){
+        
+        $event_users = $this->users;
+        try {
+            $event_users->where('id',(int)$userid)->firstOrFail();
+            return true;
+      
+        } catch (ItemNotFoundException $exception) {
+      
+            return false;
+        
+        }
     }
 
     public function getInfoSorted() {

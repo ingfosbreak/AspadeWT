@@ -77,7 +77,7 @@ Route::middleware(['web'])->group(function () {
 
             // Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main');
             Route::get('/user/main', function () {
-                $events = Event::paginate(15);
+                $events = Event::paginate(6);
                 return view('user.test', [
                     'events' => $events
                 ]);
