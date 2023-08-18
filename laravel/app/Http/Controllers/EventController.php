@@ -212,4 +212,26 @@ class EventController extends Controller
         return false;
     }
     
+
+    public function approveJoinRequest(Request $request) {
+        
+        $success = EventService::getEventManager()->approveJoinRequest($request);
+        if ($success != false) {
+            return true;
+        }
+        
+        return false;
+    
+    }
+
+    public function denyJoinRequest(Request $request) {
+
+        $success = EventService::getEventManager()->denyJoinRequest($request);
+        if ($success != false) {
+            return true;
+        }
+        
+        return false;
+
+    }
 }

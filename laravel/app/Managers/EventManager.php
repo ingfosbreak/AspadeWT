@@ -383,6 +383,49 @@ class EventManager {
         
     }
 
+    public function approveJoinRequest(Request $request) {
+        $requestjoin = RequestJoinEvent::find((int) $request->get('data')['request_id']);
+        $requestjoin->status = "approved";
+
+        if ($requestjoin->save()) {
+                
+            // $pivot_status = $event->users()->attach($request->user_id, ['event_role' => "header"]);
+            $pivot = new EventUser();
+            $pivot->user_id = $requestjoin->user_id;
+            $pivot->event_id = $requestjoin->event_id;
+            // 'staff','member'
+
+            if ($request->get('data')['role'] == "staff") {
+                $pivot->event_role = "staff";
+            }
+
+            if ($request->get('data')['role'] == "member") {
+                $pivot->event_role = "participant";
+            }
+
+            if ( $pivot->save() ) {
+                return true;
+            }
+
+        }
+        
+        return false;
+
+    }
+
+    public function denyJoinRequest(Request $request) {
+
+        $requestjoin = RequestJoinEvent::find((int) $request->get('data')['request_id']);
+        $requestjoin->status = "denied";
+        
+        if ($requestjoin->save()) {
+            return true;
+        }
+        return false;
+
+
+    }
+
 
 
     // team
@@ -429,7 +472,7 @@ class EventManager {
         
         
         
-        $event_user = EventUser::where('event_id',(int) $request->get('data')['event_id'])->where('user_id',(int) $request->get('data')['user_id'])->get()[0];
+        $event_user = EventUser::where('event_id',(int) $request->get('data')['event_id'])->where('user_id',(int) $request->get('data')['user_id'])->firstOrFail();
         // $event_user = EventUser::get()->where('event_id',(int) $request->get('data')['event_id'])->where('user_id',(int) $request->get('data')['user_id'])[0];
         if ($request->get('data')['team_id'] == null) {
             $event_user->event_team_id = null;    

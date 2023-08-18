@@ -55,7 +55,7 @@
                 </tr>
                 <tr>
                     <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Total_staffs</td>
-                    <td class="py-3 px-4 text-left">15</td>
+                    <td class="py-3 px-4 text-left">{{$request->num_staff}}</td>
                 </tr>
                 <tr class="bg-gray-50">
                     <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Budget</td>
@@ -75,7 +75,7 @@
                 </tr>
                 <tr class="bg-gray-50">
                     <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Finish Date</td>
-                    <td class="py-3 px-4 text-left">22g</td>
+                    <td class="py-3 px-4 text-left">{{$request->date}}</td>
                 </tr>
 
             </tbody>

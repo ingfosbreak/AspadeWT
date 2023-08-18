@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <a href="{{route('admin.request')}}"
+    <a href="{{ route('event.team.join',['event' => $event])}}"
         class="inline-flex items-center border border-indigo-300 px-3 py-1.5 rounded-md text-indigo-500 hover:bg-indigo-50 mx-5 my-5">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18">
@@ -28,7 +28,7 @@
             <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=5">
             <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=6">
         </div>
-        <h2 class="text-2xl font-bold mt-8">Event Details</h2>
+        <h2 class="text-2xl font-bold mt-8">Request Details</h2>
     </div>
 
     <div class="border border-gray-300 shadow-sm rounded-lg overflow-hidden max-w-sm mx-auto mt-8 mb-10">
@@ -46,40 +46,37 @@
                     <td class="py-3 px-4 text-left">{{$request->user->username}}</td>
                 </tr>
                 <tr>
-                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Name</td>
-                    <td class="py-3 px-4 text-left">{{$request->name}}</td>
+                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Email</td>
+                    <td class="py-3 px-4 text-left">{{$request->user->userFull->email}}</td>
                 </tr>
                 <tr class="bg-gray-50">
-                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Total_members</td>
-                    <td class="py-3 px-4 text-left">{{$request->num_member}}</td>
+                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Firstname</td>
+                    <td class="py-3 px-4 text-left">{{$request->user->userFull->firstname}}</td>
                 </tr>
                 <tr>
-                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Total_staffs</td>
-                    <td class="py-3 px-4 text-left">15</td>
+                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">LastName</td>
+                    <td class="py-3 px-4 text-left">{{$request->user->userFull->lastname}}</td>
                 </tr>
                 <tr class="bg-gray-50">
-                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Budget</td>
-                    <td class="py-3 px-4 text-left">{{$request->budget}}</td>
+                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Faculty</td>
+                    <td class="py-3 px-4 text-left">{{$request->user->userFull->faculty}}</td>
                 </tr>
                 <tr>
-                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Date</td>
-                    <td class="py-3 px-4 text-left">{{$request->date}}</td>
+                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Year</td>
+                    <td class="py-3 px-4 text-left">{{$request->user->userFull->year}}</td>
                 </tr>
                 <tr class="bg-gray-50">
-                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Location</td>
-                    <td class="py-3 px-4 text-left">{{$request->location}}</td>
+                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Reason</td>
+                    <td class="py-3 px-4 text-left">{{$request->reason}}</td>
                 </tr>
                 <tr>
-                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Description</td>
-                    <td class="py-3 px-4 text-left">{{$request->description}}</td>
-                </tr>
-                <tr class="bg-gray-50">
-                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Finish Date</td>
-                    <td class="py-3 px-4 text-left">22g</td>
+                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Role</td>
+                    <td class="py-3 px-4 text-left">{{$request->role}}</td>
                 </tr>
 
             </tbody>
         </table>
+
         @if ($request->status == null)
         <div class="flex mt-5 gap-5 px-4 py-2">
             <button
@@ -95,12 +92,12 @@
 
 <script>
     function approve(id) {
-        updateAjax('POST','{{route('admin.request.approve')}}', '{{csrf_token()}}', {'request_id':id});
+        updateAjax('POST','{{route('event.request.approve')}}', '{{csrf_token()}}', {'request_id':id,'role':"{{$request->role}}"});
         window.location.reload(true);
     }
 
     function deny(id) {
-        updateAjax('POST','{{route('admin.request.deny')}}', '{{csrf_token()}}', {'request_id':id});
+        updateAjax('POST','{{route('event.request.deny')}}', '{{csrf_token()}}', {'request_id':id});
         window.location.reload(true);
     }
 </script>

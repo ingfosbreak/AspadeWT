@@ -69,11 +69,12 @@ class User extends Authenticatable
     }
 
     public function getEventRole(string $event_id){
-        return $this->user_pivots->where('event_id',(int) $event_id)[0]->event_role;
+        return $this->user_pivots->where('event_id',(int) $event_id)->firstOrFail()->event_role;
+        
     }
 
     public function getEventTeamId(string $event_id) {
-        return $this->user_pivots->where('event_id',(int) $event_id)[0]->event_team_id;
+        return $this->user_pivots->where('event_id',(int) $event_id)->firstOrFail()->event_team_id;
     }
 
     publIc function getEventTeamName(string $event_id) {
