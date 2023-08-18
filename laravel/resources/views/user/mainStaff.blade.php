@@ -10,7 +10,7 @@
     <div class="transition duration-500 ease-in-out transform scale-100 translate-x-0 translate-y-0 opacity-100">
         <div class="mb-12 space-y-5 md:text-center">
             @if (session('success'))
-            <div class="text-green-700 mb-5">{{ session('success') }}</div>
+            <div class="text-cyan-700 mb-5">{{ session('success') }}</div>
             @endif
 
 
@@ -91,13 +91,13 @@
                     <h2 class="font-os text-white text-lg font-bold">Member or Staff</h2>
                     <ul class="flex items-start justify-center flex-wrap mt-4">
                         <li class="flex mx-1">
-                            <a class="p-2 px-3 border-teal-400 mb-4 rounded font-medium hover:bg-transparent hover:border-green-800 border bg-teal-400/25  text-white"
+                            <a class="p-2 px-3 border-teal-400 mb-4 rounded font-medium hover:bg-transparent hover:border-cyan-800 border bg-teal-400/25  text-white"
                                 href="{{ route('user.main')}}">
                                 <h2>Member</h2>
                             </a>
                         </li>
                         <li class="flex mx-1">
-                            <a class="p-2 px-3 border-teal-400 mb-4 rounded font-medium hover:bg-transparent hover:border-green-800 border bg-teal-400/25  text-white"
+                            <a class="p-2 px-3 border-teal-400 mb-4 rounded font-medium hover:bg-transparent hover:border-cyan-800 border bg-teal-400/25  text-white"
                                 href="{{ route('user.main_staff')}}">
                                 <h2>Staff</h2>
                             </a>
@@ -197,13 +197,13 @@
                                     <p class="text-red-500 "> {{$event->getStaffsCount()}} / {{$event->num_staff}}</p>
                                     @endif
                                     @if ($event->getStaffsCount() < $event->num_staff)
-                                        <p class="text-green-300"> {{$event->getStaffsCount()}} /
+                                        <p class="text-cyan-300"> {{$event->getStaffsCount()}} /
                                             {{$event->num_staff}}</p>
                                         @endif
                                         @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))
                                         <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
                                             <button
-                                                class="rounded-lg bg-green-600 flex items-center justify-center ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-black transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                                                class="rounded-lg bg-cyan-600 flex items-center justify-center ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-black transition-all hover:shadow-lg hover:shadow-cyan-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                                                 Join
                                                 <span class="ml-4 ">
                                                     <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"
@@ -256,13 +256,13 @@
                                     <p class="text-red-500 "> {{$event->getStaffsCount()}} / {{$event->num_staff}}</p>
                                     @endif
                                     @if ($event->getStaffsCount() < $event->num_staff)
-                                        <p class="text-green-300"> {{$event->getStaffsCount()}} /
+                                        <p class="text-cyan-300"> {{$event->getStaffsCount()}} /
                                             {{$event->num_staff}}</p>
                                         @endif
                                         @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))
                                         <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
                                             <button
-                                                class="rounded-lg bg-cyan-400 flex items-center justify-center ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-black transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                                                class="rounded-lg bg-cyan-600 flex items-center justify-center ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-black transition-all hover:shadow-lg hover:shadow-cyan-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                                                 Join
                                                 <span class="ml-4 ">
                                                     <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"
@@ -315,13 +315,13 @@
                                     <p class="text-red-500 "> {{$event->getStaffsCount()}} / {{$event->num_staff}}</p>
                                     @endif
                                     @if ($event->getStaffsCount() < $event->num_staff)
-                                        <p class="text-green-300"> {{$event->getStaffsCount()}} /
+                                        <p class="text-cyan-300"> {{$event->getStaffsCount()}} /
                                             {{$event->num_staff}}</p>
                                         @endif
                                         @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))
                                         <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
                                             <button
-                                                class="rounded-lg bg-green-600 flex items-center justify-center ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-black transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                                                class="rounded-lg bg-cyan-600 flex items-center justify-center ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-black transition-all hover:shadow-lg hover:shadow-cyan-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                                                 Join
                                                 <span class="ml-4 ">
                                                     <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"
