@@ -11,6 +11,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Event;
 
 
 /*
@@ -74,7 +75,13 @@ Route::middleware(['web'])->group(function () {
         // User page
         Route::middleware(['multirole:user'])->group( function () {
 
-            Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main');
+            // Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main');
+            Route::get('/user/main', function () {
+                $events = Event::paginate(15);
+                return view('user.test', [
+                    'events' => $events
+                ]);
+            })->name('user.main');
             Route::get('/user/main_staff',[UserController::class, 'userPopEventStaff'])->name('user.main_staff');
             Route::get('/event/main/{event}',[UserController::class, 'getMainEventPage'])->name('event.main.main');
             Route::get('/event/infomation/{event}',[EventController::class, 'getInfoEventPage'])->name('event.information');
