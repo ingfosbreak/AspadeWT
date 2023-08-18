@@ -15,6 +15,8 @@ use App\Models\ProcessUser;
 use App\Models\EventInfo;
 use App\Models\EventTeam;
 use App\Models\EventAnnouncement;
+use App\Models\EventCategoryList;
+use App\Models\Category;
 
 class Event extends Model
 {
@@ -68,4 +70,12 @@ class Event extends Model
     public function event_announcement(): HasMany {
         return $this->hasMany(EventAnnouncement::class);
     }
+
+    public function event_category_list(): HasMany {
+        return $this->hasMany(EventCategoryList::class);
+    }
+    public function categories(): BelongsToMany {
+        return $this->belongsToMany(Category::class);
+    }
+
 }
