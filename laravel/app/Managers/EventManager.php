@@ -318,6 +318,7 @@ class EventManager {
         $requestjoin = new RequestJoinEvent();
         $requestjoin->user_id = Auth::getUser()->id;
         $requestjoin->event_id = $event->id;
+        $requestjoin->role = 'member';
         $requestjoin->reason = $request->get('reason');
         if ($requestjoin->save()){
             if ($request->user_file != null) {
@@ -345,7 +346,41 @@ class EventManager {
         return false ;
 
         
-    }       
+    }
+    public function requestjoinEventStaff(Request $request ,Event $event){
+        $requestjoin = new RequestJoinEvent();
+        $requestjoin->user_id = Auth::getUser()->id;
+        $requestjoin->event_id = $event->id;
+        $requestjoin->role = 'staff';
+        $requestjoin->reason = $request->get('reason');
+        if ($requestjoin->save()){
+            if ($request->user_file != null) {
+                // $files = $request->file('user_file');
+    
+                
+                foreach ($request->user_file as $file) {
+                    
+                    $success_files = FileService::getFileManager()->uploadFile('usersjoin/',$file);
+    
+                    if ($success_files == false) {
+                        continue;
+                    }
+                    $requestjoinfile = new RequestJoinEventFile();
+                    $requestjoinfile->request_join_event_id = $requestjoin->id;
+                    $requestjoinfile->file_path = $success_files['image_path'];
+                    $requestjoinfile->save();
+    
+                
+                }
+            }
+            return true;
+        }
+        
+        return false ;
+
+        
+    }
+
 
     
 

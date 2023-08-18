@@ -201,7 +201,7 @@
                                             {{$event->num_staff}}</p>
                                         @endif
                                         @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))
-                                        <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
+                                        <a href="{{ route('event.staff.formJoinEvent', ['event' => $event])}}">
                                             <button
                                                 class="rounded-lg bg-cyan-600 flex items-center justify-center ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-black transition-all hover:shadow-lg hover:shadow-cyan-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                                                 Join
@@ -260,7 +260,7 @@
                                             {{$event->num_staff}}</p>
                                         @endif
                                         @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))
-                                        <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
+                                        <a href="{{ route('event.staff.formJoinEvent', ['event' => $event])}}">
                                             <button
                                                 class="rounded-lg bg-cyan-600 flex items-center justify-center ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-black transition-all hover:shadow-lg hover:shadow-cyan-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                                                 Join
@@ -319,7 +319,7 @@
                                             {{$event->num_staff}}</p>
                                         @endif
                                         @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))
-                                        <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
+                                        <a href="{{ route('event.staff.formJoinEvent', ['event' => $event])}}">
                                             <button
                                                 class="rounded-lg bg-cyan-600 flex items-center justify-center ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-black transition-all hover:shadow-lg hover:shadow-cyan-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                                                 Join

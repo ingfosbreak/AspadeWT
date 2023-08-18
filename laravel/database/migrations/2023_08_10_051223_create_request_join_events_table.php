@@ -19,6 +19,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Event::class);
+            $table->enum('role',['staff','member']);
             $table->string('reason');
             $table->softDeletes();
 

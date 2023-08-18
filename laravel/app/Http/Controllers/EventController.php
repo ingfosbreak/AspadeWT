@@ -23,6 +23,11 @@ class EventController extends Controller
             'event' => $event
         ]);
     }
+    public function getJoinStaffEventFormPage(Event $event){
+        return view('event.formJoinStaffEvent', [
+            'event' => $event
+        ]);
+    }
     public function getInfoEventPageFormMainEvent(Event $event){
         return view('event.main.information', [
             'event' => $event
@@ -58,6 +63,15 @@ class EventController extends Controller
         $success = EventService::getEventManager()->requestjoinEventMember($request,$event);
         if ($success != false) {
             return redirect()->route('user.main')->with('success','create success');
+        }
+        
+        return false;
+    }
+    //requestjoinEventStaff
+    public function requestjoinEventStaff(Request $request ,Event $event) {
+        $success = EventService::getEventManager()->requestjoinEventStaff($request,$event);
+        if ($success != false) {
+            return redirect()->route('user.main_staff')->with('success','create success');
         }
         
         return false;
