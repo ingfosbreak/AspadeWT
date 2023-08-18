@@ -187,5 +187,15 @@ class EventController extends Controller
         return false;
 
     }
+
+    public function editMemberTeam(Request $request) {
+
+        $success = EventService::getEventManager()->changeUserTeam($request);
+        if ($success != false) {
+            return true;
+        }
+        
+        return false;
+    }
     
 }

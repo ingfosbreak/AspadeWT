@@ -17,6 +17,7 @@ use App\Models\UserToken;
 use App\Models\UserImage;
 use App\Models\Event;
 use App\Models\EventUser;
+use App\Models\EventTeam;
 use App\Models\Process;
 use App\Models\ProcessUser;
 use App\Models\Request;
@@ -71,8 +72,12 @@ class User extends Authenticatable
         return $this->user_pivots->where('event_id',(int) $event_id)[0]->event_role;
     }
 
-    public function getEventTeam(int $event_id) {
-        return $this->user_pivots->where('event_id',$event_id)->event_team_id;
+    public function getEventTeamId(string $event_id) {
+        return $this->user_pivots->where('event_id',(int) $event_id)[0]->event_team_id;
+    }
+
+    publIc function getEventTeamName(string $event_id) {
+        return EventTeam::find($this->getEventTeamId($event_id))->name;
     }
 
 

@@ -425,6 +425,26 @@ class EventManager {
 
     }
 
+    public function changeUserTeam(Request $request) {
+        
+        $event_user = EventUser::where('event_id',(int) $request->get('data')['event_id'])->where('user_id',(int) $request->get('data')['user_id'])->get()[0];
+        // $event_user = EventUser::get()->where('event_id',(int) $request->get('data')['event_id'])->where('user_id',(int) $request->get('data')['user_id'])[0];
+        $event_user->event_team_id = (int) $request->get('data')['team_id'];
+        
+        if ($event_user->save()) {
+            return true;
+        }
+        return false;
+        // where('event_id',(int) $event_id)
+        // 'event_id':eventId,'team_id':teamId,'user_id':userId
+        // $pivot = EventUser::where('event_id');
+        // $pivot->user_id = $request->user_id;
+        // $pivot->event_id = $event->id;
+        // $pivot->event_role = "header";
+
+
+    }
+
     
 
 

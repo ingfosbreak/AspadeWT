@@ -46,81 +46,57 @@
                 </td>
                 @if ($user->getEventRole($event->id) == null)
                 <td class="px-4 py-2 text-4xl">-</td>
-                <td class="px-4 py-2">
-                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        type="button">Teams<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4" />
-                        </svg></button>
-
-                    <!-- Dropdown menu -->
-                    <div id="dropdown"
-                        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="dropdownDefaultButton">
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
-                                    out</a>
-                            </li>
-                        </ul>
-                    </div>
-                </td>
                 @else
                 <td class="px-4 py-2">{{$user->getEventRole($event->id)}}</td>
+                @endif
+
+                
                 <td class="px-4 py-2">
-                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-full"
-                        type="button">{{$user->getEventRole($event->id)}}<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true"
+                    @if ($user->getEventTeamId($event->id) == null)
+                    <button id="dropdownDefaultButton-{{$user->id}}" data-dropdown-toggle="dropdown-{{$user->id}}"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        type="button">Add Team<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 1 4 4 4-4" />
                         </svg></button>
+                    @else
+                    <button id="dropdownDefaultButton-{{$user->id}}" data-dropdown-toggle="dropdown-{{$user->id}}"
+                        class="text-white bg-green-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        type="button">{{$user->getEventTeamName($event->id)}}<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg></button>
+                    @endif
 
                     <!-- Dropdown menu -->
-                    <div id="dropdown"
+                    <div id="dropdown-{{$user->id}}"
                         class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="dropdownDefaultButton">
+                            aria-labelledby="dropdownDefaultButton-{{$user->id}}">
+                        
+                            @foreach ($event->event_teams as $team)
                             <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                                <button href="{{route('event.team.edit')}}"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full"
+                                    onClick="changeTeam({{$event->id}},{{$team->id}},{{$user->id}})"
+                                    >{{$team->name}}</button>
                             </li>
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
-                                    out</a>
+                            @endforeach
+                            
+
+                            <li class="mt-5">
+                                <button href="{{route('event.team.edit')}}"
+                                    class="block px-4 py-2 bg-red-300 hover:text-white hover:bg-red-500 w-full">Release</button>
                             </li>
                         </ul>
                     </div>
                 </td>
-                @endif
+                
 
               
                 
-                <td></td>
 
 
 
@@ -132,6 +108,17 @@
         </tbody>
     </table>
 </div>
+
+<script>
+
+function changeTeam(eventId,teamId,userId) {
+    
+    editAjax('POST','{{route('event.team.member.edit')}}', '{{csrf_token()}}', {'event_id':eventId,'team_id':teamId,'user_id':userId});
+    window.location.reload(true);
+    
+}
+
+</script>
 
 
 @endsection
