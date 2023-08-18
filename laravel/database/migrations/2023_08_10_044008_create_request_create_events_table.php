@@ -17,10 +17,13 @@ return new class extends Migration
             $table->foreignIdFor(User::class);
             $table->string("name");
             $table->integer("num_member");
+            $table->integer("num_stuff");
+            $table->string("category");
+            $table->enum('category',['outdoor','indoor','consert','sport','academic']);
             $table->integer("budget");
             $table->date('date');
             $table->string('location');
-            $table->string("description");
+            $table->string("description"); 
             $table->enum('status',['approved','denied'])->nullable();
             $table->timestamps();
             $table->softDeletes();

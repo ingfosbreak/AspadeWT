@@ -21,5 +21,6 @@ class RequestJoinEvent extends Model
     public function requestFiles(): HasMany {
         return $this->hasMany(RequestJoinEventFile::class);
     }
+    
 
 }

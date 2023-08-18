@@ -8,8 +8,9 @@ use App\Models\EventInfo;
 use App\Models\EventUser;
 use App\Models\RequestJoinEvent;
 use App\Models\RequestJoinEventFile;
+use App\Models\requestCreateEvent;
+use App\Models\RequestCreateEventConfirmationFile;
 use App\Services\FileService;
-use App\Models\RequestCreateEvent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ItemNotFoundException;
 use Illuminate\Http\Request;
@@ -219,16 +220,36 @@ class EventManager {
         $event->user_id = Auth::getUser()->id;
         $event->name = $request->get('name');
         $event->num_member = $request->get('num_member');
+        $event->num_member = $request->get('num_stuff');
+        $event->category = $request->get('category');
         $event->budget = $request->get('budget');
         $event->date = $request->get('date');
         $event->location = $request->get('location');
         $event->description = $request->get('description');
-        
-        if ($event->save()) {
+        if ($requestjoin->save()){
+            if ($request->confirmation_file_path != null) {
+                // $files = $request->file('user_file');
+    
+                
+                foreach ($request->confirmation_file_path as $file) {
+                    
+                    $success_files = FileService::getFileManager()->uploadFile('request_event_confirmation/',$file);
+    
+                    if ($success_files == false) {
+                        continue;
+                    }
+                    $requestcreate = new RequestCreateEventConfirmationFile();
+                    $requestcreate->request_create_event_id = $event->id;
+                    $requestcreate->file_path = $success_files['image_path'];
+                    $requestcreate->save();
+    
+                
+                }
+            }
             return true;
         }
-        return false;
-
+        
+        return false ;
     }
     
     public function removeEventRequest(Request $request) {
@@ -324,7 +345,8 @@ class EventManager {
         return false ;
 
         
-    }
+    }       
+
     
 
 
