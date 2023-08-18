@@ -154,5 +154,38 @@ class EventController extends Controller
             'event' => $event
         ]);
     }
+
+    public function addEventTeam(Request $request) {
+
+        $success = EventService::getEventManager()->addEventTeam($request);
+        if ($success != false) {
+            return true;
+        }
+        
+        return false;
+
+    }
+
+    public function removeEventTeam(Request $request) {
+
+        $success = EventService::getEventManager()->removeEventTeam($request);
+        if ($success != false) {
+            return true;
+        }
+        
+        return false;
+
+    }
+
+    public function editEventTeam(Request $request) {
+
+        $success = EventService::getEventManager()->editEventTeam($request);
+        if ($success != false) {
+            return true;
+        }
+        
+        return false;
+
+    }
     
 }

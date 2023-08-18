@@ -6,6 +6,7 @@ namespace App\Managers;
 use App\Models\Event;
 use App\Models\EventInfo;
 use App\Models\EventUser;
+use App\Models\EventTeam;
 use App\Models\RequestJoinEvent;
 use App\Models\RequestJoinEventFile;
 use App\Models\RequestCreateEvent;
@@ -28,6 +29,7 @@ class EventManager {
     public function getThatEvent(string $id) {
         return Event::find((float)$id);
     }
+
     public function isUserInEvent(int $userid ,Event $event){
         
         $event_users = $event->users;
@@ -61,7 +63,7 @@ class EventManager {
 
         if (EventInfo::count() == 0) {
             
-            $event_info = new EventInfo;
+            $event_info = new EventInfo();
             $event_info->event_id = (int) $request->get('data')['event_id'];
             $event_info->order = 1000;
 
@@ -74,7 +76,7 @@ class EventManager {
 
         $maxValue = EventInfo::max('order');
 
-        $event_info = new EventInfo;
+        $event_info = new EventInfo();
         $event_info->event_id = (int) $request->get('data')['event_id'];
         $event_info->order =  $maxValue + 1000;  
 
@@ -381,6 +383,47 @@ class EventManager {
         
     }
 
+
+
+    // team
+
+    public function addEventTeam(Request $request) {
+
+        $event_team = new EventTeam();
+        $event_team->event_id = (int) $request->get('data')['event_id'];
+        $event_team->name = $request->get('data')['text'];
+
+        if ($event_team->save()) {
+            return true;
+        }
+        return false;
+
+    }
+
+    public function editEventTeam(Request $request) {
+
+        $event_team = EventTeam::find((int) $request->get('data')['team_id']);
+        $event_team->name = $request->get('data')['text'];
+
+        if ($event_team->save()) {
+            return true;
+        }
+        return false;
+       
+
+    }
+
+
+    public function removeEventTeam(Request $request) {
+
+        $event_team = EventTeam::find((int) $request->get('data')['team_id']);
+        
+        if ($event_team->delete()) {
+            return true;
+        }
+        return false;
+
+    }
 
     
 

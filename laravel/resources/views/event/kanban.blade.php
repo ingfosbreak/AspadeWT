@@ -101,7 +101,7 @@
                     <p class="pt-1 rounded text-sm" id="done-add-text-99999999">New</p>
                 </div>
                 <div class="not-show" id="done-text-99999999">
-                    <label for="message-99999999" class="block mb-2 text-sm font-medium text-white">Add new task</label>
+                    <label for="message-99999999" class="block mb-2 text-sm font-medium text-black">Add new task</label>
                     <textarea id="message-99999999" rows="4"
                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
                         placeholder="Write your thoughts here..."></textarea>
