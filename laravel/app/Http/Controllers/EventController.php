@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Services\EventService;
 use App\Models\Event;
+use App\Models\RequestJoinEvent;
 
 class EventController extends Controller
 {
@@ -152,6 +153,19 @@ class EventController extends Controller
     public function getEventTeamsPage(Event $event) {
         return view('event.main.team', [
             'event' => $event
+        ]);
+    }
+
+    public function getEventJoinsPage(Event $event) {
+        return view('event.main.joinEvent', [
+            'event' => $event
+        ]);
+    }
+
+    public function getEventJoinDetailPage(Event $event, RequestJoinEvent $request) {
+        return view('event.main.joinEventDetail',[
+            'event' => $event,
+            'request' => $request
         ]);
     }
 

@@ -120,6 +120,10 @@ Route::middleware(['web'])->group(function () {
             Route::post('/removeEventTeam', [EventController::class, 'removeEventTeam'])->name('event.team.remove');
             Route::post('/addEventTeam', [EventController::class, 'addEventTeam'])->name('event.team.add');
 
+            Route::get('/event/main/{event}/join', [EventController::class, 'getEventJoinsPage'])->name('event.team.join');
+            Route::get('/event/main/{event}/join/{request}', [EventController::class, 'getEventJoinDetailPage'])->name('event.team.joindetail');
+
+            
             
 
         });

@@ -16,6 +16,7 @@ use App\Models\EventInfo;
 use App\Models\EventTeam;
 use App\Models\EventAnnouncement;
 use App\Models\EventCategoryList;
+use App\Models\RequestJoinEvent;
 use App\Models\Category;
 
 class Event extends Model
@@ -76,6 +77,10 @@ class Event extends Model
     }
     public function categories(): BelongsToMany {
         return $this->belongsToMany(Category::class);
+    }
+
+    public function requestJoinEvent(): HasMany {
+        return $this->hasMany(RequestJoinEvent::class);
     }
 
 }
