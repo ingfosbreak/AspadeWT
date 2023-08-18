@@ -11,7 +11,7 @@
 
             </div>
             <div class="flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0 mb-10 -mt-5">
-                <form action="{{ route('user.formRequestEvent.create')}}" method="POST">
+                <form action="{{ route('user.formRequestEvent.create')}}" method="POST"  enctype="multipart/form-data">
                     @csrf
                     <div
                         class="bg-opacity-75 w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 mt-8">
@@ -40,14 +40,14 @@
                                         จำนวนMemberในEvent</label>
                                 </div>
 
-                                <!-- Stuff  -->
+                                <!-- Staff  -->
                                 <div class="relative z-0">
-                                    <input type="number" id="num_member" name="num_stuff"
+                                    <input type="number" id="num_member" name="num_staff"
                                         class="block py-2.5 px-0 w-full text-base  bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                         placeholder=" " autocomplete="off" />
                                     <label for="num_member"
                                         class="absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                        จำนวนStuffในEvent</label>
+                                        จำนวนStaffในEvent</label>
                                 </div>
 
                                 <!-- Category -->
@@ -106,7 +106,7 @@
                                         for="multiple_files">Upload confirmation files</label>
                                     <input
                                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                        id="multiple_files" name='confirmation_file_path[]' type="file" multiple>
+                                        id="multiple_files" name='event_file_path[]' type="file" multiple>
                                 </div>
 
                                 <!--Description  -->

@@ -8,7 +8,7 @@ use App\Models\EventInfo;
 use App\Models\EventUser;
 use App\Models\RequestJoinEvent;
 use App\Models\RequestJoinEventFile;
-use App\Models\requestCreateEvent;
+use App\Models\RequestCreateEvent;
 use App\Models\RequestCreateEventConfirmationFile;
 use App\Services\FileService;
 use Illuminate\Support\Facades\Auth;
@@ -220,18 +220,18 @@ class EventManager {
         $event->user_id = Auth::getUser()->id;
         $event->name = $request->get('name');
         $event->num_member = $request->get('num_member');
-        $event->num_member = $request->get('num_stuff');
+        $event->num_staff = $request->get('num_staff');
         $event->category = $request->get('category');
         $event->budget = $request->get('budget');
         $event->date = $request->get('date');
         $event->location = $request->get('location');
         $event->description = $request->get('description');
-        if ($requestjoin->save()){
-            if ($request->confirmation_file_path != null) {
+        if ($event->save()){
+            if ($request->event_file_path != null) {
                 // $files = $request->file('user_file');
     
                 
-                foreach ($request->confirmation_file_path as $file) {
+                foreach ($request->event_file_path as $file) {
                     
                     $success_files = FileService::getFileManager()->uploadFile('request_event_confirmation/',$file);
     

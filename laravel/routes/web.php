@@ -75,6 +75,7 @@ Route::middleware(['web'])->group(function () {
         Route::middleware(['multirole:user'])->group( function () {
 
             Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main');
+            Route::get('/user/main_staff',[UserController::class, 'userPopEventStaff'])->name('user.main_staff');
             Route::get('/event/main/{event}',[UserController::class, 'getMainEventPage'])->name('event.main.main');
             Route::get('/event/infomation/{event}',[EventController::class, 'getInfoEventPage'])->name('event.information');
             Route::get('/event/main/infomation/{event}',[EventController::class, 'getInfoEventPageFormMainEvent'])->name('event.main.information');
@@ -107,13 +108,13 @@ Route::middleware(['web'])->group(function () {
             Route::get('/event/{event}/form',[EventController::class, 'getJoinEventFormPage'])->name('event.formJoinEvent');
             Route::post('/event/{event}/form',[EventController::class, 'requestjoinEventMember'])->name('user.requestjoinEventMember.create');
 
-            //RequestJoinStuffEvent
-            Route::get('/event/{event}/stuff_form',[EventController::class, 'getJoinStuffEventFormPage'])->name('event.staff.formJoinEvent');
-            Route::post('/event/{event}/stuff_form',[EventController::class, 'requestjoinEventStuff'])->name('user.staff.requestjoinEventStuff.create');
+            //RequestJoinStaffEvent
+            Route::get('/event/{event}/staff_form',[EventController::class, 'getJoinStaffEventFormPage'])->name('event.staff.formJoinEvent');
+            Route::post('/event/{event}/staff_form',[EventController::class, 'requestjoinEventStaff'])->name('user.staff.requestjoinEventStaff.create');
 
             //Event Staff
             Route::get('/event/main/{event}/member',[EventController::class, 'getEventMembersPage'])->name('event.team.member');
-            Route::get('/event/main/{event}/team', [EventController::class, 'getEvent '])
+            // Route::get('/event/main/{event}/team', [EventController::class, 'getEvent '])
 
             
 

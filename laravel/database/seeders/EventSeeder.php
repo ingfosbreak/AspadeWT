@@ -15,8 +15,8 @@ class EventSeeder extends Seeder
     {
         $event = new Event();
         $event->name = "คอนเสิร์ตเพลง";
-        $event->num_member = 20;
-        $event->num_staff = 20;
+        $event->num_member = 80;
+        $event->num_staff = 10;
         $event->budget = 5000;
         $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
@@ -25,8 +25,8 @@ class EventSeeder extends Seeder
 
         $event = new Event();
         $event->name = "กิจกรรมวิ่งกองกำลังช่วยเหลือ";
-        $event->num_member = 20;
-        $event->num_staff = 20;
+        $event->num_member = 35;
+        $event->num_staff = 8;
         $event->budget = 5000;
         $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
@@ -35,8 +35,8 @@ class EventSeeder extends Seeder
 
         $event = new Event();
         $event->name = "เทศกาลอาหาร";
-        $event->num_member = 20;
-        $event->num_staff = 20;
+        $event->num_member = 160;
+        $event->num_staff = 122;
         $event->budget = 5000;
         $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";
@@ -45,8 +45,8 @@ class EventSeeder extends Seeder
 
         $event = new Event();
         $event->name = "งานฉายภาพยนตร์ใต้ดาว";
-        $event->num_member = 20;
-        $event->num_staff = 20;
+        $event->num_member = 788;
+        $event->num_staff = 50;
         $event->budget = 5000;
         $event->date = fake()->dateTimeBetween('-1 week','+1 week');
         $event->location = "KU";

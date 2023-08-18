@@ -21,6 +21,14 @@ class UserController extends Controller
             'events' => $events
         ]);
     }
+    public function userPopEventStaff(){
+        // $events = Event::getPublishEventPaginate();
+        $events = Event::paginate(15);
+
+        return view('user.mainStaff', [
+            'events' => $events
+        ]);
+    }
     public function getMainEventPage(Event $event){
         return view('event.main.main', [
             'event' => $event

@@ -43,7 +43,7 @@ class EventController extends Controller
 
     //requestCreateEvent
     public function requestCreateEvent(Request $request) {
-        
+
         $success = EventService::getEventManager()->requestCreateEvent($request);
         if ($success != false) {
             return redirect()->route('user.main')->with('success','create success');

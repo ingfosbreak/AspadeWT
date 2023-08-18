@@ -19,7 +19,7 @@
                         <div class=" p-6 space-y-4 md:space-y-6 sm:p-8">
                             <h1
                                 class="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                                Request for Joining Stuff Event
+                                Request for Joining Staff Event
                             </h1>
                             <div class="relative z-0">
                                 <input type="text" id="disabled-input" name="name"
@@ -80,7 +80,7 @@
 
                             <div>
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Reasons for
-                                    wanting to attend this stuff event</label>
+                                    wanting to attend this staff event</label>
                                 <textarea id="description" rows="4" name='reason'
                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Write your Reasons here..."></textarea>

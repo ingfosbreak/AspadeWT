@@ -17,8 +17,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class);
             $table->string("name");
             $table->integer("num_member");
-            $table->integer("num_stuff");
-            $table->string("category");
+            $table->integer("num_staff");
             $table->enum('category',['outdoor','indoor','consert','sport','academic']);
             $table->integer("budget");
             $table->date('date');

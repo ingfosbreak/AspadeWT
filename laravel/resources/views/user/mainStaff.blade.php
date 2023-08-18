@@ -87,17 +87,17 @@
 
             <!-- zone category search -->
             <div class="flex felx-col items-center justify-center">
-            <aside class=" rounded-lg border-2 border-green-600 p-4 max-w-lg mr-5">
+                <aside class=" rounded-lg border-2 border-blue-600 p-4 max-w-lg mr-5">
                     <h2 class="font-os text-white text-lg font-bold">Member or Staff</h2>
                     <ul class="flex items-start justify-center flex-wrap mt-4">
                         <li class="flex mx-1">
-                            <a class="p-2 px-3 border-green-800 mb-4 rounded font-medium hover:bg-transparent hover:border-green-800 border bg-green-400/25  text-white"
+                            <a class="p-2 px-3 border-teal-400 mb-4 rounded font-medium hover:bg-transparent hover:border-green-800 border bg-teal-400/25  text-white"
                                 href="{{ route('user.main')}}">
                                 <h2>Member</h2>
                             </a>
                         </li>
                         <li class="flex mx-1">
-                            <a class="p-2 px-3 border-green-800 mb-4 rounded font-medium hover:bg-transparent hover:border-green-800 border bg-green-400/25  text-white"
+                            <a class="p-2 px-3 border-teal-400 mb-4 rounded font-medium hover:bg-transparent hover:border-green-800 border bg-teal-400/25  text-white"
                                 href="{{ route('user.main_staff')}}">
                                 <h2>Staff</h2>
                             </a>
@@ -193,12 +193,12 @@
                                 <p class="leading-normal text-gray-300 text-md mt-5 text-xl">{{$event->description}}</p>
 
                                 <div class="flex justify-between items-center text-3xl">
-                                    @if ($event->getMembersCount() == $event->num_member)
-                                    <p class="text-red-500 "> {{$event->getMembersCount()}} / {{$event->num_member}}</p>
+                                    @if ($event->getStaffsCount() == $event->num_staff)
+                                    <p class="text-red-500 "> {{$event->getStaffsCount()}} / {{$event->num_staff}}</p>
                                     @endif
-                                    @if ($event->getMembersCount() < $event->num_member)
-                                        <p class="text-green-300"> {{$event->getMembersCount()}} /
-                                            {{$event->num_member}}</p>
+                                    @if ($event->getStaffsCount() < $event->num_staff)
+                                        <p class="text-green-300"> {{$event->getStaffsCount()}} /
+                                            {{$event->num_staff}}</p>
                                         @endif
                                         @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))
                                         <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
@@ -252,17 +252,17 @@
                                 <p class="leading-normal text-gray-300 text-md mt-5 text-xl">{{$event->description}}</p>
 
                                 <div class="flex justify-between items-center text-3xl">
-                                    @if ($event->getMembersCount() == $event->num_member)
-                                    <p class="text-red-500 "> {{$event->getMembersCount()}} / {{$event->num_member}}</p>
+                                    @if ($event->getStaffsCount() == $event->num_staff)
+                                    <p class="text-red-500 "> {{$event->getStaffsCount()}} / {{$event->num_staff}}</p>
                                     @endif
-                                    @if ($event->getMembersCount() < $event->num_member)
-                                        <p class="text-green-300"> {{$event->getMembersCount()}} /
-                                            {{$event->num_member}}</p>
+                                    @if ($event->getStaffsCount() < $event->num_staff)
+                                        <p class="text-green-300"> {{$event->getStaffsCount()}} /
+                                            {{$event->num_staff}}</p>
                                         @endif
                                         @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))
                                         <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
                                             <button
-                                                class="rounded-lg bg-green-600 flex items-center justify-center ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-black transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                                                class="rounded-lg bg-cyan-400 flex items-center justify-center ml-2 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-black transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                                                 Join
                                                 <span class="ml-4 ">
                                                     <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"
@@ -311,12 +311,12 @@
                                 <p class="leading-normal text-gray-300 text-md mt-5 text-xl">{{$event->description}}</p>
 
                                 <div class="flex justify-between items-center text-3xl">
-                                    @if ($event->getMembersCount() == $event->num_member)
-                                    <p class="text-red-500 "> {{$event->getMembersCount()}} / {{$event->num_member}}</p>
+                                    @if ($event->getStaffsCount() == $event->num_staff)
+                                    <p class="text-red-500 "> {{$event->getStaffsCount()}} / {{$event->num_staff}}</p>
                                     @endif
-                                    @if ($event->getMembersCount() < $event->num_member)
-                                        <p class="text-green-300"> {{$event->getMembersCount()}} /
-                                            {{$event->num_member}}</p>
+                                    @if ($event->getStaffsCount() < $event->num_staff)
+                                        <p class="text-green-300"> {{$event->getStaffsCount()}} /
+                                            {{$event->num_staff}}</p>
                                         @endif
                                         @if ($EventService->isUserInEvent(Auth::getUser()->id,$event))
                                         <a href="{{ route('event.formJoinEvent', ['event' => $event])}}">
