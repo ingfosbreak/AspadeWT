@@ -209,6 +209,3 @@ Route::post('/getmsg',function(){
 // });
 
 // require __DIR__.'/auth.php';
-
-
-

@@ -62,7 +62,7 @@
                     data-carousel-prev>
                     <span
                         class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true"
+                        <svg class="w-4 h-4 text-black dark:text-gray-800" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M5 1 1 5l4 4" />
@@ -75,7 +75,7 @@
                     data-carousel-next>
                     <span
                         class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true"
+                        <svg class="w-4 h-4 text-black dark:text-gray-800" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 9 4-4-4-4" />
@@ -88,16 +88,16 @@
             <!-- zone category search -->
             <div class="flex felx-col items-center justify-center">
             <aside class=" rounded-lg border-2 border-green-600 p-4 max-w-lg mr-5">
-                    <h2 class="font-os text-white text-lg font-bold">Member or Staff</h2>
+                    <h2 class="font-os text-black text-lg font-bold">Member or Staff</h2>
                     <ul class="flex items-start justify-center flex-wrap mt-4">
                         <li class="flex mx-1">
-                            <a class="p-2 px-3 border-green-800 mb-4 rounded font-medium hover:bg-transparent hover:border-green-800 border bg-green-400/25  text-white"
+                            <a class="p-2 px-3 border-green-800 mb-4 rounded font-medium hover:bg-transparent hover:border-green-800 border bg-green-400/25  text-black"
                                 href="{{ route('user.main')}}">
                                 <h2>Member</h2>
                             </a>
                         </li>
                         <li class="flex mx-1">
-                            <a class="p-2 px-3 border-green-800 mb-4 rounded font-medium hover:bg-transparent hover:border-green-800 border bg-green-400/25  text-white"
+                            <a class="p-2 px-3 border-green-800 mb-4 rounded font-medium hover:bg-transparent hover:border-green-800 border bg-green-400/25  text-black"
                                 href="{{ route('user.main_staff')}}">
                                 <h2>Staff</h2>
                             </a>
@@ -108,7 +108,7 @@
 
 
                 <aside class=" rounded-lg border-2 border-purple-600 p-4 max-w-lg ">
-                    <h2 class="font-os text-white text-lg font-bold">Categories</h2>
+                    <h2 class="font-os text-black text-lg font-bold">Categories</h2>
                     <ul class="flex items-start flex-wrap mt-4">
                         <li class="flex mx-1">
                             <a class="p-2 px-3 border-purple-800 mb-4 rounded font-medium hover:bg-transparent hover:border-purple-800 border bg-purple-400/25  text-white"

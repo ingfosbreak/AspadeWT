@@ -10,12 +10,12 @@
                     alt="logo">
 
             </div>
-            <div class="flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0 mb-10 -mt-5">
+            <div class="flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0 mb-10 mt-10">
                 <form action="{{ route('user.formRequestEvent.create')}}" method="POST"  enctype="multipart/form-data">
                     @csrf
                     <div
-                        class="bg-opacity-75 w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 mt-8">
-                        <div class=" columns-3xl p-6 space-y-4  sm:p-8">
+                        class="bg-opacity-75 w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 ">
+                        <div class=" columns-3xl p-6 space-y-4  mb-10">
                             <h1
                                 class="text-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                                 Request for to Open Event
@@ -118,13 +118,13 @@
                                     placeholder="Write your Description here..."></textarea>
 
                             <!-- end infomation -->
-                                <div>
-                                    <div class="flex gap-10">
+                                <div class="grid justify-items-center ">
+                                    <div class="flex flex-row">
 
                                         <!-- back button -->
-
+                                        <div class=" mt-5 mb-5 mr-16 rounded-lg w-40 text-center px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-4 font-medium border-black text-indigo-600 text-white">
                                         <a href="{{ route('user.main')}}"
-                                            class=" mt-5 mb-5 rounded-lg w-40 text-center px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-4 font-medium border-black text-indigo-600 text-white">
+                                            >
 
                                             <span
                                                 class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-red-500 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
@@ -134,6 +134,7 @@
                                             </span>
 
                                         </a>
+                                        </div>
 
 
                                         <!-- submit button -->
