@@ -122,4 +122,11 @@
     </table>
 </div>
 
+<script>
+function remove(id) {
+        removeAjax('POST','{{route('event.request.remove')}}', '{{csrf_token()}}', {'request_id':id});
+        window.location.reload(true);
+    }
+</script>
+
 @endsection

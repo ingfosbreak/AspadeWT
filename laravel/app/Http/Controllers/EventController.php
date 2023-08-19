@@ -235,6 +235,18 @@ class EventController extends Controller
 
     }
 
+    public function removeJoinRequest(Request $request) {
+        
+        
+        $success = EventService::getEventManager()->removeJoinRequest($request);
+        if ($success != false) {
+            return true;
+        }
+        
+        return false;
+
+    }
+
     public function editImage(Request $request, Event $event) {
 
         

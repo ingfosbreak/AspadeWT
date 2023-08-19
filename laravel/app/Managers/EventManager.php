@@ -427,6 +427,16 @@ class EventManager {
 
     }
 
+    public function removeJoinRequest(Request $request) {
+        $request = RequestJoinEvent::find((int) $request->get('data')['request_id']);
+        
+        if ($request->delete()) {
+            return true;
+        }
+        return false;
+    }
+
+
 
 
     // team
@@ -469,6 +479,7 @@ class EventManager {
 
     }
 
+  
     public function changeUserTeam(Request $request) {
         
         

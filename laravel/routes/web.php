@@ -130,8 +130,10 @@ Route::middleware(['web'])->group(function () {
 
             Route::get('/event/main/{event}/join', [EventController::class, 'getEventJoinsPage'])->name('event.team.join');
             Route::get('/event/main/{event}/join/{request}', [EventController::class, 'getEventJoinDetailPage'])->name('event.team.joindetail');
+
             Route::post('/event/request/approve', [EventController::class, 'approveJoinRequest'])->name('event.request.approve');
             Route::post('/event/request/deny', [EventController::class, 'denyJoinRequest'])->name('event.request.deny');
+            Route::post('/event/request/remove', [EventController::class, 'removeJoinRequest'])->name('event.request.remove');
 
             
             
