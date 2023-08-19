@@ -280,7 +280,9 @@ class EventManager {
             $event->num_member = $request->num_member;
             $event->num_staff = $request->num_staff;
             $event->budget = $request->budget;
-            $event->date = $request->date;
+            $event->date_register = $request->date_register;
+            $event->date_start = $request->date_start;
+            $event->date_close = $request->date_close;
             $event->location = $request->location;
             $event->description = $request->description;
 
