@@ -20,17 +20,10 @@ use Illuminate\Http\Request;
 
 
 
+
 class EventManager {
 
     public function __construct() {}
-
-    public function getAllEvent() {
-        return Event::get();
-    }
-
-    public function getThatEvent(string $id) {
-        return Event::find((float)$id);
-    }
 
     public function isUserInEvent(int $userid ,Event $event){
         

@@ -6,6 +6,11 @@ use Illuminate\Support\ServiceProvider;
 use App\Managers\UserManager;
 use App\Managers\EventManager;
 use App\Managers\ProcessManager;
+use App\Models\Event;
+use App\Models\User;
+use App\Models\Process;
+use App\Models\UserToken;
+use Carbon\Carbon;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -21,11 +26,14 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      */
     public function boot(): void
-    {
+    {   
+        
         view()->share([
-            'UserService' => app()->make(UserManager::class),
-            'EventService' => app()->make(EventManager::class),
-            'ProcessService' => app()->make(ProcessManager::class),
+            'time' => Carbon::today()->toFormattedDateString(),
+            'AllEvents' => Event::get()->count(),
+            'AllUsers' => User::get()->count(),
+            'AllProcesses' => Process::get()->count(),
+            'AllTokens' => UserToken::get()->count(),
         ]);
     }
 }

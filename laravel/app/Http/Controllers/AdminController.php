@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\RequestCreateEvent;
+use App\Models\Event;
+use App\Models\User;
 use App\Services\EventService;
 
 class AdminController extends Controller
