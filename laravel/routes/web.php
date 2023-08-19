@@ -90,6 +90,8 @@ Route::middleware(['web'])->group(function () {
             Route::get('/user/myEventHistory', function (){return view('user.myEventHistory');})->name('user.myEventHistory');
 
             Route::get('/event/{event}/kanban', [ProcessController::class, 'getEventKanbanPage'])->name('event.kanban');
+            Route::get('/event/{event}/kanban/{process}', [ProcessController::class, 'getEventKanbanTeamPage'])->name('event.kanban.team');
+            Route::post('/event/{process}/kanban/{team}/{event}', [ProcessController::class, 'editKanbanTeam'])->name('event.kanban.edit');
 
             Route::post('/editPublish', [EventController::class, 'editPublistEvent'])->name('publish.event');
 

@@ -5,6 +5,7 @@ namespace App\Managers;
 use App\Models\Process;
 use App\Models\Event;
 use Illuminate\Http\Request;
+use App\Models\EventTeam;
 
 
 class ProcessManager {
@@ -66,6 +67,18 @@ class ProcessManager {
             return true;
         }
         return false;
+
+    }
+
+    public function editKanbanTeam(Process $process, EventTeam $team =null) {
+
+        $process->event_team_id = $team->id;
+        if ($process->save()) {
+            return true;
+        }
+        return false;
+
+
 
     }
 

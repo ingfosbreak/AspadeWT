@@ -56,9 +56,14 @@
                         </div>
 
 
-                        <div class="flex flex-row items-center mt-2">
-                            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
+                        <div class="flex flex-row items-center mt-5">
+                            @if ($process->event_team != null)
+                            <a href="{{ route('event.kanban.team',['event'=>$event, 'process'=>$process])}}" class="text-xs text-gray-500 flex"><div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
+                                Team : {{$process->event_team->name}}</a>
+                            @else 
+                            <a href="{{ route('event.kanban.team',['event'=>$event, 'process'=>$process])}}" class="text-xs text-gray-500 flex"><div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
+                                Team : -</a>
+                            @endif
                         </div>
                         <div class="flex gap-10">
                             <div class="flex flex-row items-center text-gray-300 mt-2 px-1"
@@ -142,23 +147,18 @@
 
                         </div>
 
-                        <div class="flex flex-row items-center mt-2">
-                            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
-                        </div>
-                        <div class="flex flex-row items-center text-gray-300 mt-2 px-1" id="done-add-{{$process->id}}"
-                            onClick="show({{$process->id}})">
-                            <p class="rounded mr-2 text-2xl">+</p>
-                            <p class="pt-1 rounded text-sm" id="done-add-text-{{$process->id}}">Edit</p>
-                        </div>
-                        <div class="not-show" id="done-text-{{$process->id}}">
-                            <label for="message-{{$process->id}}"
-                                class="block mb-2 text-sm font-medium text-gray-900">Add new task</label>
-                            <textarea id="message-{{$process->id}}" rows="4"
-                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
-                                placeholder="Write your thoughts here..."></textarea>
-                            <button class="rounded-2xl bg-blue-600 px-4 mt-2 py-2 font-bold leading-none text-white"
-                                id="done-button-{{$process->id}}">Submit</button>
+                        <div class="flex flex-row items-center mt-5">
+                            @if ($process->event_team != null)
+                            <div class="flex">
+                                <div class="bg-gray-300 rounded-full w-4 h-4 mr-3 "></div>
+                                <p class="text-xs text-gray-500">Team : {{$process->event_team->name}}</p>
+                            </div>
+                            @else 
+                            <div class="flex">
+                                <div class="bg-gray-300 rounded-full w-4 h-4 mr-3 "></div>
+                                <p class="text-xs text-gray-500">Team : -</p>
+                            </div>
+                            @endif
                         </div>
 
                     </div>
@@ -200,9 +200,18 @@
 
                         </div>
 
-                        <div class="flex flex-row items-center mt-2">
-                            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
-                            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
+                        <div class="flex flex-row items-center mt-5">
+                            @if ($process->event_team != null)
+                            <div class="flex">
+                                <div class="bg-gray-300 rounded-full w-4 h-4 mr-3 "></div>
+                                <p class="text-xs text-gray-500">Team : {{$process->event_team->name}}</p>
+                            </div>
+                            @else 
+                            <div class="flex">
+                                <div class="bg-gray-300 rounded-full w-4 h-4 mr-3 "></div>
+                                <p class="text-xs text-gray-500">Team : -</p>
+                            </div>
+                            @endif
                         </div>
 
                     </div>

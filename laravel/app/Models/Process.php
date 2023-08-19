@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\User;
 use App\Models\Event;
+use App\Models\EventTeam;
 
 class Process extends Model
 {
@@ -20,6 +21,10 @@ class Process extends Model
 
     public function event(): BelongsTo {
         return $this->belongsTo(Event::class);
+    }
+
+    public function event_team(): BelongsTo {
+        return $this->belongsTo(EventTeam::class);
     }
 
 }
