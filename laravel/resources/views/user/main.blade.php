@@ -95,7 +95,7 @@
         <div class="flex flex-wrap gap-2 px-20 bg-black py-20 bg-gray-200 rounded-lg drop-shadow-xl">
             @foreach ($eventsPopular as $event)
             <!-- Item 1 -->
-            <div class="flex flex-col gap-1 card mb-10">
+            <div class="flex flex-col gap-1 card mb-20">
 
                 <!-- Image -->
                 <a href="{{ route('event.information',['event'=> $event])}}" class="bg-purple-500">
@@ -142,7 +142,7 @@
         <div class="flex flex-wrap gap-2 px-20 bg-black py-20 bg-gray-200 rounded-lg drop-shadow-xl">
             @foreach ($eventUpComing as $event)
             <!-- Item 1 -->
-            <div class="flex flex-col gap-1 card mb-10">
+            <div class="flex flex-col gap-1 card mb-20">
 
                 <!-- Image -->
                 <a href="{{ route('event.information',['event'=> $event])}}" class="bg-purple-500">
@@ -187,7 +187,7 @@
         <div class="flex flex-wrap gap-2 px-20 bg-black py-20 bg-gray-200 rounded-lg drop-shadow-xl">
             @foreach ($eventsNew as $event)
             <!-- Item 1 -->
-            <div class="flex flex-col gap-1 card mb-10">
+            <div class="flex flex-col gap-1 card mb-20">
 
                 <!-- Image -->
                 <a href="{{ route('event.information',['event'=> $event])}}" class="bg-purple-500">
@@ -228,7 +228,7 @@
 <style>
 .card {
 
-    width: 210px;
+    width: 200px;
     height: 320px;
     object-fit: cover;
 
