@@ -167,20 +167,53 @@
                         <button data-modal-target="profileImage-modal" data-modal-toggle="profileImage-modal"
                         class="text-6xl text-green-400 hover:text-green-300 bg-gray-100 hover:bg-gray-500 w-fit h-fit px-3 mt-2 rounded-full"
                         type="button">+</button>
+
+                    
                     </div>
                     
+                    
 
-
-
-                    <div class="flex flex-col w-full  items-center">
-                        <div class="mt-2 flex justify-end px-5 w-full gap-3">
+                    <div class="flex w-full justify-center items-center gap-5">
+                    @if ($event->isUserInEvent(Auth::getUser()->id))
+                    
+                    <a href="{{ route('event.main.main',['event' => $event])}}"
+                        class="inline-flex items-center border border-indigo-300 px-3 py-1.5 rounded-md text-indigo-500 hover:bg-indigo-50  my-5">
+                        <span class="ml-1 font-bold text-lg">Detail</span>
+                    </a>
+                    <!--  -->
+                    @else 
+                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="inline-flex w-fit items-center border border-indigo-300 px-3 py-1.5 rounded-md text-indigo-500 hover:bg-indigo-50  my-5 font-bold" type="button">Book Event<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg></button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdown" class="z-100 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                        <li>
+                            <a href="{{ route('event.staff.formJoinEvent', ['event' => $event])}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Join As Staff</a>
+                        </li>
+                        <li>
+                            <a href="{{route('event.formJoinEvent', ['event' => $event])}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Join As Participant</a>
+                        </li>
+                        </ul>
+                    </div>
+                    <!--  -->
+                    @endif
+                    
+                    
+                        <div class=" flex justify-end px-5  gap-3">
                             <button data-modal-target="information-modal" data-modal-toggle="information-modal" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-sliders2" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M10.5 1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4H1.5a.5.5 0 0 1 0-1H10V1.5a.5.5 0 0 1 .5-.5ZM12 3.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-6.5 2A.5.5 0 0 1 6 6v1.5h8.5a.5.5 0 0 1 0 1H6V10a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5ZM1 8a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 1 8Zm9.5 2a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V13H1.5a.5.5 0 0 1 0-1H10v-1.5a.5.5 0 0 1 .5-.5Zm1.5 2.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Z"/>
                                 </svg>
                             </button>
                         </div>
+                    </div>
+
+
+
+                    <div class="flex flex-col w-full  items-center">
                         <div class="p-4 font-normal text-gray-800 md:w-3/4 text-xl">
+                            
                             <h1 class="mb-4 text-4xl font-bold leading-none tracking-tight text-gray-800">{{$event->name}}</h1>
                             
                             <div class="flex items-center gap-3">                        
@@ -233,33 +266,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex w-full justify-center gap-5">
-                    @if ($event->isUserInEvent(Auth::getUser()->id))
                     
-                    <a href="{{ route('event.team.join',['event' => $event])}}"
-                        class="inline-flex items-center border border-indigo-300 px-3 py-1.5 rounded-md text-indigo-500 hover:bg-indigo-50  my-5">
-                        <span class="ml-1 font-bold text-lg">Detail</span>
-                    </a>
-                    <!--  -->
-                    @else 
-                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="inline-flex w-fit items-center border border-indigo-300 px-3 py-1.5 rounded-md text-indigo-500 hover:bg-indigo-50  my-5 font-bold" type="button">Book Event<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                    </svg></button>
-                    <!-- Dropdown menu -->
-                    <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                        <li>
-                            <a href="{{ route('event.staff.formJoinEvent', ['event' => $event])}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Join As Staff</a>
-                        </li>
-                        <li>
-                            <a href="{{route('event.formJoinEvent', ['event' => $event])}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Join As Participant</a>
-                        </li>
-                        </ul>
-                    </div>
-                    <!--  -->
-                    @endif
-                    
-                    </div>
                 </div>
 
             </div>

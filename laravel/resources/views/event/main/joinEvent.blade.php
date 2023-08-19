@@ -5,7 +5,7 @@
     href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
     rel="stylesheet">
 <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <h2 class="text-2xl font-bold mb-4">Create Event Requests</h2>
+    <h2 class="text-2xl font-bold mb-4">Join Requests Management</h2>
     <table id="example" class="table-auto">
         <thead>
             <tr>

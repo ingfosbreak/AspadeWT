@@ -8,6 +8,7 @@ use App\Models\EventInfo;
 use App\Models\EventUser;
 use App\Models\EventTeam;
 use App\Models\EventImage;
+use App\Models\EventAnnouncement;
 use App\Models\RequestJoinEvent;
 use App\Models\RequestJoinEventFile;
 use App\Models\RequestCreateEvent;
@@ -580,6 +581,22 @@ class EventManager {
         return false;
     }
 
+
+    public function createAn(Request $request, Event $event) {
+
+        $announce = new EventAnnouncement();
+        $announce->event_id = $event->id;
+        $announce->title = $request->get('title');
+        $announce->detail = $request->get('detail');
+        $announce->type = $request->get('type');
+
+        if ($announce->save()){
+            return true;
+        }
+
+        return false;
+    
+    }
 
 
     

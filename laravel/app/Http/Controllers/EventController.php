@@ -72,7 +72,7 @@ class EventController extends Controller
     public function requestjoinEventStaff(Request $request ,Event $event) {
         $success = EventService::getEventManager()->requestjoinEventStaff($request,$event);
         if ($success != false) {
-            return redirect()->route('user.main_staff')->with('success','create success');
+            return redirect()->route('user.main')->with('success','create success');
         }
         
         return false;
@@ -273,6 +273,17 @@ class EventController extends Controller
         
         return redirect()->back()->with('error.image', 'failed to update');
 
+    }
+
+
+    public function createAn(Request $request, Event $event) {
+        
+        $success = EventService::getEventManager()->createAn($request,$event);
+        if ($success != false) {
+            return redirect()->route('event.main.main',['event'=> $event])->with('success', 'AnCreate');
+        }
+        
+        return redirect()->back()->with('error.image', 'failed to update');
     }
 
 }

@@ -78,6 +78,9 @@ Route::middleware(['web'])->group(function () {
             Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main');    
             
             Route::get('/event/main/{event}',[UserController::class, 'getMainEventPage'])->name('event.main.main');
+            Route::post('/event/main/{event}/createAn',[EventController::class, 'createAn'])->name('event.create.an');
+
+
             Route::get('/event/infomation/{event}',[EventController::class, 'getInfoEventPage'])->name('event.information');
             Route::get('/event/main/infomation/{event}',[EventController::class, 'getInfoEventPageFormMainEvent'])->name('event.main.information');
             Route::get('/event/{event}/form',[EventController::class, 'getJoinEventFormPage'])->name('event.formJoinEvent');
@@ -133,6 +136,8 @@ Route::middleware(['web'])->group(function () {
             Route::post('/event/request/approve', [EventController::class, 'approveJoinRequest'])->name('event.request.approve');
             Route::post('/event/request/deny', [EventController::class, 'denyJoinRequest'])->name('event.request.deny');
             Route::post('/event/request/remove', [EventController::class, 'removeJoinRequest'])->name('event.request.remove');
+
+            
 
             
             
