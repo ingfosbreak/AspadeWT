@@ -75,18 +75,8 @@ Route::middleware(['web'])->group(function () {
         // User page
         Route::middleware(['multirole:user'])->group( function () {
 
-            // Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main');
-            Route::get('/user/main', function () {
-                $eventsNew = Event::getNewEventPaginate();
-                $eventsPopular = Event::getNewEventPaginate();
-                $eventUpComing = Event::getUpComingEventPaginate();
-                return view('user.test', [
-                    'eventsNew' => $eventsNew ,
-                    'eventsPopular' => $eventsPopular,
-                    'eventUpComing' => $eventUpComing
-                ]);
-            })->name('user.main');
-            Route::get('/user/main_staff',[UserController::class, 'userPopEventStaff'])->name('user.main_staff');
+            Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main');    
+            
             Route::get('/event/main/{event}',[UserController::class, 'getMainEventPage'])->name('event.main.main');
             Route::get('/event/infomation/{event}',[EventController::class, 'getInfoEventPage'])->name('event.information');
             Route::get('/event/main/infomation/{event}',[EventController::class, 'getInfoEventPageFormMainEvent'])->name('event.main.information');

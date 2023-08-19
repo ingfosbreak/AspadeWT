@@ -15,20 +15,18 @@ class UserController extends Controller
 {
     public function userPopEvent(){
         // $events = Event::getPublishEventPaginate();
-        $events = Event::paginate(6);
+        // $events = Event::paginate(6);
+        $eventsNew = Event::getNewEventPaginate();
+        $eventsPopular = Event::getNewEventPaginate();
+        $eventUpComing = Event::getUpComingEventPaginate();
+                return view('user.main', [
+                    'eventsNew' => $eventsNew ,
+                    'eventsPopular' => $eventsPopular,
+                    'eventUpComing' => $eventUpComing
+                ]);
 
-        return view('user.main', [
-            'events' => $events
-        ]);
     }
-    public function userPopEventStaff(){
-        // $events = Event::getPublishEventPaginate();
-        $events = Event::paginate(15);
-
-        return view('user.mainStaff', [
-            'events' => $events
-        ]);
-    }
+   
     public function getMainEventPage(Event $event){
         return view('event.main.main', [
             'event' => $event
