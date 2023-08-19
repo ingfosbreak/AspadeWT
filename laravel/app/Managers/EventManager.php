@@ -557,6 +557,29 @@ class EventManager {
     }
     
 
+    public function editEventInformation(Request $request, Event $event) {
+        
+
+        $event->name = $request->get('name');
+        $event->num_member = $request->get('num_member');
+        $event->num_staff = $request->get('num_staff');
+        $event->budget = $request->get('budget');
+        $event->date_register = $request->get('date_register');
+        $event->date_start = $request->get('date_start');
+        $event->date_close = $request->get('date_close');
+        $event->location = $request->get('location');
+
+        if ($request->get('description') != null){
+            $event->description = $request->get('description');
+        }
+        
+        if ($event->save()){
+            return true;
+        }
+
+        return false;
+    }
+
 
 
     

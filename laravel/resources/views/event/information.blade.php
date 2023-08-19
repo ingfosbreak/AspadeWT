@@ -58,10 +58,10 @@
                 </button>
                 <div class="px-6 py-6 lg:px-8">
                     <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Edit Event Information</h3>
-                    <form action="{{route('edit.profile')}}" class="space-y-6" method="POST">
+                    <form action="{{route('edit.event.info',['event'=>$event])}}" class="space-y-6" method="POST">
                         @csrf
                         <div>
-                            <label for="firstname"
+                            <label for="name"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Event
                                 name</label>
                             <input type="string" name="name" id="name"
@@ -81,7 +81,7 @@
                                 placeholder="{{$event->num_staff}}" value="{{$event->num_staff}}">
                         </div>
                         <div>
-                            <label for="budger" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Budget</label>
+                            <label for="budget" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Budget</label>
                             <input type="number" name="budget" id="budget"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                 placeholder="{{$event->budget}}" value="{{$event->budget}}">

@@ -88,6 +88,7 @@ Route::middleware(['web'])->group(function () {
             Route::get('/user/viewAll', [UserController::class, 'getViewAllPage'])->name('user.viewAll');
 
             Route::post('/editPublish', [EventController::class, 'editPublistEvent'])->name('publish.event');
+            Route::post('/editEvent/{event}', [EventController::class, 'editEventInformation'])->name('edit.event.info');
 
             //RequestCreateEvent
             Route::get('/user/requestingEvent', function (){return view('user.formRequestEvent');})->name('user.formRequestEvent');

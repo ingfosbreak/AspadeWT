@@ -264,4 +264,15 @@ class EventController extends Controller
 
     }
 
+    public function editEventInformation(Request $request, Event $event) {
+
+        $success = EventService::getEventManager()->editEventInformation($request,$event);
+        if ($success != false) {
+            return redirect()->route('event.information',['event'=>$event])->with('success', 'EventUpdate');
+        }
+        
+        return redirect()->back()->with('error.image', 'failed to update');
+
+    }
+
 }
