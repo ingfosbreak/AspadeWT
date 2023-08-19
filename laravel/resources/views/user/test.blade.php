@@ -169,16 +169,16 @@
         <div class="flex flex-wrap gap-2 px-20 bg-black py-10 bg-gray-200 rounded-lg drop-shadow-xl">
             @foreach ($events as $event)
             <!-- Item 1 -->
-            <div class="flex flex-col gap-1 card">
+            <div class="flex flex-col gap-1 ">
 
                 <!-- Image -->
                 <a href="{{ route('event.information',['event'=> $event])}}" class="bg-purple-500">
-                    @if ($event->image != null)
-                    <img src="{{ asset('storage/'.$event->image->image_path) }}"
-                        class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100" />
+                    @if ($event->event_image != null)
+                    <img src="{{ asset('storage/'.$event->event_image->image_path) }}"
+                        class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                     @else
                     <img src="https://static-cdn.jtvnw.net/ttv-boxart/516575-285x380.jpg"
-                        class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100" />
+                        class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                     @endif
                 </a>
 
@@ -214,16 +214,16 @@
         <div class="flex flex-wrap gap-2 px-20 bg-black py-10 bg-gray-200 rounded-lg drop-shadow-xl">
             @foreach ($events as $event)
             <!-- Item 1 -->
-            <div class="flex flex-col gap-1 card">
+            <div class="flex flex-col gap-1">
 
                 <!-- Image -->
                 <a href="{{ route('event.information',['event'=> $event])}}" class="bg-purple-500">
-                    @if ($event->image != null)
-                    <img src="{{ asset('storage/'.$event->image->image_path) }}"
-                        class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100" />
+                    @if ($event->event_image != null)
+                    <img src="{{ asset('storage/'.$event->event_image->image_path) }}"
+                        class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                     @else
                     <img src="https://static-cdn.jtvnw.net/ttv-boxart/516575-285x380.jpg"
-                        class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100" />
+                        class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                     @endif
                 </a>
 
@@ -259,16 +259,16 @@
         <div class="flex flex-wrap gap-2 px-20 bg-black py-10 bg-gray-200 rounded-lg drop-shadow-xl">
             @foreach ($events as $event)
             <!-- Item 1 -->
-            <div class="flex flex-col gap-1 card">
+            <div class="flex flex-col gap-1 ">
 
                 <!-- Image -->
                 <a href="{{ route('event.information',['event'=> $event])}}" class="bg-purple-500">
-                    @if ($event->image != null)
-                    <img src="{{ asset('storage/'.$event->image->image_path) }}"
-                        class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100" />
+                    @if ($event->event_image != null)
+                    <img src="{{ asset('storage/'.$event->event_image->image_path) }}"
+                        class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                     @else
                     <img src="https://static-cdn.jtvnw.net/ttv-boxart/516575-285x380.jpg"
-                        class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100" />
+                        class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                     @endif
                 </a>
 
@@ -300,7 +300,11 @@
 
 <style>
 .card {
-    max-width: 200px;
+    
+    width: 200px;
+    height: 320px;
+    object-fit: cover;
+
 }
 </style>
 
