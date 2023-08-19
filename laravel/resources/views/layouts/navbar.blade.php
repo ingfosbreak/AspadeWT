@@ -21,22 +21,33 @@
             @if (Auth::getUser()->role == "user")
             <nav class="nav navbar-nav font-semibold text-lg">
                 <ul class="flex items-start">
-                        <li class="p-4 border-b-2 border-slate-500 border-opacity-0 hover:border-opacity-100 hover:text-slate-800 duration-200 cursor-pointer active">
-                            <a class = "highlighted-link" href="{{ route('user.myEventHistory')}}">My Own event</a>
-                        </li>
-                        
-                    <div>
+
+                    <a href="{{ route('user.myEventHistory')}}">
                         <li
                             class="p-4 border-b-2 border-slate-500 border-opacity-0 hover:border-opacity-100 hover:text-slate-800 duration-200 cursor-pointer active">
-                            <a href="{{ route('user.formRequestEvent')}}">Request</a>
+                            My Own event
                         </li>
-                    </div>
-                    <div>
+                    </a>
+
+                    <a href="{{ route('user.formRequestEvent')}}">
+                        <li
+                            class="p-4 border-b-2 border-slate-500 border-opacity-0 hover:border-opacity-100 hover:text-slate-800 duration-200 cursor-pointer active">
+                            Request
+                        </li>
+                    </a>
+
+                    <a href="{{ route('user.myEventHistory')}}">
                         <li
                             class="p-4 border-b-2 border-slate-500 border-opacity-0 hover:border-opacity-100 hover:text-slate-800 duration-200 cursor-pointer">
-                            <a href="{{ route('user.myEventHistory')}}">My history</a>
+                            My history
                         </li>
-                    </div>
+                    </a>
+                    <a href="{{ route('user.myEventHistory')}}">
+                        <li
+                            class="p-4 border-b-2 border-slate-500 border-opacity-0 hover:border-opacity-100 hover:text-slate-800 duration-200 cursor-pointer">
+                            Notification
+                        </li>
+                    </a>
                 </ul>
             </nav>
             @endif

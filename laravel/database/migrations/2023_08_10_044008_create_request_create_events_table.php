@@ -20,7 +20,9 @@ return new class extends Migration
             $table->integer("num_staff");
             $table->enum('category',['outdoor','indoor','consert','sport','academic']);
             $table->integer("budget");
-            $table->date('date');
+            $table->date('date_register');
+            $table->date('date_start');
+            $table->date('date_close');
             $table->string('location');
             $table->string("description"); 
             $table->enum('status',['approved','denied'])->nullable();

@@ -226,7 +226,9 @@ class EventManager {
         $event->num_staff = $request->get('num_staff');
         $event->category = $request->get('category');
         $event->budget = $request->get('budget');
-        $event->date = $request->get('date');
+        $event->date_register = $request->get('date_register');
+        $event->date_start = $request->get('date_start');
+        $event->date_close = $request->get('date_close');
         $event->location = $request->get('location');
         $event->description = $request->get('description');
         if ($event->save()){
@@ -553,6 +555,8 @@ class EventManager {
 
         return $eventImage->save();
     }
+
+
 
     
 

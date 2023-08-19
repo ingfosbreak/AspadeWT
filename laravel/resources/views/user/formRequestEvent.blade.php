@@ -10,7 +10,7 @@
                     alt="logo">
 
             </div>
-            <div class="flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0 mb-10 mt-10">
+            <div class="flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0 mb-10 mt-32">
                 <form action="{{ route('user.formRequestEvent.create')}}" method="POST"  enctype="multipart/form-data">
                     @csrf
                     <div
@@ -37,7 +37,7 @@
                                         placeholder=" " autocomplete="off" />
                                     <label for="num_member"
                                         class="absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                        จำนวนMemberในEvent</label>
+                                        Number of participants in the event</label>
                                 </div>
 
                                 <!-- Staff  -->
@@ -47,26 +47,26 @@
                                         placeholder=" " autocomplete="off" />
                                     <label for="num_member"
                                         class="absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                        จำนวนStaffในEvent</label>
+                                        Number of staff in the event</label>
                                 </div>
 
                                 <!-- Category -->
                                 <div>
                                     <label
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cateogry</label>
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Activity Type</label>
                                     <select type="text" id="role" name="category"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Choose a role for joining" required="">
                                         <option selected>-</option>
-                                        <option value="outdoor">กลางแจ้ง</option>
-                                        <option value="indoor">ในร่ม</option>
-                                        <option value="concert">คอนเสิร์ต</option>
-                                        <option value="sport">กีฬา</option>
-                                        <option value="academic">เชิงวิชาการ</option>
+                                        <option value="outdoor">outdoor</option>
+                                        <option value="indoor">indoor</option>
+                                        <option value="concert">concert</option>
+                                        <option value="sport">sport</option>
+                                        <option value="academic">Academic</option>
                                     </select>
                                     <label for="category"
                                         class="absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                        ประเภทกิจกรรม</label>
+                                        activity type</label>
                                 </div>
 
                                 <!-- budget -->
@@ -76,17 +76,35 @@
                                         placeholder=" " autocomplete="off" />
                                     <label for="budget"
                                         class="absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                        จำนวนbudgetที่กำหนกใช้ในEvent</label>
+                                        Amount of budget used in the event</label>
                                 </div>
 
                                 <!-- date Event -->
                                 <div class="relative z-0">
-                                    <input type="date" id="date" name="date"
+                                    <input type="date" id="date_register" name="date_register"
                                         class="block py-2.5 px-0 w-full text-base bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                         placeholder="d/m/y" autocomplete="off" />
-                                    <label for="date"
+                                    <label for="date_register"
                                         class="absolute text-sm dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                        วันเริ่ม Event</label>
+                                        Application Opening Date</label>
+                                </div>
+
+                                <div class="relative z-0">
+                                    <input type="date" id="date_start" name="date_start"
+                                        class="block py-2.5 px-0 w-full text-base bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                        placeholder="d/m/y" autocomplete="off" />
+                                    <label for="date_start"
+                                        class="absolute text-sm dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">                                    
+                                        Event Start Date</label>
+                                </div>
+
+                                <div class="relative z-0">
+                                    <input type="date" id="date_close" name="date_close"
+                                        class="block py-2.5 px-0 w-full text-base bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                        placeholder="d/m/y" autocomplete="off" />
+                                    <label for="date_close"
+                                        class="absolute text-sm dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                        Closing Date</label>
                                 </div>
 
                                 <!-- location -->
@@ -96,7 +114,7 @@
                                         placeholder=" " autocomplete="off" />
                                     <label for="location"
                                         class="absolute text-sm dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                        สถานที่จัดกิจกรรม</label>
+                                        Event Location </label>
                                 </div>
 
                                 <!-- confirmation files -->
