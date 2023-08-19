@@ -90,6 +90,7 @@ Route::middleware(['web'])->group(function () {
 
             Route::post('/editPublish', [EventController::class, 'editPublistEvent'])->name('publish.event');
             Route::post('/editEvent/{event}', [EventController::class, 'editEventInformation'])->name('edit.event.info');
+            Route::post('/eventSuspicious', [EventController::class, 'reportEvent'])->name('report.event');
 
             //RequestCreateEvent
             Route::get('/user/requestingEvent', function (){return view('user.formRequestEvent');})->name('user.formRequestEvent');
