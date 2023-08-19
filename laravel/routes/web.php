@@ -79,6 +79,8 @@ Route::middleware(['web'])->group(function () {
             
             Route::get('/event/main/{event}',[UserController::class, 'getMainEventPage'])->name('event.main.main');
             Route::post('/event/main/{event}/createAn',[EventController::class, 'createAn'])->name('event.create.an');
+            Route::post('/event/main/{announce}/{event}/editAn',[EventController::class, 'editAn'])->name('event.edit.an');
+            Route::post('/event/main/removeAn',[EventController::class, 'removeAn'])->name('event.remove.an');
 
 
             Route::get('/event/infomation/{event}',[EventController::class, 'getInfoEventPage'])->name('event.information');

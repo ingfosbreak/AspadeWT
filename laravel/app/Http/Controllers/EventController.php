@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Services\EventService;
 use App\Models\Event;
+use App\Models\EventAnnouncement;
 use App\Models\RequestJoinEvent;
 
 class EventController extends Controller
@@ -279,6 +280,28 @@ class EventController extends Controller
     public function createAn(Request $request, Event $event) {
         
         $success = EventService::getEventManager()->createAn($request,$event);
+        if ($success != false) {
+            return redirect()->route('event.main.main',['event'=> $event])->with('success', 'AnCreate');
+        }
+        
+        return redirect()->back()->with('error.image', 'failed to update');
+    }
+
+
+    public function removeAn(Request $request) {
+
+        $success = EventService::getEventManager()->removeAn($request);
+        if ($success != false) {
+            return true;
+        }
+        
+        return false;
+    }
+
+
+    public function editAn(Request $request, EventAnnouncement $announce, Event $event) {
+
+        $success = EventService::getEventManager()->editAn($request,$announce);
         if ($success != false) {
             return redirect()->route('event.main.main',['event'=> $event])->with('success', 'AnCreate');
         }

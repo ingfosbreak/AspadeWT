@@ -598,6 +598,32 @@ class EventManager {
     
     }
 
+    public function removeAn(Request $request) {
+
+        $announce = EventAnnouncement::find((int) $request->get('data')['announce_id']);
+        
+        if ($announce->delete()) {
+            return true;
+        }
+        return false;
+
+
+    }
+
+    public function editAn(Request $request, EventAnnouncement $announce) {
+        
+        $announce->title = $request->get('title');
+        $announce->detail = $request->get('detail');
+        
+        if ($announce->save()){
+            return true;
+        }
+
+        return false;
+
+    
+    }
+
 
     
 
