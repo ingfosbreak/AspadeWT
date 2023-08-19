@@ -19,6 +19,7 @@ use App\Models\EventAnnouncement;
 use App\Models\EventCategoryList;
 use App\Models\RequestJoinEvent;
 use App\Models\Category;
+use Carbon\Carbon;
 
 class Event extends Model
 {
@@ -32,9 +33,28 @@ class Event extends Model
         return $this->user_pivots->where('event_role','staff')->count();
     }
 
+    public function hasStarted()
+    {
+        return Carbon::now()->greaterThan($this->date_start);
+    }
     public static function getPublishEventPaginate() {
         return Event::where('publish','publish')->paginate(15);
     }
+    public static function getNewEventPaginate() {
+        return Event::get()->sortBy('created_at')->take(6);
+    }
+    public static function getPopularPaginate() {
+        return Event::withCount('requestJoinEvent')->get()->sortByDesc('request_join_event_count')->take(6);
+    }
+    public static function getUpComingEventPaginate() {
+        $events = Event::whereDate('date_start', '>', today())->get();
+        
+            foreach ($events as $event) {
+                $event->upcoming_count = $event->hasStarted() ? 0 : Carbon::parse($event->date_start)->diffInDays(now());
+            }
+        return $events->sortByDesc('upcoming_count')->take(6);
+    }
+
 
     public function isUserInEvent(string $userid){
         

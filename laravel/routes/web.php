@@ -77,9 +77,13 @@ Route::middleware(['web'])->group(function () {
 
             // Route::get('/user/main',[UserController::class, 'userPopEvent'])->name('user.main');
             Route::get('/user/main', function () {
-                $events = Event::paginate(6);
+                $eventsNew = Event::getNewEventPaginate();
+                $eventsPopular = Event::getNewEventPaginate();
+                $eventUpComing = Event::getUpComingEventPaginate();
                 return view('user.test', [
-                    'events' => $events
+                    'eventsNew' => $eventsNew ,
+                    'eventsPopular' => $eventsPopular,
+                    'eventUpComing' => $eventUpComing
                 ]);
             })->name('user.main');
             Route::get('/user/main_staff',[UserController::class, 'userPopEventStaff'])->name('user.main_staff');
@@ -88,10 +92,10 @@ Route::middleware(['web'])->group(function () {
             Route::get('/event/main/infomation/{event}',[EventController::class, 'getInfoEventPageFormMainEvent'])->name('event.main.information');
             Route::get('/event/{event}/form',[EventController::class, 'getJoinEventFormPage'])->name('event.formJoinEvent');
             Route::get('/user/myEventHistory', function (){return view('user.myEventHistory');})->name('user.myEventHistory');
-
             Route::get('/event/{event}/kanban', [ProcessController::class, 'getEventKanbanPage'])->name('event.kanban');
             Route::get('/event/{event}/kanban/{process}', [ProcessController::class, 'getEventKanbanTeamPage'])->name('event.kanban.team');
             Route::post('/event/{process}/kanban/{team}/{event}', [ProcessController::class, 'editKanbanTeam'])->name('event.kanban.edit');
+            Route::get('/user/viewAll', [UserController::class, 'getViewAllPage'])->name('user.viewAll');
 
             Route::post('/editPublish', [EventController::class, 'editPublistEvent'])->name('publish.event');
 

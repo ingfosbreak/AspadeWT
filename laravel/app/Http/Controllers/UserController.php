@@ -34,5 +34,13 @@ class UserController extends Controller
             'event' => $event
         ]);
     }
+    public function getViewAllPage(){
+        // $events = Event::getPublishEventPaginate();
+        $events = Event::get();
+
+        return view('user.viewAll', [
+            'events' => $events
+        ]);
+    }
     
 }

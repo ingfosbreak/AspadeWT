@@ -147,7 +147,7 @@
     <div class="h-fit py-5 px-5 flex flex-col gap-5 items-center justify-center ">
         <h3 class="w-full px-20 justify-self-start text-6xl font-bold text-gray-700">Popular Events</h3>
         <div class="flex flex-wrap gap-2 px-20 bg-black py-10 bg-gray-200 rounded-lg drop-shadow-xl">
-            @foreach ($events as $event)
+            @foreach ($eventsPopular as $event)
             <!-- Item 1 -->
             <div class="flex flex-col gap-1 ">
 
@@ -189,10 +189,10 @@
     <div class="h-fit px-5 flex flex-col gap-5 items-center justify-center mt-20">
         <div class="flex justify-between items-center px-20 w-full">
             <h3 class="text-6xl font-bold text-gray-700 ">Upcoming Events</h3>
-            <h3 class="">View All</h1>
+            <a href="{{ route('user.viewAll')}}"><h3 class="">View All</h1></a>
         </div>
         <div class="flex flex-wrap gap-2 px-20 bg-black py-10 bg-gray-200 rounded-lg drop-shadow-xl">
-            @foreach ($events as $event)
+            @foreach ($eventUpComing as $event)
             <!-- Item 1 -->
             <div class="flex flex-col gap-1">
 
@@ -237,7 +237,7 @@
             <h3 class="">View All</h1>
         </div>
         <div class="flex flex-wrap gap-2 px-20 bg-black py-10 bg-gray-200 rounded-lg drop-shadow-xl">
-            @foreach ($events as $event)
+            @foreach ($eventsNew as $event)
             <!-- Item 1 -->
             <div class="flex flex-col gap-1 ">
 

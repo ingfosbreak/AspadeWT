@@ -484,8 +484,6 @@ class EventManager {
   
     public function changeUserTeam(Request $request) {
         
-        
-        
         $event_user = EventUser::where('event_id',(int) $request->get('data')['event_id'])->where('user_id',(int) $request->get('data')['user_id'])->firstOrFail();
         // $event_user = EventUser::get()->where('event_id',(int) $request->get('data')['event_id'])->where('user_id',(int) $request->get('data')['user_id'])[0];
         if ($request->get('data')['team_id'] == null) {
@@ -555,6 +553,7 @@ class EventManager {
 
         return $eventImage->save();
     }
+    
 
 
 
