@@ -135,7 +135,7 @@
     <div class="h-fit px-5 flex flex-col gap-5 items-center justify-center">
         <div class="flex justify-between items-center px-20 w-full">
             <h3 class="text-6xl font-bold text-gray-700 ">Upcoming Events</h3>
-            <a href="{{ route('user.viewAll.newEvents')}}">
+            <a href="{{ route('user.viewAll.upcomingEvents')}}">
                 <h3 class="">View All</h1>
             </a>
         </div>
@@ -182,7 +182,7 @@
     <div class="h-fit py-20 px-5 flex flex-col gap-5 items-center justify-center ">
         <div class="flex justify-between items-center px-20 w-full">
             <h3 class="text-6xl font-bold text-gray-700 ">New Events</h3>
-            <a href="{{ route('user.viewAll.upcomingEvents')}}"><h3 class="">View All</h1></a>
+            <a href="{{ route('user.viewAll.newEvents')}}"><h3 class="">View All</h1></a>
         </div>
         <div class="flex flex-wrap gap-2 px-20 bg-black py-20 bg-gray-200 rounded-lg drop-shadow-xl">
             @foreach ($eventsNew as $event)

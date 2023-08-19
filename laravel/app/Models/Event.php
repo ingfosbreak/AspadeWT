@@ -38,36 +38,26 @@ class Event extends Model
         return Carbon::now()->greaterThan($this->date_start);
     }
     
-    // Paginate
+    // EventPaginate
     public static function getPublishEventPaginate() {
         return Event::where('publish','publish')->paginate(15);
     }
-    public static function getNewEventPaginate() {
-        return Event::get()->sortBy('created_at')->take(6);
+    
+    // Eventlol
+    public static function getNewEvent() {
+        return Event::get()->sortByDesc('created_at');
     }
-    public static function getPopularPaginate() {
+    
+    public static function getPopular() {
         return Event::withCount('requestJoinEvent')->get()->sortByDesc('request_join_event_count')->take(6);
     }
-    public static function getUpComingEventPaginate() {
+    public static function getUpComingEvent() {
         $events = Event::whereDate('date_start', '>', today())->get();
         
             foreach ($events as $event) {
                 $event->upcoming_count = $event->hasStarted() ? 0 : Carbon::parse($event->date_start)->diffInDays(now());
             }
-        return $events->sortByDesc('upcoming_count')->take(6);
-    }
-
-    // viewAll
-    public static function getNewEventViewAll() {
-        return Event::get()->sortBy('created_at');
-    }
-    public static function getUpComingEventViewAll() {
-        $events = Event::whereDate('date_start', '>', today())->get();
-        
-            foreach ($events as $event) {
-                $event->upcoming_count = $event->hasStarted() ? 0 : Carbon::parse($event->date_start)->diffInDays(now());
-            }
-        return $events->sortByDesc('upcoming_count')->all();
+        return $events->sortBy('upcoming_count');
     }
 
 
@@ -132,5 +122,6 @@ class Event extends Model
     public function requestJoinEvent(): HasMany {
         return $this->hasMany(RequestJoinEvent::class);
     }
+
 
 }
