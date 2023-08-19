@@ -10,7 +10,7 @@
     <div class=m-12>
         <!-- start  loop item for show history-->
         <div class="bg-gray-100 mx-auto border-gray-500 border text-gray-700 m-5 h-30 rounded-md">
-            <div class="flex p-3 border-l-8 border-yellow-600">
+            <div class="flex p-3 border-l-8 rounded-lg border-yellow-600">
                 <div class="space-y-1 border-r-2 pr-3">
                     <div class="text-sm leading-5 font-semibold"><span
                             class="text-xs leading-4 font-normal text-gray-500"> Event_Id #</span> LTC08762304</div>

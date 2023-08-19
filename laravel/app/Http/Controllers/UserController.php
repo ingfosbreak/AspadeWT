@@ -26,14 +26,15 @@ class UserController extends Controller
     }
 
     public function userViewAllNewEvents(){
-        $events = Event::getNewEvent();
+
+        $events = Event::getNewEvent()->paginate(15);
+
                 return view('user.viewAll', [
                     'events' => $events
                 ]);
-
     }
     public function userViewAllUpComingEvent(){
-        $events = Event::getUpComingEvent();
+        $events = Event::getUpComingEvent()->paginate(15);
                 return view('user.viewAll', [
                     'events' => $events
                 ]);
