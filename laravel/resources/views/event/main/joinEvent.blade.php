@@ -25,7 +25,7 @@
                         <div class="flex-shrink-0 h-10 w-10">
                             @if ($request->user->image != null)
                             <img src="{{ asset('storage/'. $request->user->image->image_path) }}"
-                                class="w-40 h-40 object-cover border-4 border-white rounded-full">
+                                class="h-10 w-10 rounded-full">
                             @else
                             <img class="h-10 w-10 rounded-full"
                                 src="https://images-ext-2.discordapp.net/external/g284NahQlbC01_TG1N2RxQ7YOcAzHUizwQjo4yS9tuI/%3Fw%3D1380%26t%3Dst%3D1691673786~exp%3D1691674386~hmac%3D99e1638c243d744e8648c7255cba9bf267a036e13aa5eeb1c3db56382b0e8a44/https/img.freepik.com/free-vector/illustration-businessman_53876-5856.jpg?width=1170&height=1170"
