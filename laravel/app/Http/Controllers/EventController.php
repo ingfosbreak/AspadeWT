@@ -234,4 +234,22 @@ class EventController extends Controller
         return false;
 
     }
+
+    public function editImage(Request $request, Event $event) {
+
+        
+            
+        $status = EventService::getEventManager()->editImage($request,$event);
+            
+            if ($status) {
+                return redirect()->back()->with('success.image', 'ProfileImage updated');
+            }
+            
+            return redirect()->back()->with('error.image', 'failed to update');
+
+        
+        
+
+    }
+
 }

@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\EventInfo;
 use App\Models\EventUser;
 use App\Models\EventTeam;
+use App\Models\EventImage;
 use App\Models\RequestJoinEvent;
 use App\Models\RequestJoinEventFile;
 use App\Models\RequestCreateEvent;
@@ -498,6 +499,48 @@ class EventManager {
         // $pivot->event_role = "header";
 
 
+    }
+
+    public function editImage(Request $request, Event $event) {
+        // event_image
+        if ($event->event_image == null) {
+            
+            
+            if ( $request->image != null ) {
+                
+                $file = $request->file('image');
+                $success_image = FileService::getFileManager()->uploadFile('event_images/',$file);
+                
+                if ($success_image == false) {
+                    return false;
+                }
+                
+                $eventImage = new EventImage();
+                $eventImage->event_id = $event->id;
+                $eventImage->name = $success_image['name'];
+                $eventImage->image_path = $success_image['image_path'];
+
+                if ($eventImage->save()){
+                    return true;
+                }
+            }
+
+            return false;
+
+        }
+
+        $file = $request->file('image');
+        $success_image = FileService::getFileManager()->uploadFile('event_images/',$file);
+                
+        if ($success_image == false) {
+            return false;
+        }
+
+        $eventImage = $event->event_image;
+        $eventImage->name = $success_image['name'];
+        $eventImage->image_path = $success_image['image_path'];
+
+        return $eventImage->save();
     }
 
     

@@ -110,6 +110,7 @@ Route::middleware(['web'])->group(function () {
             Route::post('/updatePosEventInfo', [EventController::class, 'updatePosEventInfo'])->name('updatepos.info');
             Route::post('/typeEventInfo', [EventController::class,'editTypeEventInfo'])->name('type.info');
             Route::post('/removeEventInfo', [EventController::class,'removeEventInfo'])->name('remove.info');
+            Route::post('/event/{event}/image', [EventController::class,'editImage'] )->name('event.image');
 
             //RequestJoinEvent
             Route::get('/event/{event}/form',[EventController::class, 'getJoinEventFormPage'])->name('event.formJoinEvent');
