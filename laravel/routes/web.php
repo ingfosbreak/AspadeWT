@@ -85,7 +85,8 @@ Route::middleware(['web'])->group(function () {
             Route::get('/event/{event}/kanban', [ProcessController::class, 'getEventKanbanPage'])->name('event.kanban');
             Route::get('/event/{event}/kanban/{process}', [ProcessController::class, 'getEventKanbanTeamPage'])->name('event.kanban.team');
             Route::post('/event/{process}/kanban/{team}/{event}', [ProcessController::class, 'editKanbanTeam'])->name('event.kanban.edit');
-            Route::get('/user/viewAll', [UserController::class, 'getViewAllPage'])->name('user.viewAll');
+            Route::get('/user/viewAll/NewEvents', [UserController::class, 'userViewAllNewEvents'])->name('user.viewAll.newEvents');
+            Route::get('/user/viewAll/upcomingEvents', [UserController::class, 'userViewAllUpComingEvent'])->name('user.viewAll.upcomingEvents');
 
             Route::post('/editPublish', [EventController::class, 'editPublistEvent'])->name('publish.event');
             Route::post('/editEvent/{event}', [EventController::class, 'editEventInformation'])->name('edit.event.info');

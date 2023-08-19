@@ -25,23 +25,25 @@
             <a href="{{ route('event.information',['event'=> $event])}}">
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     @if ($event->event_image != null)
-                    
+
                     <img src="{{ asset('storage/'.$event->event_image->image_path) }}"
-                        class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 blur-[2px]" alt="...">
-                        <div class="relative top-500 top-1/2 px-4 py-2 opacity-100 ">
-                            <h2 class="text-6xl text-white font-bold text-center drop-shadow-xl">{{$event->name}}</h3>
-                        </div>      
+                        class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 blur-[2px]"
+                        alt="...">
+                    <div class="relative top-500 top-1/2 px-4 py-2 opacity-100 ">
+                        <h2 class="text-6xl text-white font-bold text-center drop-shadow-xl">{{$event->name}}</h3>
+                    </div>
                     @else
                     <img src="https://play-lh.googleusercontent.com/8ddL1kuoNUB5vUvgDVjYY3_6HwQcrg1K2fd_R8soD-e2QYj8fT9cfhfh3G0hnSruLKec"
-                        class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 blur-[2px]" alt="...">
-                        <div class="relative top-500 top-1/2 px-4 py-2 opacity-100 ">
-                            <h2 class="text-6xl text-white font-bold text-center drop-shadow-xl">{{$event->name}}</h3>
-                        </div>     
+                        class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 blur-[2px]"
+                        alt="...">
+                    <div class="relative top-500 top-1/2 px-4 py-2 opacity-100 ">
+                        <h2 class="text-6xl text-white font-bold text-center drop-shadow-xl">{{$event->name}}</h3>
+                    </div>
                     @endif
                 </div>
             </a>
             @endforeach
-            
+
         </div>
         <!-- Slider indicators -->
         <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
@@ -88,12 +90,12 @@
     </div>
 
     <!-- Event zone -->
-    <div class="h-fit py-5 px-5 flex flex-col gap-5 items-center justify-center ">
+    <div class="h-fit py-20 px-5 flex flex-col gap-5 items-center justify-center ">
         <h3 class="w-full px-20 justify-self-start text-6xl font-bold text-gray-700">Popular Events</h3>
-        <div class="flex flex-wrap gap-2 px-20 bg-black py-10 bg-gray-200 rounded-lg drop-shadow-xl">
+        <div class="flex flex-wrap gap-2 px-20 bg-black py-20 bg-gray-200 rounded-lg drop-shadow-xl">
             @foreach ($eventsPopular as $event)
             <!-- Item 1 -->
-            <div class="flex flex-col gap-1 ">
+            <div class="flex flex-col gap-1 card mb-10">
 
                 <!-- Image -->
                 <a href="{{ route('event.information',['event'=> $event])}}" class="bg-purple-500">
@@ -107,10 +109,10 @@
                 </a>
 
                 <!-- Games Title -->
-                <a href="#" class="hover:text-purple-500 text-gray-700 font-semibold"> {{$event->name}} </a>
+                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm break-words text-gray-700 font-semibold"> {{$event->name}} </a>
 
                 <!-- Viewers -->
-                <a href="#" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> {{$event->date}} </a>
+                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> Start: {{$event->date_start}} </a>
 
                 <!-- Category Tags -->
                 <div class="flex flex-row flex-wrap gap-2">
@@ -130,15 +132,17 @@
 
     </div>
 
-    <div class="h-fit px-5 flex flex-col gap-5 items-center justify-center mt-20">
+    <div class="h-fit px-5 flex flex-col gap-5 items-center justify-center">
         <div class="flex justify-between items-center px-20 w-full">
             <h3 class="text-6xl font-bold text-gray-700 ">Upcoming Events</h3>
-            <a href="{{ route('user.viewAll')}}"><h3 class="">View All</h1></a>
+            <a href="{{ route('user.viewAll.newEvents')}}">
+                <h3 class="">View All</h1>
+            </a>
         </div>
-        <div class="flex flex-wrap gap-2 px-20 bg-black py-10 bg-gray-200 rounded-lg drop-shadow-xl">
+        <div class="flex flex-wrap gap-2 px-20 bg-black py-20 bg-gray-200 rounded-lg drop-shadow-xl">
             @foreach ($eventUpComing as $event)
             <!-- Item 1 -->
-            <div class="flex flex-col gap-1">
+            <div class="flex flex-col gap-1 card mb-10">
 
                 <!-- Image -->
                 <a href="{{ route('event.information',['event'=> $event])}}" class="bg-purple-500">
@@ -152,10 +156,10 @@
                 </a>
 
                 <!-- Games Title -->
-                <a href="#" class="hover:text-purple-500 text-gray-700 font-semibold"> {{$event->name}} </a>
+                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm break-words text-gray-700 font-semibold"> {{$event->name}} </a>
 
                 <!-- Viewers -->
-                <a href="#" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> {{$event->date}} </a>
+                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> Start: {{$event->date_start}} </a>
 
                 <!-- Category Tags -->
                 <div class="flex flex-row flex-wrap gap-2">
@@ -175,15 +179,15 @@
 
     </div>
 
-    <div class="h-fit px-5 flex flex-col gap-5 items-center justify-center mt-20">
+    <div class="h-fit py-20 px-5 flex flex-col gap-5 items-center justify-center ">
         <div class="flex justify-between items-center px-20 w-full">
             <h3 class="text-6xl font-bold text-gray-700 ">New Events</h3>
-            <h3 class="">View All</h1>
+            <a href="{{ route('user.viewAll.upcomingEvents')}}"><h3 class="">View All</h1></a>
         </div>
-        <div class="flex flex-wrap gap-2 px-20 bg-black py-10 bg-gray-200 rounded-lg drop-shadow-xl">
+        <div class="flex flex-wrap gap-2 px-20 bg-black py-20 bg-gray-200 rounded-lg drop-shadow-xl">
             @foreach ($eventsNew as $event)
             <!-- Item 1 -->
-            <div class="flex flex-col gap-1 ">
+            <div class="flex flex-col gap-1 card mb-10">
 
                 <!-- Image -->
                 <a href="{{ route('event.information',['event'=> $event])}}" class="bg-purple-500">
@@ -194,14 +198,13 @@
                     <img src="https://static-cdn.jtvnw.net/ttv-boxart/516575-285x380.jpg"
                         class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                     @endif
-                </a>
 
                 <!-- Games Title -->
-                <a href="#" class="hover:text-purple-500 text-gray-700 font-semibold"> {{$event->name}} </a>
+                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm break-words text-lg text-gray-700 font-semibold"> {{$event->name}} </a>
 
                 <!-- Viewers -->
-                <a href="#" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> {{$event->date}} </a>
-
+                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> Start: {{$event->date_start}} </a>
+                </a>
                 <!-- Category Tags -->
                 <div class="flex flex-row flex-wrap gap-2">
                     <a href="#"
@@ -225,11 +228,19 @@
 <style>
 .card {
 
-    width: 200px;
+    width: 210px;
     height: 320px;
     object-fit: cover;
 
 }
+a{
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            word-break: break-all;
+            white-space: normal;
+            display:block;
+
+ }
 </style>
 
 

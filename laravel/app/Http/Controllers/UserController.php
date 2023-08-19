@@ -14,8 +14,6 @@ use App\Models\EventUser;
 class UserController extends Controller
 {
     public function userPopEvent(){
-        // $events = Event::getPublishEventPaginate();
-        // $events = Event::paginate(6);
         $eventsNew = Event::getNewEventPaginate();
         $eventsPopular = Event::getNewEventPaginate();
         $eventUpComing = Event::getUpComingEventPaginate();
@@ -26,6 +24,23 @@ class UserController extends Controller
                 ]);
 
     }
+
+    public function userViewAllNewEvents(){
+        $events = Event::getNewEventViewAll();
+                return view('user.viewAll', [
+                    'events' => $events
+                ]);
+
+    }
+    public function userViewAllUpComingEvent(){
+        $events = Event::getUpComingEventViewAll();
+                return view('user.viewAll', [
+                    'events' => $events
+                ]);
+
+    }
+
+
    
     public function getMainEventPage(Event $event){
         return view('event.main.main', [
