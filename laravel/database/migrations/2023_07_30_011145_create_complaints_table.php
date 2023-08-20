@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('complaints', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Event::class);
+            $table->foreignIdFor(Event::class)->nullable();
             $table->string("name");
             $table->string("description");
             $table->enum('status-check',['todo','doing','done'])->default("todo");

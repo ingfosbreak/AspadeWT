@@ -725,11 +725,64 @@ class EventManager {
         $complaint = Complaint::find((int) $request->get('data')['request_id']);
         $complaint->status = "approved";
 
-        if ($complaint->save()) {
 
-            NotifyService::getNotifyManager()->userNoti($complaint->user_id, 
+        //remove member of event
+        $team_members = EventUser::get()->where('event_team_id',$complaint->event_id);
+
+        foreach($team_members as $member) {
+            $member->delete();
+        }
+
+        //remove Team
+        $teams = EventTeam::get()->where('event_id',$complaint->event_id);
+
+        foreach($teams as $team) {
+            $team->delete();
+        }
+
+        //remove Info
+        $infos = EventInfo::get()->where('event_id',$complaint->event_id);
+
+        foreach($infos as $info) {
+            $info->delete();
+        }
+
+        //remove Image
+        $images = EventImage::get()->where('event_id',$complaint->event_id);
+
+        foreach($images as $image) {
+            $image->delete();
+        }
+
+        //remove Announcement
+        $announces = EventAnnouncement::get()->where('event_id',$complaint->event_id);
+
+        foreach($announces as $announce) {
+            $announce->delete();
+        }
+
+        
+
+        //remove event
+        $event = Event::find($complaint->event_id);
+        $usernoti = $complaint->user_id;
+        $namenoti = $complaint->name;
+        $eventid = $complaint->event_id;
+        
+        if ($complaint->delete()) {
+
+            //remove complaint 
+            $complaints = Complaint::get()->where('event_id',$eventid);
+
+            foreach ($complaints as $complaint) {
+                $complaint->delete();
+            }
+            
+            $event->delete();
+
+            NotifyService::getNotifyManager()->userNoti($usernoti, 
             'noti', 
-            "Report Event name : ". $complaint->name . "  request Has been approved by Admin", 
+            "Report Event name : ". $namenoti . "  request Has been approved by Admin", 
             "Your request has been approved 👌");
 
             return true;
