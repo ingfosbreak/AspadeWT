@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\ItemNotFoundException;
 use App\Models\User;
 use App\Models\EventUser;
 use App\Models\Process;
@@ -16,7 +17,9 @@ use App\Models\EventInfo;
 use App\Models\EventTeam;
 use App\Models\EventAnnouncement;
 use App\Models\EventCategoryList;
+use App\Models\RequestJoinEvent;
 use App\Models\Category;
+use Carbon\Carbon;
 
 class Event extends Model
 {
@@ -30,8 +33,47 @@ class Event extends Model
         return $this->user_pivots->where('event_role','staff')->count();
     }
 
+    public function hasStarted()
+    {
+        return Carbon::now()->greaterThan($this->date_start);
+    }
+    
+    // EventPaginate
     public static function getPublishEventPaginate() {
         return Event::where('publish','publish')->paginate(15);
+    }
+    
+    // Eventlol
+    public static function getNewEvent() {
+        return Event::paginate(15)->sortByDesc('created_at');
+    }
+    
+    public static function getPopular() {
+        return Event::withCount('requestJoinEvent')->get()->sortByDesc('request_join_event_count')->take(6);
+    }
+    public static function getUpComingEvent() {
+        $events = Event::whereDate('date_start', '>', today())->paginate(15);
+        
+            foreach ($events as $event) {
+                $event->upcoming_count = $event->hasStarted() ? 0 : Carbon::parse($event->date_start)->diffInDays(now());
+            }
+        return $events->sortBy('upcoming_count');
+    }
+
+
+
+    public function isUserInEvent(string $userid){
+        
+        $event_users = $this->users;
+        try {
+            $event_users->where('id',(int)$userid)->firstOrFail();
+            return true;
+      
+        } catch (ItemNotFoundException $exception) {
+      
+            return false;
+        
+        }
     }
 
     public function getInfoSorted() {
@@ -77,5 +119,10 @@ class Event extends Model
     public function categories(): BelongsToMany {
         return $this->belongsToMany(Category::class);
     }
+
+    public function requestJoinEvent(): HasMany {
+        return $this->hasMany(RequestJoinEvent::class);
+    }
+
 
 }

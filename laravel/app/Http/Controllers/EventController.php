@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Services\EventService;
+use App\Services\NotifyService;
 use App\Models\Event;
+use App\Models\EventAnnouncement;
+use App\Models\RequestJoinEvent;
 
 class EventController extends Controller
 {
@@ -51,6 +54,7 @@ class EventController extends Controller
 
         $success = EventService::getEventManager()->requestCreateEvent($request);
         if ($success != false) {
+            
             return redirect()->route('user.main')->with('success','create success');
         }
         
@@ -71,7 +75,7 @@ class EventController extends Controller
     public function requestjoinEventStaff(Request $request ,Event $event) {
         $success = EventService::getEventManager()->requestjoinEventStaff($request,$event);
         if ($success != false) {
-            return redirect()->route('user.main_staff')->with('success','create success');
+            return redirect()->route('user.main')->with('success','create success');
         }
         
         return false;
@@ -155,6 +159,19 @@ class EventController extends Controller
         ]);
     }
 
+    public function getEventJoinsPage(Event $event) {
+        return view('event.main.joinEvent', [
+            'event' => $event
+        ]);
+    }
+
+    public function getEventJoinDetailPage(Event $event, RequestJoinEvent $request) {
+        return view('event.main.joinEventDetail',[
+            'event' => $event,
+            'request' => $request
+        ]);
+    }
+
     public function addEventTeam(Request $request) {
 
         $success = EventService::getEventManager()->addEventTeam($request);
@@ -187,5 +204,123 @@ class EventController extends Controller
         return false;
 
     }
+
+    public function editMemberTeam(Request $request) {
+
+        $success = EventService::getEventManager()->changeUserTeam($request);
+        if ($success != false) {
+            return true;
+        }
+        
+        return false;
+    }
     
+
+    public function approveJoinRequest(Request $request) {
+        
+        $success = EventService::getEventManager()->approveJoinRequest($request);
+        if ($success != false) {
+            return true;
+        }
+        
+        return false;
+    
+    }
+
+    public function denyJoinRequest(Request $request) {
+
+        $success = EventService::getEventManager()->denyJoinRequest($request);
+        if ($success != false) {
+            return true;
+        }
+        
+        return false;
+
+    }
+
+    public function removeJoinRequest(Request $request) {
+        
+        
+        $success = EventService::getEventManager()->removeJoinRequest($request);
+        if ($success != false) {
+            return true;
+        }
+        
+        return false;
+
+    }
+
+    public function editImage(Request $request, Event $event) {
+
+        
+            
+        $status = EventService::getEventManager()->editImage($request,$event);
+            
+            if ($status) {
+                return redirect()->back()->with('success.image', 'ProfileImage updated');
+            }
+            
+            return redirect()->back()->with('error.image', 'failed to update');
+
+        
+        
+
+    }
+
+    public function editEventInformation(Request $request, Event $event) {
+
+        $success = EventService::getEventManager()->editEventInformation($request,$event);
+        if ($success != false) {
+            return redirect()->route('event.information',['event'=>$event])->with('success', 'EventUpdate');
+        }
+        
+        return redirect()->back()->with('error.image', 'failed to update');
+
+    }
+
+
+    public function createAn(Request $request, Event $event) {
+        
+        $success = EventService::getEventManager()->createAn($request,$event);
+        if ($success != false) {
+            return redirect()->route('event.main.main',['event'=> $event])->with('success', 'AnCreate');
+        }
+        
+        return redirect()->back()->with('error.image', 'failed to update');
+    }
+
+
+    public function removeAn(Request $request) {
+
+        $success = EventService::getEventManager()->removeAn($request);
+        if ($success != false) {
+            return true;
+        }
+        
+        return false;
+    }
+
+
+    public function editAn(Request $request, EventAnnouncement $announce, Event $event) {
+
+        $success = EventService::getEventManager()->editAn($request,$announce);
+        if ($success != false) {
+            return redirect()->route('event.main.main',['event'=> $event])->with('success', 'AnCreate');
+        }
+        
+        return redirect()->back()->with('error.image', 'failed to update');
+    }
+    
+
+    public function reportEvent(Request $request) {
+    
+        $success = NotifyService::getNotifyManager()->reportEvent($request);
+
+        if ($success) {
+            return redirect()->back()->with('success.image', 'Report success');
+        }
+        
+        return redirect()->back()->with('error.image', 'failed to update');
+    }
+
 }

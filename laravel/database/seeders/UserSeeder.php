@@ -30,6 +30,12 @@ class UserSeeder extends Seeder
         $userEntry->username = "ja";
         $userEntry->password = "japass";
         $userEntry->role = "user";
+        $userEntry->save();
+
+        $userEntry = new User();
+        $userEntry->username = "sus";
+        $userEntry->password = "suspass";
+        $userEntry->role = "user";
         $userEntry->status = "ban";
         $userEntry->save();
 

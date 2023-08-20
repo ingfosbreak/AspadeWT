@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\RequestCreateEvent;
+use App\Models\Complaint;
+use App\Models\Event;
+use App\Models\User;
 use App\Services\EventService;
 use App\Models\Category;
 
@@ -29,7 +32,25 @@ class AdminController extends Controller
     }
 
     public function getEventComplaintPage() {
-        return view('admin.complaint');
+        $requests = Complaint::get();
+        return view('admin.complaint',[
+            'requests' => $requests
+        ]);
+    }
+
+    public function getEventComplaintDetailPage(Event $event) {
+        
+        return view('admin.complaintDetail', [
+            'event' => $event
+        ]);
+
+    }
+
+    public function getEventComplaintDetailBehidePage(Event $event) {
+        return view('admin.complaintDetailBehide', [
+            'event' => $event
+        ]);
+   
     }
 
 
@@ -132,5 +153,40 @@ public function getEventCategoryCreatePage()
         return false;
     }
 
+<<<<<<< HEAD
     
+=======
+    public function approveReportRequest(Request $request) {
+
+        $success = EventService::getEventManager()->approveReportRequest($request);
+        if ($success != false) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    public function denyReportRequest(Request $request) {
+
+        $success = EventService::getEventManager()->denyReportRequest($request);
+        if ($success != false) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    public function removeReportRequest(Request $request) {
+
+        $success = EventService::getEventManager()->removeReportRequest($request);
+        if ($success != false) {
+            return true;
+        }
+
+        return false;
+
+    }
+>>>>>>> e600cade70c67ccb9b68215e73596fdb9b7abf39
 }

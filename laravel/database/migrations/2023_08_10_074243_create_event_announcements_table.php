@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignIdFor(Event::class);
             $table->string('title');
             $table->string('detail');
+            $table->enum('type',['announce','noti']);
             $table->timestamps();
             $table->softDeletes();
         });

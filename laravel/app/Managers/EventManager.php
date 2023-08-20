@@ -7,6 +7,9 @@ use App\Models\Event;
 use App\Models\EventInfo;
 use App\Models\EventUser;
 use App\Models\EventTeam;
+use App\Models\EventImage;
+use App\Models\Complaint;
+use App\Models\EventAnnouncement;
 use App\Models\RequestJoinEvent;
 use App\Models\RequestJoinEventFile;
 use App\Models\RequestCreateEvent;
@@ -14,21 +17,15 @@ use App\Models\RequestCreateEventConfirmationFile;
 use App\Services\FileService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ItemNotFoundException;
+use App\Services\NotifyService;
 use Illuminate\Http\Request;
+
 
 
 
 class EventManager {
 
     public function __construct() {}
-
-    public function getAllEvent() {
-        return Event::get();
-    }
-
-    public function getThatEvent(string $id) {
-        return Event::find((float)$id);
-    }
 
     public function isUserInEvent(int $userid ,Event $event){
         
@@ -225,7 +222,9 @@ class EventManager {
         $event->num_staff = $request->get('num_staff');
         $event->category = $request->get('category');
         $event->budget = $request->get('budget');
-        $event->date = $request->get('date');
+        $event->date_register = $request->get('date_register');
+        $event->date_start = $request->get('date_start');
+        $event->date_close = $request->get('date_close');
         $event->location = $request->get('location');
         $event->description = $request->get('description');
         if ($event->save()){
@@ -248,6 +247,12 @@ class EventManager {
                 
                 }
             }
+
+            NotifyService::getNotifyManager()->userNoti(Auth::getUser()->id, 
+            'noti', 
+            "Your Event Create Request ID : ". $event->id . " Has been sent to Admin", 
+            "I hope You will make a Wonderful Event!!! 👍");
+
             return true;
         }
         
@@ -257,8 +262,16 @@ class EventManager {
     public function removeEventRequest(Request $request) {
         
         $request = RequestCreateEvent::find((int) $request->get('data')['request_id']);
-        
+        $user_id = $request->user_id;
+        $request_id = $request->id;
+
         if ($request->delete()) {
+
+            NotifyService::getNotifyManager()->userNoti($user_id, 
+            'noti', 
+            "Event Request id : ". $request_id . " Has been deleted by Admin", 
+            "We are so sorry to hear about that 😢");
+
             return true;
         }
         return false;
@@ -277,7 +290,9 @@ class EventManager {
             $event->num_member = $request->num_member;
             $event->num_staff = $request->num_staff;
             $event->budget = $request->budget;
-            $event->date = $request->date;
+            $event->date_register = $request->date_register;
+            $event->date_start = $request->date_start;
+            $event->date_close = $request->date_close;
             $event->location = $request->location;
             $event->description = $request->description;
 
@@ -291,6 +306,12 @@ class EventManager {
                 $pivot->event_role = "header";
 
                 if ( $pivot->save() ) {
+
+                    NotifyService::getNotifyManager()->userNoti($request->user_id, 
+                    'noti', 
+                    "Event Request id : ". $request->id . " Has been approved by Admin", 
+                    "Congratulation On Your New Journey!!! 😊");
+
                     return true;
                 }
 
@@ -311,6 +332,12 @@ class EventManager {
         $request->status = "denied";
 
         if ($request->save()) {
+
+            NotifyService::getNotifyManager()->userNoti($request->user_id, 
+            'noti', 
+            "Event Request id : ". $request->id . " Has been denied by Admin", 
+            "We are so sorry to hear about that 😢");
+
             return true;
         }
         return false;
@@ -342,6 +369,12 @@ class EventManager {
                 
                 }
             }
+
+            NotifyService::getNotifyManager()->userNoti($requestjoin->user_id, 
+            'noti', 
+            "Event join as a participant id : ". $requestjoin->id . " Has been sent to Event", 
+            "I hope You will make a Good Ride with the team!!! 👍");
+
             return true;
         }
         
@@ -375,6 +408,12 @@ class EventManager {
                 
                 }
             }
+
+            NotifyService::getNotifyManager()->userNoti($requestjoin->user_id, 
+            'noti', 
+            "Event join as a staff id : ". $requestjoin->id . " Has been sent to Event", 
+            "I hope You will make a Good Ride with the team!!! 👍");
+
             return true;
         }
         
@@ -382,6 +421,79 @@ class EventManager {
 
         
     }
+
+    public function approveJoinRequest(Request $request) {
+        $requestjoin = RequestJoinEvent::find((int) $request->get('data')['request_id']);
+        $requestjoin->status = "approved";
+
+        if ($requestjoin->save()) {
+                
+            // $pivot_status = $event->users()->attach($request->user_id, ['event_role' => "header"]);
+            $pivot = new EventUser();
+            $pivot->user_id = $requestjoin->user_id;
+            $pivot->event_id = $requestjoin->event_id;
+            // 'staff','member'
+
+            if ($request->get('data')['role'] == "staff") {
+                $pivot->event_role = "staff";
+            }
+
+            if ($request->get('data')['role'] == "member") {
+                $pivot->event_role = "participant";
+            }
+
+            if ( $pivot->save() ) {
+                
+                NotifyService::getNotifyManager()->userNoti($requestjoin->user_id, 
+                'noti', 
+                "Event join id : ". $requestjoin->id . " Has been approved by Event", 
+                "Congratulation On Your New Journey!!! 😊");
+
+                return true;
+            }
+
+        }
+        
+        return false;
+
+    }
+
+    public function denyJoinRequest(Request $request) {
+
+        $requestjoin = RequestJoinEvent::find((int) $request->get('data')['request_id']);
+        $requestjoin->status = "denied";
+        
+        if ($requestjoin->save()) {
+
+            NotifyService::getNotifyManager()->userNoti($requestjoin->user_id, 
+            'noti', 
+            "Event Request id : ". $requestjoin->id . " Has been denied by Event", 
+            "We are so sorry to hear about that 😢");
+
+            return true;
+        }
+        return false;
+
+
+    }
+
+    public function removeJoinRequest(Request $request) {
+        $request = RequestJoinEvent::find((int) $request->get('data')['request_id']);
+        $user_id = $request->user_id;
+        $request_id = $request->id;
+        
+        if ($request->delete()) {
+
+            NotifyService::getNotifyManager()->userNoti($user_id, 
+            'noti', 
+            "Event Request id : ". $request_id . " Has been denied by Event", 
+            "We are so sorry to hear about that 😢");
+
+            return true;
+        }
+        return false;
+    }
+
 
 
 
@@ -394,6 +506,14 @@ class EventManager {
         $event_team->name = $request->get('data')['text'];
 
         if ($event_team->save()) {
+
+             
+            NotifyService::getNotifyManager()->eventNoti($event_team->event_id, 
+            'noti', 
+            "Event Team name : ". $event_team->name . " Has been added by Event", 
+            "Why don't you join this team 😊");
+
+
             return true;
         }
         return false;
@@ -406,6 +526,12 @@ class EventManager {
         $event_team->name = $request->get('data')['text'];
 
         if ($event_team->save()) {
+
+            NotifyService::getNotifyManager()->eventNoti($event_team->event_id, 
+            'noti', 
+            "Event Team name : ". $event_team->name . " Has been edited by Event", 
+            "Do you like the new Team 😊");
+
             return true;
         }
         return false;
@@ -417,15 +543,292 @@ class EventManager {
     public function removeEventTeam(Request $request) {
 
         $event_team = EventTeam::find((int) $request->get('data')['team_id']);
+        $event_team_event_id = $event_team->event_id;
+        $event_team_name = $event_team->name;
         
+        $team_members = EventUser::get()->where('event_team_id',$event_team->id);
+
+        foreach($team_members as $member) {
+            $member->event_team_id = null;
+            $member->save();
+        }
+
         if ($event_team->delete()) {
+
+
+            NotifyService::getNotifyManager()->eventNoti($event_team_event_id, 
+            'noti', 
+            "Event Team name : ". $event_team_name . " Has been removed by Event", 
+            "See if You are in this Team? 🥹");
+
+
             return true;
+
         }
         return false;
 
     }
 
+  
+    public function changeUserTeam(Request $request) {
+        
+        $event_user = EventUser::where('event_id',(int) $request->get('data')['event_id'])->where('user_id',(int) $request->get('data')['user_id'])->firstOrFail();
+        // $event_user = EventUser::get()->where('event_id',(int) $request->get('data')['event_id'])->where('user_id',(int) $request->get('data')['user_id'])[0];
+        if ($request->get('data')['team_id'] == null) {
+            $event_user->event_team_id = null;    
+            
+            if ($event_user->save()) {
+
+                NotifyService::getNotifyManager()->userNoti($event_user->user_id, 
+                'noti', 
+                "You have been kicked from  Team in Event: ". $event_user->event->name , 
+                "We are Sorry to hear about that 🥹");
+
+                return true;
+            }
+            return false;
+            
+        }
+
+        $event_user->event_team_id = (int) $request->get('data')['team_id'];
+        
+        if ($event_user->save()) {
+
+            NotifyService::getNotifyManager()->userNoti($event_user->user_id, 
+                'noti', 
+                "You have been assigned to Team in Event: ". $event_user->event->name , 
+                "Keep up the good work buddy 🥰");
+            return true;
+        }
+        return false;
+        // where('event_id',(int) $event_id)
+        // 'event_id':eventId,'team_id':teamId,'user_id':userId
+        // $pivot = EventUser::where('event_id');
+        // $pivot->user_id = $request->user_id;
+        // $pivot->event_id = $event->id;
+        // $pivot->event_role = "header";
+
+
+    }
+
+    public function editImage(Request $request, Event $event) {
+        // event_image
+        if ($event->event_image == null) {
+            
+            
+            if ( $request->image != null ) {
+                
+                $file = $request->file('image');
+                $success_image = FileService::getFileManager()->uploadFile('event_images/',$file);
+                
+                if ($success_image == false) {
+                    return false;
+                }
+                
+                $eventImage = new EventImage();
+                $eventImage->event_id = $event->id;
+                $eventImage->name = $success_image['name'];
+                $eventImage->image_path = $success_image['image_path'];
+
+                if ($eventImage->save()){
+                    return true;
+                }
+            }
+
+            return false;
+
+        }
+
+        $file = $request->file('image');
+        $success_image = FileService::getFileManager()->uploadFile('event_images/',$file);
+                
+        if ($success_image == false) {
+            return false;
+        }
+
+        $eventImage = $event->event_image;
+        $eventImage->name = $success_image['name'];
+        $eventImage->image_path = $success_image['image_path'];
+
+        return $eventImage->save();
+    }
     
 
+    public function editEventInformation(Request $request, Event $event) {
+        
+
+        $event->name = $request->get('name');
+        $event->num_member = $request->get('num_member');
+        $event->num_staff = $request->get('num_staff');
+        $event->budget = $request->get('budget');
+        $event->date_register = $request->get('date_register');
+        $event->date_start = $request->get('date_start');
+        $event->date_close = $request->get('date_close');
+        $event->location = $request->get('location');
+
+        if ($request->get('description') != null){
+            $event->description = $request->get('description');
+        }
+        
+        if ($event->save()){
+            return true;
+        }
+
+        return false;
+    }
+
+
+    public function createAn(Request $request, Event $event) {
+
+        $announce = new EventAnnouncement();
+        $announce->event_id = $event->id;
+        $announce->title = $request->get('title');
+        $announce->detail = $request->get('detail');
+        $announce->type = $request->get('type');
+
+        if ($announce->save()){
+            return true;
+        }
+
+        return false;
+    
+    }
+
+    public function removeAn(Request $request) {
+
+        $announce = EventAnnouncement::find((int) $request->get('data')['announce_id']);
+        
+        if ($announce->delete()) {
+            return true;
+        }
+        return false;
+
+
+    }
+
+    public function editAn(Request $request, EventAnnouncement $announce) {
+        
+        $announce->title = $request->get('title');
+        $announce->detail = $request->get('detail');
+        
+        if ($announce->save()){
+            return true;
+        }
+
+        return false;
+
+    
+    }
+
+
+    public function approveReportRequest(Request $request) {
+        $complaint = Complaint::find((int) $request->get('data')['request_id']);
+        $complaint->status = "approved";
+
+
+        //remove member of event
+        $team_members = EventUser::get()->where('event_team_id',$complaint->event_id);
+
+        foreach($team_members as $member) {
+            $member->delete();
+        }
+
+        //remove Team
+        $teams = EventTeam::get()->where('event_id',$complaint->event_id);
+
+        foreach($teams as $team) {
+            $team->delete();
+        }
+
+        //remove Info
+        $infos = EventInfo::get()->where('event_id',$complaint->event_id);
+
+        foreach($infos as $info) {
+            $info->delete();
+        }
+
+        //remove Image
+        $images = EventImage::get()->where('event_id',$complaint->event_id);
+
+        foreach($images as $image) {
+            $image->delete();
+        }
+
+        //remove Announcement
+        $announces = EventAnnouncement::get()->where('event_id',$complaint->event_id);
+
+        foreach($announces as $announce) {
+            $announce->delete();
+        }
+
+        
+
+        //remove event
+        $event = Event::find($complaint->event_id);
+        $usernoti = $complaint->user_id;
+        $namenoti = $complaint->name;
+        $eventid = $complaint->event_id;
+        
+        if ($complaint->delete()) {
+
+            //remove complaint 
+            $complaints = Complaint::get()->where('event_id',$eventid);
+
+            foreach ($complaints as $complaint) {
+                $complaint->delete();
+            }
+            
+            $event->delete();
+
+            NotifyService::getNotifyManager()->userNoti($usernoti, 
+            'noti', 
+            "Report Event name : ". $namenoti . "  request Has been approved by Admin", 
+            "Your request has been approved 👌");
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public function denyReportRequest(Request $request) {
+        $complaint = Complaint::find((int) $request->get('data')['request_id']);
+        $complaint->status = "denied";
+
+        if ($complaint->save()) {
+
+            NotifyService::getNotifyManager()->userNoti($complaint->user_id, 
+            'noti', 
+            "Report Event name : ". $complaint->name . "  request Has been denied by Admin", 
+            "Your request has been denied 🙅");
+            
+            return true;
+        }
+
+        return false;
+    }
+
+    public function removeReportRequest(Request $request) {
+
+        $complaint = Complaint::find((int) $request->get('data')['request_id']);
+        $complaint_id = $complaint->user_id;
+        $complaint_name = $complaint->name;
+        
+        
+        if ($complaint->delete()) {
+
+
+            NotifyService::getNotifyManager()->userNoti($complaint_id, 
+            'noti', 
+            "Report Event name : ". $complaint_name . "  request Has been removed by Admin", 
+            "Your request has been removed xd 🥹");
+
+
+            return true;
+
+        }
+        return false;
+    
+    }
 
 }

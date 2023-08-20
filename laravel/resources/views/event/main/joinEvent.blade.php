@@ -1,27 +1,24 @@
-@extends('layouts.admin')
-
+@extends('layouts.event')
 @section('content')
 
 <link
     href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
     rel="stylesheet">
 <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <h2 class="text-2xl font-bold mb-4">Report Requests</h2>
+    <h2 class="text-2xl font-bold mb-4">Join Requests Management</h2>
     <table id="example" class="table-auto">
         <thead>
             <tr>
                 <th class="px-4 py-2">User</th>
-                <th class="px-4 py-2">Event</th>
+                <th class="px-4 py-2">Role</th>
                 <th class="px-4 py-2">Status</th>
-                <th class="px-4 py-2">Description</th>
-                <th class="px-4 py-2">Detail</th>
                 <th class="px-4 py-2">Action</th>
             </tr>
         </thead>
         <tbody>
 
 
-            @foreach ($requests as $request)
+            @foreach ($event->requestJoinEvent as $request)
             <tr class="border px-4 py-2">
                 <td class="px-4 py-2  whitespace-nowrap">
                     <div class="flex items-center">
@@ -46,7 +43,7 @@
                         </div>
                     </div>
                 </td>
-                <td class="px-4 py-2">{{$request->event->name}}</td>
+                <td class="px-4 py-2">{{$request->role}}</td>
                 <td class="px-4 py-2 ">
                     @if ($request->status == null)
                     <span
@@ -66,9 +63,8 @@
 
                     @endif
                 </td>
-                <td class="px-4 py-2">{{$request->description}}</td>
                 <td class="p-3 ">
-                    <a href="{{route('admin.complaintDetail',['event'=>$request->event])}}"
+                    <a href="{{route('event.team.joindetail',['event' => $event,'request'=>$request])}}"
                         class="text-gray-800 hover:text-gray-100 mr-2">
                         <i class="material-icons-outlined text-base">visibility</i>
                     </a>
@@ -79,14 +75,6 @@
                     </button>
 
 
-                </td>
-                <td>
-                   @if ($request->status == null)
-                    <button
-                    class="px-4 py-2 font-medium text-white bg-green-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out" onClick="approve({{$request->id}})">Approve</button>
-                    <button
-                    class="ml-2 px-4 py-2 font-medium text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600 transition duration-150 ease-in-out" onClick="deny({{$request->id}})">Denied</button>
-                    @endif
                 </td>
 
                 <!-- remove modal -->
@@ -136,20 +124,9 @@
 
 <script>
 function remove(id) {
-    removeAjax('POST', '{{route('remove.reportrequest')}}', '{{csrf_token()}}', {'request_id': id});
-    window.location.reload(true);
-}
-
-function approve(id) {
-    updateAjax('POST','{{route('admin.report.approve')}}', '{{csrf_token()}}', {'request_id':id});
-    window.location.reload(true);
-}
-
-function deny(id) {
-    updateAjax('POST','{{route('admin.report.deny')}}', '{{csrf_token()}}', {'request_id':id});
-    window.location.reload(true);
-}
+        removeAjax('POST','{{route('event.request.remove')}}', '{{csrf_token()}}', {'request_id':id});
+        window.location.reload(true);
+    }
 </script>
 
 @endsection
-

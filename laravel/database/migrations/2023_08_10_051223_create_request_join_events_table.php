@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignIdFor(Event::class);
             $table->enum('role',['staff','member']);
             $table->string('reason');
+            $table->enum('status',['approved','denied'])->nullable();
             $table->softDeletes();
 
         });

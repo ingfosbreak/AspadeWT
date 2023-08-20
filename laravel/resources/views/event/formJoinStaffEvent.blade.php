@@ -97,7 +97,7 @@
 
 
                             <div class="flex">
-                                <a href="{{ route('user.main')}}">
+                                <a href="{{ route('event.information',['event'=> $event])}}">
                                     <div
                                         class=" mt-5 mb-5 rounded-lg w-40 text-center px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-4 font-medium border-black text-indigo-600 text-white">
                                         <span

@@ -7,32 +7,95 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use App\Services\NotifyService;
 use Illuminate\View\View;
 use App\Models\Event;
 use App\Models\EventUser;
+use App\Models\UserNoti;
 
 class UserController extends Controller
 {
     public function userPopEvent(){
-        // $events = Event::getPublishEventPaginate();
-        $events = Event::paginate(15);
+        $eventsNew = Event::getNewEvent()->take(6);
+        $eventsPopular = Event::getPopular()->take(6);
+        $eventUpComing = Event::getUpComingEvent()->take(6);
+                return view('user.main', [
+                    'eventsNew' => $eventsNew ,
+                    'eventsPopular' => $eventsPopular,
+                    'eventUpComing' => $eventUpComing
+                ]);
 
-        return view('user.main', [
-            'events' => $events
-        ]);
     }
-    public function userPopEventStaff(){
-        // $events = Event::getPublishEventPaginate();
-        $events = Event::paginate(15);
 
-        return view('user.mainStaff', [
-            'events' => $events
-        ]);
+    public function userViewAllNewEvents(){
+
+        $events = Event::getNewEvent();
+
+                return view('user.viewAll', [
+                    'events' => $events
+                ]);
     }
+    public function userViewAllUpComingEvent(){
+        $events = Event::getUpComingEvent();
+                return view('user.viewAll', [
+                    'events' => $events
+                ]);
+
+    }
+
+
+   
     public function getMainEventPage(Event $event){
         return view('event.main.main', [
             'event' => $event
         ]);
     }
+    public function getViewAllPage(){
+        // $events = Event::getPublishEventPaginate();
+        $events = Event::get();
+
+        return view('user.viewAll', [
+            'events' => $events
+        ]);
+    }
+    public function getEventInProgress(){
+        $events = Auth::getUser()->getEventInProgress();
+        return view('user.myEventHistory', [
+            'events' => $events
+        ]);
+    }
+    public function getEventSuccess(){
+        $events = Auth::getUser()->getEventSuccess();
+        return view('user.myEventHistory', [
+            'events' => $events
+        ]);
+    }
+    public function getEventAll(){
+        $events = Auth::getUser()->events;
+        return view('user.myEventHistory', [
+            'events' => $events
+        ]);
+    }
+    public function getEventHeader(){
+        $events = Auth::getUser()->user_pivots;
+        return view('user.myOwnEvent', [
+            'events' => $events
+        ]);
+    }
+    public function getNotify(){
+        $notifies = Auth::getUser()->noti;
+        return view('user.notify', [
+            'notifies' => $notifies
+        ]);
+    }
+    public function removeNotify(Request $request){
+        $success = NotifyService::getNotifyManager()->removeNotify($request);
+        if ($success != false) {
+            return true;
+        }
+
+        return false;
+    }
+
     
 }

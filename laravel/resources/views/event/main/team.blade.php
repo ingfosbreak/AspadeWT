@@ -3,7 +3,8 @@
 
 <div class="flex flex-col items-center mt-10">
 
-<h3 class="text-4xl bold mb-10">Event Teams Management.</h3>
+
+<h2 class="text-2xl font-bold mb-4">Event Teams Management</h2>
 <div class="flex mt-10 items-center gap-5 flex-wrap">
     
     @foreach ($event->event_teams as $team)

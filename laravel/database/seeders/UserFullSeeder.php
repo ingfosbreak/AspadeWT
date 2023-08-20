@@ -30,5 +30,14 @@ class UserFullSeeder extends Seeder
         $userEntry->faculty = "Science";
         $userEntry->year = 3;
         $userEntry->save();
+
+        $userEntry = new UserFull();
+        $userEntry->user_id = 3;
+        $userEntry->email = "ja@outlook.com";
+        $userEntry->firstname = "Panachai";
+        $userEntry->lastname = "Kotchagason";
+        $userEntry->faculty = "Science";
+        $userEntry->year = 4;
+        $userEntry->save();
     }
 }

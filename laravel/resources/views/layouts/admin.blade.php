@@ -43,6 +43,7 @@
                     href="{{route('admin.request')}}">Event Requests</a>
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     href="{{route('admin.complaint')}}">Complaint Requests</a>
+<<<<<<< HEAD
                  <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     href="{{route('admin.category')}}">Category</a>    
                 <div @click.away="open = false" class="relative" x-data="{ open: false }">
@@ -73,6 +74,10 @@
                         </div>
                     </div>
                 </div>
+=======
+               
+                
+>>>>>>> e600cade70c67ccb9b68215e73596fdb9b7abf39
             </nav>
         </div>
         @yield('content')

@@ -23,7 +23,6 @@ class UserManager {
 
     public function __construct() {}
 
-
     // for attempt AUTH
     public function username() {
         return 'username';

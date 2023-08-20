@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\ItemNotFoundException;
+use Illuminate\Database\Eloquent\ModelNotFoundException; 
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -17,6 +19,7 @@ use App\Models\UserToken;
 use App\Models\UserImage;
 use App\Models\Event;
 use App\Models\EventUser;
+use App\Models\EventTeam;
 use App\Models\Process;
 use App\Models\ProcessUser;
 use App\Models\Request;
@@ -68,14 +71,26 @@ class User extends Authenticatable
     }
 
     public function getEventRole(string $event_id){
-        return $this->user_pivots->where('event_id',(int) $event_id)[0]->event_role;
+        return $this->user_pivots->where('event_id',(int) $event_id)->firstOrFail()->event_role;
+        
     }
 
-    public function getEventTeam(int $event_id) {
-        return $this->user_pivots->where('event_id',$event_id)->event_team_id;
+    public function getEventTeamId(string $event_id) {
+        return $this->user_pivots->where('event_id',(int) $event_id)->firstOrFail()->event_team_id;
     }
 
+    public function getEventTeamName(string $event_id) {
+        
+        return EventTeam::find($this->getEventTeamId($event_id))->name;
+            
+    }
 
+    public function getEventInProgress() {
+        return $this->events->where('status','in-progress');
+    }
+    public function getEventSuccess() {
+        return $this->events->where('status','finished');
+    }
 
     public function userFull(): HasOne {
         return $this->hasOne(UserFull::class);
