@@ -8,6 +8,7 @@ use App\Models\EventInfo;
 use App\Models\EventUser;
 use App\Models\EventTeam;
 use App\Models\EventImage;
+use App\Models\Complaint;
 use App\Models\EventAnnouncement;
 use App\Models\RequestJoinEvent;
 use App\Models\RequestJoinEventFile;
@@ -716,6 +717,64 @@ class EventManager {
 
         return false;
 
+    
+    }
+
+
+    public function approveReportRequest(Request $request) {
+        $complaint = Complaint::find((int) $request->get('data')['request_id']);
+        $complaint->status = "approved";
+
+        if ($complaint->save()) {
+
+            NotifyService::getNotifyManager()->userNoti($complaint->user_id, 
+            'noti', 
+            "Report Event name : ". $complaint->name . "  request Has been approved by Admin", 
+            "Your request has been approved 👌");
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public function denyReportRequest(Request $request) {
+        $complaint = Complaint::find((int) $request->get('data')['request_id']);
+        $complaint->status = "denied";
+
+        if ($complaint->save()) {
+
+            NotifyService::getNotifyManager()->userNoti($complaint->user_id, 
+            'noti', 
+            "Report Event name : ". $complaint->name . "  request Has been denied by Admin", 
+            "Your request has been denied 🙅");
+            
+            return true;
+        }
+
+        return false;
+    }
+
+    public function removeReportRequest(Request $request) {
+
+        $complaint = Complaint::find((int) $request->get('data')['request_id']);
+        $complaint_id = $complaint->user_id;
+        $complaint_name = $complaint->name;
+        
+        
+        if ($complaint->delete()) {
+
+
+            NotifyService::getNotifyManager()->userNoti($complaint_id, 
+            'noti', 
+            "Report Event name : ". $complaint_name . "  request Has been removed by Admin", 
+            "Your request has been removed xd 🥹");
+
+
+            return true;
+
+        }
+        return false;
     
     }
 

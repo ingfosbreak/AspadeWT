@@ -136,7 +136,7 @@
 
 <script>
 function remove(id) {
-    removeAjax('POST', '{{route('remove.eventrequest')}}', '{{csrf_token()}}', {'request_id': id});
+    removeAjax('POST', '{{route('remove.reportrequest')}}', '{{csrf_token()}}', {'request_id': id});
     window.location.reload(true);
 }
 
@@ -146,7 +146,7 @@ function approve(id) {
 }
 
 function deny(id) {
-    updateAjax('POST','{{route('admin.request.deny')}}', '{{csrf_token()}}', {'request_id':id});
+    updateAjax('POST','{{route('admin.report.deny')}}', '{{csrf_token()}}', {'request_id':id});
     window.location.reload(true);
 }
 </script>

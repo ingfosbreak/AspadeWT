@@ -84,4 +84,37 @@ class AdminController extends Controller
 
         return false;
     }
+
+    public function approveReportRequest(Request $request) {
+
+        $success = EventService::getEventManager()->approveReportRequest($request);
+        if ($success != false) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    public function denyReportRequest(Request $request) {
+
+        $success = EventService::getEventManager()->denyReportRequest($request);
+        if ($success != false) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    public function removeReportRequest(Request $request) {
+
+        $success = EventService::getEventManager()->removeReportRequest($request);
+        if ($success != false) {
+            return true;
+        }
+
+        return false;
+
+    }
 }
