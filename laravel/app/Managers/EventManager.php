@@ -8,7 +8,10 @@ use App\Models\EventInfo;
 use App\Models\EventUser;
 use App\Models\EventTeam;
 use App\Models\EventImage;
+use App\Models\EventCategoryList;
 use App\Models\Complaint;
+use App\Models\Certificate;
+use App\Models\Process;
 use App\Models\EventAnnouncement;
 use App\Models\RequestJoinEvent;
 use App\Models\RequestJoinEventFile;
@@ -729,7 +732,13 @@ class EventManager {
         //remove member of event
         $team_members = EventUser::get()->where('event_team_id',$complaint->event_id);
 
+
         foreach($team_members as $member) {
+            NotifyService::getNotifyManager()->userNoti($member->user_id, 
+            'noti', 
+            "Event name : ". $complaint->event->name . "Has been removed by Admin", 
+            "Your request to join has been removed too xd 🥹");
+
             $member->delete();
         }
 
@@ -761,7 +770,34 @@ class EventManager {
             $announce->delete();
         }
 
-        
+        //remove certificates
+        $certificate = Certificate::get()->where('event_id',$complaint->event_id);
+
+        foreach($certificate as $certi) {
+            $certi->delete();
+        }
+
+        //catefory lists
+        $category_lists = EventCategoryList::get()->where('event_id',$complaint->event_id);
+
+        foreach($category_lists as $cate) {
+            $cate->delete();
+        }
+
+        //process
+        $process = Process::get()->where('event_id',$complaint->event_id);
+
+        foreach($process as $pro) {
+            $pro->delete();
+        }
+
+        //request join 
+        $joins = RequestJoinEvent::get()->where('event_id',$complaint->event_id);
+
+        foreach($joins as $join) {
+            $join->delete();
+        }
+
 
         //remove event
         $event = Event::find($complaint->event_id);
@@ -777,7 +813,7 @@ class EventManager {
             foreach ($complaints as $complaint) {
                 $complaint->delete();
             }
-            
+
             $event->delete();
 
             NotifyService::getNotifyManager()->userNoti($usernoti, 
