@@ -84,10 +84,10 @@
                             </path>
                         </svg>
                     </div>
-                    <div class="block p-6 rounded-lg shadow-lg bg-gray-100 max-w-md ml-6 mb-10">
+                    <div class="block p-6 rounded-lg shadow-lg bg-gray-100 max-w-fit ml-6 mb-10">
                         <div class="flex justify-between mb-4">
                             <p 
-                                class="font-medium text-purple-600 hover:text-purple-700 focus:text-purple-800 duration-300 transition ease-in-out text-sm">
+                                class="w-fit font-medium text-purple-600 hover:text-purple-700 focus:text-purple-800 duration-300 transition ease-in-out text-sm">
                                 {{$announce->title}}</p>
                             <p
                                 class="ml-6 font-medium text-purple-600 hover:text-purple-700 focus:text-purple-800 duration-300 transition ease-in-out text-sm">
@@ -172,7 +172,7 @@
                             </path>
                         </svg>
                     </div>
-                    <div class="block p-6 rounded-lg shadow-lg bg-gray-100 max-w-md ml-6 mb-10">
+                    <div class="block p-6 rounded-lg shadow-lg bg-gray-100 max-w-fit ml-6 mb-10">
                         <div class="flex justify-between mb-4">
                             <p 
                                 class="font-medium text-green-600 hover:text-green-700 focus:text-green-800 duration-300 transition ease-in-out text-sm">
@@ -209,7 +209,7 @@
  }
 </style>
 
-</style>
+
 
 <script>
     function remove(id) {

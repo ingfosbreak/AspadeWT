@@ -150,6 +150,9 @@ Route::middleware(['web'])->group(function () {
             //my Own Event
             Route::get('/user/myOwnEvent', [UserController::class, 'getEventHeader'])->name('user.myOwnEvent');
 
+            //finished event
+            Route::post('/event/finish', [EventController::class, 'finishEvent'])->name('event.finish');
+
         });
 
 

@@ -11,14 +11,14 @@
 
             </div>
             <div class="flex flex-col items-center justify-center md:h-90 lg:py-0">
-                <form action="{{ route('user.formRequestEvent.create')}}" method="POST"  enctype="multipart/form-data">
+                <form action="{{ route('user.requestjoinEventMember.create',['event'=>$event])}}" method="POST"  enctype="multipart/form-data">
                     @csrf
                     <div
                         class="bg-opacity-75 w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 mt-8">
                         <div class=" p-6 space-y-4 md:space-y-6 sm:p-8">
                             <h1
                                 class="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                                Request for Joining Event
+                                Request for Joining Event {{$event->name}}
                             </h1>
                             <div class="relative z-0">
                                 <input type="text" id="disabled-input" name="name"

@@ -867,4 +867,39 @@ class EventManager {
     
     }
 
+    public function finishEvent(Request $request) {
+
+        $event = Event::find((int) $request->get('data')['event_id']);
+        $event->status = "finished";
+
+        if ($event->save()) {
+
+            foreach($event->users as $user) {
+                
+                
+                NotifyService::getNotifyManager()->userNoti($user->id, 
+                'noti', 
+                "Event name : ". $event->name . " Has been declared victory by Event Team", 
+                "How was your journey do you miss it already? 🥹");
+        
+                    
+                
+            }
+
+
+            NotifyService::getNotifyManager()->eventNoti($event->id, 
+            'noti', 
+            "To all precious members of our Wonderful Event, We won!!", 
+            "I hope you guys will have a great future 😊");
+
+            return true;
+
+
+        }
+
+        return false;
+
+
+    }
+
 }
