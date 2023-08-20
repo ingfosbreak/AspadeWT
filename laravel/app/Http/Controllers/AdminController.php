@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\RequestCreateEvent;
+use App\Models\Complaint;
 use App\Models\Event;
 use App\Models\User;
 use App\Services\EventService;
@@ -30,7 +31,25 @@ class AdminController extends Controller
     }
 
     public function getEventComplaintPage() {
-        return view('admin.complaint');
+        $requests = Complaint::get();
+        return view('admin.complaint',[
+            'requests' => $requests
+        ]);
+    }
+
+    public function getEventComplaintDetailPage(Event $event) {
+        
+        return view('admin.complaintDetail', [
+            'event' => $event
+        ]);
+
+    }
+
+    public function getEventComplaintDetailBehidePage(Event $event) {
+        return view('admin.complaintDetailBehide', [
+            'event' => $event
+        ]);
+   
     }
 
     public function approveEventRequest(Request $request) {

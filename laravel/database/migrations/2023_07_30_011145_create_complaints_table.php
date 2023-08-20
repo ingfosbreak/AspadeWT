@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string("name");
             $table->string("description");
             $table->enum('status-check',['todo','doing','done'])->default("todo");
-            $table->enum('status-complaint',['approved','denied'])->nullable();
+            $table->enum('status',['approved','denied'])->nullable();
             $table->timestamps();
 
             $table->softDeletes($column = 'deleted_at', $precision = 0);
