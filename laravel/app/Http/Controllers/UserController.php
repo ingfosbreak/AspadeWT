@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\Event;
 use App\Models\EventUser;
+use App\Models\UserNoti;
 
 class UserController extends Controller
 {
@@ -66,6 +67,18 @@ class UserController extends Controller
         $events = Auth::getUser()->getEventSuccess();
         return view('user.myEventHistory', [
             'events' => $events
+        ]);
+    }
+    public function getEventAll(){
+        $events = Auth::getUser()->events;
+        return view('user.myEventHistory', [
+            'events' => $events
+        ]);
+    }
+    public function getNotify(){
+        $notifies = Auth::getUser()->noti;
+        return view('user.notify', [
+            'notifies' => $notifies
         ]);
     }
 

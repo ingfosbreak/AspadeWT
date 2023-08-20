@@ -21,16 +21,16 @@
     <div class="flex flex-col w-full justify-center items-center mt-5">
         <h2 class="text-2xl font-bold mb-4">Images proof</h2>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-3 p-4 max-w-[400px] md:max-w-[600px] place-items-center">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=1">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=2">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=3">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=4">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=5">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=6">
+         
+        @foreach ($request->requestFiles as $file)
+        <div class="flex flex-row gap-1 m-5">
+            <img class="hover:opacity-75 " src="{{ asset('storage/' . $file->file_path)}}">
+
         </div>
-        <h2 class="text-2xl font-bold mt-8">Request Details</h2>
+        @endforeach
     </div>
 
+    <h2 class="text-2xl font-bold mt-8">Request Details</h2>
     <div class="border border-gray-300 shadow-sm rounded-lg overflow-hidden max-w-sm mx-auto mt-8 mb-10">
         <table class="w-full text-sm leading-5">
             <thead class="bg-gray-100">
@@ -80,9 +80,11 @@
         @if ($request->status == null)
         <div class="flex mt-5 gap-5 px-4 py-2">
             <button
-                class="px-4 py-2 font-medium text-white bg-green-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out" onClick="approve({{$request->id}})">Approve</button>
+                class="px-4 py-2 font-medium text-white bg-green-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out"
+                onClick="approve({{$request->id}})">Approve</button>
             <button
-                class="ml-2 px-4 py-2 font-medium text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600 transition duration-150 ease-in-out" onClick="deny({{$request->id}})">Denied</button>
+                class="ml-2 px-4 py-2 font-medium text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600 transition duration-150 ease-in-out"
+                onClick="deny({{$request->id}})">Denied</button>
         </div>
         @endif
     </div>
@@ -91,16 +93,41 @@
 </body>
 
 <script>
-    function approve(id) {
-        updateAjax('POST','{{route('event.request.approve')}}', '{{csrf_token()}}', {'request_id':id,'role':"{{$request->role}}"});
-        window.location.reload(true);
-    }
+function approve(id) {
+    updateAjax('POST', '{{route('event.request.approve')}}', '{{csrf_token()}}', {
+            'request_id': id,
+            'role': "{{$request->role}}"
+        });
+    window.location.reload(true);
+}
 
-    function deny(id) {
-        updateAjax('POST','{{route('event.request.deny')}}', '{{csrf_token()}}', {'request_id':id});
-        window.location.reload(true);
-    }
+function deny(id) {
+    updateAjax('POST', '{{route('event.request.deny')}}', '{{csrf_token()}}', {
+            'request_id': id
+        });
+    window.location.reload(true);
+}
 </script>
 
 
 </html>
+
+
+<style>
+.card {
+
+    width: 200px;
+    height: 320px;
+    object-fit: cover;
+
+}
+
+a {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+    display: block;
+
+}
+</style>

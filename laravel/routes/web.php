@@ -141,9 +141,10 @@ Route::middleware(['web'])->group(function () {
             // EventHistory
             Route::get('/user/myEventHistory/participant', [UserController::class, 'getEventInProgress'])->name('user.myEventHistory.inProgress');
             Route::get('/user/myEventHistory/staff', [UserController::class, 'getEventSuccess'])->name('user.myEventHistory.success');
+            Route::get('/user/myEventHistory/all', [UserController::class, 'getEventAll'])->name('user.myEventHistory.all');
 
             // Notify
-            Route::get('/user/Notify', function (){return view('user.notify');})->name('user.notify');
+            Route::get('/user/Notify', [UserController::class, 'getNotify'])->name('user.notify');
             
             
 
