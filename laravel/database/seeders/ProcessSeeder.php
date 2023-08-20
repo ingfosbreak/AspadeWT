@@ -17,13 +17,11 @@ class ProcessSeeder extends Seeder
         $event->event_id = 1;
         $event->name = "warm-up";
         $event->status = "todo";
-        $event->num_member = 2;
         $event->save();
         
         $event = new Process();
         $event->event_id = 1;        
         $event->name = "run";
-        $event->status = "todo";
         $event->save();
     }
 }

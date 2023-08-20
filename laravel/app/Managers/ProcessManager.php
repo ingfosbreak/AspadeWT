@@ -2,12 +2,10 @@
 
 namespace App\Managers;
 
-use App\Models\UserEntry;
 use App\Models\Process;
-use App\Models\ProcessUserEntry;
 use App\Models\Event;
-
 use Illuminate\Http\Request;
+use App\Models\EventTeam;
 
 
 class ProcessManager {
@@ -22,6 +20,69 @@ class ProcessManager {
         $event = Event::find((float)$id);
         return $event->processes;
     }
+
+    public function createProcess(Request $request) {
+        
+        $process = new Process();
+        $process->event_id = (int) $request->get('data')['event_id'];
+        $process->name = $request->get('data')['text'];    
+
+        if ($process->save()) {
+            return true;
+        }
+        return false;
+    }
+
+    public function editProcess(Request $request) {
+
+        $process = Process::find( (int) $request->get('data')['process_id']);
+        $process->name = $request->get('data')['text'];
+
+        if ($process->save()) {
+            return true;
+        }
+        return false;
+
+
+    }
+
+    public function updateProcess(Request $request) {
+
+        $process = Process::find( (int) $request->get('data')['process_id']);
+        $process->status = $request->get('data')['status'];
+
+        if ($process->save()) {
+            return true;
+        }
+        return false;
+
+
+    }
+
+    public function removeProcess(Request $request) {
+
+        $process = Process::find( (int) $request->get('data')['process_id']);
+        
+        if ($process->delete()) {
+            return true;
+        }
+        return false;
+
+    }
+
+    public function editKanbanTeam(Process $process, EventTeam $team =null) {
+
+        $process->event_team_id = $team->id;
+        if ($process->save()) {
+            return true;
+        }
+        return false;
+
+
+
+    }
+
+
 
     
 

@@ -1,4 +1,4 @@
-<div class="mb-4 md:mb-0 w-full max-w-screen-md mx-auto relative" style="height: 24em;">
+<div class="m-4 md:mb-0 max-w-screen-md mx-auto relative" style="height: 24em;">
                 <div class="absolute left-0 bottom-0 w-full h-full z-10"
                     style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.7));"></div>
                 <img src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"

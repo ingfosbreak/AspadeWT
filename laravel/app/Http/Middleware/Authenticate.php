@@ -6,6 +6,7 @@ namespace App\Http\Middleware;
 use Illuminate\Http\Request;
 use Closure;
 use App\Models\UserToken;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Authenticate
 {
@@ -29,14 +30,22 @@ class Authenticate
 
         // check session 
 
-        if (!$request->session()->exists('token')) {
-            return redirect()->route('login')->with('error', 'Token expired');
+        if ($request->session()->exists('token')) {
+            
+            try {
+
+                $user_token = UserToken::where('token',$request->session()->get('token'))->firstOrFail();
+                return $next($request);
+          
+            } catch (ModelNotFoundException $exception) {
+          
+                return redirect()->route('login')->with('error', 'Token expired');
+            
+            }
         }
 
-        if (UserToken::where('token',$request->session()->get('token'))->firstOrFail() == null) {
-            return redirect()->route('login')->with('error', 'Token expired');
-        }
+        return redirect()->route('login')->with('error', 'Token expired');
 
-        return $next($request);
+
     }
 }

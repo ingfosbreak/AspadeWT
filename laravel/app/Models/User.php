@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\ItemNotFoundException;
+use Illuminate\Database\Eloquent\ModelNotFoundException; 
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -17,11 +19,14 @@ use App\Models\UserToken;
 use App\Models\UserImage;
 use App\Models\Event;
 use App\Models\EventUser;
+use App\Models\EventTeam;
 use App\Models\Process;
 use App\Models\ProcessUser;
 use App\Models\Request;
 use App\Models\Complaint;
 use App\Models\Certificate;
+use App\Models\RequestCreateEvent;
+use App\Models\RequestJoinEvent;
 
 
 class User extends Authenticatable
@@ -65,8 +70,34 @@ class User extends Authenticatable
         return $this->role;
     }
 
+    public function getEventRole(string $event_id){
+        return $this->user_pivots->where('event_id',(int) $event_id)->firstOrFail()->event_role;
+        
+    }
+
+    public function getEventTeamId(string $event_id) {
+        return $this->user_pivots->where('event_id',(int) $event_id)->firstOrFail()->event_team_id;
+    }
+
+    publIc function getEventTeamName(string $event_id) {
+        
+        return EventTeam::find($this->getEventTeamId($event_id))->name;
+            
+    }
+
+    publIc function getEventInProgress() {
+        return $this->events->where('status','in-progress');
+    }
+    publIc function getEventSuccess() {
+        return $this->events->where('status','finished');
+    }
+
     public function userFull(): HasOne {
         return $this->hasOne(UserFull::class);
+    }
+
+    public function user_pivots(): HasMany {
+        return $this->hasMany(EventUser::class);
     }
 
     public function requests(): HasMany {
@@ -85,10 +116,6 @@ class User extends Authenticatable
         return $this->belongsToMany(Event::class);
     }
 
-    public function events_roles(): HasMany {
-        return $this->hasMany(EventUser::class);
-    }
-
     public function processes(): BelongsToMany {
         return $this->belongsToMany(Process::class);
     }
@@ -103,6 +130,18 @@ class User extends Authenticatable
 
     public function image(): HasOne {
         return $this->hasOne(UserImage::class);
+    }
+
+    public function noti():HasMany{
+        return $this->hasMany(UserNoti::class);
+    }
+
+    public function requestCreateEvent(): HasMany {
+        return $this->hasMany(RequestCreateEvent::class);
+    }
+
+    public function requestJoinEvent(): HasMany {
+        return $this->hasMany(RequestJoinEvent::class);
     }
 
 }

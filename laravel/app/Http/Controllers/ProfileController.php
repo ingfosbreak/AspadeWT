@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Services\UserService;
+use Hash;
+
 
 class ProfileController extends Controller
 {
@@ -56,5 +59,66 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function changePassword(Request $request) {
+
+        if (UserService::getUserManager()->getResetPasswordValidate($request)) {
+            
+
+            $status = UserService::getUserManager()->resetPassword($request);
+            
+            if ($status) {
+                return redirect()->back()->with('success.pass', 'Password updated');
+            }
+
+            
+            return redirect()->back()->with('error.pass', 'failed to update');
+
+        }
+        
+        return redirect()->back()->with('error.pass', 'Your current password is not matched');
+
+    }
+
+    public function editProfile(Request $request) {
+
+        if (UserService::getUserManager()->getEditProfileValidate($request)) {
+            
+            $status = UserService::getUserManager()->editProfile($request);
+            
+            if ($status) {
+                return redirect()->back()->with('success.info', 'information updated');
+            }
+            
+            return redirect()->back()->with('error.info', 'failed to update');
+
+        }
+        
+        return redirect()->back()->with('error.info', 'Your current password is not matched');
+
+    }
+
+    public function editImage(Request $request) {
+
+        if (UserService::getUserManager()->getEditImageValidate($request)) {
+            
+            $status = UserService::getUserManager()->editImage($request);
+            
+            if ($status) {
+                return redirect()->back()->with('success.image', 'ProfileImage updated');
+            }
+            
+            return redirect()->back()->with('error.image', 'failed to update');
+
+        }
+        
+        return redirect()->back()->with('error.image', 'Your current password is not matched');
+
+    }
+
+
+    public function getSettingPage() {
+        return view('profile.setting');
     }
 }

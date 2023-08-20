@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('device');
             $table->string('platform');
             $table->string('browser');
+            $table->enum('system',['mobile','desktop']);
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });

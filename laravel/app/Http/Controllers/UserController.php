@@ -14,20 +14,60 @@ use App\Models\EventUser;
 class UserController extends Controller
 {
     public function userPopEvent(){
-        $events = Event::paginate(6);
+        $eventsNew = Event::getNewEvent()->take(6);
+        $eventsPopular = Event::getPopular()->take(6);
+        $eventUpComing = Event::getUpComingEvent()->take(6);
+                return view('user.main', [
+                    'eventsNew' => $eventsNew ,
+                    'eventsPopular' => $eventsPopular,
+                    'eventUpComing' => $eventUpComing
+                ]);
 
-        return view('user.main', [
-            'events' => $events
-        ]);
     }
+
+    public function userViewAllNewEvents(){
+
+        $events = Event::getNewEvent();
+
+                return view('user.viewAll', [
+                    'events' => $events
+                ]);
+    }
+    public function userViewAllUpComingEvent(){
+        $events = Event::getUpComingEvent();
+                return view('user.viewAll', [
+                    'events' => $events
+                ]);
+
+    }
+
+
+   
     public function getMainEventPage(Event $event){
         return view('event.main.main', [
             'event' => $event
         ]);
     }
-    public function checkUerEvent(Event $event ,EventUser $eventuser){
-        if (condition) {
-            # code...
-        }
+    public function getViewAllPage(){
+        // $events = Event::getPublishEventPaginate();
+        $events = Event::get();
+
+        return view('user.viewAll', [
+            'events' => $events
+        ]);
     }
+    public function getEventInProgress(){
+        $events = Auth::getUser()->getEventInProgress();
+        return view('user.myEventHistory', [
+            'events' => $events
+        ]);
+    }
+    public function getEventSuccess(){
+        $events = Auth::getUser()->getEventSuccess();
+        return view('user.myEventHistory', [
+            'events' => $events
+        ]);
+    }
+
+    
 }
