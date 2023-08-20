@@ -314,9 +314,13 @@ class EventController extends Controller
 
     public function reportEvent(Request $request) {
     
-        NotifyService::getNotifyManager()->reportEvent($request);
+        $success = NotifyService::getNotifyManager()->reportEvent($request);
 
-        return $request;
+        if ($success) {
+            return redirect()->back()->with('success.image', 'Report success');
+        }
+        
+        return redirect()->back()->with('error.image', 'failed to update');
     }
 
 }

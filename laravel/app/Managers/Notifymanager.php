@@ -43,6 +43,17 @@ class NotifyManager {
         $report->name = $request->get('name');
         $report->description = $request->get('description');
 
+        if ($report->save()) {
+
+            $this->userNoti($request->get('user_id'),
+            'noti', 
+            "You have Report Event Id : ". $request->get('event_id'),
+            "Your report is currently on Hold !!");
+            
+            return true;
+        }
+
+        return false;
 
 
     }
