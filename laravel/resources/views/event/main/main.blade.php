@@ -175,16 +175,16 @@
                     <div class="block p-6 rounded-lg shadow-lg bg-gray-100 max-w-md ml-6 mb-10">
                         <div class="flex justify-between mb-4">
                             <p 
-                                class="font-medium text-purple-600 hover:text-purple-700 focus:text-purple-800 duration-300 transition ease-in-out text-sm">
+                                class="font-medium text-green-600 hover:text-green-700 focus:text-green-800 duration-300 transition ease-in-out text-sm">
                                 {{$announce->title}}</p>
                             <p 
-                                class="font-medium text-purple-600 hover:text-purple-700 focus:text-purple-800 duration-300 transition ease-in-out text-sm">
+                                class="ml-6 font-medium text-green-600 hover:text-green-700 focus:text-green-800 duration-300 transition ease-in-out text-sm">
                                 {{$announce->created_at}}</p>
                         </div>
                         <p class="text-gray-700 mb-6">{{$announce->detail}}</p>
                        
                         <button type="button" onClick="remove({{$announce->id}})"
-                            class="inline-block px-3.5 py-1 border-2 border-purple-600 text-purple-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                            class="inline-block px-3.5 py-1 border-2 border-green-600 text-green-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
                             data-mdb-ripple="true">Remove</button>
                     </div>
                 </div>

@@ -466,7 +466,7 @@ class EventManager {
 
             NotifyService::getNotifyManager()->userNoti($requestjoin->user_id, 
             'noti', 
-            "Event Request id : ". $requestjoin->id . " Has been denied by Admin", 
+            "Event Request id : ". $requestjoin->id . " Has been denied by Event", 
             "We are so sorry to hear about that 😢");
 
             return true;
@@ -485,7 +485,7 @@ class EventManager {
 
             NotifyService::getNotifyManager()->userNoti($user_id, 
             'noti', 
-            "Event Request id : ". $request_id . " Has been denied by Admin", 
+            "Event Request id : ". $request_id . " Has been denied by Event", 
             "We are so sorry to hear about that 😢");
 
             return true;
@@ -509,7 +509,7 @@ class EventManager {
              
             NotifyService::getNotifyManager()->eventNoti($event_team->event_id, 
             'noti', 
-            "Event Team name : ". $event_team->name . " Has been added by Admin", 
+            "Event Team name : ". $event_team->name . " Has been added by Event", 
             "Why don't you join this team 😊");
 
 
@@ -528,7 +528,7 @@ class EventManager {
 
             NotifyService::getNotifyManager()->eventNoti($event_team->event_id, 
             'noti', 
-            "Event Team name : ". $event_team->name . " Has been edited by Admin", 
+            "Event Team name : ". $event_team->name . " Has been edited by Event", 
             "Do you like the new Team 😊");
 
             return true;
@@ -557,7 +557,7 @@ class EventManager {
 
             NotifyService::getNotifyManager()->eventNoti($event_team_event_id, 
             'noti', 
-            "Event Team name : ". $event_team_name . " Has been removed by Admin", 
+            "Event Team name : ". $event_team_name . " Has been removed by Event", 
             "See if You are in this Team? 🥹");
 
 
