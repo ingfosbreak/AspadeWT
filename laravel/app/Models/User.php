@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\ItemNotFoundException;
+use Illuminate\Database\Eloquent\ModelNotFoundException; 
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -78,7 +80,9 @@ class User extends Authenticatable
     }
 
     publIc function getEventTeamName(string $event_id) {
+        
         return EventTeam::find($this->getEventTeamId($event_id))->name;
+            
     }
 
 

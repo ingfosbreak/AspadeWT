@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("name");
             $table->integer("num_member");
             $table->integer("num_staff");
-            $table->enum('category',['outdoor','indoor','consert','sport','academic']);
+            $table->enum('category',['outdoor','indoor','concert','sport','academic']);
             $table->integer("budget");
             $table->date('date_register');
             $table->date('date_start');

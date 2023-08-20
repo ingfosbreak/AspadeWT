@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Services\EventService;
+use App\Services\NotifyService;
 use App\Models\Event;
 use App\Models\EventAnnouncement;
 use App\Models\RequestJoinEvent;
@@ -53,6 +54,7 @@ class EventController extends Controller
 
         $success = EventService::getEventManager()->requestCreateEvent($request);
         if ($success != false) {
+            
             return redirect()->route('user.main')->with('success','create success');
         }
         
