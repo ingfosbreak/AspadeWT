@@ -153,9 +153,7 @@ public function getEventCategoryCreatePage()
         return false;
     }
 
-<<<<<<< HEAD
     
-=======
     public function approveReportRequest(Request $request) {
 
         $success = EventService::getEventManager()->approveReportRequest($request);
@@ -188,5 +186,4 @@ public function getEventCategoryCreatePage()
         return false;
 
     }
->>>>>>> e600cade70c67ccb9b68215e73596fdb9b7abf39
 }

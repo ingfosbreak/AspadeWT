@@ -171,14 +171,11 @@ Route::middleware(['web'])->group(function () {
             // เพิ่มเส้นทางสำหรับการสร้างหมวดหมู่
             Route::post('/admin/category', [AdminController::class, 'storeCategory'])->name('admin.category.store');
             Route::get('/admin/complaint', [AdminController::class, 'getEventComplaintPage'])->name("admin.complaint");
-<<<<<<< HEAD
             Route::get('/admin/category', [AdminController::class, 'getEventCategoryPage'])->name("admin.category");
             Route::get('/admin/category/create', [AdminController::class, 'getEventCategoryCreatePage'])->name("admin.category_create");
             Route::get('/category/{category}', [CategoryController::class, 'show'])->name('category.show');
-=======
             Route::get('/admin/complaint/{event}',[AdminController::class, 'getEventComplaintDetailPage'])->name("admin.complaintDetail");
             Route::get('/admin/complaint/{event}/behide',[AdminController::class, 'getEventComplaintDetailBehidePage'])->name("admin.complaintDetail.behide");
->>>>>>> e600cade70c67ccb9b68215e73596fdb9b7abf39
 
             Route::post('/admin/complaint/approve', [AdminController::class, 'approveReportRequest'])->name('admin.report.approve');
             Route::post('/admin/complaint/deny', [AdminController::class, 'denyReportRequest'])->name('admin.report.deny');

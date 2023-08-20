@@ -51,7 +51,20 @@ class EventController extends Controller
 
     //requestCreateEvent
     public function requestCreateEvent(Request $request) {
-
+        $request->validate([
+            'name' => ['required', 'string', 'min:7', 'max:40'],
+            'num_member' => ['required', 'integer', 'min:10', 'max:500'],
+            'num_staff' => ['required', 'integer', 'min:10', 'max:100'],
+            'role' => ['required', 'string', 'min:2'],
+            'budget' => ['required', 'integer', 'min:10000', 'max:200000'],
+            'date_start'  =>  'required|date',
+            'date_register' => 'required|date|before_or_equal:date_start',
+            'date_close'    =>  'required|date|after_or_equal:date_start',
+            'location' => ['required', 'string', 'min:20', 'max:100'],
+            'multiple_files' => 'required|max:10000|mimes:jpeg,jpg,pdf,png',
+            'description' => ['required', 'string', 'min:30', 'max:200']
+        ]);
+        
         $success = EventService::getEventManager()->requestCreateEvent($request);
         if ($success != false) {
             
