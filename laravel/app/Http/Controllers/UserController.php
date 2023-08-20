@@ -81,6 +81,16 @@ class UserController extends Controller
             'notifies' => $notifies
         ]);
     }
+    public function removeNotify(Request $request){
+        $success = UserService::getUserManager()->removeNotify($request);
+        if ($success != false) {
+            return true;
+        }
+
+        return false;
+
+
+    }
 
     
 }

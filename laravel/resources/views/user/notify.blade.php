@@ -27,6 +27,10 @@
                     - {{ $notify->type }} <cite title="Source Title">Source Title</cite>
                 </figcaption>
             </div>
+
+            <button type="button" onClick="remove({{$notify->id}})"
+                            class="inline-block px-3.5 py-1 border-2 border-green-600 text-green-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                            data-mdb-ripple="true">Remove</button>
         </div>
         @endforeach
         <!-- end -->
@@ -34,4 +38,11 @@
     </div>
 </body>
 
+<script>
+    function remove(id) {
+        removeAjax('POST','{{route('user.notify.remove')}}', '{{csrf_token()}}', {'notify_id':id});
+        window.location.reload(true);
+    }
+</script>
 @endsection
+
