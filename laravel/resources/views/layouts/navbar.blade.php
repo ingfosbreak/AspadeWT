@@ -22,7 +22,7 @@
             <nav class="nav navbar-nav font-semibold text-lg">
                 <ul class="flex items-start">
 
-                    <a href="{{ route('user.myEventHistory.inProgress')}}">
+                    <a href="{{ route('user.myOwnEvent')}}">
                         <li
                             class="p-4 border-b-2 border-slate-500 border-opacity-0 hover:border-opacity-100 hover:text-slate-800 duration-200 cursor-pointer active">
                             My Own event

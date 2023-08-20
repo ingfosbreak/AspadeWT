@@ -76,6 +76,12 @@ class UserController extends Controller
             'events' => $events
         ]);
     }
+    public function getEventHeader(){
+        $events = Auth::getUser()->user_pivots;
+        return view('user.myOwnEvent', [
+            'events' => $events
+        ]);
+    }
     public function getNotify(){
         $notifies = Auth::getUser()->noti;
         return view('user.notify', [
@@ -89,8 +95,6 @@ class UserController extends Controller
         }
 
         return false;
-
-
     }
 
     
