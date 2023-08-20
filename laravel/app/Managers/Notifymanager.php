@@ -4,6 +4,7 @@ namespace App\Managers;
 
 use App\Models\EventAnnouncement;
 use App\Models\UserNoti;
+use App\Models\Complaint;
 
 use Illuminate\Http\Request;
 
@@ -32,6 +33,29 @@ class NotifyManager {
         $announce->detail = $detail;
         $announce->save();
         
+    }
+
+    public function reportEvent(Request $request) {
+        // "name":null,"description":null,"event_id":"1","user_id":"2"}
+        $report = new Complaint();
+        $report->user_id = $request->get('user_id');
+        $report->event_id = $request->get('event_id');
+        $report->name = $request->get('name');
+        $report->description = $request->get('description');
+
+        if ($report->save()) {
+
+            $this->userNoti($request->get('user_id'),
+            'noti', 
+            "You have Report Event Id : ". $request->get('event_id'),
+            "Your report is currently on Hold !!");
+            
+            return true;
+        }
+
+        return false;
+
+
     }
 
 
