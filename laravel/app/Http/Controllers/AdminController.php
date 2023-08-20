@@ -121,7 +121,7 @@ public function getEventCategoryCreatePage()
     
     
     public function approveEventRequest(Request $request) {
-        
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->approveEventRequest($request);
         if ($success != false) {
             return true;
@@ -132,7 +132,7 @@ public function getEventCategoryCreatePage()
     }
         
     public function denyEventRequest(Request $request) {
-
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->denyEventRequest($request);
         if ($success != false) {
             return true;
@@ -144,7 +144,7 @@ public function getEventCategoryCreatePage()
 
 
     public function removeEventRequest(Request $request) {
-
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->removeEventRequest($request);
         if ($success != false) {
             return true;
@@ -155,7 +155,7 @@ public function getEventCategoryCreatePage()
 
     
     public function approveReportRequest(Request $request) {
-
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->approveReportRequest($request);
         if ($success != false) {
             return true;
@@ -166,7 +166,7 @@ public function getEventCategoryCreatePage()
     }
 
     public function denyReportRequest(Request $request) {
-
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->denyReportRequest($request);
         if ($success != false) {
             return true;
@@ -177,7 +177,7 @@ public function getEventCategoryCreatePage()
     }
 
     public function removeReportRequest(Request $request) {
-
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->removeReportRequest($request);
         if ($success != false) {
             return true;

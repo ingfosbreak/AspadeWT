@@ -32,7 +32,7 @@ class ProcessController extends Controller
     }
 
     public function createProcess(Request $request) {
-        
+        $request->validate(['data' => 'required']);
         $success = ProcessService::getProcessManager()->createProcess($request);
         if ($success != false) {
             return true;
@@ -43,7 +43,7 @@ class ProcessController extends Controller
     }
 
     public function editProcess(Request $request) {
-    
+        $request->validate(['data' => 'required']);
         $success = ProcessService::getProcessManager()->editProcess($request);
         if ($success != false) {
             return true;
@@ -54,7 +54,7 @@ class ProcessController extends Controller
     }
 
     public function updateProcess(Request $request) {
-
+        $request->validate(['data' => 'required']);
         $success = ProcessService::getProcessManager()->updateProcess($request);
         if ($success != false) {
             return true;
@@ -64,7 +64,7 @@ class ProcessController extends Controller
     }
     
     public function removeProcess(Request $request) {
-
+        $request->validate(['data' => 'required']);
         $success = ProcessService::getProcessManager()->removeProcess($request);
         if ($success != false) {
             return true;

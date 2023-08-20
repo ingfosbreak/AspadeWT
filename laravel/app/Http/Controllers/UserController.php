@@ -89,6 +89,7 @@ class UserController extends Controller
         ]);
     }
     public function removeNotify(Request $request){
+        $request->validate(['data' => 'required']);
         $success = NotifyService::getNotifyManager()->removeNotify($request);
         if ($success != false) {
             return true;

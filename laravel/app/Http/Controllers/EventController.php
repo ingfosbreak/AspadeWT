@@ -40,7 +40,7 @@ class EventController extends Controller
 
     // Event
     public function editPublistEvent(Request $request) {
-        
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->editPublistEvent($request);
         if ($success != false) {
             return true;
@@ -76,16 +76,22 @@ class EventController extends Controller
 
     //requestjoinEventMember
     public function requestjoinEventMember(Request $request ,Event $event) {
-        
+        $request->validate([
+            'multiple_files' => 'required|max:10000|mimes:jpeg,jpg,pdf,png',
+            'description' => ['required', 'string', 'min:30', 'max:200']
+        ]);
         $success = EventService::getEventManager()->requestjoinEventMember($request,$event);
         if ($success != false) {
             return redirect()->route('user.main')->with('success','create success');
         }
-        
         return false;
     }
     //requestjoinEventStaff
     public function requestjoinEventStaff(Request $request ,Event $event) {
+        $request->validate([
+            'multiple_files' => 'required|max:10000|mimes:jpeg,jpg,pdf,png',
+            'description' => ['required', 'string', 'min:30', 'max:200']
+        ]);
         $success = EventService::getEventManager()->requestjoinEventStaff($request,$event);
         if ($success != false) {
             return redirect()->route('user.main')->with('success','create success');
@@ -100,7 +106,7 @@ class EventController extends Controller
     // EventInfo
 
     public function createEventInfo(Request $request) {
-        
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->createEventInfo($request);
         if ($success != false) {
             return true;
@@ -110,7 +116,7 @@ class EventController extends Controller
     }
 
     public function editEventInfo(Request $request) {
-
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->editEventInfo($request);
         if ($success != false) {
             return true;
@@ -121,7 +127,7 @@ class EventController extends Controller
     }
 
     public function updatePosEventInfo(Request $request) {
-
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->editOrderInfo($request);
         if ($success != false) {
             return true;
@@ -131,9 +137,8 @@ class EventController extends Controller
 
 
     }
-
     public function editTypeEventInfo(Request $request) {
-
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->editTypeInfo($request);
         if ($success != false) {
             return true;
@@ -186,7 +191,7 @@ class EventController extends Controller
     }
 
     public function addEventTeam(Request $request) {
-
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->addEventTeam($request);
         if ($success != false) {
             return true;
@@ -197,7 +202,7 @@ class EventController extends Controller
     }
 
     public function removeEventTeam(Request $request) {
-
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->removeEventTeam($request);
         if ($success != false) {
             return true;
@@ -208,7 +213,7 @@ class EventController extends Controller
     }
 
     public function editEventTeam(Request $request) {
-
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->editEventTeam($request);
         if ($success != false) {
             return true;
@@ -219,7 +224,7 @@ class EventController extends Controller
     }
 
     public function editMemberTeam(Request $request) {
-
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->changeUserTeam($request);
         if ($success != false) {
             return true;
@@ -230,7 +235,7 @@ class EventController extends Controller
     
 
     public function approveJoinRequest(Request $request) {
-        
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->approveJoinRequest($request);
         if ($success != false) {
             return true;
@@ -241,7 +246,7 @@ class EventController extends Controller
     }
 
     public function denyJoinRequest(Request $request) {
-
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->denyJoinRequest($request);
         if ($success != false) {
             return true;
@@ -252,7 +257,7 @@ class EventController extends Controller
     }
 
     public function removeJoinRequest(Request $request) {
-        
+        $request->validate(['data' => 'required']);
         
         $success = EventService::getEventManager()->removeJoinRequest($request);
         if ($success != false) {
@@ -264,7 +269,7 @@ class EventController extends Controller
     }
 
     public function editImage(Request $request, Event $event) {
-
+        $request->validate(['data' => 'required']);
         
             
         $status = EventService::getEventManager()->editImage($request,$event);
@@ -281,7 +286,7 @@ class EventController extends Controller
     }
 
     public function editEventInformation(Request $request, Event $event) {
-
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->editEventInformation($request,$event);
         if ($success != false) {
             return redirect()->route('event.information',['event'=>$event])->with('success', 'EventUpdate');
@@ -293,7 +298,7 @@ class EventController extends Controller
 
 
     public function createAn(Request $request, Event $event) {
-        
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->createAn($request,$event);
         if ($success != false) {
             return redirect()->route('event.main.main',['event'=> $event])->with('success', 'AnCreate');
@@ -304,7 +309,7 @@ class EventController extends Controller
 
 
     public function removeAn(Request $request) {
-
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->removeAn($request);
         if ($success != false) {
             return true;
@@ -315,7 +320,7 @@ class EventController extends Controller
 
 
     public function editAn(Request $request, EventAnnouncement $announce, Event $event) {
-
+        $request->validate(['data' => 'required']);
         $success = EventService::getEventManager()->editAn($request,$announce);
         if ($success != false) {
             return redirect()->route('event.main.main',['event'=> $event])->with('success', 'AnCreate');
@@ -326,7 +331,7 @@ class EventController extends Controller
     
 
     public function reportEvent(Request $request) {
-    
+        $request->validate(['data' => 'required']);
         $success = NotifyService::getNotifyManager()->reportEvent($request);
 
         if ($success) {
