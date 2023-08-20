@@ -18,6 +18,7 @@ use App\Models\RequestJoinEventFile;
 use App\Models\RequestCreateEvent;
 use App\Models\RequestCreateEventConfirmationFile;
 use App\Services\FileService;
+use App\Services\CertificateService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ItemNotFoundException;
 use App\Services\NotifyService;
@@ -938,6 +939,8 @@ class EventManager {
                     
                 
             }
+
+            CertificateService::getCertificateManager()->createCertificate($event);
 
 
             NotifyService::getNotifyManager()->eventNoti($event->id, 
