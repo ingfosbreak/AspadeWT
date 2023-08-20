@@ -110,6 +110,8 @@
         </div>
     </div>
 
+    {{ $events->links() }}
+
 </div>
 
 <style>

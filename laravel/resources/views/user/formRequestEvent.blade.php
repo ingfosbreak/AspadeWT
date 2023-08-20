@@ -61,7 +61,6 @@
                                     <select type="text" id="category" name="category" 
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Choose a role for joining" required="">
-                                        <option selected>-</option>
                                         <option value="outdoor">outdoor</option>
                                         <option value="indoor">indoor</option>
                                         <option value="concert">concert</option>
@@ -71,7 +70,7 @@
                                     <label for="category"
                                         class="absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                                         activity type</label>
-                                        @error('role')<div class= "text-xs text-red-600">{{ $message }}</div>@enderror
+                                        @error('category')<div class= "text-xs text-red-600">{{ $message }}</div>@enderror
                                 </div>
 
                                 <!-- budget -->

@@ -292,6 +292,7 @@ class EventManager {
             $event->name = $request->name;
             $event->num_member = $request->num_member;
             $event->num_staff = $request->num_staff;
+            $event->category = $request->category;
             $event->budget = $request->budget;
             $event->date_register = $request->date_register;
             $event->date_start = $request->date_start;
@@ -664,6 +665,7 @@ class EventManager {
         $event->num_member = $request->get('num_member');
         $event->num_staff = $request->get('num_staff');
         $event->budget = $request->get('budget');
+        $event->category = $request->get('category');
         $event->date_register = $request->get('date_register');
         $event->date_start = $request->get('date_start');
         $event->date_close = $request->get('date_close');
@@ -724,108 +726,159 @@ class EventManager {
     }
 
 
+    // public function approveReportRequest(Request $request) {
+    //     $complaint = Complaint::find((int) $request->get('data')['request_id']);
+    //     $complaint->status = "approved";
+
+
+    //     //remove member of event
+    //     $team_members = EventUser::get()->where('event_id',$complaint->event_id);
+
+
+    //     foreach($team_members as $member) {
+    //         NotifyService::getNotifyManager()->userNoti($member->user_id, 
+    //         'noti', 
+    //         "Event name : ". $complaint->event->name . "Has been removed by Admin", 
+    //         "Your request to join has been removed too xd 🥹");
+
+    //         $member->delete();
+    //     }
+
+    //     //remove Team
+    //     $teams = EventTeam::get()->where('event_id',$complaint->event_id);
+
+    //     foreach($teams as $team) {
+    //         $team->delete();
+    //     }
+
+    //     //remove Info
+    //     $infos = EventInfo::get()->where('event_id',$complaint->event_id);
+
+    //     foreach($infos as $info) {
+    //         $info->delete();
+    //     }
+
+    //     //remove Image
+    //     $images = EventImage::get()->where('event_id',$complaint->event_id);
+
+    //     foreach($images as $image) {
+    //         $image->delete();
+    //     }
+
+    //     //remove Announcement
+    //     $announces = EventAnnouncement::get()->where('event_id',$complaint->event_id);
+
+    //     foreach($announces as $announce) {
+    //         $announce->delete();
+    //     }
+
+    //     //remove certificates
+    //     $certificate = Certificate::get()->where('event_id',$complaint->event_id);
+
+    //     foreach($certificate as $certi) {
+    //         $certi->delete();
+    //     }
+
+    //     //catefory lists
+    //     $category_lists = EventCategoryList::get()->where('event_id',$complaint->event_id);
+
+    //     foreach($category_lists as $cate) {
+    //         $cate->delete();
+    //     }
+
+    //     //process
+    //     $process = Process::get()->where('event_id',$complaint->event_id);
+
+    //     foreach($process as $pro) {
+    //         $pro->delete();
+    //     }
+
+    //     //request join 
+    //     $joins = RequestJoinEvent::get()->where('event_id',$complaint->event_id);
+
+    //     foreach($joins as $join) {
+    //         $join->delete();
+    //     }
+
+
+    //     //remove event
+    //     $event = Event::find($complaint->event_id);
+    //     $usernoti = $complaint->user_id;
+    //     $namenoti = $complaint->name;
+    //     $eventid = $complaint->event_id;
+        
+    //     if ($complaint->delete()) {
+
+    //         //remove complaint 
+    //         $complaints = Complaint::get()->where('event_id',$eventid);
+
+    //         foreach ($complaints as $complaint) {
+    //             $complaint->delete();
+    //         }
+
+    //         $event->delete();
+
+    //         NotifyService::getNotifyManager()->userNoti($usernoti, 
+    //         'noti', 
+    //         "Report Event name : ". $namenoti . "  request Has been approved by Admin", 
+    //         "Your request has been approved 👌");
+
+    //         return true;
+    //     }
+
+    //     return false;
+    // }
+
     public function approveReportRequest(Request $request) {
         $complaint = Complaint::find((int) $request->get('data')['request_id']);
         $complaint->status = "approved";
-
-
-        //remove member of event
-        $team_members = EventUser::get()->where('event_team_id',$complaint->event_id);
-
-
-        foreach($team_members as $member) {
-            NotifyService::getNotifyManager()->userNoti($member->user_id, 
-            'noti', 
-            "Event name : ". $complaint->event->name . "Has been removed by Admin", 
-            "Your request to join has been removed too xd 🥹");
-
-            $member->delete();
+    
+        $event_id = $complaint->event_id;
+    
+        $relatedModels = [
+            EventUser::class,
+            EventTeam::class,
+            EventInfo::class,
+            EventImage::class,
+            EventAnnouncement::class,
+            Certificate::class,
+            EventCategoryList::class,
+            Process::class,
+            RequestJoinEvent::class,
+        ];
+    
+        foreach ($relatedModels as $relatedModel) {
+            $items = $relatedModel::where('event_id', $event_id)->get();
+            foreach ($items as $item) {
+                $item->delete();
+            }
         }
-
-        //remove Team
-        $teams = EventTeam::get()->where('event_id',$complaint->event_id);
-
-        foreach($teams as $team) {
-            $team->delete();
-        }
-
-        //remove Info
-        $infos = EventInfo::get()->where('event_id',$complaint->event_id);
-
-        foreach($infos as $info) {
-            $info->delete();
-        }
-
-        //remove Image
-        $images = EventImage::get()->where('event_id',$complaint->event_id);
-
-        foreach($images as $image) {
-            $image->delete();
-        }
-
-        //remove Announcement
-        $announces = EventAnnouncement::get()->where('event_id',$complaint->event_id);
-
-        foreach($announces as $announce) {
-            $announce->delete();
-        }
-
-        //remove certificates
-        $certificate = Certificate::get()->where('event_id',$complaint->event_id);
-
-        foreach($certificate as $certi) {
-            $certi->delete();
-        }
-
-        //catefory lists
-        $category_lists = EventCategoryList::get()->where('event_id',$complaint->event_id);
-
-        foreach($category_lists as $cate) {
-            $cate->delete();
-        }
-
-        //process
-        $process = Process::get()->where('event_id',$complaint->event_id);
-
-        foreach($process as $pro) {
-            $pro->delete();
-        }
-
-        //request join 
-        $joins = RequestJoinEvent::get()->where('event_id',$complaint->event_id);
-
-        foreach($joins as $join) {
-            $join->delete();
-        }
-
-
-        //remove event
-        $event = Event::find($complaint->event_id);
+    
+        $event = Event::find($event_id);
         $usernoti = $complaint->user_id;
         $namenoti = $complaint->name;
-        $eventid = $complaint->event_id;
-        
+    
         if ($complaint->delete()) {
-
-            //remove complaint 
-            $complaints = Complaint::get()->where('event_id',$eventid);
-
+            $complaints = Complaint::where('event_id', $event_id)->get();
             foreach ($complaints as $complaint) {
                 $complaint->delete();
             }
-
+    
             $event->delete();
-
-            NotifyService::getNotifyManager()->userNoti($usernoti, 
-            'noti', 
-            "Report Event name : ". $namenoti . "  request Has been approved by Admin", 
-            "Your request has been approved 👌");
-
+    
+            NotifyService::getNotifyManager()->userNoti(
+                $usernoti, 
+                'noti', 
+                "Report Event name : ". $namenoti . "  request Has been approved by Admin", 
+                "Your request has been approved 👌"
+            );
+    
             return true;
         }
-
+    
         return false;
     }
+    
 
     public function denyReportRequest(Request $request) {
         $complaint = Complaint::find((int) $request->get('data')['request_id']);

@@ -312,12 +312,13 @@ class EventController extends Controller
     }
 
     public function editEventInformation(Request $request, Event $event) {
-        
+
         $request->validate([
             'name' => ['required', 'string', 'min:1', 'max:1000'],
             'num_member' => ['required', 'integer','min:1','max:100000'],
             'num_staff' => ['required', 'integer','min:1' ,'max:1000'],
             'budget' => ['required', 'integer', 'max:100000000'],
+            'category' => ['required', 'string'],
             'date_start'  =>  'required|date',
             'date_register' => 'required|date|before_or_equal:date_start',
             'date_close'    =>  'required|date|after_or_equal:date_start',

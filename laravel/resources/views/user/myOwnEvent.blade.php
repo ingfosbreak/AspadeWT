@@ -74,7 +74,7 @@
                 <div class="flex flex-col gap-1 ">
 
                     <!-- Image -->
-                    <a href="{{ route('event.information',['event'=> $event])}}" class="bg-purple-500 ">
+                    <a href="{{ route('event.information',['event'=> $event->event])}}" class="bg-purple-500 ">
                         @if ($event->event_image != null)
                         <img src="{{ asset('storage/'.$event->event_image->image_path) }}"
                             class=" hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card object-contain h-96 w-72 object-fill" />

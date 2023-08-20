@@ -41,7 +41,7 @@
 <script>
     function remove(id) {
         removeAjax('POST','{{route('user.notify.remove')}}', '{{csrf_token()}}', {'notify_id':id});
-        // window.location.reload(true);
+        window.location.reload(true);
     }
 </script>
 @endsection
