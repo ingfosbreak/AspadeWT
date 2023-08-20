@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\UserService;
+use App\Services\NotifyService;
 use App\Models\User;
 
 class RegisterController extends Controller
@@ -46,12 +47,17 @@ class RegisterController extends Controller
 
             $userfull = UserService::getUserManager()->createUserFull($request, $userid);
 
+            NotifyService::getNotifyManager()->userNoti($userid, 
+            'noti', 
+            "Hello new User!!!", 
+            "Welcome to AspadeWT Event Organizer!!!");
+
             if ($userfull) {
 
                 // if ($request->session()->exists('user_id')) {
                 //     $request->session()->forget('user_id');
                 // }
-
+                
                 return redirect()->route('login')->with('success','You have successful registered');
             }
 

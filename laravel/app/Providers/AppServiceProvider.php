@@ -10,6 +10,7 @@ use App\Models\Event;
 use App\Models\User;
 use App\Models\Process;
 use App\Models\UserToken;
+use App\Models\RequestCreateEvent;
 use Carbon\Carbon;
 
 
@@ -30,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
         
         view()->share([
             'time' => Carbon::today()->toFormattedDateString(),
-            'AllEvents' => Event::get()->count(),
+            'AllEvents' => RequestCreateEvent::get()->count(),
             'AllUsers' => User::get()->count(),
             'AllProcesses' => Process::get()->count(),
             'AllTokens' => UserToken::get()->count(),

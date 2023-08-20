@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Managers\InformManager;
+use App\Managers\NotifyManager;
 
 
-class InformService {
+class NotifyService {
 
 
     private static $instance = null;
@@ -15,11 +15,11 @@ class InformService {
    
 
     /* Singleton Service */
-    public static function getInformManager() {
+    public static function getNotifyManager() {
       
       if (self::$instance == null)
       {
-        self::$instance = new InformManager();
+        self::$instance = new NotifyManager();
       }
    
       return self::$instance;
