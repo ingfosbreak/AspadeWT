@@ -57,6 +57,16 @@ class NotifyManager {
 
 
     }
+    public function removeNotify(Request $request) {
+        
+        $notify = UserNoti::find((int) $request->get('data')['notify_id']);
+        
+        if ($notify->delete()) {
+            return true;
+        }
+        return false;
+    }
+
 
     
 

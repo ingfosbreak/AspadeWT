@@ -145,7 +145,7 @@ Route::middleware(['web'])->group(function () {
 
             // Notify
             Route::get('/user/Notify', [UserController::class, 'getNotify'])->name('user.notify');
-            Route::post('/user/Notify', [UserController::class, 'removeNotify'])->name('user.notify.remove');
+            Route::post('/user/Notify/remove', [UserController::class, 'removeNotify'])->name('user.notify.remove');
             
 
         });

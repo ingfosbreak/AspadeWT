@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use App\Services\NotifyService;
 use Illuminate\View\View;
 use App\Models\Event;
 use App\Models\EventUser;
@@ -82,7 +83,7 @@ class UserController extends Controller
         ]);
     }
     public function removeNotify(Request $request){
-        $success = UserService::getUserManager()->removeNotify($request);
+        $success = NotifyService::getNotifyManager()->removeNotify($request);
         if ($success != false) {
             return true;
         }
