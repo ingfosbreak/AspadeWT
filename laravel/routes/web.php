@@ -138,10 +138,14 @@ Route::middleware(['web'])->group(function () {
             Route::post('/admin/request/deny', [AdminController::class, 'denyEventRequest'])->name('admin.request.deny');
             Route::post('/admin/request/delete', [AdminController::class,'removeEventRequest'])->name('remove.eventrequest');
             
-            
-                
+            // เพิ่มเส้นทางสำหรับการสร้างหมวดหมู่
+            Route::post('/admin/category', [AdminController::class, 'storeCategory'])->name('admin.category.store');
             Route::get('/admin/complaint', [AdminController::class, 'getEventComplaintPage'])->name("admin.complaint");
+            Route::get('/admin/category', [AdminController::class, 'getEventCategoryPage'])->name("admin.category");
+            Route::get('/admin/category/create', [AdminController::class, 'getEventCategoryCreatePage'])->name("admin.category_create");
+            Route::get('/category/{category}', [CategoryController::class, 'show'])->name('category.show');
 
+            
             
             
         
