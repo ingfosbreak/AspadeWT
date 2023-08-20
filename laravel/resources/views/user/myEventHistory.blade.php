@@ -4,10 +4,39 @@
 
 <!-- component -->
 
-<body class=" bg-slate-900 min-h-screen antialiased">
+<body class=" bg-white min-h-screen antialiased">
 
-    <h1 class="text-white text-5xl text-center m-10">My Event History</h1>
+    <h1 class="text-black text-5xl text-center m-10">My Event History</h1>
+
     <div class=m-12>
+    
+        <div>
+            <div class="flex flex-wrap">
+                <!-- navbar -->
+                <nav class="flex justify-between bg-white text-black w-screen px-5 xl:px-12 items-center">
+                    <!-- navigation -->
+                    <nav class="nav navbar-nav font-semibold text-lg">
+                        <ul class="flex items-start">
+
+                            <a href="{{ route('user.myEventHistory.participant')}}">
+                                <li
+                                    class="p-2 border-b-2 border-slate-500 border-opacity-0 hover:border-opacity-100 hover:text-slate-800 duration-200 cursor-pointer active">
+                                    participant
+                                </li>
+                            </a>
+
+                            <a href="{{ route('user.myEventHistory.staff')}}">
+                                <li
+                                    class="p-2 border-b-2 border-slate-500 border-opacity-0 hover:border-opacity-100 hover:text-slate-800 duration-200 cursor-pointer active">
+                                    Staff
+                                </li>
+                            </a>
+                        </ul>
+                    </nav>
+                </nav>
+            </div>
+        </div>
+        @if (Request::url() == route('user.myEventHistory.participant'))
         <!-- start  loop item for show history-->
         <div class="bg-gray-100 mx-auto border-gray-500 border text-gray-700 m-5 h-30 rounded-md">
             <div class="flex p-3 border-l-8 rounded-lg border-yellow-600">
@@ -52,6 +81,8 @@
             </div>
         </div>
         <!-- end -->
+    @endif
+    @if (Request::url() == route('user.myEventHistory.staff'))
         <!-- start  -->
         <div class="bg-gray-100 mx-auto border-gray-500 border rounded-sm  text-gray-700 m-5">
             <div class="flex p-3  border-l-8 border-green-600">
@@ -98,6 +129,7 @@
             </div>
         </div>
         <!-- end -->
+    @endif
         <!-- start  -->
         <div class="bg-gray-100 mx-auto border-gray-500 border rounded-sm  text-gray-700 m-5">
             <div class="flex p-3  border-l-8 border-red-600">

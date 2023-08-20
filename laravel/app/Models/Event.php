@@ -45,20 +45,21 @@ class Event extends Model
     
     // Eventlol
     public static function getNewEvent() {
-        return Event::get()->sortByDesc('created_at');
+        return Event::paginate(15)->sortByDesc('created_at');
     }
     
     public static function getPopular() {
         return Event::withCount('requestJoinEvent')->get()->sortByDesc('request_join_event_count')->take(6);
     }
     public static function getUpComingEvent() {
-        $events = Event::whereDate('date_start', '>', today())->get();
+        $events = Event::whereDate('date_start', '>', today())->paginate(15);
         
             foreach ($events as $event) {
                 $event->upcoming_count = $event->hasStarted() ? 0 : Carbon::parse($event->date_start)->diffInDays(now());
             }
         return $events->sortBy('upcoming_count');
     }
+
 
 
     public function isUserInEvent(string $userid){

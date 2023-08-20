@@ -86,7 +86,6 @@ Route::middleware(['web'])->group(function () {
             Route::get('/event/infomation/{event}',[EventController::class, 'getInfoEventPage'])->name('event.information');
             Route::get('/event/main/infomation/{event}',[EventController::class, 'getInfoEventPageFormMainEvent'])->name('event.main.information');
             Route::get('/event/{event}/form',[EventController::class, 'getJoinEventFormPage'])->name('event.formJoinEvent');
-            Route::get('/user/myEventHistory', function (){return view('user.myEventHistory');})->name('user.myEventHistory');
             Route::get('/event/{event}/kanban', [ProcessController::class, 'getEventKanbanPage'])->name('event.kanban');
             Route::get('/event/{event}/kanban/{process}', [ProcessController::class, 'getEventKanbanTeamPage'])->name('event.kanban.team');
             Route::post('/event/{process}/kanban/{team}/{event}', [ProcessController::class, 'editKanbanTeam'])->name('event.kanban.edit');
@@ -139,7 +138,9 @@ Route::middleware(['web'])->group(function () {
             Route::post('/event/request/deny', [EventController::class, 'denyJoinRequest'])->name('event.request.deny');
             Route::post('/event/request/remove', [EventController::class, 'removeJoinRequest'])->name('event.request.remove');
 
-            
+            // EventHistory
+            Route::get('/user/myEventHistory/participant', function (){return view('user.myEventHistory');})->name('user.myEventHistory.participant');
+            Route::get('/user/myEventHistory/staff', function (){return view('user.myEventHistory');})->name('user.myEventHistory.staff');
 
             
             
