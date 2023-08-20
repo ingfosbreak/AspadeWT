@@ -312,4 +312,11 @@ class EventController extends Controller
     }
     
 
+    public function reportEvent(Request $request) {
+    
+        NotifyService::getNotifyManager()->reportEvent($request);
+
+        return $request;
+    }
+
 }
