@@ -56,5 +56,18 @@ class UserController extends Controller
             'events' => $events
         ]);
     }
+    public function getEventInProgress(){
+        $events = Auth::getUser()->getEventInProgress();
+        return view('user.myEventHistory', [
+            'events' => $events
+        ]);
+    }
+    public function getEventSuccess(){
+        $events = Auth::getUser()->getEventSuccess();
+        return view('user.myEventHistory', [
+            'events' => $events
+        ]);
+    }
+
     
 }

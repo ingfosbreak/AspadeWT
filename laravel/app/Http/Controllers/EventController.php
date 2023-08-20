@@ -310,5 +310,6 @@ class EventController extends Controller
         
         return redirect()->back()->with('error.image', 'failed to update');
     }
+    
 
 }

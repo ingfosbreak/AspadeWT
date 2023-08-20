@@ -85,7 +85,12 @@ class User extends Authenticatable
             
     }
 
-
+    publIc function getEventInProgress() {
+        return $this->events->where('status','in-progress');
+    }
+    publIc function getEventSuccess() {
+        return $this->events->where('status','finished');
+    }
 
     public function userFull(): HasOne {
         return $this->hasOne(UserFull::class);

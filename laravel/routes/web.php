@@ -139,9 +139,11 @@ Route::middleware(['web'])->group(function () {
             Route::post('/event/request/remove', [EventController::class, 'removeJoinRequest'])->name('event.request.remove');
 
             // EventHistory
-            Route::get('/user/myEventHistory/participant', function (){return view('user.myEventHistory');})->name('user.myEventHistory.participant');
-            Route::get('/user/myEventHistory/staff', function (){return view('user.myEventHistory');})->name('user.myEventHistory.staff');
+            Route::get('/user/myEventHistory/participant', [UserController::class, 'getEventInProgress'])->name('user.myEventHistory.inProgress');
+            Route::get('/user/myEventHistory/staff', [UserController::class, 'getEventSuccess'])->name('user.myEventHistory.success');
 
+            // Notify
+            Route::get('/user/Notify', function (){return view('user.notify');})->name('user.notify');
             
             
 
