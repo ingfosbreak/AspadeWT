@@ -59,6 +59,8 @@
     <!-- component -->
     
     <div class="flex flex-col mx-auto pt-5 bg-white w-full items-center">
+        @can('view', $event)
+        @can('viewWithRole', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())    
         <div class=" w-full flex justify-end px-20 gap-5 items-center font-bold">
             <button data-modal-target="information-modal" data-modal-toggle="information-modal" type="button" class="flex items-center gap-5">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-megaphone" viewBox="0 0 16 16">
@@ -68,6 +70,8 @@
         </button>
         
         </div>
+        @endcan
+        @endcan
         <h3 class="text-4xl text-gray-700 font-bold mb-6 ml-3 mt-16">Latest News</h3>
         
 
@@ -94,7 +98,10 @@
                                 {{$announce->created_at}}
                             </p>
                         </div>
+                        
                         <p class="text-gray-700 mb-6">{{$announce->detail}}</p>
+                        @can('view', $event)
+                                    @can('viewWithRole', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())   
                         <button type="button" data-modal-target="information-modal-{{$announce->id}}" data-modal-toggle="information-modal-{{$announce->id}}" 
                             class="inline-block px-4 py-1.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
                             data-mdb-ripple="true">Edit</button>
@@ -102,6 +109,8 @@
                         <button type="button" onClick="remove({{$announce->id}})"
                             class="inline-block px-3.5 py-1 border-2 border-purple-600 text-purple-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
                             data-mdb-ripple="true">Remove</button>
+                                @endcan
+                            @endcan
                     </div>
                 </div>
                 <!--  -->
@@ -182,10 +191,15 @@
                                 {{$announce->created_at}}</p>
                         </div>
                         <p class="text-gray-700 mb-6">{{$announce->detail}}</p>
+
+                        @can('view', $event)
+                                    @can('viewWithRole', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())   
                        
                         <button type="button" onClick="remove({{$announce->id}})"
                             class="inline-block px-3.5 py-1 border-2 border-green-600 text-green-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
                             data-mdb-ripple="true">Remove</button>
+                            @endcan
+                        @endcan
                     </div>
                 </div>
             </li>

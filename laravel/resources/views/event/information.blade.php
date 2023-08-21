@@ -303,7 +303,8 @@
                     
                     
                     @can('view', $event)
-                        @can('view', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())    
+                        @can('viewWithRole', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())    
+                        
                         <div class=" flex justify-end px-5  gap-3">
                             <button data-modal-target="information-modal" data-modal-toggle="information-modal" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-sliders2" viewBox="0 0 16 16">
@@ -311,6 +312,7 @@
                                 </svg>
                             </button>
                         </div>
+                        
                         @endcan
                     @endcan
 

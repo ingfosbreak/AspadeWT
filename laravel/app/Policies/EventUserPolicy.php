@@ -24,6 +24,11 @@ class EventUserPolicy
        return in_array($eventUser->event_role, ['header', 'staff']);
     }
 
+    public function viewWithRole(User $user, EventUser $eventUser)
+    {
+        return $eventUser->event_role === 'header';
+    }
+
     /**
      * Determine whether the user can create models.
      */
@@ -37,7 +42,7 @@ class EventUserPolicy
      */
     public function update(User $user, EventUser $eventUser): bool
     {
-        //
+    
     }
 
     /**

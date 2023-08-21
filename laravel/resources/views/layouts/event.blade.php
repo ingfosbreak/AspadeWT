@@ -35,15 +35,18 @@
                     </svg>
                 </button>
             </div>
+            
             <nav :class="{'block': open, 'hidden': !open}" id = "test"
                 class="flex h-full md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
                 <div>
                     <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg  hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                         href="{{ route('event.main.main',['event'=> $event]) }}">Announcement</a>
+                    @can('view', $event)
+                        @can('view', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())    
                     <div @click.away="open = false" class="relative" x-data="{ open: false }">
                         <button @click="open = !open"
                             class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-                            <span>Staff</span>
+                            <span>Workspace</span>
                             <svg fill="currentColor" viewBox="0 0 20 20"
                                 :class="{'rotate-180': open, 'rotate-0': !open}"
                                 class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1">
@@ -62,21 +65,35 @@
                             <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
                                 <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                     href="{{ route('event.kanban',['event'=> $event])}}">Kanban</a>
+                                @can('view', $event)
+                                    @can('viewWithRole', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())        
                                 <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                     href="{{ route('event.team', ['event' => $event])}}">Teams</a>
+                                    @endcan
+                                @endcan
                                 <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                     href="{{ route('event.team.member',['event' => $event])}}">Members</a>
+                                @can('view', $event)
+                                    @can('viewWithRole', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())        
                                 <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                     href="{{ route('event.team.join',['event' => $event])}}">Join Requests</a>
+                                    @endcan
+                                @endcan
                             </div>
                         </div>
                     </div>
+                        @endcan
+                    @endcan
                 </div>
+                    
             
                 <div class="mt-16 ">
-                
+                @can('view', $event)
+                    @can('viewWithRole', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())    
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-green-200 rounded-lg dark-mode:bg-transparent hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline "
                 data-modal-target="popup-modal" data-modal-toggle="popup-modal">Announce Success</a>
+                    @endcan
+                @endcan
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-red-200 rounded-lg dark-mode:bg-transparent hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline "
                         href="{{ route('event.information',['event'=> $event])}}">Back</a>
                 </div>
