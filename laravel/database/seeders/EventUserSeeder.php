@@ -32,7 +32,7 @@ class EventUserSeeder extends Seeder
         $event->event_role = "participant";
         $event->save();
     }
-    for ($x = 61; $x <= 99; $x+=1) {
+    for ($x = 61; $x <= 80; $x+=1) {
         
         $event = new EventUser();
         $event->user_id = $x;
