@@ -128,6 +128,7 @@ class Event extends Model
     public function event_category_list(): HasMany {
         return $this->hasMany(EventCategoryList::class);
     }
+    
     public function categories(): BelongsToMany {
         return $this->belongsToMany(Category::class);
     }

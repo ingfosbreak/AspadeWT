@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string("description"); 
             $table->enum('status',['approved','denied'])->nullable();
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
     }
 
