@@ -13,18 +13,7 @@ class EventUserSeeder extends Seeder
      */
     public function run(): void
     {
-
-        for ($x = 1; $x <= 11; $x+=1) {
-        
-        $event = new EventUser();
-        $event->user_id = $x;
-        $event->event_id = $x;
-        $event->event_role = "header";
-        if($event->user_id != $event->event_id){
-            $event->save();
-        }
-    }
-    for ($x = 2; $x <= 60; $x+=1) {
+    for ($x = 12; $x <= 60; $x+=1) {
         
         $event = new EventUser();
         $event->user_id = $x;
@@ -42,7 +31,7 @@ class EventUserSeeder extends Seeder
     }
 
 
-    for ($x = 3; $x <= 70; $x+=1) {
+    for ($x = 12; $x <= 70; $x+=1) {
         $event = new EventUser();
         $event->user_id = $x;
         $event->event_id = 2;
@@ -58,7 +47,7 @@ class EventUserSeeder extends Seeder
         $event->save();
     }
 
-    for ($x = 4; $x <= 50; $x+=1) {
+    for ($x = 12; $x <= 50; $x+=1) {
         $event = new EventUser();
         $event->user_id = $x;
         $event->event_id = 3;
@@ -74,7 +63,7 @@ class EventUserSeeder extends Seeder
         $event->save();
     }
 
-    for ($x = 5; $x <= 79; $x+=1) {
+    for ($x = 12; $x <= 79; $x+=1) {
         $event = new EventUser();
         $event->user_id = $x;
         $event->event_id = 4;
@@ -90,7 +79,7 @@ class EventUserSeeder extends Seeder
         $event->save();
     }
 
-    for ($x = 1; $x <= 40; $x+=1) {
+    for ($x = 12; $x <= 40; $x+=1) {
         $event = new EventUser();
         $event->user_id = $x;
         $event->event_id = 4;
@@ -105,13 +94,15 @@ class EventUserSeeder extends Seeder
         $event->event_role = "staff";
         $event->save();
     }
-    for ($x = 41; $x <= 48; $x+=1) {
+    for ($x = 1; $x <= 11; $x+=1) {
         
         $event = new EventUser();
         $event->user_id = $x;
-        $event->event_id = 4;
-        $event->event_role = "staff";
-        $event->save();
+        $event->event_id = $x;
+        $event->event_role = "header";
+        if($event->user_id != $event->event_id){
+            $event->save();
+        }
     }
 }
 }
