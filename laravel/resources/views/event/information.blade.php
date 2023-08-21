@@ -283,6 +283,12 @@
                     <!-- Dropdown menu -->
                     <div id="dropdown" class="z-100 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                        
+                        @can('view', Auth::getUser()->requestJoinEvent->where('event_id',$event->id)->first())
+                        <li>
+                            <p>You Current Request is currently on hold!</p>
+                        </li>
+                        @else
                         <li>
                             <a href="{{ route('event.staff.formJoinEvent', ['event' => $event])}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Join As Staff</a>
                         </li>
@@ -290,6 +296,7 @@
                             <a href="{{route('event.formJoinEvent', ['event' => $event])}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Join As Participant</a>
                         </li>
                         </ul>
+                        @endcan
                     </div>
                     <!--  -->
                     @endcan

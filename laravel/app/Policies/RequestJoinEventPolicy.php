@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\RequestJoinEvent;
 use App\Models\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Auth\Access\Response;
 
 class RequestJoinEventPolicy
@@ -21,7 +22,11 @@ class RequestJoinEventPolicy
      */
     public function view(User $user, RequestJoinEvent $requestJoinEvent): bool
     {
-        //
+        if ($requestJoinEvent != null) {
+            return true;
+        }
+
+        return false;
     }
 
     /**

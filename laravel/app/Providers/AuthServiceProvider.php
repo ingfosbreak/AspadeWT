@@ -4,8 +4,13 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use App\Policies\EventAccessPolicy;
+
+use App\Models\Event;
 use App\Policies\EventPolicy;
+use App\Models\EventUser;
+use App\Policies\EventUserPolicy;
+use App\Models\RequestJoinEvent;
+use App\Policies\RequestJoinEventPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -17,6 +22,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Event::class => EventPolicy::class,
         EventUser::class => EventUserPolicy::class,
+        RequestJoinEvent::class => RequestJoinEventPolicy::class,
     ];
 
     /**
