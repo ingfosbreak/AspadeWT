@@ -100,6 +100,11 @@ class UserController extends Controller
 
         return false;
     }
+    public function getCertificatePage(Event $event){
+        return view('user.certificate', [
+            'event' => $event
+        ]);
+    }
 
     
 }

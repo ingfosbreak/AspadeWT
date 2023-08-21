@@ -163,6 +163,8 @@ Route::middleware(['web'])->group(function () {
             //finished event
             Route::post('/event/finish', [EventController::class, 'finishEvent'])->name('event.finish');
 
+            //certificate
+            Route::get('/event/certificate/{event}', [UserController::class, 'getCertificatePage'])->name('user.certificate');
         });
 
 

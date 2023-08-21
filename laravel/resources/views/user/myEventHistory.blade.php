@@ -117,9 +117,9 @@
                     </div>
                 </div>
                 <div >
-                    <img src="https://cdn.discordapp.com/attachments/1135564910131151019/1142727772347826226/pngwing.com.png"
+                    <a href="{{route('user.certificate',['event' =>$event])}} " target="_blank"><img src="https://cdn.discordapp.com/attachments/1135564910131151019/1142727772347826226/pngwing.com.png"
                         class="object-scale-down h-10 m-5">
-                    
+                        </a>
                 </div>
                 <div class="border-l-2 ">
                     <div class="ml-3 my-5 bg-green-600 p-1 w-20 h-50">
@@ -183,9 +183,9 @@
                     </div>
                 </div>
                 <div >
-                    <img src="https://cdn.discordapp.com/attachments/1135564910131151019/1142727772347826226/pngwing.com.png"
+                    <a href="{{route('user.certificate',['event' =>$event])}} " target="_blank"><img src="https://cdn.discordapp.com/attachments/1135564910131151019/1142727772347826226/pngwing.com.png"
                         class="object-scale-down h-10 m-5">
-                    
+                        </a>
                 </div>
                 <div class="border-l-2 ">
                     <div class="ml-3 my-5 bg-green-600 p-1 w-20 h-50">
