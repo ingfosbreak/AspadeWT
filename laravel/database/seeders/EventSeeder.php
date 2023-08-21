@@ -178,5 +178,7 @@ class EventSeeder extends Seeder
         $event->location = "KU";
         $event->description = "เสริมสร้างร่างกายด้วยค่ายออกกำลังกายในเส้นทางนี้";
         $event->save();
+
+        
     }
 }
