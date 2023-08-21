@@ -13,7 +13,7 @@
         <!-- start  loop item for show history-->
         @foreach ($notifies as $notify)
         <div
-            class="block border-2 rounded-lg bg-gray-100 shadow-xl w-3/5 rounded-md px-5">
+            class="block border-2 rounded-lg bg-gray-100 shadow-xl w-3/5 rounded-md px-5 py-2">
             <div class="border-b-2 border-inherit px-6 py-3 text-xl">
                 {{ $notify->name }}
             </div>
@@ -24,7 +24,7 @@
                     </p>
                 </blockquote>
                 <figcaption class="text-sm text-neutral-600 dark:text-neutral-400">
-                    - {{ $notify->type }} <cite title="Source Title">Source Title</cite>
+                    {{ $notify->type }} 
                 </figcaption>
             </div>
 

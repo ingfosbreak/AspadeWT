@@ -11,7 +11,7 @@
                     alt="logo">
             </a>
             @else
-            <a class="text-3xl font-bold font-heading" href="{{route('admin.main')}}">
+            <a class="text-3xl font-bold font-heading" href="{{route('admin.request')}}">
                 <img class="h-16"
                     src="https://media.discordapp.net/attachments/1135564910131151019/1138487250234114109/remove.png?width=1396&height=714"
                     alt="logo">
