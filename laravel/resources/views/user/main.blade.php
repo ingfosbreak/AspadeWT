@@ -109,7 +109,7 @@
                 </a>
 
                 <!-- Games Title -->
-                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm break-words text-gray-700 font-semibold"> {{$event->name}} </a>
+                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm break-words text-gray-700 font-semibold"> <p>{{$event->name}}</p> </a>
 
                 <!-- Viewers -->
                 <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> Start: {{$event->date_start}} </a>
@@ -153,7 +153,7 @@
                 </a>
 
                 <!-- Games Title -->
-                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm break-words text-gray-700 font-semibold"> {{$event->name}} </a>
+                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm break-words text-gray-700 font-semibold"> <p>{{$event->name}}</p> </a>
 
                 <!-- Viewers -->
                 <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> Start: {{$event->date_start}} </a>
@@ -194,7 +194,7 @@
                     @endif
 
                 <!-- Games Title -->
-                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm break-words text-lg text-gray-700 font-semibold"> {{$event->name}} </a>
+                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm break-words text-lg text-gray-700 font-semibold"> <p>{{$event->name}}</p> </a>
 
                 <!-- Viewers -->
                 <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> Start: {{$event->date_start}} </a>
@@ -232,6 +232,17 @@ a{
             display:block;
 
  }
+
+ p {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            word-break: break-all;
+            white-space: normal;
+            display: block;
+            inline-size: 200px;
+            overflow-wrap: break-word;
+
+        }
 </style>
 
 

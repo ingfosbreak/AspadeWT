@@ -85,7 +85,7 @@
                     </a>
 
                     <!-- Games Title -->
-                    <a href="#" class="hover:text-purple-500 text-gray-700 font-semibold"> {{$event->event->name}} </a>
+                    <a href="#" class="hover:text-purple-500 text-gray-700 font-semibold"> <p>{{$event->event->name}}</p> </a>
 
                     <!-- Viewers -->
                     <a href="#" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> {{$event->event->date_start}} </a>
@@ -128,6 +128,17 @@ a {
     display: block;
 
 }
+
+p {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            word-break: break-all;
+            white-space: normal;
+            display: block;
+            inline-size: 250px;
+            overflow-wrap: break-word;
+
+        }
 </style>
 
 @endsection
