@@ -24,12 +24,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {   
-<<<<<<< Updated upstream
-=======
-        
-        // view()->share([
-        //     'DashBoardService' => app()->make(DashboardManager::class),
-        // ]);
->>>>>>> Stashed changes
     }
 }

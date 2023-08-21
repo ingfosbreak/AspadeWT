@@ -80,8 +80,9 @@ Navigate the convergence of digital artistry and event organization with our web
                         <p class="mt-3 mb-1 text-xs font-medium text-purple-500 uppercase">------------</p>
                         <p class="mb-2 text-gray-600">Web Aspadewt Development empowers your online presence through expertly crafted websites that combine aesthetic finesse with cutting-edge functionality. Our services transform your digital aspirations into captivating web realities.</p>
                         <div class= "flex flex-row items-center">
-                          <a href="https://github.com/ingfosbreak/AspadeWT.git" target="_blank"><img src="https://media.discordapp.net/attachments/1133337576204406855/1143099947810562138/25231.png?width=640&height=640" class = "h-10 mt-5"></a>
-                          <p class="mb-2 text-gray-600 mt-7 ml-5"><---GitHub Here</p>
+                          <a href="https://github.com/ingfosbreak/AspadeWT.git" class="flex" target="_blank"><img src="https://media.discordapp.net/attachments/1133337576204406855/1143099947810562138/25231.png?width=640&height=640" class = "h-10 mt-5">
+                          <p class="mb-2 text-gray-600 mt-7 ml-5 font-bold">GitHub Here</p>
+                          </a>
                         </div>
                       </div>
                 </div>
