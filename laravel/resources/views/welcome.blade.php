@@ -96,7 +96,7 @@ Navigate the convergence of digital artistry and event organization with our web
                         <div class="">
                       <img
                           src="https://media.discordapp.net/attachments/876789007856574565/1143108114565046322/20230821_155121.jpg?width=550&height=701"
-                          class="h-16 w-16 object-contain rounded-full hover:object-scale-down"
+                          class="h-16 w-16 object-cover rounded-full hover:object-scale-down"
                           alt="" />
                     </div>
                             <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">Saran Wongkum</h3>
@@ -115,10 +115,10 @@ Navigate the convergence of digital artistry and event organization with our web
                         <div class="">
                       <img
                           src="https://cdn.discordapp.com/attachments/876789007856574565/1143108114296623115/IMG_4654.jpg"
-                          class="h-16 w-16 object-contain rounded-full"
+                          class="h-16 w-16 object-cover rounded-full"
                           alt="" />
                     </div>
-                            <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">Project Audit</h3>
+                            <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">Panachai Kotchagason</h3>
                         </div>
                         <p class="mb-1 text-xs font-medium text-blue-400 uppercase">------------</p>
                         <p class="mb-2 text-gray-600">A Project Audit is a formal review of a project, which is intended
@@ -133,11 +133,11 @@ Navigate the convergence of digital artistry and event organization with our web
                         <div class="flex items-center -mt-1">
                         <div class="">
                       <img
-                          src="https://mdbootstrap.com//img/Photos/Square/1.jpg"
-                          class="h-12 rounded-full"
+                          src="https://media.discordapp.net/attachments/1060935609822236774/1143109698720116806/IMG_3865.jpg?width=526&height=701"
+                          class="h-16 w-16 object-cover rounded-full"
                           alt="" />
                     </div>
-                            <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">Project Audit</h3>
+                            <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">Mana Porana</h3>
                         </div>
                         <p class="mb-1 text-xs font-medium text-blue-400 uppercase">------------</p>
                         <p class="mb-2 text-gray-600">A Project Audit is a formal review of a project, which is intended

@@ -166,8 +166,9 @@
                     </div>
                 </div>
             </div>
-
-            {{ $events->links() }}
+            <div class = "m-10">
+                {{ $events->links() }}
+            </div>
 
         </div>
 

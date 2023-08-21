@@ -70,7 +70,7 @@
             <div class="flex p-3 border-l-8 rounded-lg border-yellow-600">
                 <div class="flex-1">
                     <div class="ml-3 space-y-1 border-r-2 pr-3">
-                        <a href="#">
+                        <a href="{{ route('event.information',['event'=> $event])}}">
                             <div class="text-base leading-6 font-normal">NameEvent :{{$event->name}} </div>
                         </a>
                         <div class="text-sm leading-4 font-normal"><span
@@ -103,7 +103,7 @@
             <div class="flex p-3 border-l-8 rounded-lg border-green-600">
                 <div class="flex-1">
                     <div class="ml-3 space-y-1 border-r-2 pr-3">
-                        <a href="#">
+                        <a href="{{ route('event.information',['event'=> $event])}}">
                             <div class="text-base leading-6 font-normal">NameEvent :{{$event->name}} </div>
                         </a>
                         <div class="text-sm leading-4 font-normal"><span
@@ -117,7 +117,7 @@
                     </div>
                 </div>
                 <div >
-                    <a href="{{route('user.certificate',['event' =>$event])}} " target="_blank"><img src="https://cdn.discordapp.com/attachments/1135564910131151019/1142727772347826226/pngwing.com.png"
+                    <a href="#" target="_blank"><img src="https://cdn.discordapp.com/attachments/1135564910131151019/1142727772347826226/pngwing.com.png"
                         class="object-scale-down h-10 m-5">
                         </a>
                 </div>
@@ -142,7 +142,7 @@
             <div class="flex p-3 border-l-8 rounded-lg border-yellow-600">
                 <div class="flex-1">
                     <div class="ml-3 space-y-1 border-r-2 pr-3">
-                        <a href="#">
+                        <a href="{{ route('event.information',['event'=> $event])}}">
                             <div class="text-base leading-6 font-normal">NameEvent :{{$event->name}} </div>
                         </a>
                         <div class="text-sm leading-4 font-normal"><span
@@ -169,7 +169,7 @@
             <div class="flex p-3 border-l-8 rounded-lg border-green-600">
                 <div class="flex-1">
                     <div class="ml-3 space-y-1 border-r-2 pr-3">
-                        <a href="#">
+                        <a href="{{ route('event.information',['event'=> $event])}}">
                             <div class="text-base leading-6 font-normal">NameEvent :{{$event->name}} </div>
                         </a>
                         <div class="text-sm leading-4 font-normal"><span
@@ -178,12 +178,11 @@
                         <div class="text-sm leading-4 font-normal"><span
                                 class="text-xs leading-4 font-normal text-gray-500">Event end
                                 :{{$event->date_close}}</span>
-
                         </div>
                     </div>
                 </div>
                 <div >
-                    <a href="{{route('user.certificate',['event' =>$event])}} " target="_blank"><img src="https://cdn.discordapp.com/attachments/1135564910131151019/1142727772347826226/pngwing.com.png"
+                    <a href="#" target="_blank"><img src="https://cdn.discordapp.com/attachments/1135564910131151019/1142727772347826226/pngwing.com.png"
                         class="object-scale-down h-10 m-5">
                         </a>
                 </div>
