@@ -186,11 +186,11 @@ class EventSeeder extends Seeder
             $event->num_member = 30;
             $event->num_staff = 15;
             $event->budget = 10000;
-            $event->category = randomElement(['outdoor','indoor','concert','academic','sport']);
+            $event->category = fake()->randomElement(['outdoor','indoor','concert','academic','sport']);
             $event->date_register = fake()->dateTimeBetween('-30 days','now');
             $event->date_start = fake()->dateTimeBetween('now','+7 days');
             $event->date_close = fake()->dateTimeBetween('+7 days','+30 days');
-            $event->publish = randomElement(['draft','publish']);
+            $event->publish = fake()->randomElement(['draft','publish']);
             $event->location = fake()->sentence(5);
             $event->description = fake()->sentence(5);
             $event->save();
