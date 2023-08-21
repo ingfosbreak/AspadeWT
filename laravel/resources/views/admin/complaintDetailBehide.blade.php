@@ -10,11 +10,18 @@
 </head>
 <body>
 
-
+<a href="{{route('admin.complaintDetail',['event'=>$event])}}"
+        class="inline-flex items-center border border-indigo-300 px-3 py-1.5 rounded-md text-indigo-500 hover:bg-indigo-50 mx-5 my-5">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18">
+            </path>
+        </svg>
+        <span class="ml-1 font-bold text-lg">Back</span>
+    </a>
 <div class="flex w-full justify-center">
     <!-- from :https://tailwindcomponents.com/component/blog-post -->
     <!-- component -->
-    
+
     <div class="flex flex-col mx-auto pt-5 bg-white w-full items-center">
        
         <h3 class="text-4xl text-gray-700 font-bold mb-6 ml-3 mt-16">Latest News</h3>
@@ -144,6 +151,7 @@
             
             
         </ol>
+        
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>

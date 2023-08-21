@@ -68,7 +68,7 @@ class EventController extends Controller
     public function requestCreateEvent(Request $request) {
 
         $request->validate([
-            'name' => ['required', 'string', 'min:1', 'max:1000'],
+            'name' => ['required', 'string', 'min:1', 'max:1000','unique:'.Event::class],
             'num_member' => ['required', 'integer','min:1','max:100000'],
             'num_staff' => ['required', 'integer','min:1' ,'max:1000'],
             'budget' => ['required', 'integer', 'max:100000000'],
