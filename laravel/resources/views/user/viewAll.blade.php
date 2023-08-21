@@ -139,7 +139,7 @@
                                 <img src="{{ asset('storage/'.$event->event_image->image_path) }}"
                                     class=" hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card object-contain h-96 w-72 object-fill" />
                                 @else
-                                <img src="https://static-cdn.jtvnw.net/ttv-boxart/516575-285x380.jpg"
+                                <img src="https://picsum.photos/id/{{$event->id}}/200/300"
                                     class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                                 @endif
                             </a>

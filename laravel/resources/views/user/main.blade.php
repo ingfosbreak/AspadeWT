@@ -33,7 +33,7 @@
                         <h2 class="text-6xl text-white font-bold text-center drop-shadow-xl">{{$event->name}}</h3>
                     </div>
                     @else
-                    <img src="https://play-lh.googleusercontent.com/8ddL1kuoNUB5vUvgDVjYY3_6HwQcrg1K2fd_R8soD-e2QYj8fT9cfhfh3G0hnSruLKec"
+                    <img src="https://picsum.photos/id/{{$event->id}}/200/300"
                         class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 blur-[2px]"
                         alt="...">
                     <div class="relative top-500 top-1/2 px-4 py-2 opacity-100 ">
@@ -103,7 +103,7 @@
                     <img src="{{ asset('storage/'.$event->event_image->image_path) }}"
                         class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                     @else
-                    <img src="https://static-cdn.jtvnw.net/ttv-boxart/516575-285x380.jpg"
+                    <img src="https://picsum.photos/id/{{$event->id}}/200/300"
                         class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                     @endif
                 </a>
@@ -147,7 +147,7 @@
                     <img src="{{ asset('storage/'.$event->event_image->image_path) }}"
                         class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                     @else
-                    <img src="https://static-cdn.jtvnw.net/ttv-boxart/516575-285x380.jpg"
+                    <img src="https://picsum.photos/id/{{$event->id}}/200/300"
                         class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                     @endif
                 </a>
@@ -189,7 +189,7 @@
                     <img src="{{ asset('storage/'.$event->event_image->image_path) }}"
                         class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                     @else
-                    <img src="https://static-cdn.jtvnw.net/ttv-boxart/516575-285x380.jpg"
+                    <img src="https://picsum.photos/id/{{$event->id}}/200/300"
                         class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                     @endif
 
