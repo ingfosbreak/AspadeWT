@@ -472,11 +472,28 @@
                     
                     <div id="{{$info->id}}">
                         <div class="flex text-gray-100 hover:text-gray-400">
-                            <p class="rounded mr-2 text-2xl self-center mt-2">::</p>
-                            <p class="text-3xl text-black leading-8 my-5 bg-white hover:bg-gray-100 focus:bg-gray-100 rounded-md pt-2 pl-2 flex-1 formysql" contenteditable="true" id="text-{{$info->id}}" onFocus="makefocus({{$info->id}})">
-                            {!! nl2br(($info->text), true) !!}
-                            </p>
-                            <p class="rounded text-2xl self-center ml-2 text-5xl hover:text-gray-800" id="remove-{{$info->id}}" onClick="remove({{$info->id}})">-</p>
+                        @can('view', $event)
+                                @can('view', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())
+                                <p class="rounded mr-2 text-2xl self-center mt-2">::</p>
+                                <p class="text-3xl text-black leading-8 my-5 bg-white hover:bg-gray-100 focus:bg-gray-100 rounded-md pt-2 pl-2 flex-1 formysql" contenteditable="true" id="text-{{$info->id}}" onFocus="makefocus({{$info->id}})">
+                                {!! nl2br(($info->text), true) !!}
+                                </p>
+                                <p class="rounded text-2xl self-center ml-2 text-5xl hover:text-gray-800" id="remove-{{$info->id}}" onClick="remove({{$info->id}})">-</p>
+                                @else
+                                <p class="rounded mr-2 text-2xl self-center mt-2">::</p>
+                                <p class="text-3xl text-black leading-8 my-5 bg-white hover:bg-gray-100 focus:bg-gray-100 rounded-md pt-2 pl-2 flex-1 formysql" id="text-{{$info->id}}" onFocus="makefocus({{$info->id}})">
+                                {!! nl2br(($info->text), true) !!}
+                                </p>
+                                <p class="rounded text-2xl self-center ml-2 text-5xl hover:text-gray-800" id="remove-{{$info->id}}" onClick="remove({{$info->id}})">-</p>
+                                @endcan
+                        @else
+                        <p class="rounded mr-2 text-2xl self-center mt-2">::</p>
+                                <p class="text-3xl text-black leading-8 my-5 bg-white hover:bg-gray-100 focus:bg-gray-100 rounded-md pt-2 pl-2 flex-1 formysql" id="text-{{$info->id}}" onFocus="makefocus({{$info->id}})">
+                                {!! nl2br(($info->text), true) !!}
+                                </p>
+                                <p class="rounded text-2xl self-center ml-2 text-5xl hover:text-gray-800" id="remove-{{$info->id}}" onClick="remove({{$info->id}})">-</p>
+
+                        @endcan
                         </div>
                         <div class="flex justify-between flex-wrap">
                         <p class="text-gray-400 not-show ml-5" id="under-{{$info->id}}"><span class="text-black" id="bold-{{$info->id}}">BOLD</span> :: <span class="text-gray-500" id="small-{{$info->id}}">small</span></p>
