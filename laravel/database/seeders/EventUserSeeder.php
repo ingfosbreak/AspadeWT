@@ -100,9 +100,8 @@ class EventUserSeeder extends Seeder
         $event->user_id = $x;
         $event->event_id = $x;
         $event->event_role = "header";
-        if($event->user_id != $event->event_id){
-            $event->save();
-        }
+        $event->save();
+
     }
 }
 }
