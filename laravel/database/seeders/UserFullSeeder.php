@@ -13,31 +13,31 @@ class UserFullSeeder extends Seeder
      */
     public function run(): void
     {
-        $userEntry = new UserFull();
-        $userEntry->user_id = 1;
-        $userEntry->email = "ingfosbreak@outlook.com";
-        $userEntry->firstname = "Panachai";
-        $userEntry->lastname = "Kotchagason";
-        $userEntry->faculty = "Science";
-        $userEntry->year = 3;
-        $userEntry->save();
+        // $userEntry = new UserFull();
+        // $userEntry->user_id = 1;
+        // $userEntry->email = "ingfosbreak@outlook.com";
+        // $userEntry->firstname = "Panachai";
+        // $userEntry->lastname = "Kotchagason";
+        // $userEntry->faculty = "Science";
+        // $userEntry->year = 3;
+        // $userEntry->save();
 
-        $userEntry = new UserFull();
-        $userEntry->user_id = 2;
-        $userEntry->email = "toto@outlook.com";
-        $userEntry->firstname = "Panachai";
-        $userEntry->lastname = "Kotchagason";
-        $userEntry->faculty = "Science";
-        $userEntry->year = 3;
-        $userEntry->save();
+        // $userEntry = new UserFull();
+        // $userEntry->user_id = 2;
+        // $userEntry->email = "toto@outlook.com";
+        // $userEntry->firstname = "Panachai";
+        // $userEntry->lastname = "Kotchagason";
+        // $userEntry->faculty = "Science";
+        // $userEntry->year = 3;
+        // $userEntry->save();
 
-        $userEntry = new UserFull();
-        $userEntry->user_id = 3;
-        $userEntry->email = "ja@outlook.com";
-        $userEntry->firstname = "Panachai";
-        $userEntry->lastname = "Kotchagason";
-        $userEntry->faculty = "Science";
-        $userEntry->year = 4;
-        $userEntry->save();
+        // $userEntry = new UserFull();
+        // $userEntry->user_id = 3;
+        // $userEntry->email = "ja@outlook.com";
+        // $userEntry->firstname = "Panachai";
+        // $userEntry->lastname = "Kotchagason";
+        // $userEntry->faculty = "Science";
+        // $userEntry->year = 4;
+        // $userEntry->save();
     }
 }
