@@ -290,10 +290,14 @@
                         </li>
                         @else
                         <li>
+                            @if ($event->getStaffsCount() < $event->num_staff)
                             <a href="{{ route('event.staff.formJoinEvent', ['event' => $event])}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Join As Staff</a>
+                            @endif
                         </li>
                         <li>
+                            @if ($event->getMembersCount() < $event->num_member)
                             <a href="{{route('event.formJoinEvent', ['event' => $event])}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Join As Participant</a>
+                            @endif
                         </li>
                         </ul>
                         @endcan
@@ -338,7 +342,7 @@
                                 <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
                                 <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
                                 </svg>
-                            <p class="font-bold">{{$event->date}}</p>
+                            <p class="font-bold">{{$event->date_start}}</p>
                             </div>
                             <div>
                                 @if ($event->getMembersCount() == $event->num_member)
