@@ -7,40 +7,7 @@
     <h3 class="text-6xl font-bold text-gray-700 ">My Own Events</h3>
     
     
-        <!-- dropdown & serch -->
-        <div class="grid justify-items-end">
-            <div class="flex flex-row m-8">
-                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    type="button">Dropdown button <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 4 4 4-4" />
-                    </svg></button>
-                <!-- Dropdown menu -->
-                <div id="dropdown"
-                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                    <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownDefaultButton">
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
-                                out</a>
-                        </li>
-                    </ul>
-                </div>
-
+    
 
 
 
@@ -75,14 +42,15 @@
 
                     <!-- Image -->
                     <a href="{{ route('event.information',['event'=> $event->event])}}" class="bg-purple-500 ">
-                        @if ($event->event_image != null)
-                        <img src="{{ asset('storage/'.$event->event_image->image_path) }}"
+                        @if ($event->event->event_image != null)
+                        <img src="{{ asset('storage/'.$event->event->event_image->image_path) }}"
                             class=" hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card object-contain h-96 w-72 object-fill" />
                         @else
                         <img src="https://picsum.photos/id/{{$event->id}}/200/300"
                             class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                         @endif
                     </a>
+                    
 
                     <!-- Games Title -->
                     <a href="#" class="hover:text-purple-500 text-gray-700 font-semibold"> <p>{{$event->event->name}}</p> </a>
