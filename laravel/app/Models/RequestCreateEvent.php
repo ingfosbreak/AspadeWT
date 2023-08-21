@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class RequestCreateEvent extends Model
 {
-    use HasFactory,SoftDeletes ;
+    use HasFactory, SoftDeletes;
 
     public function user(): BelongsTo{
         return $this->belongsTo(User::class);

@@ -85,6 +85,12 @@ class User extends Authenticatable
             
     }
 
+    public function eventsWithRole(): BelongsToMany
+    {
+        return $this->belongsToMany(Event::class, 'event_user')
+            ->withPivot('event_role');
+    }
+
     public function getEventInProgress() {
         return $this->events->where('status','in-progress');
     }

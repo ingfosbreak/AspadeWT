@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\Policies\EventAccessPolicy;
+use App\Policies\EventPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -13,8 +15,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        User::class => UserPolicy::class,
-        EventUser::class => EventUserRolePolicy::class,
+        Event::class => EventPolicy::class,
+        EventUser::class => EventUserPolicy::class,
     ];
 
     /**
@@ -22,6 +24,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::define('manageEvent', [EventPolicy::class, 'manageEvent']);
     }
 }

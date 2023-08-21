@@ -12,26 +12,39 @@ use App\Services\NotifyService;
 use App\Models\Event;
 use App\Models\EventAnnouncement;
 use App\Models\RequestJoinEvent;
+use Illuminate\Support\Facades\Gate;
 
 class EventController extends Controller
 {
     public function getInfoEventPage(Event $event){
+        
+        Gate::authorize('viewAny', $event);
+
         return view('event.information', [
             'event' => $event
         ]);
     }
 
     public function getJoinEventFormPage(Event $event){
+
+        Gate::authorize('viewAny', $event);
+
         return view('event.formJoinEvent', [
             'event' => $event
         ]);
     }
     public function getJoinStaffEventFormPage(Event $event){
+
+        Gate::authorize('viewAny', $event);
+
         return view('event.formJoinStaffEvent', [
             'event' => $event
         ]);
     }
     public function getInfoEventPageFormMainEvent(Event $event){
+
+        Gate::authorize('viewAny', $event);
+        
         return view('event.main.information', [
             'event' => $event
         ]);

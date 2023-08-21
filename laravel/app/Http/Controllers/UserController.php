@@ -12,6 +12,7 @@ use Illuminate\View\View;
 use App\Models\Event;
 use App\Models\EventUser;
 use App\Models\UserNoti;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -46,6 +47,7 @@ class UserController extends Controller
 
    
     public function getMainEventPage(Event $event){
+
         return view('event.main.main', [
             'event' => $event
         ]);
