@@ -21,14 +21,13 @@
     <div class="flex flex-col w-full justify-center items-center mt-5">
         <h2 class="text-2xl font-bold mb-4">Images proof</h2>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-3 p-4 max-w-[400px] md:max-w-[600px] place-items-center">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=1">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=2">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=3">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=4">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=5">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=6">
+         
+        @foreach ($request->requestConfirmationFile as $file)
+        <div class="flex flex-row gap-1 m-5">
+            <img class="hover:opacity-75 " src="{{ asset('storage/' . $file->file_path)}}">
+
         </div>
-        <h2 class="text-2xl font-bold mt-8">Event Details</h2>
+        @endforeach
     </div>
 
     <div class="border border-gray-300 shadow-sm rounded-lg overflow-hidden max-w-sm mx-auto mt-8 mb-10">
