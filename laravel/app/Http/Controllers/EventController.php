@@ -423,5 +423,9 @@ class EventController extends Controller
 
 
     }
+    public function getCategorypage(String $category){
+        $events = Event::where('category',$category)->paginate(15);
+        return view('user.viewAll',['events'=> $events]);
+    }
 
 }

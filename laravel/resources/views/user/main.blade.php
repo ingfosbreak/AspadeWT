@@ -118,10 +118,7 @@
                 <div class="flex flex-row flex-wrap gap-2">
                     <a href="#"
                         class="hover:bg-gray-600 text-gray-300 text-xs font-semibold bg-gray-700 px-2 py-1 rounded-full">
-                        Shooter </a>
-                    <a href="#"
-                        class="hover:bg-gray-600 text-gray-300 text-xs font-semibold bg-gray-700 px-2 py-1 rounded-full">
-                        FPS </a>
+                        {{$event->category}} </a>
                 </div>
 
             </div>
@@ -165,10 +162,7 @@
                 <div class="flex flex-row flex-wrap gap-2">
                     <a href="#"
                         class="hover:bg-gray-600 text-gray-300 text-xs font-semibold bg-gray-700 px-2 py-1 rounded-full">
-                        Shooter </a>
-                    <a href="#"
-                        class="hover:bg-gray-600 text-gray-300 text-xs font-semibold bg-gray-700 px-2 py-1 rounded-full">
-                        FPS </a>
+                        {{$event->category}} </a>
                 </div>
 
             </div>
@@ -209,10 +203,7 @@
                 <div class="flex flex-row flex-wrap gap-2">
                     <a href="#"
                         class="hover:bg-gray-600 text-gray-300 text-xs font-semibold bg-gray-700 px-2 py-1 rounded-full">
-                        Shooter </a>
-                    <a href="#"
-                        class="hover:bg-gray-600 text-gray-300 text-xs font-semibold bg-gray-700 px-2 py-1 rounded-full">
-                        FPS </a>
+                        {{$event->category}} </a>
                 </div>
 
             </div>

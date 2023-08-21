@@ -54,6 +54,7 @@ class EventSeeder extends Seeder
         $event->num_member = 788;
         $event->num_staff = 50;
         $event->budget = 5000;
+        $event->category ="outdoor";
         $event->date_register = fake()->dateTimeBetween('-30 days','now');
         $event->date_start = fake()->dateTimeBetween('now','+7 days');
         $event->date_close = fake()->dateTimeBetween('+7 days','+30 days');
@@ -66,6 +67,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
+        $event->category ="indoor";
         $event->date_register = fake()->dateTimeBetween('-30 days','now');
         $event->date_start = fake()->dateTimeBetween('now','+7 days');
         $event->date_close = fake()->dateTimeBetween('+7 days','+30 days');
@@ -78,6 +80,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
+        $event->category ="academic";
         $event->date_register = fake()->dateTimeBetween('-30 days','now');
         $event->date_start = fake()->dateTimeBetween('now','+7 days');
         $event->date_close = fake()->dateTimeBetween('+7 days','+30 days');
@@ -90,6 +93,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
+        $event->category ="indoor";
         $event->date_register = fake()->dateTimeBetween('-30 days','now');
         $event->date_start = fake()->dateTimeBetween('now','+7 days');
         $event->date_close = fake()->dateTimeBetween('+7 days','+30 days');
@@ -102,6 +106,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
+        $event->category ="academic";
         $event->date_register = fake()->dateTimeBetween('-30 days','now');
         $event->date_start = fake()->dateTimeBetween('now','+7 days');
         $event->date_close = fake()->dateTimeBetween('+7 days','+30 days');
@@ -114,6 +119,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
+        $event->category ="sport";
         $event->date_register = fake()->dateTimeBetween('-30 days','now');
         $event->date_start = fake()->dateTimeBetween('now','+7 days');
         $event->date_close = fake()->dateTimeBetween('+7 days','+30 days');
@@ -126,6 +132,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
+        $event->category ="academic";
         $event->date_register = fake()->dateTimeBetween('-30 days','now');
         $event->date_start = fake()->dateTimeBetween('now','+7 days');
         $event->date_close = fake()->dateTimeBetween('+7 days','+30 days');
@@ -138,6 +145,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
+        $event->category ="academic";
         $event->date_register = fake()->dateTimeBetween('-30 days','now');
         $event->date_start = fake()->dateTimeBetween('now','+7 days');
         $event->date_close = fake()->dateTimeBetween('+7 days','+30 days');
@@ -150,6 +158,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
+        $event->category ="sport";
         $event->date_register = fake()->dateTimeBetween('-30 days','now');
         $event->date_start = fake()->dateTimeBetween('now','+7 days');
         $event->date_close = fake()->dateTimeBetween('+7 days','+30 days');
@@ -162,6 +171,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
+        $event->category ="academic";
         $event->date_register = fake()->dateTimeBetween('-30 days','now');
         $event->date_start = fake()->dateTimeBetween('now','+7 days');
         $event->date_close = fake()->dateTimeBetween('+7 days','+30 days');
@@ -174,6 +184,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
+        $event->category ="sport";
         $event->date_register = fake()->dateTimeBetween('-30 days','now');
         $event->date_start = fake()->dateTimeBetween('now','+7 days');
         $event->date_close = fake()->dateTimeBetween('+7 days','+30 days');
@@ -186,6 +197,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
+        $event->category ="academic";
         $event->date_register = fake()->dateTimeBetween('-30 days','now');
         $event->date_start = fake()->dateTimeBetween('now','+7 days');
         $event->date_close = fake()->dateTimeBetween('+7 days','+30 days');
@@ -198,6 +210,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
+        $event->category ="academic";
         $event->date_register = fake()->dateTimeBetween('-30 days','now');
         $event->date_start = fake()->dateTimeBetween('now','+7 days');
         $event->date_close = fake()->dateTimeBetween('+7 days','+30 days');
@@ -210,6 +223,7 @@ class EventSeeder extends Seeder
         $event->num_member = 20;
         $event->num_staff = 20;
         $event->budget = 5000;
+        $event->category ="sport";
         $event->date_register = fake()->dateTimeBetween('-30 days','now');
         $event->date_start = fake()->dateTimeBetween('now','+7 days');
         $event->date_close = fake()->dateTimeBetween('+7 days','+30 days');
