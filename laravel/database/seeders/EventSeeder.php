@@ -14,39 +14,39 @@ class EventSeeder extends Seeder
     public function run(): void
     {
         $event = new Event();
-        $event->name = "คอนเสิร์ตเพลง";
+        $event->name = "คอนเสิร์ตเพลง วงคาราบาว";
         $event->num_member = 80;
         $event->num_staff = 10;
-        $event->budget = 5000;
-        $event->date_register = fake()->dateTimeBetween('-30 days','now');
-        $event->date_start = fake()->dateTimeBetween('now','+7 days');
+        $event->budget = 50000;
+        $event->date_register = fake()->dateTimeBetween('-60 days','now');
+        $event->date_start = fake()->dateTimeBetween('-5 days','+7 days');
         $event->date_close = fake()->dateTimeBetween('+7 days','+30 days');
         $event->location = "KU";
         $event->description = "สนุกกับคอนเสิร์ตเพลงสดๆ กับศิลปินที่มีชื่อเสียง";
         $event->save();
 
         $event = new Event();
-        $event->name = "กิจกรรมวิ่งกองกำลังช่วยเหลือ";
+        $event->name = "กิจกรรมวิ่งช่วยเหลือคนภาคอีสาน";
         $event->num_member = 35;
         $event->num_staff = 8;
         $event->budget = 5000;
-        $event->date_register = fake()->dateTimeBetween('-30 days','now');
-        $event->date_start = fake()->dateTimeBetween('now','+7 days');
+        $event->date_register = fake()->dateTimeBetween('-60 days','now');
+        $event->date_start = fake()->dateTimeBetween('-5 days','+7 days');
         $event->date_close = fake()->dateTimeBetween('+7 days','+30 days');
         $event->location = "KU";
         $event->description = "เข้าร่วมกิจกรรมวิ่งเพื่อเปิดโอกาสให้ช่วยเหลือคนที่ต้องการ";
         $event->save();
 
         $event = new Event();
-        $event->name = "เทศกาลอาหาร";
+        $event->name = "เทศกาลอาหารโลกกรูเมต์";
         $event->num_member = 160;
-        $event->num_staff = 122;
-        $event->budget = 5000;
+        $event->num_staff = 2000;
+        $event->budget = 100000;
         $event->date_register = fake()->dateTimeBetween('-30 days','now');
         $event->date_start = fake()->dateTimeBetween('now','+7 days');
         $event->date_close = fake()->dateTimeBetween('+7 days','+30 days');
-        $event->location = "KU";
-        $event->description = "คำอธิบาย: สำรวจอาหารอร่อยจากวัฒนธรรมต่างๆ ในเทศกาลอาหารที่น่าตื่นเต้น";
+        $event->location = "โลกกรูเมต์";
+        $event->description = "คำอธิบาย: ถ้าโทริโกะรวบรวมฟูคอร์สได้สำเร็จจนครบทุกเมณู คุณก็ทำได้เหมือนกันเปิดประสบการการรับรสของคุณได้ที่เทศการนี้";
         $event->save();
 
         $event = new Event();

@@ -62,11 +62,11 @@
                     <span class="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-indigo-500 rounded-lg"></span>
                     <div class="relative h-full p-5 bg-white border-2 border-indigo-500 rounded-lg">
                         <div class="flex items-center -mt-1">
-                            <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">DAPP Development</h3>
+                            <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">About Website</h3>
                         </div>
                         <p class="mt-3 mb-1 text-xs font-medium text-indigo-500 uppercase">------------</p>
-                        <p class="mb-2 text-gray-600">A decentralized application (dapp) is an application built on a
-                            decentralized network that combines a smart contract and a frontend user interface.</p>
+                        <p class="mb-2 text-gray-600">
+Navigate the convergence of digital artistry and event organization with our website event expertise. Immerse yourself in flawlessly executed online experiences that redefine virtual engagement.</p>
                     </div>
                 </div>
             </div>
@@ -75,12 +75,15 @@
                     <span class="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-purple-500 rounded-lg"></span>
                     <div class="relative h-full p-5 bg-white border-2 border-purple-500 rounded-lg">
                         <div class="flex items-center -mt-1">
-                            <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">Web 3.0 Development</h3>
+                            <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">Web Aspadewt Development</h3>
                         </div>
                         <p class="mt-3 mb-1 text-xs font-medium text-purple-500 uppercase">------------</p>
-                        <p class="mb-2 text-gray-600">Web 3.0 is the third generation of Internet services that will
-                            focus on understanding and analyzing data to provide a semantic web.</p>
-                    </div>
+                        <p class="mb-2 text-gray-600">Web Aspadewt Development empowers your online presence through expertly crafted websites that combine aesthetic finesse with cutting-edge functionality. Our services transform your digital aspirations into captivating web realities.</p>
+                        <div class= "flex flex-row items-center">
+                          <a href="https://github.com/ingfosbreak/AspadeWT.git" target="_blank"><img src="https://media.discordapp.net/attachments/1133337576204406855/1143099947810562138/25231.png?width=640&height=640" class = "h-10 mt-5"></a>
+                          <p class="mb-2 text-gray-600 mt-7 ml-5"><---GitHub Here</p>
+                        </div>
+                      </div>
                 </div>
             </div>
         </div>
@@ -90,37 +93,55 @@
                     <span class="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-blue-400 rounded-lg"></span>
                     <div class="relative h-full p-5 bg-white border-2 border-blue-400 rounded-lg">
                         <div class="flex items-center -mt-1">
-                            <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">Project Audit</h3>
+                        <div class="">
+                      <img
+                          src="https://media.discordapp.net/attachments/876789007856574565/1143108114565046322/20230821_155121.jpg?width=550&height=701"
+                          class="h-16 w-16 object-contain rounded-full hover:object-scale-down"
+                          alt="" />
+                    </div>
+                            <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">Saran Wongkum</h3>
                         </div>
-                        <p class="mt-3 mb-1 text-xs font-medium text-blue-400 uppercase">------------</p>
+                        <p class="mb-1 text-xs font-medium text-blue-400 uppercase">------------</p>
                         <p class="mb-2 text-gray-600">A Project Audit is a formal review of a project, which is intended
                             to assess the extent up to which project management standards are being upheld.</p>
                     </div>
                 </div>
             </div>
-            <div class="w-full mb-10 sm:mb-0 sm:w-1/2">
+            <div class="w-full sm:w-1/2">
                 <div class="relative h-full ml-0 mr-0 sm:mr-10">
                     <span class="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-yellow-400 rounded-lg"></span>
-                    <div class="relative h-full p-5 bg-white border-2 border-yellow-400 rounded-lg">
+                    <div class="relative h-full p-5 bg-white border-2 border-blue-400 rounded-lg">
                         <div class="flex items-center -mt-1">
-                            <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">Hacking / RE</h3>
+                        <div class="">
+                      <img
+                          src="https://cdn.discordapp.com/attachments/876789007856574565/1143108114296623115/IMG_4654.jpg"
+                          class="h-16 w-16 object-contain rounded-full"
+                          alt="" />
+                    </div>
+                            <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">Project Audit</h3>
                         </div>
-                        <p class="mt-3 mb-1 text-xs font-medium text-yellow-400 uppercase">------------</p>
-                        <p class="mb-2 text-gray-600">A security hacker is someone who explores methods for breaching
-                            defenses and exploiting weaknesses in a computer system or network.</p>
+                        <p class="mb-1 text-xs font-medium text-blue-400 uppercase">------------</p>
+                        <p class="mb-2 text-gray-600">A Project Audit is a formal review of a project, which is intended
+                            to assess the extent up to which project management standards are being upheld.</p>
                     </div>
                 </div>
             </div>
             <div class="w-full sm:w-1/2">
-                <div class="relative h-full ml-0 md:mr-10">
+            <div class="relative h-full ml-0 mr-0 sm:mr-10">
                     <span class="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-green-500 rounded-lg"></span>
-                    <div class="relative h-full p-5 bg-white border-2 border-green-500 rounded-lg">
+                    <div class="relative h-full p-5 bg-white border-2 border-blue-400 rounded-lg">
                         <div class="flex items-center -mt-1">
-                            <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">Bot/Script Development</h3>
+                        <div class="">
+                      <img
+                          src="https://mdbootstrap.com//img/Photos/Square/1.jpg"
+                          class="h-12 rounded-full"
+                          alt="" />
+                    </div>
+                            <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">Project Audit</h3>
                         </div>
-                        <p class="mt-3 mb-1 text-xs font-medium text-green-500 uppercase">------------</p>
-                        <p class="mb-2 text-gray-600">Bot development frameworks were created as advanced software tools
-                            that eliminate a large amount of manual work and accelerate the development process.</p>
+                        <p class="mb-1 text-xs font-medium text-blue-400 uppercase">------------</p>
+                        <p class="mb-2 text-gray-600">A Project Audit is a formal review of a project, which is intended
+                            to assess the extent up to which project management standards are being upheld.</p>
                     </div>
                 </div>
             </div>

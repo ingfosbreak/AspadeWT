@@ -47,8 +47,9 @@ class UserController extends Controller
 
    
     public function getMainEventPage(Event $event){
-
+        $announcements = $event->event_announcement->sortByDesc('created_at');
         return view('event.main.main', [
+            'announcements' => $announcements,
             'event' => $event
         ]);
     }
@@ -85,7 +86,7 @@ class UserController extends Controller
         ]);
     }
     public function getNotify(){
-        $notifies = Auth::getUser()->noti;
+        $notifies = Auth::getUser()->noti->sortByDesc('created_at');
         return view('user.notify', [
             'notifies' => $notifies
         ]);

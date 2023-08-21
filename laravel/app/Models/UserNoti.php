@@ -17,4 +17,8 @@ class UserNoti extends Model
         return $this->belongsTo(User::class);
     }
 
+    
+
+
+
 }

@@ -76,7 +76,7 @@
         
 
         <ol>
-            @foreach ($event->event_announcement as $announce)
+            @foreach ($announcements as $announce)
             @if ($announce->type == "announce")
             <li class="border-l-2 border-purple-600">
                 <div class="md:flex flex-start">

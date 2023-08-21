@@ -3,9 +3,10 @@
 @section('content')
 
 <div class="h-fit px-5 flex flex-col gap-5 items-center justify-center mt-20">
+
     <div class="flex justify-between items-center px-20 w-full">
         @if (Request::url() == route('user.viewAll.newEvents'))
-        <h3 class="text-6xl font-bold text-gray-700 ">New Events</h3>
+        <h3 class="text-6xl font-bold text-gray-700 text-center">New Events</h3>
         <!-- dropdown & serch -->
         <div class="grid justify-items-end">
             <div class="flex flex-row m-8">
@@ -16,6 +17,9 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
                     </svg></button>
+
+            
+                    
                 <!-- Dropdown menu -->
                 <div id="dropdown"
                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
@@ -49,7 +53,9 @@
                     </ul>
                 </div>
                 @else
-                <h3 class="text-6xl font-bold text-gray-700 ">Upcoming Events</h3>
+                <div class="justify-center">
+                    <h3 class="text-6xl font-bold text-gray-700 ">Upcoming Events</h3>
+                </div>
                 <!-- dropdown & serch -->
                 <div class="grid justify-items-end">
                     <div class="flex flex-row m-8">
