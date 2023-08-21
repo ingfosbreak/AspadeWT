@@ -179,6 +179,21 @@ class EventSeeder extends Seeder
         $event->description = "เสริมสร้างร่างกายด้วยค่ายออกกำลังกายในเส้นทางนี้";
         $event->save();
 
+        for ($x = 1; $x <= 99; $x+=1) {
         
+            $event = new Event();
+            $event->name = fake()->sentence(5);
+            $event->num_member = 30;
+            $event->num_staff = 15;
+            $event->budget = 10000;
+            $event->category = randomElement(['outdoor','indoor','concert','academic','sport']);
+            $event->date_register = fake()->dateTimeBetween('-30 days','now');
+            $event->date_start = fake()->dateTimeBetween('now','+7 days');
+            $event->date_close = fake()->dateTimeBetween('+7 days','+30 days');
+            $event->publish = randomElement(['draft','publish']);
+            $event->location = fake()->sentence(5);
+            $event->description = fake()->sentence(5);
+            $event->save();
+        }
     }
 }
