@@ -34,8 +34,8 @@
         <table class="w-full text-sm leading-5">
             <thead class="bg-gray-100">
                 <tr>
-                    <th class="py-3 px-4 text-left font-medium text-gray-600"></th>
-                    <th class="py-3 px-4 text-left font-medium text-gray-600">Details</th>
+                    <th class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Info</th>
+                    <th class="py-3 px-4 text-left font-medium text-gray-600 ">Details</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,15 +49,15 @@
                     <td class="py-3 px-4 text-left">{{$request->name}}</td>
                 </tr>
                 <tr class="bg-gray-50">
-                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Total_members</td>
+                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Total_members demand</td>
                     <td class="py-3 px-4 text-left">{{$request->num_member}}</td>
                 </tr>
                 <tr>
-                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Total_staffs</td>
+                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Total_staffs demand</td>
                     <td class="py-3 px-4 text-left">{{$request->num_staff}}</td>
                 </tr>
                 <tr class="bg-gray-50">
-                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Budget</td>
+                    <td class="py-3 px-4 text-left font-medium text-gray-600 pl-8">Budget (Baht)</td>
                     <td class="py-3 px-4 text-left">{{$request->budget}}</td>
                 </tr>
                 <tr class="bg-gray-50">

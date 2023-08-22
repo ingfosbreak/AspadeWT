@@ -34,7 +34,7 @@
 
 				<div class="mb-6">
 					<label for="password" class="block mb-2 text-green-200 font-mono text-xs">Your password</label>
-					<input type="password" name="password"id="password" class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="password" value="{{ old('password','')}}" >
+					<input type="text" name="password"id="password" class="bg-gray-700 border border-gray-600 text-gray-900 placeholder-gray-400 text-sm text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="password" value="{{ old('password','')}}" >
 				</div>
 
 				@if (session('error'))
