@@ -70,7 +70,7 @@ class EventController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'min:1', 'max:1000','unique:'.Event::class],
             'num_member' => ['required', 'integer','min:1','max:100000'],
-            'num_staff' => ['required', 'integer','min:1' ,'max:1000'],
+            'num_staff' => ['required', 'integer','min:0' ,'max:1000'],
             'budget' => ['required', 'integer', 'max:100000000'],
             'category' => ['required', 'string'],
             'date_start'  =>  'required|date',
@@ -341,7 +341,7 @@ class EventController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'min:1', 'max:1000'],
             'num_member' => ['required', 'integer','min:1','max:100000'],
-            'num_staff' => ['required', 'integer','min:1' ,'max:1000'],
+            'num_staff' => ['required', 'integer','min:0' ,'max:1000'],
             'budget' => ['required', 'integer', 'max:100000000'],
             'category' => ['required', 'string'],
             'date_start'  =>  'required|date',

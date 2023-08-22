@@ -25,7 +25,7 @@
                     <span class="sr-only">Close modal</span>
                 </button>
                 <div class="px-6 py-6 lg:px-8">
-                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Edit Event Information</h3>
+                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Event Information</h3>
                     <form action="{{route('edit.event.info',['event'=>$event])}}" class="space-y-6" method="POST">
                         @csrf
                         <div>
@@ -120,30 +120,46 @@
         </div>
     </div>
 
-<div class="mx-auto p-5 sm:p-10 relative flex flex-col gap-5 drop-shadow-2xl">
+    <div class="mx-auto p-5 sm:p-10 relative flex flex-col gap-5 drop-shadow-2xl">
         
     
         @if ($event->event_image == null)
         <div class="bg-cover bg-center text-center overflow-hidden py-5"
-            style="min-height: 500px; background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"
+            style="min-height: 500px;  background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"
             title="Woman holding a mug">    
         @else
         <div class="bg-cover bg-center text-center overflow-hidden py-5"
-            style="min-height: 500px;" id="back-image"
+            style="min-height: 500px; " id="back-image"
             title="Woman holding a mug">
 
         @endif
 
         
-            <div class="mx-auto h-full flex items-center justify-center px-8 drop-shadow-md">
-                <div class="flex flex-col w-fit bg-white rounded shadow-lg sm:w-3/4 md:w-1/2 lg:w-3/5">
-                
+            <div class="h-2/5 flex flex-col items-center justify-center px-8 drop-shadow-xl">
+            @can('view', $event)
+                        @can('view', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())    
+                        <button data-modal-target="profileImage-modal" data-modal-toggle="profileImage-modal"
+                        class="text-6xl text-green-400 hover:text-green-300 bg-gray-100 hover:bg-gray-500 w-fit h-fit px-3 mt-2 rounded-full"
+                        type="button">+</button>
+                        @endcan
+                    @endcan
+   
+            <div class="flex flex-col w-fit bg-white rounded shadow-lg sm:w-3/4 md:w-1/2 lg:w-3/5 drop-shadow-xl">
+                <div>
                     <!-- image -->
                     @if ($event->event_image == null)
-                    <div class="w-full h-64 bg-top bg-cover rounded-t flex justify-center"  style="background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" >
+            
                     @else
-                    <div class="w-full h-64 bg-top bg-cover rounded-t flex justify-center"  id="main-image">
+                    <img src="{{ asset('storage/'.$event->event_image->image_path) }}" class= "h-3/6 w-full"alt="">
                     @endif
+                
+
+                    
+                    
+                    
+                    
+                    
                     </div>
                     
                     

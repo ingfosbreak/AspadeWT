@@ -24,27 +24,27 @@
 
                     <a href="{{ route('user.myOwnEvent')}}">
                         <li
-                            class="p-4 border-b-2 border-slate-500 border-opacity-0 hover:border-opacity-100 hover:text-slate-800 duration-200 cursor-pointer active">
+                            class="p-4 border-b-2 border-slate-500 border-opacity-0 hover:border-opacity-100 hover:text-slate-800 duration-200 cursor-pointer active hover:text-purple-400">
                             My Own event
                         </li>
                     </a>
 
                     <a href="{{ route('user.formRequestEvent')}}">
                         <li
-                            class="p-4 border-b-2 border-slate-500 border-opacity-0 hover:border-opacity-100 hover:text-slate-800 duration-200 cursor-pointer active">
-                            Request
+                            class="p-4 border-b-2 border-slate-500 border-opacity-0 hover:border-opacity-100 hover:text-slate-800 duration-200 cursor-pointer active hover:text-purple-400">
+                            Create Event
                         </li>
                     </a>
 
                     <a href="{{ route('user.myEventHistory.inProgress')}}">
                         <li
-                            class="p-4 border-b-2 border-slate-500 border-opacity-0 hover:border-opacity-100 hover:text-slate-800 duration-200 cursor-pointer">
+                            class="p-4 border-b-2 border-slate-500 border-opacity-0 hover:border-opacity-100 hover:text-slate-800 duration-200 cursor-pointer hover:text-purple-400">
                             My history
                         </li>
                     </a>
                     <a href="{{ route('user.notify')}}">
                         <li
-                            class="p-4 border-b-2 border-slate-500 border-opacity-0 hover:border-opacity-100 hover:text-slate-800 duration-200 cursor-pointer">
+                            class="p-4 border-b-2 border-slate-500 border-opacity-0 hover:border-opacity-100 hover:text-slate-800 duration-200 cursor-pointer hover:text-purple-400">
                             Notification
                         </li>
                     </a>

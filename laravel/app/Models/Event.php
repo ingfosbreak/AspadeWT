@@ -40,20 +40,20 @@ class Event extends Model
     
     // EventPaginate
     public static function getPublishEventPaginate() {
-        return Event::where('publish','publish')->paginate(15);
+        return Event::where('publish','publish')->where('status','in-progress')->paginate(15);
     }
     
     // Eventlol
     public static function getNewEvent() {
-        return Event::orderBy('created_at', 'desc')->where('publish','publish')->paginate(15);
+        return Event::orderBy('created_at', 'desc')->where('publish','publish')->where('status','in-progress')->paginate(15);
     }
     
     public static function getPopular() {
-        return Event::withCount('requestJoinEvent')->where('publish','publish')->get()->sortByDesc('request_join_event_count')->take(6);
+        return Event::withCount('requestJoinEvent')->where('publish','publish')->where('status','in-progress')->get()->sortByDesc('request_join_event_count')->take(6);
     }
 
     public static function getUpcomingEvent() {
-        $events = Event::whereDate('date_start', '>', today())->where('publish','publish')->get(); // Get all upcoming events without pagination
+        $events = Event::whereDate('date_start', '>', today())->where('publish','publish')->where('status','in-progress')->get(); // Get all upcoming events without pagination
         
         foreach ($events as $event) {
             $event->upcoming_count = $event->hasStarted() ? 0 : Carbon::parse($event->date_start)->diffInDays(now());
