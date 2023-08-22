@@ -52,18 +52,18 @@ http://localhost/
 # Mockup-DATA
 
 ADMIN
-- admin
-- admin
+username admin
+password admin
 
 USER
-- user
-- user
+username user
+password user
 
-- user1
-- user1
+username user1
+password user1
 
-- user2
-- user2
+username user2
+password user2
 
 
 
