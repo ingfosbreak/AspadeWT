@@ -64,7 +64,7 @@
 
                     @endif
                 </td>
-                <td class="px-4 py-2">{{$request->description}}</td>
+                <td class="px-4 py-2 mt-5" id ="description">{{$request->description}}</td>
                 <td class="p-3 ">
                     <a href="{{route('admin.request.detail',['request'=>$request])}}"
                         class="text-gray-800 hover:text-gray-100 mr-2">
@@ -123,6 +123,16 @@
         </tbody>
     </table>
 </div>
+<style>
+#location,#description{
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            word-break: break-all;
+            white-space: normal;
+            display:block;
+
+ }
+</style>
 
 <script>
 function remove(id) {

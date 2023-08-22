@@ -79,16 +79,22 @@ class User extends Authenticatable
         return $this->user_pivots->where('event_id',(int) $event_id)->firstOrFail()->event_team_id;
     }
 
-    publIc function getEventTeamName(string $event_id) {
+    public function getEventTeamName(string $event_id) {
         
         return EventTeam::find($this->getEventTeamId($event_id))->name;
             
     }
 
-    publIc function getEventInProgress() {
+    public function eventsWithRole(): BelongsToMany
+    {
+        return $this->belongsToMany(Event::class, 'event_user')
+            ->withPivot('event_role');
+    }
+
+    public function getEventInProgress() {
         return $this->events->where('status','in-progress');
     }
-    publIc function getEventSuccess() {
+    public function getEventSuccess() {
         return $this->events->where('status','finished');
     }
 

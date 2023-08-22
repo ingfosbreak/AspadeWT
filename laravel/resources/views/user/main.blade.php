@@ -33,7 +33,7 @@
                         <h2 class="text-6xl text-white font-bold text-center drop-shadow-xl">{{$event->name}}</h3>
                     </div>
                     @else
-                    <img src="https://play-lh.googleusercontent.com/8ddL1kuoNUB5vUvgDVjYY3_6HwQcrg1K2fd_R8soD-e2QYj8fT9cfhfh3G0hnSruLKec"
+                    <img src="https://picsum.photos/id/{{$event->id}}/200/300"
                         class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 blur-[2px]"
                         alt="...">
                     <div class="relative top-500 top-1/2 px-4 py-2 opacity-100 ">
@@ -103,13 +103,13 @@
                     <img src="{{ asset('storage/'.$event->event_image->image_path) }}"
                         class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                     @else
-                    <img src="https://static-cdn.jtvnw.net/ttv-boxart/516575-285x380.jpg"
+                    <img src="https://picsum.photos/id/{{$event->id}}/200/300"
                         class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                     @endif
                 </a>
 
                 <!-- Games Title -->
-                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm break-words text-gray-700 font-semibold"> {{$event->name}} </a>
+                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm break-words text-gray-700 font-semibold"> <p>{{$event->name}}</p> </a>
 
                 <!-- Viewers -->
                 <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> Start: {{$event->date_start}} </a>
@@ -118,10 +118,7 @@
                 <div class="flex flex-row flex-wrap gap-2">
                     <a href="#"
                         class="hover:bg-gray-600 text-gray-300 text-xs font-semibold bg-gray-700 px-2 py-1 rounded-full">
-                        Shooter </a>
-                    <a href="#"
-                        class="hover:bg-gray-600 text-gray-300 text-xs font-semibold bg-gray-700 px-2 py-1 rounded-full">
-                        FPS </a>
+                        {{$event->category}} </a>
                 </div>
 
             </div>
@@ -150,13 +147,13 @@
                     <img src="{{ asset('storage/'.$event->event_image->image_path) }}"
                         class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                     @else
-                    <img src="https://static-cdn.jtvnw.net/ttv-boxart/516575-285x380.jpg"
+                    <img src="https://picsum.photos/id/{{$event->id}}/200/300"
                         class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                     @endif
                 </a>
 
                 <!-- Games Title -->
-                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm break-words text-gray-700 font-semibold"> {{$event->name}} </a>
+                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm break-words text-gray-700 font-semibold"> <p>{{$event->name}}</p> </a>
 
                 <!-- Viewers -->
                 <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> Start: {{$event->date_start}} </a>
@@ -165,10 +162,7 @@
                 <div class="flex flex-row flex-wrap gap-2">
                     <a href="#"
                         class="hover:bg-gray-600 text-gray-300 text-xs font-semibold bg-gray-700 px-2 py-1 rounded-full">
-                        Shooter </a>
-                    <a href="#"
-                        class="hover:bg-gray-600 text-gray-300 text-xs font-semibold bg-gray-700 px-2 py-1 rounded-full">
-                        FPS </a>
+                        {{$event->category}} </a>
                 </div>
 
             </div>
@@ -195,12 +189,12 @@
                     <img src="{{ asset('storage/'.$event->event_image->image_path) }}"
                         class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                     @else
-                    <img src="https://static-cdn.jtvnw.net/ttv-boxart/516575-285x380.jpg"
+                    <img src="https://picsum.photos/id/{{$event->id}}/200/300"
                         class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 card" />
                     @endif
 
                 <!-- Games Title -->
-                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm break-words text-lg text-gray-700 font-semibold"> {{$event->name}} </a>
+                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm break-words text-lg text-gray-700 font-semibold"> <p>{{$event->name}}</p> </a>
 
                 <!-- Viewers -->
                 <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> Start: {{$event->date_start}} </a>
@@ -209,10 +203,7 @@
                 <div class="flex flex-row flex-wrap gap-2">
                     <a href="#"
                         class="hover:bg-gray-600 text-gray-300 text-xs font-semibold bg-gray-700 px-2 py-1 rounded-full">
-                        Shooter </a>
-                    <a href="#"
-                        class="hover:bg-gray-600 text-gray-300 text-xs font-semibold bg-gray-700 px-2 py-1 rounded-full">
-                        FPS </a>
+                        {{$event->category}} </a>
                 </div>
 
             </div>
@@ -241,6 +232,17 @@ a{
             display:block;
 
  }
+
+ p {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            word-break: break-all;
+            white-space: normal;
+            display: block;
+            inline-size: 200px;
+            overflow-wrap: break-word;
+
+        }
 </style>
 
 

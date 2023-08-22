@@ -15,4 +15,6 @@ class RequestCreateEventConfirmationFile extends Model
     public function requestCreateEvent(): BelongsTo{
         return $this->belongsTo(RequestCreateEvent::class);
     }
+    
+
 }

@@ -32,7 +32,7 @@ class LoginController extends Controller
                 $token = UserService::getUserManager()->getTokenValidate();
                 $request->session()->put('token', $token);
                         
-                return redirect()->route('admin.main');
+                return redirect()->route('admin.request');
 
             }
                 
@@ -42,7 +42,7 @@ class LoginController extends Controller
 
                 $request->session()->put('token', $token);
 
-                return redirect()->route('admin.main');
+                return redirect()->route('admin.request');
         }
 
         if ($account == "user") {

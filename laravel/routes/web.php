@@ -89,8 +89,18 @@ Route::middleware(['web'])->group(function () {
             Route::get('/event/{event}/kanban', [ProcessController::class, 'getEventKanbanPage'])->name('event.kanban');
             Route::get('/event/{event}/kanban/{process}', [ProcessController::class, 'getEventKanbanTeamPage'])->name('event.kanban.team');
             Route::post('/event/{process}/kanban/{team}/{event}', [ProcessController::class, 'editKanbanTeam'])->name('event.kanban.edit');
-            Route::get('/user/viewAll/NewEvents', [UserController::class, 'userViewAllNewEvents'])->name('user.viewAll.newEvents');
-            Route::get('/user/viewAll/upcomingEvents', [UserController::class, 'userViewAllUpComingEvent'])->name('user.viewAll.upcomingEvents');
+            
+            // viewAll
+            
+                // categoryInNewevent
+                Route::get('/user/viewAll/NewEvents', [UserController::class, 'userViewAllNewEvents'])->name('user.viewAll.newEvents');
+                Route::get('/user/viewAll/NewEvents/{category}', [EventController::class, 'getCategorypage'])->name('user.viewAll.newEvents.category');
+                // categoryUpcomingEvents
+                Route::get('/user/viewAll/upcomingEvents', [UserController::class, 'userViewAllUpComingEvent'])->name('user.viewAll.upcomingEvents');
+                Route::get('/user/viewAll/upcomingEvents/{category}', [EventController::class, 'getCategorypage'])->name('user.viewAll.upcomingEvents.category');
+        
+            
+            
 
             Route::post('/editPublish', [EventController::class, 'editPublistEvent'])->name('publish.event');
             Route::post('/editEvent/{event}', [EventController::class, 'editEventInformation'])->name('edit.event.info');
@@ -141,12 +151,20 @@ Route::middleware(['web'])->group(function () {
             // EventHistory
             Route::get('/user/myEventHistory/participant', [UserController::class, 'getEventInProgress'])->name('user.myEventHistory.inProgress');
             Route::get('/user/myEventHistory/staff', [UserController::class, 'getEventSuccess'])->name('user.myEventHistory.success');
+            Route::get('/user/myEventHistory/all', [UserController::class, 'getEventAll'])->name('user.myEventHistory.all');
 
             // Notify
-            Route::get('/user/Notify', function (){return view('user.notify');})->name('user.notify');
+            Route::get('/user/Notify', [UserController::class, 'getNotify'])->name('user.notify');
+            Route::post('/user/Notify/remove', [UserController::class, 'removeNotify'])->name('user.notify.remove');
             
-            
+            //my Own Event
+            Route::get('/user/myOwnEvent', [UserController::class, 'getEventHeader'])->name('user.myOwnEvent');
 
+            //finished event
+            Route::post('/event/finish', [EventController::class, 'finishEvent'])->name('event.finish');
+
+            //certificate
+            Route::get('/event/certificate/{event}', [UserController::class, 'getCertificatePage'])->name('user.certificate');
         });
 
 
@@ -165,10 +183,19 @@ Route::middleware(['web'])->group(function () {
             Route::post('/admin/request/deny', [AdminController::class, 'denyEventRequest'])->name('admin.request.deny');
             Route::post('/admin/request/delete', [AdminController::class,'removeEventRequest'])->name('remove.eventrequest');
             
-            
-                
+            // เพิ่มเส้นทางสำหรับการสร้างหมวดหมู่
+            Route::post('/admin/category', [AdminController::class, 'storeCategory'])->name('admin.category.store');
             Route::get('/admin/complaint', [AdminController::class, 'getEventComplaintPage'])->name("admin.complaint");
+            Route::get('/admin/category', [AdminController::class, 'getEventCategoryPage'])->name("admin.category");
+            Route::get('/admin/category/create', [AdminController::class, 'getEventCategoryCreatePage'])->name("admin.category_create");
+            Route::get('/category/{category}', [CategoryController::class, 'show'])->name('category.show');
+            Route::get('/admin/complaint/{event}',[AdminController::class, 'getEventComplaintDetailPage'])->name("admin.complaintDetail");
+            Route::get('/admin/complaint/{event}/behide',[AdminController::class, 'getEventComplaintDetailBehidePage'])->name("admin.complaintDetail.behide");
 
+            Route::post('/admin/complaint/approve', [AdminController::class, 'approveReportRequest'])->name('admin.report.approve');
+            Route::post('/admin/complaint/deny', [AdminController::class, 'denyReportRequest'])->name('admin.report.deny');
+            Route::post('/admin/complaint/delete', [AdminController::class,'removeReportRequest'])->name('remove.reportrequest');
+            
             
             
         

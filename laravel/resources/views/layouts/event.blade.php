@@ -35,15 +35,18 @@
                     </svg>
                 </button>
             </div>
-            <nav :class="{'block': open, 'hidden': !open}"
-                class="flex h-full align md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
+            
+            <nav :class="{'block': open, 'hidden': !open}" id = "test"
+                class="flex h-full md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
                 <div>
-                    <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                    <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg  hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                         href="{{ route('event.main.main',['event'=> $event]) }}">Announcement</a>
+                    @can('view', $event)
+                        @can('view', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())    
                     <div @click.away="open = false" class="relative" x-data="{ open: false }">
                         <button @click="open = !open"
                             class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-                            <span>Staff</span>
+                            <span>Workspace</span>
                             <svg fill="currentColor" viewBox="0 0 20 20"
                                 :class="{'rotate-180': open, 'rotate-0': !open}"
                                 class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1">
@@ -62,25 +65,79 @@
                             <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
                                 <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                     href="{{ route('event.kanban',['event'=> $event])}}">Kanban</a>
+                                @can('view', $event)
+                                    @can('viewWithRole', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())        
                                 <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                     href="{{ route('event.team', ['event' => $event])}}">Teams</a>
+                                    @endcan
+                                @endcan
                                 <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                     href="{{ route('event.team.member',['event' => $event])}}">Members</a>
+                                @can('view', $event)
+                                    @can('viewWithRole', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())        
                                 <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                     href="{{ route('event.team.join',['event' => $event])}}">Join Requests</a>
+                                    @endcan
+                                @endcan
                             </div>
                         </div>
                     </div>
+                        @endcan
+                    @endcan
                 </div>
-
-                
+                    
+            
+                <div class="mt-16 ">
+                @can('view', $event)
+                    @can('viewWithRole', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())    
+                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-green-200 rounded-lg dark-mode:bg-transparent hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline "
+                data-modal-target="popup-modal" data-modal-toggle="popup-modal">Announce Success</a>
+                    @endcan
+                @endcan
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-red-200 rounded-lg dark-mode:bg-transparent hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline "
                         href="{{ route('event.information',['event'=> $event])}}">Back</a>
+                </div>
+
                 
             </nav>
         </div>
         @yield('content')
     </div>
+
+    <!-- remove modal -->
+    <div id="popup-modal" tabindex="-1"
+                    class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative w-full max-w-md max-h-full">
+                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                            <button type="button"
+                                class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                data-modal-hide="popup-modal">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                            <div class="p-6 text-center">
+                                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+                                <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure this project is finished ? </h3>
+                                    <button data-modal-hide="popup-modal" onClick="update({{$event->id}})"
+                                        class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                                        Yes, I'm sure
+                                    </button>
+                                    <button data-modal-hide="popup-modal" type="button"
+                                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No,
+                                        cancel</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
 
@@ -88,5 +145,12 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
 </body>
+
+<script>
+    function update(id) {
+        updateAjax('POST','{{route('event.finish')}}', '{{csrf_token()}}', {'event_id':id});
+        window.location.reload(true);
+    }
+</script>
 
 </html>

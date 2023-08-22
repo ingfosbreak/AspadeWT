@@ -61,14 +61,6 @@
 			</div>
 			<div class="mt-4 flex">
 				<div class="flex w-fit flex-wrap mt-8 text-center text-green-200 font-mono text-xs">
-                    <a href="#" class="flex-2 underline">
-                        Forgot password?
-                    </a>
-
-                    <p class="flex-1 text-gray-500 text-md mx-4 my-1 sm:my-auto">
-                        or
-                    </p>
-
                     <a href="{{route('register')}}" class="flex-2 underline">
                         Create an Account
                     </a>

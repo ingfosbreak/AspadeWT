@@ -45,21 +45,32 @@ class Event extends Model
     
     // Eventlol
     public static function getNewEvent() {
-        return Event::paginate(15)->sortByDesc('created_at');
+        return Event::orderBy('created_at', 'desc')->where('publish','publish')->paginate(15);
     }
     
     public static function getPopular() {
-        return Event::withCount('requestJoinEvent')->get()->sortByDesc('request_join_event_count')->take(6);
-    }
-    public static function getUpComingEvent() {
-        $events = Event::whereDate('date_start', '>', today())->paginate(15);
-        
-            foreach ($events as $event) {
-                $event->upcoming_count = $event->hasStarted() ? 0 : Carbon::parse($event->date_start)->diffInDays(now());
-            }
-        return $events->sortBy('upcoming_count');
+        return Event::withCount('requestJoinEvent')->where('publish','publish')->get()->sortByDesc('request_join_event_count')->take(6);
     }
 
+    public static function getUpcomingEvent() {
+        $events = Event::whereDate('date_start', '>', today())->where('publish','publish')->get(); // Get all upcoming events without pagination
+        
+        foreach ($events as $event) {
+            $event->upcoming_count = $event->hasStarted() ? 0 : Carbon::parse($event->date_start)->diffInDays(now());
+        }
+        
+        // Sort the events by 'upcoming_count' in descending order
+        $sortedEvents = $events->sortBy('upcoming_count');
+        
+        // Convert the sorted events back to a query builder instance
+        $queryBuilder = Event::whereIn('id', $sortedEvents->pluck('id')->all());
+        
+        // Paginate the sorted events with 15 results per page
+        $paginatedEvents = $queryBuilder->paginate(15);
+        
+        return $paginatedEvents;
+    }
+    
 
 
     public function isUserInEvent(string $userid){
@@ -116,6 +127,7 @@ class Event extends Model
     public function event_category_list(): HasMany {
         return $this->hasMany(EventCategoryList::class);
     }
+    
     public function categories(): BelongsToMany {
         return $this->belongsToMany(Category::class);
     }

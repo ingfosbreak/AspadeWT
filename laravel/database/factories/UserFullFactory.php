@@ -22,6 +22,7 @@ class UserFullFactory extends Factory
             'firstname' => fake()->unique()->name(),
             'lastname' => fake()->unique()->name(),
             'year' => Int::random(4)
+            
 
         ];
     }

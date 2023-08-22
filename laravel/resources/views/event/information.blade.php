@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
+
     <!-- Main modal -->
     <div id="profileImage-modal" tabindex="-1" aria-hidden="true"
         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -75,7 +76,7 @@
                                 placeholder="{{$event->num_member}}" value="{{$event->num_member}}">
                         </div>
                         <div>
-                            <label for="num_staff" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Num Member</label>
+                            <label for="num_staff" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Num Staff</label>
                             <input type="number" name="num_staff" id="num_staff"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                 placeholder="{{$event->num_staff}}" value="{{$event->num_staff}}">
@@ -85,6 +86,24 @@
                             <input type="number" name="budget" id="budget"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                 placeholder="{{$event->budget}}" value="{{$event->budget}}">
+                        </div>
+                        <!-- Category -->
+                        <div>
+                                    <label
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Activity Type</label>
+                                    <select type="text" id="category" name="category"  
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Choose a role for joining" required="">
+                                        <option value="outdoor">outdoor</option>
+                                        <option value="indoor">indoor</option>
+                                        <option value="concert">concert</option>
+                                        <option value="sport">sport</option>
+                                        <option value="academic">Academic</option>
+                                    </select>
+                                    <label for="category"
+                                        class="absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                        activity type</label>
+                                        @error('category')<div class= "text-xs text-red-600">{{ $message }}</div>@enderror
                         </div>
                         <div class="relative z-0">
                             <input type="date" id="date_register" name="date_register"
@@ -137,6 +156,75 @@
             </div>
         </div>
     </div>
+
+    <!-- Main modal -->
+    <div id="popup-modal" tabindex="-1"
+        class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-md max-h-full">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <button type="button"
+                    class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    data-modal-hide="popup-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+                <div class="p-6 text-center">
+                    <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 " aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to
+                        Report this Event?</h3>
+                    <form action="{{route('report.event')}}" class="" method="POST">
+                        @csrf
+
+                        <div>
+                            <label for="name"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">What do you report this Event for ?</label>
+                            <input type="string" name="name" id="name"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                placeholder="What's wrong / suspicious about this Event ?" >
+                        </div>
+                        <label for="description"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-5">description</label>
+                                <textarea type=text id="description" name="description" rows="4"
+                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
+                                    placeholder="Detail of Your Objective Report!!"></textarea>
+                        
+                        <div class="hidden">
+                            <label for="event_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Event_id</label>
+                            <input type="number" name="event_id" id="event_id"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                value="{{$event->id}}">
+                        </div>
+
+                        <div class="hidden">
+                            <label for="user_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User_id</label>
+                            <input type="number" name="user_id" id="user_id"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                value="{{Auth::getUser()->id}}">
+                        </div>
+                                    
+
+                        <div class="mt-5">
+                        <button data-modal-hide="popup-modal" type="submit"
+                            class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                            Yes, I'm sure
+                        </button>
+                        <button data-modal-hide="popup-modal" type="button"
+                            class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No,
+                            cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     
 
     <div class="mx-auto p-5 sm:p-10 relative flex flex-col gap-5 drop-shadow-2xl">
@@ -156,7 +244,8 @@
         
             <div class="mx-auto h-full flex items-center justify-center px-8 drop-shadow-md">
                 <div class="flex flex-col w-fit bg-white rounded shadow-lg sm:w-3/4 md:w-1/2 lg:w-3/5">
-                
+
+
                     <!-- image -->
                     @if ($event->event_image == null)
                     <div class="w-full h-64 bg-top bg-cover rounded-t flex justify-center"  style="background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
@@ -164,9 +253,13 @@
                     <div class="w-full h-64 bg-top bg-cover rounded-t flex justify-center"  id="main-image">
                     @endif
                     
+                    @can('view', $event)
+                        @can('view', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())    
                         <button data-modal-target="profileImage-modal" data-modal-toggle="profileImage-modal"
                         class="text-6xl text-green-400 hover:text-green-300 bg-gray-100 hover:bg-gray-500 w-fit h-fit px-3 mt-2 rounded-full"
                         type="button">+</button>
+                        @endcan
+                    @endcan
 
                     
                     </div>
@@ -174,32 +267,48 @@
                     
 
                     <div class="flex w-full justify-center items-center gap-5">
-                    @if ($event->isUserInEvent(Auth::getUser()->id))
+
+                    
+                    @can('view', $event)
                     
                     <a href="{{ route('event.main.main',['event' => $event])}}"
                         class="inline-flex items-center border border-indigo-300 px-3 py-1.5 rounded-md text-indigo-500 hover:bg-indigo-50  my-5">
                         <span class="ml-1 font-bold text-lg">Detail</span>
                     </a>
                     <!--  -->
-                    @else 
+                    @else
                     <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="inline-flex w-fit items-center border border-indigo-300 px-3 py-1.5 rounded-md text-indigo-500 hover:bg-indigo-50  my-5 font-bold" type="button">Book Event<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                     </svg></button>
                     <!-- Dropdown menu -->
                     <div id="dropdown" class="z-100 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                        
+                        @can('view', Auth::getUser()->requestJoinEvent->where('event_id',$event->id)->first())
                         <li>
+                            <p>You Current Request is currently on hold!</p>
+                        </li>
+                        @else
+                        <li>
+                            @if ($event->getStaffsCount() < $event->num_staff)
                             <a href="{{ route('event.staff.formJoinEvent', ['event' => $event])}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Join As Staff</a>
+                            @endif
                         </li>
                         <li>
+                            @if ($event->getMembersCount() < $event->num_member)
                             <a href="{{route('event.formJoinEvent', ['event' => $event])}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Join As Participant</a>
+                            @endif
                         </li>
                         </ul>
+                        @endcan
                     </div>
                     <!--  -->
-                    @endif
+                    @endcan
                     
                     
+                    @can('view', $event)
+                        @can('viewWithRole', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())    
+                        
                         <div class=" flex justify-end px-5  gap-3">
                             <button data-modal-target="information-modal" data-modal-toggle="information-modal" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-sliders2" viewBox="0 0 16 16">
@@ -207,6 +316,15 @@
                                 </svg>
                             </button>
                         </div>
+                        
+                        @endcan
+                    @endcan
+
+                        <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="text-red-700">                                        
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-flag" viewBox="0 0 16 16">
+                                <path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12.435 12.435 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A19.626 19.626 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a19.587 19.587 0 0 0 1.349-.476l.019-.007.004-.002h.001M14 1.221c-.22.078-.48.167-.766.255-.81.252-1.872.523-2.734.523-.886 0-1.592-.286-2.203-.534l-.008-.003C7.662 1.21 7.139 1 6.5 1c-.669 0-1.606.229-2.415.478A21.294 21.294 0 0 0 3 1.845v6.433c.22-.078.48-.167.766-.255C4.576 7.77 5.638 7.5 6.5 7.5c.847 0 1.548.28 2.158.525l.028.01C9.32 8.29 9.86 8.5 10.5 8.5c.668 0 1.606-.229 2.415-.478A21.317 21.317 0 0 0 14 7.655V1.222z"/>
+                                </svg>
+                        </button>
                     </div>
 
 
@@ -224,7 +342,7 @@
                                 <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
                                 <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
                                 </svg>
-                            <p class="font-bold">{{$event->date}}</p>
+                            <p class="font-bold">{{$event->date_start}}</p>
                             </div>
                             <div>
                                 @if ($event->getMembersCount() == $event->num_member)
@@ -280,6 +398,8 @@
             <div
                 class="mt-3 bg-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
                 <div class="bg-white relative top-0 -mt-32 p-3 sm:p-10" >
+                @can('view', $event)
+                        @can('view', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())    
                     <label class="relative inline-flex items-center mb-5 cursor-pointer ml-5">
                         @if ($event->publish == "draft")
                         <input type="checkbox" value=true id="checkbox" class="sr-only peer" >
@@ -292,18 +412,57 @@
                         @endif
                         
                     </label>
+                    @endcan
+                @endcan
 
-
-                    <div id="info-container">
+                    @can('view', $event)
+                        @can('view', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())    
+                        <div id="info-container">
+                        @else
+                        <div id="info-container" class="pointer-events-none">
+                        @endcan
+                    @else
+                    <div id="info-container" class="pointer-events-none">
+                    @endcan
+                
                     @foreach ($event->getInfoSorted as $info)
                     @if ($info->type == "small")
-                    <div id="{{$info->id}}">
+                    
+                    @can('view', $event)
+                        @can('view', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())    
+                        <div id="{{$info->id}}" >
+                        @else
+                        <div id="{{$info->id}}" class="pointer-events-none">
+                        @endcan
+                    @else
+                        <div id="{{$info->id}}" class="pointer-events-none">
+                    @endcan
                         <div class="flex text-gray-100 hover:text-gray-400">
-                            <p class="rounded mr-2 text-2xl self-center mt-2">::</p>
-                            <p class="text-base text-gray-600 leading-8 my-5 bg-white hover:bg-gray-100 focus:bg-gray-100 rounded-md pt-2 pl-2 flex-1 formysql" contenteditable="true" id="text-{{$info->id}}" onFocus="makefocus({{$info->id}})">
-                                {!! nl2br(($info->text), true) !!}
-                            </p>
-                            <p class="rounded text-2xl self-center ml-2 text-5xl hover:text-gray-800" id="remove-{{$info->id}}" onClick="remove({{$info->id}})">-</p>
+                            
+                            @can('view', $event)
+                                @can('view', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())
+                                <p class="rounded mr-2 text-2xl self-center mt-2">::</p>    
+                                <p class="text-base text-gray-600 leading-8 my-5 bg-white hover:bg-gray-100 focus:bg-gray-100 rounded-md pt-2 pl-2 flex-1 formysql" contenteditable="true" id="text-{{$info->id}}" onFocus="makefocus({{$info->id}})">
+                                    {!! nl2br(($info->text), true) !!}
+                                </p>
+                                <p class="rounded text-2xl self-center ml-2 text-5xl hover:text-gray-800" id="remove-{{$info->id}}" onClick="remove({{$info->id}})">-</p>
+                                 @else
+
+                                 <p class="rounded mr-2 text-2xl self-center mt-2 pointer-events-none" >::</p>    
+                                <p class="text-base text-gray-600 leading-8 my-5 bg-white hover:bg-gray-100 focus:bg-gray-100 pointer-events-none rounded-md pt-2 pl-2 flex-1 formysql" id="text-{{$info->id}}" onFocus="makefocus({{$info->id}})">
+                                    {!! nl2br(($info->text), true) !!}
+                                </p>
+                                <p class="rounded text-2xl self-center ml-2 text-5xl hover:text-gray-800 pointer-events-none" id="remove-{{$info->id}}" onClick="remove({{$info->id}})">-</p>
+                                 @endcan
+                            @else
+                            <p class="rounded mr-2 text-2xl self-center mt-2 pointer-events-none" >::</p>    
+                                <p class="text-base text-gray-600 leading-8 my-5 bg-white hover:bg-gray-100 focus:bg-gray-100 pointer-events-none rounded-md pt-2 pl-2 flex-1 formysql" id="text-{{$info->id}}" onFocus="makefocus({{$info->id}})">
+                                    {!! nl2br(($info->text), true) !!}
+                                </p>
+                                <p class="rounded text-2xl self-center ml-2 text-5xl hover:text-gray-800 pointer-events-none" id="remove-{{$info->id}}" onClick="remove({{$info->id}})">-</p>
+
+                            @endcan
+                            
                         </div>
                         <div class="flex justify-between flex-wrap">
                         <p class="text-gray-400 not-show ml-5" id="under-{{$info->id}}"><span class="text-black" id="bold-{{$info->id}}">BOLD</span> :: <span class="text-gray-500" id="small-{{$info->id}}">small</span></p>
@@ -311,15 +470,34 @@
                         </div>
                         
                     </div>
+
+
                     @else
                     
                     <div id="{{$info->id}}">
                         <div class="flex text-gray-100 hover:text-gray-400">
-                            <p class="rounded mr-2 text-2xl self-center mt-2">::</p>
-                            <p class="text-3xl text-black leading-8 my-5 bg-white hover:bg-gray-100 focus:bg-gray-100 rounded-md pt-2 pl-2 flex-1 formysql" contenteditable="true" id="text-{{$info->id}}" onFocus="makefocus({{$info->id}})">
-                            {!! nl2br(($info->text), true) !!}
-                            </p>
-                            <p class="rounded text-2xl self-center ml-2 text-5xl hover:text-gray-800" id="remove-{{$info->id}}" onClick="remove({{$info->id}})">-</p>
+                        @can('view', $event)
+                                @can('view', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())
+                                <p class="rounded mr-2 text-2xl self-center mt-2">::</p>
+                                <p class="text-3xl text-black leading-8 my-5 bg-white hover:bg-gray-100 focus:bg-gray-100 rounded-md pt-2 pl-2 flex-1 formysql" contenteditable="true" id="text-{{$info->id}}" onFocus="makefocus({{$info->id}})">
+                                {!! nl2br(($info->text), true) !!}
+                                </p>
+                                <p class="rounded text-2xl self-center ml-2 text-5xl hover:text-gray-800" id="remove-{{$info->id}}" onClick="remove({{$info->id}})">-</p>
+                                @else
+                                <p class="rounded mr-2 text-2xl self-center mt-2">::</p>
+                                <p class="text-3xl text-black leading-8 my-5 bg-white hover:bg-gray-100 focus:bg-gray-100 rounded-md pt-2 pl-2 flex-1 formysql" id="text-{{$info->id}}" onFocus="makefocus({{$info->id}})">
+                                {!! nl2br(($info->text), true) !!}
+                                </p>
+                                <p class="rounded text-2xl self-center ml-2 text-5xl hover:text-gray-800" id="remove-{{$info->id}}" onClick="remove({{$info->id}})">-</p>
+                                @endcan
+                        @else
+                        <p class="rounded mr-2 text-2xl self-center mt-2">::</p>
+                                <p class="text-3xl text-black leading-8 my-5 bg-white hover:bg-gray-100 focus:bg-gray-100 rounded-md pt-2 pl-2 flex-1 formysql" id="text-{{$info->id}}" onFocus="makefocus({{$info->id}})">
+                                {!! nl2br(($info->text), true) !!}
+                                </p>
+                                <p class="rounded text-2xl self-center ml-2 text-5xl hover:text-gray-800" id="remove-{{$info->id}}" onClick="remove({{$info->id}})">-</p>
+
+                        @endcan
                         </div>
                         <div class="flex justify-between flex-wrap">
                         <p class="text-gray-400 not-show ml-5" id="under-{{$info->id}}"><span class="text-black" id="bold-{{$info->id}}">BOLD</span> :: <span class="text-gray-500" id="small-{{$info->id}}">small</span></p>
@@ -332,11 +510,14 @@
                     @endforeach
                     </div>
                 </div>
-
+                @can('view', $event)
+                        @can('view', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())    
                 <div class="flex flex-row items-center text-gray-300 mt-2 hover:text-black px-10 mb-5" id="New-text" onClick="newText()" >
                         <p class="rounded mr-2 text-5xl">+</p>
                         <p class="pt-1 rounded text-md" >New text</p>
                 </div>
+                    @endcan
+                @endcan
                 
                 <div class="flex justify-between px-5 py-5" >
                     
