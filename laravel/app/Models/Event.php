@@ -87,6 +87,18 @@ class Event extends Model
         }
     }
 
+    public function getPrettyDateStart() {
+        return Carbon::parse($this->date_start)->format('d-m-Y');
+    }
+
+    public function getPrettyDateClose() {
+        return Carbon::parse($this->date_close)->format('d-m-Y');
+    }
+
+    public function getPrettyDateRegister() {
+        return Carbon::parse($this->date_register)->format('d-m-Y');
+    }
+
     public function getInfoSorted() {
         return $this->hasMany(EventInfo::class)->orderBy('order', 'asc');
     }

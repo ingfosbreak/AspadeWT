@@ -56,7 +56,7 @@
                     <a href="#" class="hover:text-purple-500 text-gray-700 font-semibold"> <p>{{$event->event->name}}</p> </a>
 
                     <!-- Viewers -->
-                    <a href="#" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> {{$event->event->date_start}} </a>
+                    <a href="#" class="hover:text-purple-500 text-sm text-gray-400 -mt-1">Start : {{$event->event->getPrettyDateStart()}} </a>
 
                     <!-- Category Tags -->
                     <div class="flex flex-row flex-wrap gap-2">

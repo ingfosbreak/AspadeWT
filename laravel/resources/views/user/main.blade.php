@@ -112,7 +112,7 @@
                 <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm break-words text-gray-700 font-semibold"> <p>{{$event->name}}</p> </a>
 
                 <!-- Viewers -->
-                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> Start: {{$event->date_start}} </a>
+                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> Start: {{$event->getPrettyDateStart()}} </a>
 
                 <!-- Category Tags -->
                 <div class="flex flex-row flex-wrap gap-2">
@@ -156,7 +156,7 @@
                 <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm break-words text-gray-700 font-semibold"> <p>{{$event->name}}</p> </a>
 
                 <!-- Viewers -->
-                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> Start: {{$event->date_start}} </a>
+                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> Start: {{$event->getPrettyDateStart()}} </a>
 
                 <!-- Category Tags -->
                 <div class="flex flex-row flex-wrap gap-2">
@@ -197,7 +197,7 @@
                 <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm break-words text-lg text-gray-700 font-semibold"> <p>{{$event->name}}</p> </a>
 
                 <!-- Viewers -->
-                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> Start: {{$event->date_start}} </a>
+                <a href="{{ route('event.information',['event'=> $event])}}" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> Start: {{$event->getPrettyDateStart()}} </a>
                 </a>
                 <!-- Category Tags -->
                 <div class="flex flex-row flex-wrap gap-2">

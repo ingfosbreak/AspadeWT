@@ -75,10 +75,10 @@
                         </a>
                         <div class="text-sm leading-4 font-normal"><span
                                 class="text-xs leading-4 font-normal text-gray-500"> Event start
-                                :{{$event->date_start}}</span> </div>
+                                :{{$event->getPrettyDateStart()}}</span> </div>
                         <div class="text-sm leading-4 font-normal"><span
                                 class="text-xs leading-4 font-normal text-gray-500">Event end
-                                :{{$event->date_close}}</span>
+                                :{{$event->getPrettyDateClose()}}</span>
 
                         </div>
                     </div>
@@ -108,10 +108,10 @@
                         </a>
                         <div class="text-sm leading-4 font-normal"><span
                                 class="text-xs leading-4 font-normal text-gray-500"> Event start
-                                :{{$event->date_start}}</span> </div>
+                                :{{$event->getPrettyDateStart()}}</span> </div>
                         <div class="text-sm leading-4 font-normal"><span
                                 class="text-xs leading-4 font-normal text-gray-500">Event end
-                                :{{$event->date_close}}</span>
+                                :{{$event->getPrettyDateClose()}}</span>
 
                         </div>
                     </div>
@@ -147,10 +147,10 @@
                         </a>
                         <div class="text-sm leading-4 font-normal"><span
                                 class="text-xs leading-4 font-normal text-gray-500"> Event start
-                                :{{$event->date_start}}</span> </div>
+                                :{{$event->getPrettyDateStart()}}</span> </div>
                         <div class="text-sm leading-4 font-normal"><span
                                 class="text-xs leading-4 font-normal text-gray-500">Event end
-                                :{{$event->date_close}}</span>
+                                :{{$event->getPrettyDateClose()}}</span>
 
                         </div>
                     </div>
@@ -174,10 +174,10 @@
                         </a>
                         <div class="text-sm leading-4 font-normal"><span
                                 class="text-xs leading-4 font-normal text-gray-500"> Event start
-                                :{{$event->date_start}}</span> </div>
+                                :{{$event->getPrettyDateStart()}}</span> </div>
                         <div class="text-sm leading-4 font-normal"><span
                                 class="text-xs leading-4 font-normal text-gray-500">Event end
-                                :{{$event->date_close}}</span>
+                                :{{$event->getPrettyDateClose()}}</span>
                         </div>
                     </div>
                 </div>
