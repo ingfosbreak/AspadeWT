@@ -941,6 +941,11 @@ class EventManager {
     public function finishEvent(Request $request) {
 
         $event = Event::find((int) $request->get('data')['event_id']);
+
+        if ($event->status == "finished") {
+            return true;
+        }
+        
         $event->status = "finished";
 
         if ($event->save()) {

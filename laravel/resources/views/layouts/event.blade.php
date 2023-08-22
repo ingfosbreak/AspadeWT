@@ -90,8 +90,13 @@
                 <div class="mt-16 ">
                 @can('view', $event)
                     @can('viewWithRole', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())    
-                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-green-200 rounded-lg dark-mode:bg-transparent hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline "
-                data-modal-target="popup-modal" data-modal-toggle="popup-modal">Announce Success</a>
+
+                    @if ($event->status == "finished")
+                    @else
+
+                    <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-green-200 rounded-lg dark-mode:bg-transparent hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline "
+                    data-modal-target="popup-modal" data-modal-toggle="popup-modal">Announce Success</a>
+                    @endif
                     @endcan
                 @endcan
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-red-200 rounded-lg dark-mode:bg-transparent hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline "
