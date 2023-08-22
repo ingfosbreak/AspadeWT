@@ -263,6 +263,18 @@ class EventController extends Controller
         
         return false;
     }
+
+    public function kickMemberTeam(Request $request) {
+
+        $request->validate(['data' => 'required']);
+        
+        $success = EventService::getEventManager()->kickMemberTeam($request);
+        if ($success != false) {
+            return true;
+        }
+        
+        return false;
+    } 
     
 
     public function approveJoinRequest(Request $request) {

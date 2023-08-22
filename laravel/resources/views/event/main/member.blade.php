@@ -25,6 +25,9 @@
 
 
             @foreach ($event->users as $user)
+                @if ($user->getEventRole($event->id) == null)
+                @else
+
                 @if ($user->getEventRole($event->id) == "participant")
                 @else
                 <tr class="border px-4 py-2">
@@ -118,19 +121,19 @@
                                     @can('viewWithRole', Auth::getUser()->user_pivots->where('event_id',$event->id)->firstOrFail())   
                     <td>
                         
-                                    <button data-modal-target="popup-modal-{{$user->id}}" data-modal-toggle="popup-modal-" >
+                                    <button data-modal-target="popup-modal-{{$user->id}}" data-modal-toggle="popup-modal-{{$user->id}}" >
                                 <i class="material-icons-round text-base text-red-400 hover:text-gray-100 cursor-pointer ml-2">delete_outline</i>
                                 </button>
                                
 
                         <!-- remove modal -->
-                <div id="popup-modal-" tabindex="-1"
+                <div id="popup-modal-{{$user->id}}" tabindex="-1"
                     class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                     <div class="relative w-full max-w-md max-h-full">
                         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                             <button type="button"
                                 class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                data-modal-hide="popup-modal-">
+                                data-modal-hide="popup-modal-{{$user->id}}">
                                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                     viewBox="0 0 14 14">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -145,12 +148,12 @@
                                         stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                 </svg>
                                 <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you
-                                    want to Delete  Request? </h3>
-                                    <button data-modal-hide="popup-modal-" onClick=""
+                                    want to Kick {{$user->username}} Out of Event ? </h3>
+                                    <button data-modal-hide="popup-modal-{{$user->id}}" onClick="remove({{$event->id}},{{$user->id}})"
                                         class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                                         Yes, I'm sure
                                     </button>
-                                    <button data-modal-hide="popup-modal-" type="button"
+                                    <button data-modal-hide="popup-modal-{{$user->id}}" type="button"
                                         class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No,
                                         cancel</button>
                                 </form>
@@ -171,6 +174,7 @@
 
                 </tr>
                 @endif
+                @endif
             @endforeach
 
 
@@ -187,6 +191,13 @@ function changeTeam(eventId,userId,teamId = null) {
     window.location.reload(true);
     
 }
+
+
+function remove(eventId,userId) {
+    removeAjax('POST', '{{route('event.team.member.kick')}}', '{{csrf_token()}}', {'event_id': eventId,'user_id':userId});
+    window.location.reload(true);
+}
+
 
 </script>
 

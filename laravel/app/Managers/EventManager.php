@@ -616,6 +616,22 @@ class EventManager {
 
     }
 
+    public function kickMemberTeam(Request $request) {
+        $event_user = EventUser::where('event_id',(int) $request->get('data')['event_id'])->where('user_id',(int) $request->get('data')['user_id'])->firstOrFail();
+        $user_id = $event_user->user_id;
+        $event_name = $event_user->event->name;
+        if ($event_user->delete()){
+
+            NotifyService::getNotifyManager()->userNoti($user_id , 
+                'noti', 
+                "You have been kick from Event : ". $event_name , 
+                "Don't do something illegal next time");
+
+            return true;
+        }
+        return false;
+    }
+
     public function editImage(Request $request, Event $event) {
         // event_image
         if ($event->event_image == null) {

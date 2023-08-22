@@ -71,12 +71,28 @@ class User extends Authenticatable
     }
 
     public function getEventRole(string $event_id){
-        return $this->user_pivots->where('event_id',(int) $event_id)->firstOrFail()->event_role;
+        try {
+            $this->user_pivots->where('event_id',(int) $event_id)->firstOrFail()->event_role;
+            return $this->user_pivots->where('event_id',(int) $event_id)->firstOrFail()->event_role;
+        }
+        catch (ItemNotFoundException $exception) {
+      
+            return null;
+        
+        }
         
     }
 
     public function getEventTeamId(string $event_id) {
-        return $this->user_pivots->where('event_id',(int) $event_id)->firstOrFail()->event_team_id;
+        try {
+            $this->user_pivots->where('event_id',(int) $event_id)->firstOrFail()->event_team_id;
+            return $this->user_pivots->where('event_id',(int) $event_id)->firstOrFail()->event_team_id;
+        }
+        catch (ItemNotFoundException $exception) {
+  
+            return null;
+    
+        }
     }
 
     public function getEventTeamName(string $event_id) {
