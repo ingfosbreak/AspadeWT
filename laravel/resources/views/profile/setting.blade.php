@@ -430,12 +430,22 @@
                                 placeholder="{{Auth::getUser()->userFull->email}}">
                         </div>
                         <div>
-                            <label for="faculty"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your current
-                                faculty</label>
-                            <input type="string" name="faculty" id="faculty"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                placeholder="{{Auth::getUser()->userFull->faculty}}">
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your current Faculty</label>
+                                <select type="text" id="faculty" name="faculty"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Choose a role for joining" value="{{ old('faculty','')}}">
+                                    <option value="-">-</option>
+                                    <option value="science">Science</option>
+                                    <option value="engineer">Engineer</option>
+                                    <option value="economic">Economic</option>
+                                    <option value="humanity">Humanity</option>
+                                    <option value="social">Social</option>
+                                </select>
+                                <label for="faculty"
+                                    class="absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    Faculty type</label>
+                                @error('category')<div class="text-xs text-red-600">{{ $message }}</div>@enderror
+                            
                         </div>
                         <div>
                             <label for="year" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
@@ -443,6 +453,7 @@
                             <input type="number" name="year" id="year"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                 placeholder="{{Auth::getUser()->userFull->year}}">
+                                @error('year')<div class="text-xs text-red-600">{{ $message }}</div>@enderror
                         </div>
 
                         <button type="submit"

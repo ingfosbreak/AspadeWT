@@ -199,7 +199,7 @@ class UserManager {
             'lastname' => 'nullable',
             'image' => 'nullable',
             'images.*' => 'nullable|mimes:png,gif,jpg,jpeg,bmp|max:2048',
-            'year' => 'nullable|numeric|min:1',
+            'year' => 'nullable|numeric|min:1|max:6',
         ]);
 
         // $validated = Validator::make($request->all(),[
@@ -322,7 +322,7 @@ class UserManager {
             'faculty' => 'nullable',
             'firstname' => 'nullable',
             'lastname' => 'nullable',
-            'year' => 'nullable',
+            'year' => 'nullable|numeric|min:1|max:6',
 
         ]);
 

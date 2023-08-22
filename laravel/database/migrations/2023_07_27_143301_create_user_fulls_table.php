@@ -19,7 +19,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable(); // 'email_verified_at' timestamp/ datetime
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
-            $table->string('faculty')->nullable();
+            $table->enum('faculty',['-','science','engineer','economic','humanity','social']);
             $table->integer('year')->nullable();
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);

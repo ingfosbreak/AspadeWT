@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
         $userFull->email = fake()->unique()->safeEmail();
         $userFull->firstname = fake()->name();
         $userFull->lastname = fake()->lastName();
-        $userFull->faculty = fake()->text();
+        $userFull->faculty = fake()->randomElement(['-','science','engineer','economic','humanity','social']);
         $userFull->year = fake()->randomDigitNot(2);
         $userFull->save();
 
@@ -41,7 +41,7 @@ class UserSeeder extends Seeder
         $userFull->email = fake()->unique()->safeEmail();
         $userFull->firstname = fake()->name();
         $userFull->lastname = fake()->lastName();
-        $userFull->faculty = fake()->text();
+        $userFull->faculty = fake()->randomElement(['-','science','engineer','economic','humanity','social']);
         $userFull->year = fake()->randomDigitNot(2);
         $userFull->save();
 
@@ -56,7 +56,7 @@ class UserSeeder extends Seeder
         $userFull->email = fake()->unique()->safeEmail();
         $userFull->firstname = fake()->name();
         $userFull->lastname = fake()->lastName();
-        $userFull->faculty = fake()->text();
+        $userFull->faculty = fake()->randomElement(['-','science','engineer','economic','humanity','social']);
         $userFull->year = fake()->randomDigitNot(2);
         $userFull->save();
 
@@ -71,7 +71,7 @@ class UserSeeder extends Seeder
         $userFull->email = fake()->unique()->safeEmail();
         $userFull->firstname = fake()->name();
         $userFull->lastname = fake()->lastName();
-        $userFull->faculty = fake()->text();
+        $userFull->faculty = fake()->randomElement(['-','science','engineer','economic','humanity','social']);
         $userFull->year = fake()->randomDigitNot(2);
         $userFull->save();
 
@@ -87,7 +87,7 @@ class UserSeeder extends Seeder
         $userFull->email = fake()->unique()->safeEmail();
         $userFull->firstname = fake()->name();
         $userFull->lastname = fake()->lastName();
-        $userFull->faculty = fake()->text();
+        $userFull->faculty = fake()->randomElement(['-','science','engineer','economic','humanity','social']);
         $userFull->year = fake()->randomDigitNot(2);
         $userFull->save();
 
@@ -107,7 +107,7 @@ class UserSeeder extends Seeder
             $userFull->email = fake()->unique()->safeEmail();
             $userFull->firstname = fake()->name();
             $userFull->lastname = fake()->lastName();
-            $userFull->faculty = fake()->text();
+            $userFull->faculty = fake()->randomElement(['-','science','engineer','economic','humanity','social']);
             $userFull->year = fake()->randomDigitNot(2);
             $userFull->save();
 

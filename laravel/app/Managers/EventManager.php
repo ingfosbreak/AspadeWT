@@ -254,7 +254,7 @@ class EventManager {
 
             NotifyService::getNotifyManager()->userNoti(Auth::getUser()->id, 
             'noti', 
-            "Your Event Create Request ID : ". $event->id . " Has been sent to Admin", 
+            "Your Event Create Request Name : ". $event->name . " Has been sent to Admin", 
             "I hope You will make a Wonderful Event!!! 👍");
 
             return true;
@@ -267,13 +267,13 @@ class EventManager {
         
         $request = RequestCreateEvent::find((int) $request->get('data')['request_id']);
         $user_id = $request->user_id;
-        $request_id = $request->id;
+        $request_name = $request->name;
 
         if ($request->delete()) {
 
             NotifyService::getNotifyManager()->userNoti($user_id, 
             'noti', 
-            "Event Request id : ". $request_id . " Has been deleted by Admin", 
+            "Event Request name : ". $request_name . " Has been deleted by Admin", 
             "We are so sorry to hear about that 😢");
 
             return true;
@@ -314,7 +314,7 @@ class EventManager {
 
                     NotifyService::getNotifyManager()->userNoti($request->user_id, 
                     'noti', 
-                    "Event Request id : ". $request->id . " Has been approved by Admin", 
+                    "Event Request name : ". $request->name . " Has been approved by Admin", 
                     "Congratulation On Your New Journey!!! 😊");
 
                     return true;
@@ -340,7 +340,7 @@ class EventManager {
 
             NotifyService::getNotifyManager()->userNoti($request->user_id, 
             'noti', 
-            "Event Request id : ". $request->id . " Has been denied by Admin", 
+            "Event Request name : ". $request->name . " Has been denied by Admin", 
             "We are so sorry to hear about that 😢");
 
             return true;
@@ -377,7 +377,7 @@ class EventManager {
 
             NotifyService::getNotifyManager()->userNoti($requestjoin->user_id, 
             'noti', 
-            "Event join as a participant id : ". $requestjoin->id . " Has been sent to Event", 
+            "Event join as a participant name : ". $requestjoin->event->name . " Has been sent to Event", 
             "I hope You will make a Good Ride with the team!!! 👍");
 
             return true;
@@ -416,7 +416,7 @@ class EventManager {
 
             NotifyService::getNotifyManager()->userNoti($requestjoin->user_id, 
             'noti', 
-            "Event join as a staff id : ". $requestjoin->id . " Has been sent to Event", 
+            "Event join as a staff name : ". $requestjoin->event->name . " Has been sent to Event", 
             "I hope You will make a Good Ride with the team!!! 👍");
 
             return true;
@@ -451,7 +451,7 @@ class EventManager {
                 
                 NotifyService::getNotifyManager()->userNoti($requestjoin->user_id, 
                 'noti', 
-                "Event join id : ". $requestjoin->id . " Has been approved by Event", 
+                "Event join name : ". $requestjoin->event->name . " Has been approved by Event", 
                 "Congratulation On Your New Journey!!! 😊");
 
                 return true;
@@ -472,7 +472,7 @@ class EventManager {
 
             NotifyService::getNotifyManager()->userNoti($requestjoin->user_id, 
             'noti', 
-            "Event Request id : ". $requestjoin->id . " Has been denied by Event", 
+            "Event Request id : ". $requestjoin->event->name . " Has been denied by Event", 
             "We are so sorry to hear about that 😢");
 
             return true;
@@ -491,7 +491,7 @@ class EventManager {
 
             NotifyService::getNotifyManager()->userNoti($user_id, 
             'noti', 
-            "Event Request id : ". $request_id . " Has been denied by Event", 
+            "Event Request name : ". $request->event->name . " Has been denied by Event", 
             "We are so sorry to hear about that 😢");
 
             return true;
