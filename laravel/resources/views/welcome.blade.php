@@ -103,8 +103,7 @@ Navigate the convergence of digital artistry and event organization with our web
                             <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">Saran Wongkum</h3>
                         </div>
                         <p class="mb-1 text-xs font-medium text-blue-400 uppercase">------------</p>
-                        <p class="mb-2 text-gray-600">A Project Audit is a formal review of a project, which is intended
-                            to assess the extent up to which project management standards are being upheld.</p>
+                        <p class="mb-2 text-gray-600">- Let's Enjoy</p>
                     </div>
                 </div>
             </div>
@@ -122,8 +121,7 @@ Navigate the convergence of digital artistry and event organization with our web
                             <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">Panachai Kotchagason</h3>
                         </div>
                         <p class="mb-1 text-xs font-medium text-blue-400 uppercase">------------</p>
-                        <p class="mb-2 text-gray-600">A Project Audit is a formal review of a project, which is intended
-                            to assess the extent up to which project management standards are being upheld.</p>
+                        <p class="mb-2 text-gray-600">- I hope you guys enjoy this website. </p>
                     </div>
                 </div>
             </div>

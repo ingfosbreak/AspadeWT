@@ -10,6 +10,7 @@ use App\Models\Event;
 use App\Models\User;
 use App\Services\EventService;
 use App\Models\Category;
+use App\Managers\EventManager;
 
 class AdminController extends Controller
 {
@@ -32,7 +33,7 @@ class AdminController extends Controller
     }
 
     public function getEventComplaintPage() {
-        $requests = Complaint::get();
+        $requests = Complaint::get()->sortByDesc('created_at');
         return view('admin.complaint',[
             'requests' => $requests
         ]);

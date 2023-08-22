@@ -726,6 +726,7 @@ class EventManager {
     
     }
 
+   
 
     // public function approveReportRequest(Request $request) {
     //     $complaint = Complaint::find((int) $request->get('data')['request_id']);

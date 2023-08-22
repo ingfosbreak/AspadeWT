@@ -13,8 +13,9 @@
                 <th class="px-4 py-2">User</th>
                 <th class="px-4 py-2">Event</th>
                 <th class="px-4 py-2">Status</th>
+                <th class="px-4 py-2">Title</th>
                 <th class="px-4 py-2">Description</th>
-                <th class="px-4 py-2">Detail</th>
+                <th class="px-4 py-2">Option</th>
                 <th class="px-4 py-2">Action</th>
             </tr>
         </thead>
@@ -66,8 +67,9 @@
 
                     @endif
                 </td>
-                <td class="px-4 py-2">{{$request->description}}</td>
-                <td class="p-3 ">
+                <td class="px-4 py-2 items-center text-xs break-words">{{$request->name}}</td>
+                <td class="px-4 py-2 text-xs break-words">{{$request->description}}</td>
+                <td class="p-3 text-sm">
                     <a href="{{route('admin.complaintDetail',['event'=>$request->event])}}"
                         class="text-gray-800 hover:text-gray-100 mr-2">
                         <i class="material-icons-outlined text-base">visibility</i>
